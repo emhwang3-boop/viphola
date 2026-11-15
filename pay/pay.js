@@ -28,7 +28,7 @@
       rsv: 'Reservations', conf: 'Confirmation no.', itin: 'Your itinerary',
       sos: '<b>In an emergency in Korea:</b> police 112 · fire and ambulance 119 · Korea Travel Hotline 1330 (24 hours, multilingual).',
       overH: 'Thank you for travelling with us', overP: 'We hope to welcome you to Seoul again. For anything at all, write to us at {m}.', guests1: '1 guest', guestsN: '{n} guests',
-      craftL: 'Craft experience', cr: { najeon: 'Mother-of-pearl hand mirror (Jeong Myeong-chae)', silver: 'Silver ring (Lee Hwang-jae)' }, opt: { porter: 'Porter service', photo: 'Professional photographer', hanbok: 'Bespoke hanbok', wine: 'Wine pairing', gj: 'Gyeongju extension, 1 night / 2 days' }, co: 'Booman Inc.' },
+      craftL: 'Craft experience', cr: { najeon: 'Mother-of-pearl hand mirror (Jeong Myeong-chae)', silver: 'Silver ring (Lee Hwang-jae)' }, opt: { porter: 'Porter service', photo: 'Professional photographer', hanbok: 'Bespoke hanbok', wine: 'Wine pairing', gj: 'Gyeongju extension, 1 night / 2 days', bnb: 'Born & Bred hanwoo omakase (replaces Sushi Kanesaka)', mkt: 'Gyeongdong Market morning (replaces the Namsan walk)' }, co: 'Booman Inc.' },
     ja: { load: 'お見積りを読み込んでいます…', bad: 'このリンクは無効です。メールに記載のリンクをご利用いただくか、{m} までご連絡ください。', net: 'サーバーに接続できませんでした。しばらくしてからページを再読み込みしてください。',
       qk: 'お見積り', pkg: 'ソウル ウェルネス＆ガストロノミー', prep: '{n} 様', no: 'お見積り番号', iss: '発行日', valid: '有効期限', car: 'お車', opts: 'オプション', none: 'なし',
       item: '項目', amt: '金額', total: '合計（KRW）', incl: '含まれます', krw: 'お支払いは韓国ウォン（KRW）建てです。お客様のカード会社が、カードの通貨に換算いたします。',
@@ -49,7 +49,7 @@
       rsv: 'ご予約', conf: '確認番号', itin: '旅程',
       sos: '<b>韓国での緊急時：</b>警察 112・消防／救急 119・観光案内電話 1330（24時間・多言語）',
       overH: 'ご旅行ありがとうございました', overP: 'またソウルでお目にかかれますように。ご用の際は {m} までご連絡ください。', guests1: '1名様', guestsN: '{n}名様',
-      craftL: '伝統工芸体験', cr: { najeon: '螺鈿の手鏡（チョン・ミョンチェ氏）', silver: '銀の指輪（イ・ファンジェ氏）' }, opt: { porter: 'ポーターサービス', photo: 'プロカメラマン', hanbok: 'オーダーメイドの韓服', wine: 'ワインペアリング', gj: '慶州への延長（1泊2日）' }, co: '株式会社 富滿（Booman Inc.）' },
+      craftL: '伝統工芸体験', cr: { najeon: '螺鈿の手鏡（チョン・ミョンチェ氏）', silver: '銀の指輪（イ・ファンジェ氏）' }, opt: { porter: 'ポーターサービス', photo: 'プロカメラマン', hanbok: 'オーダーメイドの韓服', wine: 'ワインペアリング', gj: '慶州への延長（1泊2日）', bnb: 'Born & Bred 韓牛おまかせ（鮨 かねさかと差し替え）', mkt: '京東市場の朝（南山の散策と差し替え）' }, co: '株式会社 富滿（Booman Inc.）' },
     es: { load: 'Cargando su presupuesto…', bad: 'Este enlace no es válido. Utilice el enlace de su correo o escríbanos a {m}.', net: 'No hemos podido conectar con nuestro servidor. Actualice esta página en unos momentos.',
       qk: 'Su presupuesto', pkg: 'Seúl: bienestar y gastronomía', prep: 'Preparado para {n}', no: 'N.º de presupuesto', iss: 'Fecha de emisión', valid: 'Válido hasta', car: 'Vehículo', opts: 'Opciones', none: 'Ninguna',
       item: 'Concepto', amt: 'Importe', total: 'Total (KRW)', incl: 'Incluido', krw: 'El pago se realiza en wones coreanos (KRW). El emisor de su tarjeta convierte el importe a la moneda de su tarjeta.',
@@ -70,7 +70,7 @@
       rsv: 'Reservas', conf: 'N.º de confirmación', itin: 'Su itinerario',
       sos: '<b>En caso de emergencia en Corea:</b> policía 112 · bomberos y ambulancia 119 · línea de ayuda al turista 1330 (24 horas, varios idiomas).',
       overH: 'Gracias por viajar con nosotros', overP: 'Esperamos recibirle de nuevo en Seúl. Para cualquier cosa, escríbanos a {m}.', guests1: '1 persona', guestsN: '{n} personas',
-      craftL: 'Artesanía', cr: { najeon: 'Espejo de nácar (Jeong Myeong-chae)', silver: 'Anillo de plata (Lee Hwang-jae)' }, opt: { porter: 'Servicio de equipaje', photo: 'Fotógrafo profesional', hanbok: 'Hanbok a medida', wine: 'Maridaje de vinos', gj: 'Extensión a Gyeongju, 1 noche / 2 días' }, co: 'Booman Inc.' }
+      craftL: 'Artesanía', cr: { najeon: 'Espejo de nácar (Jeong Myeong-chae)', silver: 'Anillo de plata (Lee Hwang-jae)' }, opt: { porter: 'Servicio de equipaje', photo: 'Fotógrafo profesional', hanbok: 'Hanbok a medida', wine: 'Maridaje de vinos', gj: 'Extensión a Gyeongju, 1 noche / 2 días', bnb: 'Omakase hanwoo en Born & Bred (en lugar de Sushi Kanesaka)', mkt: 'Mañana en el mercado de Gyeongdong (en lugar del paseo por Namsan)' }, co: 'Booman Inc.' }
   };
   function T(k) { var s = (TX[L] && TX[L][k]); return s == null ? TX.en[k] : s; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }

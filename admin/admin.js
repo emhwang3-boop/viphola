@@ -10,7 +10,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var ST_KO = { 'new': '신청', quoted: '견적 보냄', paid: '결제 완료', confirmed: '확정' };
   var LANG_KO = { en: '영어', ja: '일본어', es: '스페인어' };
-  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장' };
+  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', bnb: '본앤브레드 한우 맡김차림 (스시 카네사카 대신)', mkt: '경동시장·약령시 + 안동집 (남산 산책 대신)' };
   var VEN = null, VCATS = [], TPL = {}, vcat = 'seoul_hotel', vedit = null;   // 업체 목록 (허브 /vip/adm/vendors) — 손님에겐 안 보임
   var items = [], filter = 'all', cur = null, lines = [], fx = null, fxInfo = '', fxWarn = false, valid = '', trip = null, cfg = { wa: '', tel: '' }, PG = false;
 
