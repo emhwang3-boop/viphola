@@ -374,7 +374,7 @@ html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 31px; line-height: 1.
   html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 24px; }
   .door-sub { font-size: 14.5px; }
   /* 11-16 사장님 「폰에서 INBOUND · SEOUL / 아웃바운드 · 스페인어권이 하늘색과 겹쳐 안 보임 — 고급진 색으로」 — 폰에서만 남색 띠 위 샴페인 금색 글자 (PC 는 그대로) */
-  .door-label { color: #E8D5A5; }   /* 11-16 사장님 「남색 띠를 없애고 금색 글자만 남겨」 */
+  .door-label { color: #E3BE5C; font-weight: 700; text-shadow: 0 1px 2px rgba(15, 20, 35, .85), 0 0 10px rgba(15, 20, 35, .55); }   /* 11-16 사장님 「남색 띠를 없애고 금색 글자만」→「아직 흐릿하다, 좀 더 진하게」 — 진한 금색·굵게·글자 둘레만 살짝 어둡게 */
   .door-cta { margin-top: 18px; }
   .soon { top: 22px; left: 24px; }
   .door-orn { width: 88px; height: 88px; padding: 10px; top: 22px; right: 22px; }
