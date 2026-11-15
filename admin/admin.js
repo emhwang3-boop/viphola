@@ -192,7 +192,9 @@
       + '<div><span class="lb">견적가</span><div class="pr" data-pr="' + i + '"></div></div>'
       + '<div class="vt"><input type="checkbox" data-k="vat" title="매입 부가세 공제"' + (l.vat ? ' checked' : '') + d + '><span class="lb">매입 부가세 공제</span></div>'
       + '<div class="del">' + (ro ? '' : '<button type="button" class="x" data-del="' + i + '" aria-label="줄 삭제">✕</button>') + '</div>'
-      + (l.nt ? '<div class="qn">메모 · ' + esc(l.nt) + '</div>' : '') + venRow(l, i, ro) + '</div>';
+      + (l.nt ? '<div class="qn' + (l.nt.indexOf('🔴') >= 0 ? ' red' : '') + '">메모 · ' + esc(l.nt) + '</div>' : '')
+      + (l.k === 'photo' ? '<div class="qn">메모 · 사진작가 섭외처 — 영어 가능 스냅 작가를 시간 단위로 예약: <a href="https://www.trazy.com" target="_blank" rel="noopener">Trazy(트래지)</a> · <a href="https://www.klook.com" target="_blank" rel="noopener">Klook(클룩)</a> · <a href="https://www.myrealtrip.com" target="_blank" rel="noopener">마이리얼트립</a>. 사장님이 직접 예약·결제한 뒤 이 줄 원가에 넣으세요.</div>' : '')   // 사장님만 (손님에겐 안 나감)
+      + venRow(l, i, ro) + '</div>';
   }
   function venOf(c, id) { var a = (VEN && VEN.cats && VEN.cats[c]) || []; for (var k = 0; k < a.length; k++) if (a[k].id === id) return a[k]; return null; }
   function venFind(id) { if (!VEN || !id) return null; for (var c in VEN.cats) { var v = venOf(c, id); if (v) return v; } return null; }
@@ -220,7 +222,9 @@
   function pickVen(l, id) {   // 업체를 고르면 줄 이름 채우기 — 틀이 있는 줄(호텔·식당·스파·다도·면세점·백화점·경주 숙소)은 틀대로, 새 줄은 업체 이름 그대로, 차량·의전·가이드·열차는 이름 그대로
     var v = venOf(l.c, id); l.v = v ? v.id : ''; l.vn = v ? { ko: v.name_ko || v.name_en, en: v.name_en || v.name_ko } : null; if (!v) return;
     var t = TPL[l.k], gl = cur.rec.lang;
-    if (t) { l.ko = t.ko.replace('{v}', l.vn.ko); l.g = (t[gl] || t.en).replace('{v}', l.vn.en); }
+    var nm = (l.vn.ko || '') + ' ' + (l.vn.en || ''), hit = t && t.byName ? t.byName.filter(function (b) { return new RegExp(b.re, 'i').test(nm); })[0] : null;   // 정해진 이름(4일차 오전: 리움·경복궁)
+    if (hit) { l.ko = hit.ko; l.g = hit[gl] || hit.en; }
+    else if (t) { l.ko = t.ko.replace('{v}', l.vn.ko); l.g = (t[gl] || t.en).replace('{v}', l.vn.en); }
     else if (l.k === 'x' || (!l.ko && !l.g)) { if (!l.ko) l.ko = l.vn.ko; if (!l.g) l.g = l.vn.en; }
   }
   function redrawLines() { var ro = cur.rec.st === 'paid' || cur.rec.st === 'confirmed'; $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, ro); }).join(''); recalc(); }

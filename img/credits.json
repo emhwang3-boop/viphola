@@ -84,26 +84,6 @@
    "file_site_path": "/img/day3_namsan.jpg"
   },
   {
-   "file": "img/day4_bukchon.jpg",
-   "use": "② DAY 4 카드",
-   "place_ko": "북촌한옥마을 골목",
-   "place_en": "Bukchon Hanok Village",
-   "tourapi_title": "북촌한옥마을 감고당길",
-   "contentid": "2946075",
-   "serialnum": "2945805_2",
-   "cpyrhtDivCd": "Type1",
-   "license": "공공누리 제1유형(출처표시)",
-   "credit": "한국관광공사",
-   "credit_en": "Korea Tourism Organization",
-   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/05/2945805_image2_1.jpg",
-   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/05/2945805_image2_1.jpg",
-   "size": [
-    1100,
-    1650
-   ],
-   "file_site_path": "/img/day4_bukchon.jpg"
-  },
-  {
    "file": "img/price_gyeongbokgung.jpg",
    "use": "④ 가격 줄 배경 · 대문(/) 인바운드 문",
    "place_ko": "경복궁 향원정",
@@ -122,6 +102,29 @@
     1079
    ],
    "file_site_path": "/img/price_gyeongbokgung.jpg"
+  },
+  {
+   "file": "img/day4_gyeongbokgung.jpg",
+   "use": "② DAY 4 카드",
+   "place_ko": "경복궁 근정전 (처마 아래에서 본 모습)",
+   "place_en": "Geunjeongjeon Hall, Gyeongbokgung Palace",
+   "tourapi_title": "경복궁",
+   "contentid": "126508",
+   "serialnum": "3487601_2",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/01/3487601_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/01/3487601_image1_1.jpg",
+   "size": [
+    863,
+    1079
+   ],
+   "edit": "원본 1620x1079 의 가운데를 4:5 로 자름",
+   "file_site_path": "/img/day4_gyeongbokgung.jpg",
+   "why": "11-16 사장님 — 4일차 궁궐 아침 (경복궁·국립고궁박물관)",
+   "replaces": "img/day4_bukchon.jpg (북촌한옥마을 골목, 126508 아님 — 2946075/2945805_2) → 빌드도구\\옛판\\day4_bukchon_1116.jpg"
   }
  ],
  "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
@@ -175,5 +178,6 @@
    "raw_file": "C:\\kiwoom_work\\마케팅\\VIP\\빌드도구\\원본사진\\Salar_de_Uyuni,_Bolivia,_2016-02-04,_DD_10-12_HDR_1920.jpg"
   }
  ],
- "note_outbound": "대문 아웃바운드 문 사진 2장은 위키미디어 공용 Featured/Quality 사진(CC BY-SA). 사진 위에 「Photo: 작가 / 라이선스」 표시."
+ "note_outbound": "대문 아웃바운드 문 사진 2장은 위키미디어 공용 Featured/Quality 사진(CC BY-SA). 사진 위에 「Photo: 작가 / 라이선스」 표시.",
+ "updated": "2026-11-16"
 }
