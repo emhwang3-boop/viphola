@@ -1,0 +1,179 @@
+{
+ "source": "한국관광공사 TourAPI 4.0 (KorService2 detailImage2)",
+ "rule": "cpyrhtDivCd == Type1 (공공누리 제1유형, 출처표시) 사진만 사용",
+ "fetched": "2026-11-15",
+ "photos": [
+  {
+   "file": "img/hero_injeongjeon.jpg",
+   "use": "① 첫 화면",
+   "place_ko": "창덕궁 인정전(해 질 녘 빛)",
+   "place_en": "Injeongjeon Hall, Changdeokgung Palace",
+   "tourapi_title": "창덕궁과 후원 [유네스코 세계유산]",
+   "contentid": "127642",
+   "serialnum": "1QmIPV",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource_photo/08/3511908_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource_photo/08/3511908_image1_1.jpg",
+   "size": [
+    1620,
+    1079
+   ],
+   "file_site_path": "/img/hero_injeongjeon.jpg"
+  },
+  {
+   "file": "img/day1_hanok.jpg",
+   "use": "② DAY 1 카드",
+   "place_ko": "남산골한옥마을 한옥 실내",
+   "place_en": "Hanok interior, Namsangol Hanok Village",
+   "tourapi_title": "남산골한옥마을",
+   "contentid": "126747",
+   "serialnum": "4126545_1",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/45/4126545_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/45/4126545_image1_1.jpg",
+   "size": [
+    1620,
+    1080
+   ],
+   "file_site_path": "/img/day1_hanok.jpg"
+  },
+  {
+   "file": "img/day2_secret_garden.jpg",
+   "use": "② DAY 2 카드",
+   "place_ko": "창덕궁 후원",
+   "place_en": "Secret Garden, Changdeokgung Palace",
+   "tourapi_title": "창덕궁과 후원 [유네스코 세계유산]",
+   "contentid": "127642",
+   "serialnum": "yQ2AlM",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource_photo/14/3099414_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource_photo/14/3099414_image1_1.jpg",
+   "size": [
+    1620,
+    1079
+   ],
+   "file_site_path": "/img/day2_secret_garden.jpg"
+  },
+  {
+   "file": "img/day3_namsan.jpg",
+   "use": "② DAY 3 카드",
+   "place_ko": "남산공원·N서울타워",
+   "place_en": "Namsan Park and N Seoul Tower",
+   "tourapi_title": "남산서울타워",
+   "contentid": "126535",
+   "serialnum": "3089670_1",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/70/3089670_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/70/3089670_image2_1.jpg",
+   "size": [
+    940,
+    627
+   ],
+   "file_site_path": "/img/day3_namsan.jpg"
+  },
+  {
+   "file": "img/day4_bukchon.jpg",
+   "use": "② DAY 4 카드",
+   "place_ko": "북촌한옥마을 골목",
+   "place_en": "Bukchon Hanok Village",
+   "tourapi_title": "북촌한옥마을 감고당길",
+   "contentid": "2946075",
+   "serialnum": "2945805_2",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/05/2945805_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/05/2945805_image2_1.jpg",
+   "size": [
+    1100,
+    1650
+   ],
+   "file_site_path": "/img/day4_bukchon.jpg"
+  },
+  {
+   "file": "img/price_gyeongbokgung.jpg",
+   "use": "④ 가격 줄 배경 · 대문(/) 인바운드 문",
+   "place_ko": "경복궁 향원정",
+   "place_en": "Hyangwonjeong Pavilion, Gyeongbokgung Palace",
+   "tourapi_title": "경복궁",
+   "contentid": "126508",
+   "serialnum": "3487599_1",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/99/3487599_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/99/3487599_image1_1.jpg",
+   "size": [
+    1620,
+    1079
+   ],
+   "file_site_path": "/img/price_gyeongbokgung.jpg"
+  }
+ ],
+ "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
+ "outbound_photos": [
+  {
+   "file": "img/outbound_machupicchu.jpg",
+   "use": "대문(/) 아웃바운드 문 — 왼쪽 반쪽",
+   "place": "페루 마추픽추 (와이나픽추와 유적 전경, 우루밤바 강 계곡)",
+   "source": "Wikimedia Commons",
+   "commons_status": [
+    "Quality images"
+   ],
+   "title": "File:Machu Picchu, Perú, 2015-07-30, DD 37.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_Per%C3%BA,_2015-07-30,_DD_37.jpg",
+   "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Machu_Picchu%2C_Per%C3%BA%2C_2015-07-30%2C_DD_37.jpg",
+   "original_size": [
+    7946,
+    5325
+   ],
+   "artist": "Diego Delso",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "credit_shown": "Photo: Diego Delso / CC BY-SA 4.0",
+   "changes": "1920px 판에서 세로 4:5 로 자르고(x 620~1650) 960×1200 으로 줄임 (같은 라이선스로 사용)",
+   "why": "11-15 사장님이 직접 고름",
+   "size_kb": 378,
+   "raw_file": "C:\\kiwoom_work\\마케팅\\VIP\\빌드도구\\원본사진\\Machu_Picchu,_Perú,_2015-07-30,_DD_37_1920.jpg"
+  },
+  {
+   "file": "img/outbound_uyuni.jpg",
+   "use": "대문(/) 아웃바운드 문 — 오른쪽 반쪽",
+   "place": "볼리비아 우유니 소금사막 (해 뜨기 전 푸른 시간, 물 고인 거울 반사)",
+   "source": "Wikimedia Commons",
+   "commons_status": [
+    "Quality images"
+   ],
+   "title": "File:Salar de Uyuni, Bolivia, 2016-02-04, DD 01-03 HDR.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Salar_de_Uyuni,_Bolivia,_2016-02-04,_DD_01-03_HDR.JPG",
+   "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Salar_de_Uyuni%2C_Bolivia%2C_2016-02-04%2C_DD_01-03_HDR.JPG",
+   "original_size": [
+    8656,
+    5771
+   ],
+   "artist": "Diego Delso",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "credit_shown": "Photo: Diego Delso / CC BY-SA 4.0",
+   "changes": "1920px 판에서 가운데를 세로 4:5 로 자르고 960×1200 으로 줄임 (같은 라이선스로 사용)",
+   "why": "11-15 사장님이 직접 고름",
+   "size_kb": 70,
+   "raw_file": "C:\\kiwoom_work\\마케팅\\VIP\\빌드도구\\원본사진\\Salar_de_Uyuni,_Bolivia,_2016-02-04,_DD_01-03_HDR_1920.jpg"
+  }
+ ],
+ "note_outbound": "대문 아웃바운드 문 사진 2장은 위키미디어 공용 Featured/Quality 사진(CC BY-SA). 사진 위에 「Photo: 작가 / 라이선스」 표시."
+}

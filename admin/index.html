@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>VIP 견적 관리 — VIPHola.com</title>
+<link rel="icon" href="../img/mugunghwa-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500&display=swap">
+<link rel="stylesheet" href="admin.css?v=1115g">
+</head>
+<!-- VIP 견적 관리 (사장님만) — 투어 관리자 비밀번호 + 텔레그램 2단계 코드 · 검색 안 됨(noindex · robots Disallow /admin/) -->
+<body>
+<header class="top">
+  <div class="brand"><img src="../img/mugunghwa-mark.png" alt=""><span><b class="latin">VIP<i>Hola</i>.com</b><small>VIP 견적 관리</small></span></div>
+  <div class="top-r">
+    <span class="chip" id="pgchip" hidden></span>
+    <button type="button" class="b b-ghost" id="btn-ven" hidden>업체 목록</button>
+    <button type="button" class="b b-ghost" id="btn-cfg" hidden>설정</button>
+    <button type="button" class="b b-ghost" id="btn-out" hidden>로그아웃</button>
+  </div>
+</header>
+
+<section class="login" id="login" hidden>
+  <div class="card">
+    <h1>관리자 로그인</h1>
+    <p class="mute">투어앱 관리자 비밀번호로 들어갑니다.</p>
+    <label class="fl">비밀번호<input type="password" id="lg-pw" autocomplete="current-password"></label>
+    <button type="button" class="b b-main" id="lg-go">로그인</button>
+    <div id="lg-2fa" hidden>
+      <p class="mute">이 기기는 처음입니다. 텔레그램으로 받은 6자리 코드를 넣어 주세요 (5분 안).</p>
+      <label class="fl">6자리 코드<input type="text" id="lg-code" inputmode="numeric" maxlength="6" autocomplete="one-time-code"></label>
+      <div class="row"><button type="button" class="b b-main" id="lg-verify">확인</button><button type="button" class="b b-ghost" id="lg-resend">코드 다시 받기</button></div>
+    </div>
+    <p class="msg" id="lg-msg"></p>
+  </div>
+</section>
+
+<main class="app" id="app" hidden>
+  <aside class="list" id="list">
+    <div class="tabs" id="tabs"></div>
+    <div class="rows" id="rows"></div>
+  </aside>
+  <section class="detail" id="detail"><p class="empty">왼쪽 목록에서 신청을 선택하세요.</p></section>
+</main>
+
+<div class="modal" id="modal" hidden><div class="mbox" role="dialog" aria-modal="true"><div class="mhead"><b id="m-title"></b><button type="button" class="x" id="m-x" aria-label="닫기">✕</button></div><div class="mbody" id="m-body"></div></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="../hub.js?v=1115e"></script>
+<script src="admin.js?v=1115g"></script>
+</body>
+</html>

@@ -1,2 +1,0 @@
-# viphola
-VIPHola.com

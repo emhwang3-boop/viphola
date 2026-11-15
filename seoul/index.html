@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VIPHola.com — Seoul, privately curated</title>
+<meta name="description" content="Michelin dining, palace mornings and quiet spas — four private days in Seoul, arranged for two.">
+<meta name="theme-color" content="#F7F3EA">
+<link rel="icon" href="../img/mugunghwa-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css?v=1115g">
+</head>
+<body data-page="seoul">
+
+<!-- ① 첫 화면 -->
+<header class="hero" id="top">
+  <img class="hero-img" src="../img/hero_injeongjeon.jpg" alt="Injeongjeon Hall, Changdeokgung Palace, in warm evening light" fetchpriority="high">
+  <div class="hero-veil" aria-hidden="true"></div>
+  <nav class="topbar" aria-label="Site">
+    <a class="brand" href="../">
+      <span class="art art-mark" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
+      <span class="brand-name latin">VIP<em>Hola</em>.com</span>
+    </a>
+    <!-- 11-15 사장님: 인바운드(서울)는 영어·일본어·스페인어만 — 한국어 없음 -->
+    <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-set-lang="en" lang="en">EN</button>
+    <button type="button" data-set-lang="ja" lang="ja">日本語</button>
+    <button type="button" data-set-lang="es" lang="es">Español</button>
+  </div>
+    <label class="lang-mobile">
+      <span class="sr" data-i18n="lang.label">Language</span>
+      <select class="lang-select" aria-label="Language">
+      <option value="en">EN</option>
+      <option value="ja">日本語</option>
+      <option value="es">Español</option>
+    </select>
+    </label>
+  </nav>
+  <div class="hero-copy wrap">
+    <h1 data-i18n="hero.title">Seoul,
+privately curated.</h1>
+    <p class="hero-lead" data-i18n="hero.lead">Michelin dining, palace mornings and quiet spas — four days arranged for two.</p>
+    <a class="btn" href="#request" data-i18n="hero.cta">Plan your journey</a>
+  </div>
+  <span class="credit credit-hero" data-i18n="photo">Photo © Korea Tourism Organization</span>
+</header>
+
+<main>
+
+  <!-- ② 여정 -->
+  <section class="sec journey" id="journey">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" data-i18n="j.kicker">The journey</p>
+        <h2 data-i18n="j.title">Seoul Wellness &amp; Gastronomy</h2>
+        <p class="meta" data-i18n="j.meta">4 days / 3 nights · Private, for two</p>
+      </div>
+      <div class="cards" id="cards">
+        <article class="card">
+          <figure><img src="../img/day1_hanok.jpg" alt="" loading="lazy"><span class="credit" data-i18n="photo">Photo © Korea Tourism Organization</span></figure>
+          <p class="day" data-i18n="d1.day">Day 1</p>
+          <h3 data-i18n="d1.title">Arrival &amp; rest</h3>
+          <ul class="items">
+            <li data-i18n="d1.i1">VIP arrival assistance at Incheon</li>
+            <li data-i18n="d1.i2">Private car to Four Seasons Hotel Seoul</li>
+            <li data-i18n="d1.i3">Check-in and rest</li>
+            <li data-i18n="d1.i4">Dinner at La Yeon</li>
+          </ul>
+        </article>
+        <article class="card">
+          <figure><img src="../img/day2_secret_garden.jpg" alt="" loading="lazy"><span class="credit" data-i18n="photo">Photo © Korea Tourism Organization</span></figure>
+          <p class="day" data-i18n="d2.day">Day 2</p>
+          <h3 data-i18n="d2.title">Spa, palace &amp; craft</h3>
+          <ul class="items">
+            <li data-i18n="d2.i1">Couple spa at Four Seasons, 10:00–12:00</li>
+            <li data-i18n="d2.i2">Lunch of Korean temple cuisine</li>
+            <li data-i18n="d2.i3">The Secret Garden of Changdeokgung</li>
+            <li data-i18n="d2.i4">Artisan craft with a master: mother-of-pearl mirror or silver ring, your choice</li>
+            <li data-i18n="d2.i5">Dinner at Mingles, three Michelin stars</li>
+          </ul>
+        </article>
+        <article class="card">
+          <figure><img src="../img/day3_namsan.jpg" alt="" loading="lazy"><span class="credit" data-i18n="photo">Photo © Korea Tourism Organization</span></figure>
+          <p class="day" data-i18n="d3.day">Day 3</p>
+          <h3 data-i18n="d3.title">Forest, spa &amp; boutiques</h3>
+          <ul class="items">
+            <li data-i18n="d3.i1">Morning walk on Namsan</li>
+            <li data-i18n="d3.i2">Spa at Grand Hyatt Seoul</li>
+            <li data-i18n="d3.i3">Lunch</li>
+            <li data-i18n="d3.i4">Duty-free luxury boutiques in the city</li>
+            <li data-i18n="d3.i5">Dinner at Sushi Kanesaka</li>
+          </ul>
+        </article>
+        <article class="card">
+          <figure><img src="../img/day4_bukchon.jpg" alt="" loading="lazy"><span class="credit" data-i18n="photo">Photo © Korea Tourism Organization</span></figure>
+          <p class="day" data-i18n="d4.day">Day 4</p>
+          <h3 data-i18n="d4.title">Luxury shopping &amp; farewell</h3>
+          <ul class="items">
+            <li data-i18n="d4.i1">Department-store luxury hall with a personal shopper; interpreting and hotel delivery included</li>
+            <li data-i18n="d4.i2">Farewell lunch at Jungsik</li>
+            <li data-i18n="d4.i3">VIP departure assistance</li>
+          </ul>
+        </article>
+      </div>
+      <div class="dots" id="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+      <p class="note" data-i18n="j.note">Before you send your request, you will see the full itinerary with approximate times.</p>
+    </div>
+  </section>
+
+  <div class="ornament" aria-hidden="true"><span class="art art-orn" data-ph="무궁화"><img src="../img/mugunghwa.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"></span></div>
+
+  <!-- ③ 포함된 것 -->
+  <section class="sec included" id="included">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" data-i18n="inc.kicker">Included</p>
+        <h2 data-i18n="inc.title">Everything taken care of</h2>
+      </div>
+      <ul class="inc-list">
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Four Seasons Hotel Seoul</p><p class="inc-desc" data-i18n="inc.1">Three nights, breakfast included</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Michelin-starred dining</p><p class="inc-desc" data-i18n="inc.2">Mingles (three stars) and other starred tables</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Private car &amp; chauffeur</p><p class="inc-desc" data-i18n="inc.3">Four days with a dedicated chauffeur; Mercedes-Benz S560 as standard</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">VIP airport service</p><p class="inc-desc" data-i18n="inc.4">Incheon Airport, on arrival and departure</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Private spa</p><p class="inc-desc" data-i18n="inc.5">Two sessions</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Expert guide</p><p class="inc-desc" data-i18n="inc.6">A specialist in palaces and architecture</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">24-hour dedicated concierge</p><p class="inc-desc" data-i18n="inc.7">With you through the day, on call through the night</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Artisan craft experience</p><p class="inc-desc" data-i18n="inc.9">A mother-of-pearl mirror or a silver ring, made with a master artisan; yours to take home</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Private luxury shopping</p><p class="inc-desc" data-i18n="inc.8">Duty-free boutiques and a department-store luxury hall, with a personal shopper and interpreting</p></div></li>
+      </ul>
+      <p class="note" data-i18n="inc.note">Flights are not included (land only).</p>
+    </div>
+  </section>
+
+  <!-- ③-2 Options (가격 없음 — 견적에서 안내) -->
+  <section class="sec options" id="options">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" data-i18n="opt.kicker">Options</p>
+        <h2 data-i18n="opt.title">Make it yours</h2>
+      </div>
+      <div class="opt-grid">
+        <div class="opt-group">
+          <h3 data-i18n="car.title">Vehicle</h3>
+          <p class="opt-sub" data-i18n="car.sub">Choose one</p>
+          <ul class="opt-list">
+            <li><span class="opt-name">Mercedes-Benz S560</span><span class="tag tag-in" data-i18n="tag.std">Standard</span></li>
+            <li><span class="opt-name">Mercedes-Benz S580</span><span class="tag" data-i18n="tag.upgrade">Upgrade available</span></li>
+            <li><span class="opt-name">Mercedes-Maybach</span><span class="tag" data-i18n="tag.upgrade">Upgrade available</span></li>
+            <li><span class="opt-name">Mercedes-Benz Sprinter limousine</span><span class="tag" data-i18n="car.sprinter">For larger groups or more luggage</span></li>
+          </ul>
+        </div>
+        <div class="opt-group">
+          <h3 data-i18n="air.title">Airport service</h3>
+          <p class="opt-sub" data-i18n="air.sub">Incheon International Airport</p>
+          <ul class="opt-list">
+            <li><span class="opt-name" data-i18n="air.gate">VIP assistance on arrival and departure</span><span class="tag tag-in" data-i18n="tag.included">Included</span></li>
+            <li><span class="opt-name" data-i18n="air.porter">Porter service</span><span class="tag" data-i18n="tag.addon">Add-on</span></li>
+          </ul>
+        </div>
+        <div class="opt-group">
+          <h3 data-i18n="req.title">On request</h3>
+          <p class="opt-sub" data-i18n="req.sub">Quoted separately</p>
+          <ul class="opt-list">
+            <li><span class="opt-name" data-i18n="req.photo">Professional photographer</span><span class="tag" data-i18n="req.photo.d">Accompanies you on Day 2</span></li>
+            <li><span class="opt-name" data-i18n="req.hanbok">Bespoke hanbok</span><span class="tag" data-i18n="req.hanbok.d">Measured in Seoul, delivered to your home</span></li>
+            <li><span class="opt-name" data-i18n="req.wine">Wine pairing</span><span class="tag" data-i18n="req.wine.d">At your Michelin dinners</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="opt-note"><span class="opt-note-label" data-i18n="opt.noteLabel">Please note</span><span data-i18n="opt.night">Flights arriving or departing between 10 pm and 6 am carry a surcharge for airport service.</span></p>
+    </div>
+  </section>
+
+  <!-- ④ 진행 3단계 (11-15 가격 칸 없앰) -->
+  <section class="sec process" id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" data-i18n="proc.kicker">How it works</p>
+        <h2 data-i18n="proc.title">From request to arrival</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="num latin">1</span><h3 data-i18n="s1.t">Send your request</h3><p data-i18n="s1.d">Choose your dates, car and options below. No payment at this stage.</p></li>
+        <li><span class="num latin">2</span><h3 data-i18n="s2.t">Your quote within 48 hours</h3><p data-i18n="s2.d">A detailed quote by email, with a secure link to pay by card.</p></li>
+        <li><span class="num latin">3</span><h3 data-i18n="s3.t">Confirmation</h3><p data-i18n="s3.d">We confirm once every reservation is secured, and look after you from arrival to departure.</p></li>
+      </ol>
+      <p class="note note-center" data-i18n="proc.note">Please send your request at least 30 days before you travel.</p>
+    </div>
+  </section>
+
+  <div class="ornament" aria-hidden="true"><span class="art art-orn" data-ph="무궁화"><img src="../img/mugunghwa.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"></span></div>
+
+  <!-- ⑤ 신청 (결제 없음) — 입력 → 마지막 확인(일정 1·2·3·대략 시각) → 보내기 -->
+  <section class="sec enquire" id="request">
+    <div class="wrap enq-grid">
+      <div class="enq-side">
+        <p class="kicker" data-i18n="enq.kicker">Request</p>
+        <h2 data-i18n="enq.title">Plan your journey</h2>
+        <p class="enq-lead" data-i18n="enq.lead">Choose your dates and preferences. We will send your quote within 48 hours.</p>
+        <span class="art art-big" data-ph="무궁화"><img src="../img/mugunghwa.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"></span>
+      </div>
+      <div class="req-box">
+        <form class="enq-form" id="req" novalidate>
+          <div class="f">
+            <label for="f-date" data-i18n="f.date">Arrival date (Day 1)</label>
+            <input id="f-date" name="date" type="date" required>
+            <p class="f-hint" id="f-dep" aria-live="polite"></p>
+          </div>
+          <div class="f">
+            <label for="f-guests" data-i18n="f.guests">Guests</label>
+            <select id="f-guests" name="guests"></select>
+          </div>
+          <div class="f f-wide">
+            <label for="f-car" data-i18n="f.car">Vehicle</label>
+            <select id="f-car" name="vehicle"></select>
+          </div>
+          <fieldset class="f f-wide" id="f-craft">
+            <legend data-i18n="f.craft">Artisan craft experience — choose one</legend>
+            <div class="checks checks-1">
+              <label><input type="radio" name="craft" value="najeon" required><span><span data-i18n="cr.najeon">Mother-of-pearl hand mirror with master artisan Jeong Myeong-chae</span><small class="c-d" data-i18n="cr.najeon.d">National Intangible Heritage holder (najeonchilgi). You take your mirror home.</small></span></label>
+              <label><input type="radio" name="craft" value="silver"><span><span data-i18n="cr.silver">Silver ring with artisan Lee Hwang-jae</span><small class="c-d" data-i18n="cr.silver.d">Made by your own hand. You take your ring home.</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="f f-wide">
+            <legend data-i18n="f.opts">Options</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="opt" value="porter"><span data-i18n="c.porter">Porter service at the airport</span></label>
+              <label><input type="checkbox" name="opt" value="photo"><span><span data-i18n="c.photo">Professional photographer</span> <small class="c-q" data-i18n="c.q">quoted separately</small></span></label>
+              <label><input type="checkbox" name="opt" value="hanbok"><span><span data-i18n="c.hanbok">Bespoke hanbok</span> <small class="c-q" data-i18n="c.q">quoted separately</small></span></label>
+              <label><input type="checkbox" name="opt" value="wine"><span><span data-i18n="c.wine">Wine pairing</span> <small class="c-q" data-i18n="c.q">quoted separately</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="f f-wide">
+            <legend data-i18n="f.ext">Extend your journey</legend>
+            <div class="checks checks-1">
+              <label><input type="checkbox" name="opt" value="gj"><span><span data-i18n="c.gj">Gyeongju, 1 night / 2 days</span> <small class="c-q" data-i18n="c.q">quoted separately</small><small class="c-d" data-i18n="c.gj.d">KTX first class to Gyeongju, Bulguksa and Seokguram (UNESCO), and one night in Gyeongju. Replaces Day 4 in Seoul; you fly home on Day 5.</small></span></label>
+            </div>
+          </fieldset>
+          <div class="f f-wide">
+            <label for="f-req" data-i18n="f.req">Special requests</label>
+            <textarea id="f-req" name="requests" rows="4" maxlength="2000" data-i18n-ph="f.req.ph" placeholder="Flight numbers, dietary needs, celebrations, interests…"></textarea>
+          </div>
+          <div class="f">
+            <label for="f-name" data-i18n="f.name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required>
+          </div>
+          <div class="f">
+            <label for="f-email" data-i18n="f.email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" maxlength="100" required>
+          </div>
+          <div class="f">
+            <label for="f-phone" data-i18n="f.phone">Phone / WhatsApp</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" data-i18n-ph="f.phone.ph" placeholder="e.g. +1 415 555 0123" required>
+          </div>
+          <div class="f">
+            <label for="f-lang" data-i18n="f.lang">Language for our emails</label>
+            <select id="f-lang" name="lang">
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="es">Español</option>
+            </select>
+          </div>
+          <div class="f-wide send-row">
+            <button class="btn" type="submit" id="f-go" data-i18n="f.review">Review your request</button>
+            <p class="fine" data-i18n="f.fine">No payment now. Next, you will see your full itinerary before sending.</p>
+          </div>
+          <p class="enq-status req-err" id="req-err" role="alert" hidden></p>
+        </form>
+
+        <!-- 마지막 확인 -->
+        <div class="review" id="review" hidden>
+          <p class="kicker" data-i18n="r.kicker">Final check</p>
+          <h3 class="rv-title" data-i18n="r.title">Review your request</h3>
+          <p class="rv-lead" data-i18n="r.lead">Here is your journey day by day, with the options you chose. All times are approximate.</p>
+          <dl class="rv-sum" id="rv-sum"></dl>
+          <div class="rv-days" id="rv-days"></div>
+          <p class="rv-all" id="rv-all"></p>
+          <div class="send-row rv-actions">
+            <button class="btn" type="button" id="rv-send" data-i18n="r.send">Send request</button>
+            <button class="btn btn-line" type="button" id="rv-edit" data-i18n="r.edit">Edit</button>
+          </div>
+          <p class="fine rv-fine" data-i18n="r.fine">No payment now. We will email your quote within 48 hours.</p>
+          <p class="enq-status req-err" id="rv-err" role="alert" hidden></p>
+        </div>
+
+        <!-- 보낸 뒤 -->
+        <div class="review req-done" id="req-done" hidden>
+          <span class="art art-orn" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
+          <h3 class="rv-title" data-i18n="ok.title">Thank you</h3>
+          <p class="rv-lead" id="ok-text"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 꼬리말 -->
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <span class="art art-mark" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"></span>
+      <div>
+        <p class="foot-name latin">VIP<em>Hola</em>.com</p>
+        <p class="foot-co" data-i18n="foot.company">Booman Inc.</p>
+      </div>
+    </div>
+    <div class="foot-contact">
+      <p class="foot-label" data-i18n="foot.contact">Enquiries</p>
+      <a href="mailto:concierge@viphola.com">concierge@viphola.com</a>
+    </div>
+    <div class="foot-lang">
+      <label class="foot-label" for="foot-lang" data-i18n="lang.label">Language</label>
+      <select id="foot-lang" class="lang-select">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </div>
+  <div class="wrap"><div class="foot-base">
+    <p data-i18n="foot.photo">Photography: Korea Tourism Organization (KOGL Type 1)</p>
+    <p class="latin-sm">© 2026 VIPHola.com</p>
+  </div></div>
+</footer>
+
+<script src="../hub.js?v=1115e"></script>
+<script src="../i18n-seoul.js?v=1115g"></script>
+<script src="../main.js?v=1115f"></script>
+<script src="../request.js?v=1115g"></script>
+</body>
+</html>
