@@ -5,7 +5,7 @@
   'use strict';
   var form = document.getElementById('req'); if (!form) return;
   var HUB = window.VIP_HUB || 'https://brief-live-hub.emhwang3.workers.dev';
-  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'bnb', 'mkt', 'gj'];   // bnb·mkt = 바꿔 넣기 (3일차 저녁·오전, 11-15)   // gj = 경주 1박 2일 연장 (4일차 서울 대신 경주, 5일차 출국)
+  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'bnb', 'nam', 'gj'];   // bnb·nam = 바꿔 넣기 (3일차 저녁 본앤브레드 · 3일차 오전 남산 산책 — 11-16 경동시장 아침이 기본)   // gj = 경주 1박 2일 연장 (4일차 서울 대신 경주, 5일차 출국)
   var $ = function (id) { return document.getElementById(id); };
   var t = function (k) { return window.VIPT ? window.VIPT(k) : k; };
   var L = function () { return window.VIP_LANG || 'en'; };

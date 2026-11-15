@@ -10,7 +10,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var ST_KO = { 'new': '신청', quoted: '견적 보냄', paid: '결제 완료', confirmed: '확정' };
   var LANG_KO = { en: '영어', ja: '일본어', es: '스페인어' };
-  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', bnb: '본앤브레드 한우 맡김차림 (스시 카네사카 대신)', mkt: '경동시장·약령시 + 안동집 (남산 산책 대신)' };
+  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', bnb: '본앤브레드 한우 맡김차림 (스시 카네사카 대신)', nam: '남산 아침 산책 (경동시장 아침 대신)' };
   var VEN = null, VCATS = [], TPL = {}, vcat = 'seoul_hotel', vedit = null;   // 업체 목록 (허브 /vip/adm/vendors) — 손님에겐 안 보임
   var items = [], filter = 'all', cur = null, lines = [], fx = null, fxInfo = '', fxWarn = false, valid = '', trip = null, cfg = { wa: '', tel: '' }, PG = false;
 
@@ -237,7 +237,7 @@
       + '<dt>이메일</dt><dd>' + esc(r.email) + '</dd><dt>전화·왓츠앱</dt><dd>' + esc(r.phone) + '</dd><dt>메일 언어</dt><dd>' + (LANG_KO[r.lang] || r.lang) + '</dd>'
       + '<dt>일정</dt><dd>' + esc(r.date) + ' ~ ' + esc(r.end) + (r.nights === 4 ? ' (4박 5일 · 경주 연장)' : ' (3박 4일)') + '</dd><dt>인원</dt><dd>' + r.guests + '명</dd><dt>차량</dt><dd>' + esc(r.carKo) + '</dd>'
       + (cur.craftKo ? '<dt>장인 체험</dt><dd>' + esc(cur.craftKo) + '</dd>' : '')
-      + '<dt>옵션</dt><dd>' + (r.opts.length ? r.opts.map(function (k) { return OPT_KO[k]; }).join(', ') : '없음') + '</dd>'
+      + '<dt>옵션</dt><dd>' + (r.opts.length ? r.opts.map(function (k) { return OPT_KO[k]; }).filter(Boolean).join(', ') : '없음') + '</dd>'
       + '<dt>요청 사항</dt><dd>' + (r.req ? esc(r.req).replace(/\n/g, '<br>') : '—') + '</dd></dl></div>';
     h += '<div class="sec itin"><h2>일정 <small>손님이 고른 옵션까지 넣은 대략 시각</small></h2>' + it.days.map(function (d, k) {
       return '<details' + (k === 0 ? ' open' : '') + '><summary>' + esc(d.day) + ' · ' + esc(d.dl) + ' — ' + esc(d.title) + '</summary><ol>' + d.items.map(function (x) { return '<li><span class="n">' + x.no + '</span><span class="t">' + esc(x.t) + '</span><span>' + esc(x.x) + '</span></li>'; }).join('') + '</ol></details>'; }).join('') + '</div>';
