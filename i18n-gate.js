@@ -1,11 +1,12 @@
 // viphola.com 대문 — 두 문(인바운드 서울 · 아웃바운드 스페인어권) 문구
-//  · 언어 4개: 한국어 · English · 日本語 · Español (11-15 사장님)
+//  · 언어: 한국어 · English · 日本語 · 简体中文 · 繁體中文 (11-15 사장님 · 11-16 중국어 더함 · 스페인어는 숨김 — main.js OFF, 자료는 아래 es 그대로)
 //  · 문구 언어: 주소 ?lang= → 사용자가 선택한 언어(저장값) → 영어(기본값, 11-15)
 //  · 아웃바운드 문 글자는 대문 언어와 상관없이 늘 한국어(HTML 에 바로 적음, 여기 없음)
 //  · 문 순서: 브라우저 언어가 한국어면 아웃바운드 문이 앞(왼쪽), 그 밖이면 인바운드 문이 앞
 //  · 인바운드 문을 누르면 서울 페이지가 지금 대문 언어로 열림(seoul/?lang=…)
 window.PAGE = 'gate';
 window.DEFAULT_LANG = 'en';   // 11-15 사장님 「기본값을 영어로」 — 브라우저 언어와 상관없이 처음엔 영어, 언어 칸으로 변경
+window.PAGE_LANGS = ['en', 'ko', 'ja', 'zhs', 'zht', 'es'];   // es 는 main.js OFF 로 숨김
 window.I18N = {
   en: {
     'meta.title': 'VIPHola.com — Private journeys',
@@ -44,7 +45,33 @@ window.I18N = {
     'in.title': 'おふたりのためだけの、ソウル。',
     'in.sub': '韓国を訪れるお客様のための、ソウルでのプライベートな4日間。',
     'in.cta': '詳しく見る',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'お問い合わせ', 'foot.terms': '約款・返金規定'
+    'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.terms': '約款・返金規定'
+  },
+  zhs: {
+    'meta.title': 'VIPHola.com — 私人定制之旅',
+    'meta.desc': '精心安排的私人旅行——来到韩国的旅程，以及前往西班牙语国家的旅程。',
+    'lang.label': '语言',
+    'photo': '图片 © 韩国观光公社',
+    'g.title': '选择您的旅程',
+    'g.lead': '精心安排的私人旅行——来到韩国的旅程，以及前往西班牙语国家的旅程。',
+    'in.label': '韩国之旅 · 首尔',
+    'in.title': '只为两位定制的首尔',
+    'in.sub': '为访韩宾客打造的首尔四天私人行程。',
+    'in.cta': '进入',
+    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.terms': '条款与退款规定'
+  },
+  zht: {
+    'meta.title': 'VIPHola.com — 私人訂製之旅',
+    'meta.desc': '精心安排的私人旅行——來到韓國的旅程，以及前往西班牙語系國家的旅程。',
+    'lang.label': '語言',
+    'photo': '照片 © 韓國觀光公社',
+    'g.title': '選擇您的旅程',
+    'g.lead': '精心安排的私人旅行——來到韓國的旅程，以及前往西班牙語系國家的旅程。',
+    'in.label': '韓國之旅 · 首爾',
+    'in.title': '只為兩位訂製的首爾',
+    'in.sub': '為訪韓貴賓打造的首爾四天私人行程。',
+    'in.cta': '進入',
+    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.terms': '條款與退款規定'
   },
   es: {
     'meta.title': 'VIPHola.com — Viajes privados',

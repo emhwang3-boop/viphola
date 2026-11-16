@@ -1,12 +1,12 @@
 /* viphola.com/pay/?q=<토큰> — 견적 메일 링크로만 열리는 손님 화면 (11-15 사장님 「실행해」 · 「그렇게 하자」)
  *  상태 셋: ① 견적 + VIP 특별 약관 동의 + 카드 결제(KG이니시스·포트원 — 허브가 채널 키를 가졌을 때만 결제창, 없으면 「결제하기」 = 바로 결제 완료)
  *          ② 결제 완료 · 예약 확보 중   ③ 「확정 메일 보내기」 뒤 = 손님 여정 화면(일정·기사·가이드·예약 확인번호·컨시어지·긴급)
- *  유효기간이 지나면 「견적 기간이 끝났습니다」 · 여행 마지막 날 + 14일이 지나면 감사 인사만 · 언어 = 견적 언어(en·ja·es) */
+ *  유효기간이 지나면 「견적 기간이 끝났습니다」 · 여행 마지막 날 + 14일이 지나면 감사 인사만 · 언어 = 견적 언어(en·ja·es·zhs·zht) */
 (function () {
   'use strict';
   var HUB = window.VIP_HUB || 'https://brief-live-hub.emhwang3.workers.dev', PSDK = 'https://cdn.portone.io/v2/browser-sdk.js', MAIL = 'concierge@viphola.com';
   var box = document.getElementById('pay'), sp = new URLSearchParams(location.search), Q = sp.get('q') || '', L = 'en', D = null;
-  var LOC = { en: 'en-GB', ja: 'ja-JP', es: 'es-ES' };
+  var LOC = { en: 'en-GB', ja: 'ja-JP', es: 'es-ES', zhs: 'zh-CN', zht: 'zh-TW' }, HTML_LANG = { zhs: 'zh-Hans', zht: 'zh-Hant' };
   var TX = {
     en: { load: 'Loading your quote…', bad: 'This link is not valid. Please use the link in your email, or write to us at {m}.', net: 'We could not reach our server. Please refresh this page in a moment.',
       qk: 'Your quote', pkg: 'Seoul Wellness & Gastronomy', prep: 'Prepared for {n}', no: 'Quote no.', iss: 'Date of issue', valid: 'Valid until', car: 'Vehicle', opts: 'Options', none: 'None',
@@ -24,6 +24,7 @@
       ePend: 'We are still confirming your payment. This page will update shortly, and we will also email you.', eAmt: 'The payment amount did not match. Please contact us at {m}.', ePg: 'The card payment window could not be opened. Please try again later, or write to us at {m}.',
       expH: 'This quote has expired', expP: 'Please contact us and we will be glad to prepare a new one.',
       paidK: 'Paid', paidH: 'Thank you', paidP: 'Your payment has been received. We are now securing your bookings and will email your confirmation shortly.', paidAmt: 'Amount paid', paidOn: 'Paid on', kst: 'Korea time',
+      appH: 'Your travel app with AI Guide', appP: 'Open MosaicTrip, our other travel app, on your phone. Tap “AI Guide” at the top right of the map and choose your language under “Guide language”: as you walk past palace halls and landmarks, their stories play automatically. The app’s screens are in English, but the stories are in your language.', appBtn: 'Open the app', appQr: 'Reading this on a computer? Scan this code with your phone.',
       tripK: 'Your journey', welcome: 'Welcome, {n}. Everything for your days in Seoul is on this page.',
       conc: 'Your concierge', concP: 'Reach your concierge at any time, day or night.', wa: 'WhatsApp', call: 'Call {t}', mail: 'Email',
       team: 'Your team', drv: 'Your driver', gd: 'Your guide', plate: 'Plate', soon: 'Details will appear here shortly.',
@@ -47,6 +48,7 @@
       ePend: 'お支払いを確認しております。まもなくこの画面が更新され、メールでもお知らせいたします。', eAmt: 'お支払い金額が一致しませんでした。{m} までご連絡ください。', ePg: 'カード決済の画面を開くことができませんでした。しばらくしてから再度お試しいただくか、{m} までご連絡ください。',
       expH: 'お見積りの有効期限が過ぎました', expP: 'お手数ですが、改めてお問い合わせください。新しいお見積りをお送りいたします。',
       paidK: 'お支払い済み', paidH: 'ありがとうございます', paidP: 'お支払いを確認いたしました。ただいま各予約を確保しており、確定のご案内をまもなくメールでお送りいたします。', paidAmt: 'お支払い金額', paidOn: 'お支払い日時', kst: '韓国時間',
+      appH: 'AI案内つきの旅行アプリ', appP: 'スマートフォンで当社のもう一つの旅行アプリ「MosaicTrip」を開いてください。地図の右上の「AI Guide」をタップし、「Guide language」で日本語を選ぶと、宮殿の建物や名所の近くを通るたびに解説が自動で流れます。アプリの画面は英語ですが、解説は日本語でお聞きいただけます。', appBtn: 'アプリを開く', appQr: 'パソコンでご覧の場合は、このコードをスマートフォンで読み取ってください。',
       tripK: 'ご旅程', welcome: '{n} 様、ソウルでの日々に必要なことはすべてこのページにまとめております。',
       conc: 'コンシェルジュ', concP: '昼夜を問わず、いつでもコンシェルジュにご連絡いただけます。', wa: 'WhatsApp', call: '電話 {t}', mail: 'メール',
       team: '担当スタッフ', drv: 'ドライバー', gd: 'ガイド', plate: 'ナンバー', soon: 'まもなくこちらにご案内いたします。',
@@ -70,13 +72,16 @@
       ePend: 'Aún estamos confirmando su pago. Esta página se actualizará en breve y también le avisaremos por correo.', eAmt: 'El importe pagado no coincide. Escríbanos a {m}.', ePg: 'No se pudo abrir la ventana de pago con tarjeta. Inténtelo de nuevo más tarde o escríbanos a {m}.',
       expH: 'Este presupuesto ha caducado', expP: 'Le rogamos que se ponga en contacto con nosotros y le prepararemos uno nuevo con mucho gusto.',
       paidK: 'Pagado', paidH: 'Muchas gracias', paidP: 'Hemos recibido su pago. Ya estamos asegurando sus reservas y le enviaremos la confirmación por correo en breve.', paidAmt: 'Importe pagado', paidOn: 'Fecha de pago', kst: 'hora de Corea',
+      appH: 'Su app de viaje con Guía IA', appP: 'Abra en su teléfono MosaicTrip, nuestra otra app de viaje. Toque «AI Guide» arriba a la derecha del mapa y elija su idioma en «Guide language»: al pasar junto a pabellones y lugares emblemáticos, su historia sonará sola. Las pantallas de la app están en inglés, pero las explicaciones están en su idioma.', appBtn: 'Abrir la app', appQr: '¿Lo lee en un ordenador? Escanee este código con su teléfono.',
       tripK: 'Su viaje', welcome: 'Bienvenido/a, {n}. Todo lo que necesita para sus días en Seúl está en esta página.',
       conc: 'Su conserje', concP: 'Puede contactar con su conserje en cualquier momento, de día o de noche.', wa: 'WhatsApp', call: 'Llamar al {t}', mail: 'Correo',
       team: 'Su equipo', drv: 'Su chófer', gd: 'Su guía', plate: 'Matrícula', soon: 'Los datos aparecerán aquí en breve.',
       rsv: 'Reservas', conf: 'N.º de confirmación', itin: 'Su itinerario',
       sos: '<b>En caso de emergencia en Corea:</b> policía 112 · bomberos y ambulancia 119 · línea de ayuda al turista 1330 (24 horas, varios idiomas).',
       overH: 'Gracias por viajar con nosotros', overP: 'Esperamos recibirle de nuevo en Seúl. Para cualquier cosa, escríbanos a {m}.', guests1: '1 persona', guestsN: '{n} personas',
-      craftL: 'Artesanía', cr: { najeon: 'Espejo de nácar (Jeong Myeong-chae)', silver: 'Anillo de plata (Lee Hwang-jae)' }, opt: { porter: 'Servicio de equipaje', photo: 'Fotógrafo profesional', hanbok: 'Hanbok a medida', wine: 'Maridaje de vinos', gj: 'Extensión a Gyeongju, 1 noche / 2 días', bnb: 'Omakase hanwoo en Born & Bred (en lugar de Sushi Kanesaka)', nam: 'Paseo matinal por Namsan (en lugar de la ceremonia del té en Rakkojae)', yacht: 'Yate privado por el río Han (en lugar de las compras del día 3 en The Hyundai Seoul)', beauty: 'Sesión privada de K-beauty en Cheongdam (en lugar de las compras del día 3 en The Hyundai Seoul)' }, co: 'Booman Inc.' }
+      craftL: 'Artesanía', cr: { najeon: 'Espejo de nácar (Jeong Myeong-chae)', silver: 'Anillo de plata (Lee Hwang-jae)' }, opt: { porter: 'Servicio de equipaje', photo: 'Fotógrafo profesional', hanbok: 'Hanbok a medida', wine: 'Maridaje de vinos', gj: 'Extensión a Gyeongju, 1 noche / 2 días', bnb: 'Omakase hanwoo en Born & Bred (en lugar de Sushi Kanesaka)', nam: 'Paseo matinal por Namsan (en lugar de la ceremonia del té en Rakkojae)', yacht: 'Yate privado por el río Han (en lugar de las compras del día 3 en The Hyundai Seoul)', beauty: 'Sesión privada de K-beauty en Cheongdam (en lugar de las compras del día 3 en The Hyundai Seoul)' }, co: 'Booman Inc.' },
+    zhs: { load: "正在加载您的报价…", bad: "此链接无效。请使用邮件中的链接，或发送邮件至 {m} 联系我们。", net: "无法连接服务器，请稍后刷新本页面。", qk: "您的报价", pkg: "首尔养生美食之旅", prep: "为 {n} 准备", no: "报价编号", iss: "开具日期", valid: "有效期至", car: "车辆", opts: "附加项目", none: "无", item: "项目", amt: "金额", total: "合计（KRW）", incl: "已包含", psr: "The Hyundai Seoul 私人购物室最低消费额：{u}（约 {k}）", krw: "付款以韩元（KRW）结算，您的发卡机构会将金额换算为您信用卡的币种。", tt: "本定制行程的特别条款：取消与退款", t1: "本行程为您专门安排，因此适用以下特别条款。", t1b: "本特别条款与韩国公平交易委员会的《国内旅行标准条款》及《消费者纠纷解决标准》不同，并优先于上述规定适用。", t2: "退款金额 = 已付金额 − 合作商家（酒店、餐厅、水疗、车辆及机场服务）依其规定收取的取消费 − 本公司的取消手续费", t3: "本公司的取消手续费（按行程费用的比例）：", f1: "截至第1天的30天前", f2: "29天前至8天前", f3: "7天前起", t4: "天数以行程第1天为准，按韩国时间计算。", full: "查看完整的旅行条款与退款规定", ft: "条款与退款规定", agree: "我已阅读并同意上述特别条款。", pay: "以信用卡支付 {a}", fine: "仅支持信用卡付款（KG Inicis）。本报价有效期至{d}。", opening: "正在打开安全付款窗口…", checking: "正在确认您的付款…", eAgree: "请勾选方框，同意特别条款。", eExp: "本报价已过期。", ePaid: "本报价已完成付款。", eFail: "付款未完成，请重试。", ePend: "我们仍在确认您的付款。本页面稍后会自动更新，我们也会通过邮件通知您。", eAmt: "付款金额不一致，请发送邮件至 {m} 联系我们。", ePg: "无法打开信用卡付款窗口。请稍后重试，或发送邮件至 {m} 联系我们。", expH: "本报价已过期", expP: "请与我们联系，我们很乐意为您重新报价。", paidK: "已付款", paidH: "感谢您", paidP: "我们已收到您的付款，目前正在为您落实各项预订，稍后将通过邮件发送确认通知。", paidAmt: "付款金额", paidOn: "付款时间", kst: "韩国时间", appH: "附带 AI 导览的旅行应用", appP: "请在手机上打开我们的另一款旅行应用 MosaicTrip。点按地图右上角的“AI Guide”，在“Guide language”中选择“简体中文”，经过宫殿建筑和名胜时，讲解便会自动播放。应用界面为英文，但讲解为中文。", appBtn: "打开应用", appQr: "如果您正在电脑上阅读，请用手机扫描此二维码。", tripK: "您的行程", welcome: "{n}，欢迎您。在首尔期间所需的一切信息，都在这个页面上。", conc: "您的礼宾专员", concP: "无论白天还是夜晚，您都可以随时联系礼宾专员。", wa: "WhatsApp", call: "致电 {t}", mail: "电子邮件", team: "您的服务团队", drv: "您的司机", gd: "您的导游", plate: "车牌", soon: "详细信息稍后将显示在这里。", rsv: "预订", conf: "确认编号", itin: "您的行程", sos: "<b>在韩国遇到紧急情况时：</b>报警 112 · 火警与急救 119 · 1330旅游咨询热线（24小时，多语种）", overH: "感谢您与我们同行", overP: "期待再次在首尔迎接您。如有任何需要，请发送邮件至 {m}。", guests1: "1位", guestsN: "{n}位", craftL: "传统工艺体验", cr: { najeon: "螺钿手镜（Jeong Myeong-chae）", silver: "银戒指（Lee Hwang-jae）" }, opt: { porter: "行李搬运服务", photo: "专业摄影师", hanbok: "定制韩服", wine: "餐酒搭配", gj: "延伸至庆州（2天1晚）", bnb: "Born & Bred 韩牛 Omakase（替换 Sushi Kanesaka）", nam: "南山晨间散步（替换乐古斋茶礼）", yacht: "汉江私人游艇（替换第3天的 The Hyundai Seoul 购物）", beauty: "清潭洞私人 K-Beauty 体验（替换第3天的 The Hyundai Seoul 购物）" }, co: "株式会社 富滿（Booman Inc.）" },
+    zht: { load: "正在載入您的報價…", bad: "此連結無效。請使用郵件中的連結，或來信 {m} 與我們聯絡。", net: "無法連線至伺服器，請稍後重新整理本頁。", qk: "您的報價", pkg: "首爾養生美食之旅", prep: "為 {n} 準備", no: "報價編號", iss: "開立日期", valid: "有效期限", car: "車輛", opts: "附加項目", none: "無", item: "項目", amt: "金額", total: "合計（KRW）", incl: "已包含", psr: "The Hyundai Seoul 私人購物室最低消費額：{u}（約 {k}）", krw: "付款以韓元（KRW）計價，您的發卡機構會將金額換算為您信用卡的幣別。", tt: "本訂製行程的特別條款：取消與退款", t1: "本行程為您專門安排，因此適用以下特別條款。", t1b: "本特別條款與韓國公平交易委員會的《國內旅行標準條款》及《消費者紛爭解決標準》不同，並優先於上述規定適用。", t2: "退款金額 = 已付金額 − 合作業者（飯店、餐廳、水療、車輛及機場服務）依其規定收取的取消費 − 本公司的取消手續費", t3: "本公司的取消手續費（按行程費用的比例）：", f1: "截至第1天的30天前", f2: "29天前至8天前", f3: "7天前起", t4: "天數以行程第1天為準，按韓國時間計算。", full: "查看完整的旅行條款與退款規定", ft: "條款與退款規定", agree: "我已閱讀並同意上述特別條款。", pay: "以信用卡支付 {a}", fine: "僅接受信用卡付款（KG Inicis）。本報價有效期限至{d}。", opening: "正在開啟安全付款視窗…", checking: "正在確認您的付款…", eAgree: "請勾選方框，同意特別條款。", eExp: "本報價已逾期。", ePaid: "本報價已完成付款。", eFail: "付款未完成，請再試一次。", ePend: "我們仍在確認您的付款。本頁稍後將自動更新，我們也會以電子郵件通知您。", eAmt: "付款金額不符，請來信 {m} 與我們聯絡。", ePg: "無法開啟信用卡付款視窗。請稍後再試，或來信 {m} 與我們聯絡。", expH: "本報價已逾期", expP: "請與我們聯絡，我們很樂意為您重新報價。", paidK: "已付款", paidH: "感謝您", paidP: "我們已收到您的付款，目前正在為您確保各項預訂，稍後將以電子郵件寄送確認通知。", paidAmt: "付款金額", paidOn: "付款時間", kst: "韓國時間", appH: "附 AI 導覽的旅行應用", appP: "請在手機上開啟我們的另一款旅行應用 MosaicTrip。點選地圖右上角的「AI Guide」，在「Guide language」中選擇「繁體中文」，經過宮殿建築與名勝時，解說便會自動播放。應用畫面為英文，但解說為中文。", appBtn: "開啟應用", appQr: "若您正在電腦上閱讀，請用手機掃描此 QR 碼。", tripK: "您的行程", welcome: "{n}，歡迎您。在首爾期間所需的一切資訊，都在這個頁面上。", conc: "您的禮賓專員", concP: "無論白天或夜晚，您都可以隨時聯絡禮賓專員。", wa: "WhatsApp", call: "致電 {t}", mail: "電子郵件", team: "您的服務團隊", drv: "您的司機", gd: "您的導遊", plate: "車牌", soon: "詳細資訊稍後將顯示於此。", rsv: "預訂", conf: "確認編號", itin: "您的行程", sos: "<b>在韓國遇到緊急狀況時：</b>報警 112 · 消防與救護 119 · 1330觀光諮詢熱線（24小時，多語言）", overH: "感謝您與我們同行", overP: "期待再次在首爾迎接您。如有任何需要，歡迎來信 {m}。", guests1: "1位", guestsN: "{n}位", craftL: "傳統工藝體驗", cr: { najeon: "螺鈿手鏡（Jeong Myeong-chae）", silver: "銀戒指（Lee Hwang-jae）" }, opt: { porter: "行李搬運服務", photo: "專業攝影師", hanbok: "訂製韓服", wine: "餐酒搭配", gj: "延伸至慶州（2天1夜）", bnb: "Born & Bred 韓牛 Omakase（替換 Sushi Kanesaka）", nam: "南山晨間散步（替換樂古齋茶禮）", yacht: "漢江私人遊艇（替換第3天的 The Hyundai Seoul 購物）", beauty: "清潭洞私人 K-Beauty 體驗（替換第3天的 The Hyundai Seoul 購物）" }, co: "株式會社 富滿（Booman Inc.）" }
   };
   function T(k) { var s = (TX[L] && TX[L][k]); return s == null ? TX.en[k] : s; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -90,8 +95,8 @@
     return fetch(HUB + path, o).then(function (r) { return r.json().catch(function () { return { ok: false }; }); });
   }
   function setLang(l) {
-    L = l === 'ja' || l === 'es' ? l : 'en';
-    document.documentElement.lang = L; document.documentElement.setAttribute('data-lang', L);
+    L = l === 'ja' || l === 'es' || l === 'zhs' || l === 'zht' ? l : 'en';
+    document.documentElement.lang = HTML_LANG[L] || L; document.documentElement.setAttribute('data-lang', L);
     document.getElementById('pf-co').textContent = T('co');
     if (window.VIP_BIZINFO) window.VIP_BIZINFO(L);   // 11-16 맨 아래 사업자 정보(투어앱과 같은 내용) — 견적 언어로
     var ft = document.getElementById('pf-terms'); if (ft) { ft.textContent = T('ft'); ft.setAttribute('href', '../terms/?lang=' + L); }   // 꼬리말 약관 링크 — 견적 언어 그대로 (11-16)
@@ -110,7 +115,7 @@
   function quoteHtml() {
     var q = D.q, op = D.opts.map(function (k) { return T('opt')[k]; }).filter(Boolean);
     return '<dl class="qmeta"><div><dt>' + esc(T('no')) + '</dt><dd>' + esc(q.no) + '</dd></div><div><dt>' + esc(T('iss')) + '</dt><dd>' + esc(fd(q.issued)) + '</dd></div><div><dt>' + esc(T('valid')) + '</dt><dd>' + esc(fd(q.valid)) + '</dd></div></dl>'
-      + '<dl class="qmeta qmeta2"><div><dt>' + esc(T('car')) + '</dt><dd>' + esc(D.car) + '</dd></div>' + (D.craft ? '<div><dt>' + esc(T('craftL')) + '</dt><dd>' + esc(T('cr')[D.craft] || '') + '</dd></div>' : '') + '<div><dt>' + esc(T('opts')) + '</dt><dd>' + esc(op.length ? op.join(L === 'ja' ? '、' : ', ') : T('none')) + '</dd></div></dl>'
+      + '<dl class="qmeta qmeta2"><div><dt>' + esc(T('car')) + '</dt><dd>' + esc(D.car) + '</dd></div>' + (D.craft ? '<div><dt>' + esc(T('craftL')) + '</dt><dd>' + esc(T('cr')[D.craft] || '') + '</dd></div>' : '') + '<div><dt>' + esc(T('opts')) + '</dt><dd>' + esc(op.length ? op.join(L === 'ja' || L === 'zhs' || L === 'zht' ? '、' : ', ') : T('none')) + '</dd></div></dl>'
       + '<table class="qtable"><thead><tr><th>' + esc(T('item')) + '</th><th>' + esc(T('amt')) + '</th></tr></thead><tbody>'
       + q.lines.map(function (l) { return '<tr><td>' + esc(l.g) + '</td><td>' + (l.p > 0 ? krw(l.p) : esc(T('incl'))) + '</td></tr>'; }).join('')
       + '<tr class="qtot"><td>' + esc(T('total')) + '</td><td>' + krw(q.total) + '</td></tr></tbody></table>'
@@ -118,6 +123,9 @@
       + (q.psrMin > 0 && q.psrKrw > 0 ? '<p class="qfx qpsr">' + esc(T('psr').replace('{u}', 'US$ ' + Number(q.psrMin).toLocaleString('en-US')).replace('{k}', krw(q.psrKrw))) + '</p>' : '');   // 11-16 더현대 PSR 최소 쇼핑금액
   }
 
+var appB = function () { return '<section class="pay-sec app-sec"><h2>' + esc(T('appH')) + '</h2><p class="rv-lead">' + esc(T('appP')) + '</p>'   // 11-16 투어앱(AI 안내) — 결제 뒤에만
+      + '<div class="contact-row" style="margin-top:18px"><a class="btn" href="https://navi.moneypuzzle.co.kr/?lang=en" target="_blank" rel="noopener">' + esc(T('appBtn')) + '</a></div>'
+      + '<p class="app-qr"><img src="../img/app-qr-en.png" width="140" height="140" alt="QR"><span class="fine">' + esc(T('appQr')) + '</span></p></section>'; };
   function render() {
     setLang(D.lang); document.title = T('qk') + ' — VIPHola.com';
     if (D.over) { document.title = 'VIPHola.com'; box.innerHTML = head(T('tripK'), subLine()); box.insertAdjacentHTML('beforeend', '<div class="pay-msg"><span class="art art-orn"><img src="../img/mugunghwa-mark.png" alt=""></span><p><b>' + esc(T('overH')) + '</b></p><p>' + T('overP').replace('{m}', mailA()) + '</p></div>'); return; }
@@ -125,13 +133,13 @@
     if (D.st === 'paid' || D.st === 'confirmed') {
       box.innerHTML = head(T('paidK'), subLine()) + '<div class="pay-msg"><span class="art art-orn"><img src="../img/mugunghwa-mark.png" alt=""></span><span class="paid-badge">' + esc(T('paidK')) + '</span><p><b>' + esc(T('paidH')) + '</b></p><p>' + esc(T('paidP')) + '</p></div>'
         + '<dl class="qmeta"><div><dt>' + esc(T('no')) + '</dt><dd>' + esc(D.q.no) + '</dd></div><div><dt>' + esc(T('paidAmt')) + '</dt><dd>' + krw(D.q.total) + ' (KRW)</dd></div><div><dt>' + esc(T('paidOn')) + '</dt><dd>' + esc(D.paidAt) + ' (' + esc(T('kst')) + ')</dd></div></dl>'
-        + itinHtml(D.itin);
+        + appB() + itinHtml(D.itin);
       return;
     }
     if (D.expired) { box.innerHTML = head(T('qk'), subLine()) + '<div class="pay-msg"><span class="art art-orn"><img src="../img/mugunghwa-mark.png" alt=""></span><p><b>' + esc(T('expH')) + '</b></p><p>' + esc(T('expP')) + '</p><p>' + mailA() + '</p></div>'; return; }
     box.innerHTML = head(T('qk'), T('prep').replace('{n}', D.name) + ' · ' + subLine())
       + '<section>' + quoteHtml() + '</section>'
-      + '<section class="pay-sec"><div class="terms"><h3>' + esc(T('tt')) + '</h3><ol><li>' + esc(T('t1')) + (L === 'ja' ? '' : ' ') + esc(T('t1b')) + '</li><li>' + esc(T('t2')) + '</li><li>' + esc(T('t3'))
+      + '<section class="pay-sec"><div class="terms"><h3>' + esc(T('tt')) + '</h3><ol><li>' + esc(T('t1')) + (L === 'ja' || L === 'zhs' || L === 'zht' ? '' : ' ') + esc(T('t1b')) + '</li><li>' + esc(T('t2')) + '</li><li>' + esc(T('t3'))
       + '<table><tr><td>' + esc(T('f1')) + '</td><td>5%</td></tr><tr><td>' + esc(T('f2')) + '</td><td>10%</td></tr><tr><td>' + esc(T('f3')) + '</td><td>20%</td></tr></table></li><li>' + esc(T('t4')) + '</li></ol>'
       + '<p class="terms-full"><a href="../terms/?lang=' + L + '#refund" target="_blank" rel="noopener">' + esc(T('full')) + '</a></p></div>'   // 11-16 표준약관과 다르고 우선 적용된다는 설명(t1b) · 약관 전문 링크
       + '<label class="agree"><input type="checkbox" id="pay-agree"><span>' + esc(T('agree')) + '</span></label>'
@@ -152,7 +160,7 @@
     var gc = g.name || g.phone ? '<p class="who">' + esc(g.name) + '</p>' + (g.phone ? '<p>' + ph(g.phone) + '</p>' : '') : '<p class="later">' + esc(T('soon')) + '</p>';
     var rs = (tr.rs || []).length ? '<ul class="rsv">' + tr.rs.map(function (r) { return '<li><span class="rx">' + esc(r.x) + '</span><span class="rt">' + esc(r.t) + '</span>'
       + (r.c || r.m ? '<span class="rc">' + (r.c ? esc(T('conf')) + ' <b>' + esc(r.c) + '</b>' : '') + (r.c && r.m ? ' · ' : '') + (r.m ? esc(r.m) : '') + '</span>' : '') + '</li>'; }).join('') + '</ul>' : '<p class="later">' + esc(T('soon')) + '</p>';
-    box.innerHTML = head(T('tripK'), subLine()) + '<p class="pay-msg">' + esc(T('welcome').replace('{n}', D.name)) + '</p>' + conc
+    box.innerHTML = head(T('tripK'), subLine()) + '<p class="pay-msg">' + esc(T('welcome').replace('{n}', D.name)) + '</p>' + conc + appB()
       + '<section class="pay-sec"><h2>' + esc(T('team')) + '</h2><div class="tcards"><div class="tcard"><h3>' + esc(T('drv')) + '</h3>' + dc + '</div><div class="tcard"><h3>' + esc(T('gd')) + '</h3>' + gc + '</div></div></section>'
       + '<section class="pay-sec"><h2>' + esc(T('rsv')) + '</h2>' + rs + '</section>'
       + itinHtml(D.itin) + '<p class="sos">' + T('sos') + '</p>';

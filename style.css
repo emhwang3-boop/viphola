@@ -19,6 +19,8 @@
 }
 html[lang="ko"]      { --serif: 'Noto Serif KR', serif; --sans: 'Noto Sans KR', system-ui, sans-serif; --hs: .74; --track: .12em; }
 html[lang="ja"]      { --serif: 'Noto Serif JP', serif; --sans: 'Noto Sans JP', system-ui, sans-serif; --hs: .72; --track: .12em; }
+html[lang="zh-Hans"] { --serif: 'Noto Serif SC', serif; --sans: 'Noto Sans SC', system-ui, sans-serif; --hs: .72; --track: .12em; }   /* 11-16 중국어 간체 */
+html[lang="zh-Hant"] { --serif: 'Noto Serif TC', serif; --sans: 'Noto Sans TC', system-ui, sans-serif; --hs: .72; --track: .12em; }   /* 11-16 중국어 번체 */
 html[lang="ko"] body { word-break: keep-all; overflow-wrap: anywhere; }
 html[lang="ja"] body { line-break: strict; }
 html[lang="ja"] .door-title, html[lang="ja"] .door-sub { word-break: keep-all; }   /* 「ソウ／ル」처럼 낱말 중간에서 끊기지 않게 — 「、」 뒤에서 줄바꿈 */
@@ -108,6 +110,9 @@ html[lang="en"] h2, html[lang="es"] h2 { letter-spacing: -.01em; }
 }
 .lang button[lang="ko"] { font-family: 'Noto Sans KR', sans-serif; }
 .lang button[lang="ja"] { font-family: 'Noto Sans JP', sans-serif; }
+.lang button[lang="zh-Hans"] { font-family: 'Noto Sans SC', sans-serif; }
+.lang button[lang="zh-Hant"] { font-family: 'Noto Sans TC', sans-serif; }
+.lang button[hidden] { display: none; }   /* 숨긴 언어(스페인어, main.js OFF) */
 .lang button:hover { color: var(--navy); }
 .lang button[aria-pressed="true"] { color: var(--navy); font-weight: 500; border-bottom-color: var(--pink); }
 .lang-mobile { display: none; }
@@ -132,10 +137,10 @@ html[lang="en"] h2, html[lang="es"] h2 { letter-spacing: -.01em; }
   font-size: calc(clamp(52px, 6.4vw, 96px) * var(--hs)); line-height: 1.04; letter-spacing: -.012em;
   max-width: 11em;
 }
-html:is([lang="ko"], [lang="ja"]) .hero h1 { line-height: 1.28; letter-spacing: 0; }
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .hero h1 { line-height: 1.28; letter-spacing: 0; }
 .hero-lead { margin: 30px 0 40px; max-width: 30em; font-size: 18px; font-weight: 300; color: var(--ink-2); }
 .hero .btn { align-self: flex-start; }
-html[lang="ja"] .hero-lead { max-width: 38em; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .hero-lead { max-width: 38em; }
 .credit-hero { left: var(--gutter); right: auto; bottom: 18px; color: rgba(31, 42, 68, .62); text-shadow: none; }
 
 /* ───────── 칸 공통 ───────── */
@@ -153,7 +158,7 @@ html[lang="ja"] .hero-lead { max-width: 38em; }
 .card .credit { top: 10px; bottom: auto; left: 12px; font-size: 10px; }
 .day { margin: 24px 0 6px; font: 500 12px/1.4 var(--sans); letter-spacing: var(--track); text-transform: uppercase; color: var(--pink); }
 .card h3 { font-family: var(--serif); font-weight: 500; font-size: calc(30px * var(--hs)); line-height: 1.2; margin-bottom: 14px; }
-html:is([lang="ko"], [lang="ja"]) .card h3 { font-size: 22px; }
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .card h3 { font-size: 22px; }
 .items li { padding: 9px 0; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
 .items li:last-child { border-bottom: 1px solid var(--line); }
 .dots { display: none; }
@@ -172,7 +177,7 @@ html:is([lang="ko"], [lang="ja"]) .card h3 { font-size: 22px; }
 .options { background: var(--ivory-2); }
 .opt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .opt-group h3 { font-family: var(--serif); font-weight: 500; font-size: calc(30px * var(--hs)); line-height: 1.2; }
-html:is([lang="ko"], [lang="ja"]) .opt-group h3 { font-size: 22px; }
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .opt-group h3 { font-size: 22px; }
 .opt-sub { margin: 6px 0 22px; font-size: 13.5px; color: var(--ink-3); }
 .opt-list li { display: flex; flex-direction: column; gap: 3px; padding: 15px 0; border-top: 1px solid var(--line); }
 .opt-list li:last-child { border-bottom: 1px solid var(--line); }
@@ -187,7 +192,7 @@ html:is([lang="ko"], [lang="ja"]) .opt-group h3 { font-size: 22px; }
 .steps li { border-top: 1px solid var(--navy); padding-top: 26px; }
 .num { display: block; font-size: 60px; line-height: 1; font-weight: 400; color: var(--pink); margin-bottom: 20px; }
 .steps h3 { font-family: var(--serif); font-weight: 500; font-size: calc(28px * var(--hs)); line-height: 1.25; margin-bottom: 10px; }
-html:is([lang="ko"], [lang="ja"]) .steps h3 { font-size: 21px; }
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .steps h3 { font-size: 21px; }
 .steps p { font-size: 15px; color: var(--ink-2); }
 .process .note { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line); font-size: 15px; color: var(--navy); }
 
@@ -272,7 +277,7 @@ html .door-out .door-title { font-size: 31px; line-height: 1.3; }
 .door-label, .door-title, .door-sub { display: block; }
 .door-label { font: 500 12px/1.4 var(--sans); letter-spacing: var(--track); text-transform: uppercase; color: rgba(247, 243, 234, .82); margin-bottom: 14px; }
 .door-title { font-family: var(--serif); font-weight: 500; font-size: calc(44px * var(--hs)); line-height: 1.12; }
-html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 31px; line-height: 1.3; }
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-title { font-size: 31px; line-height: 1.3; }
 .door-sub { margin-top: 12px; font-size: 15.5px; color: rgba(247, 243, 234, .88); max-width: 30em; }
 .door-cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; font: 400 14px/1 var(--sans); letter-spacing: .08em; padding-bottom: 6px; border-bottom: 1px solid rgba(247, 243, 234, .6); }
 .door-cta .arr { font-family: var(--latin); font-size: 20px; line-height: .5; }
@@ -335,7 +340,7 @@ html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 31px; line-height: 1.
   }
   .hero-copy { justify-content: flex-end; padding-top: 0; padding-bottom: 54px; }
   .hero h1 { font-size: calc(46px * var(--hs)); line-height: 1.06; }
-  html:is([lang="ko"], [lang="ja"]) .hero h1 { font-size: 33px; line-height: 1.3; }
+  html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .hero h1 { font-size: 33px; line-height: 1.3; }
   .hero-lead { margin: 18px 0 28px; font-size: 15.5px; }
   .hero .btn { align-self: stretch; }
   .credit-hero { right: auto; left: 20px; bottom: 16px; color: rgba(31, 42, 68, .6); text-shadow: none; }
@@ -344,7 +349,7 @@ html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 31px; line-height: 1.
   .included, .enquire { padding-top: 64px; }
   .sec-head { margin-bottom: 40px; }
   h2 { font-size: calc(40px * var(--hs)); }
-  html:is([lang="ko"], [lang="ja"]) h2 { font-size: 27px; }
+  html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) h2 { font-size: 27px; }
   .inc-list { grid-template-columns: 1fr; }
   .inc-list li { padding: 20px 0; gap: 16px; }
   .inc-list li:nth-last-child(-n+2) { border-bottom: 0; }
@@ -362,7 +367,7 @@ html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 31px; line-height: 1.
   .ornament .art-orn { width: 60px; height: 60px; }
   .gate-head { margin-bottom: 30px; }
   .gate-head h1 { font-size: calc(38px * var(--hs)); }
-  html:is([lang="ko"], [lang="ja"]) .gate-head h1 { font-size: 28px; }
+  html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .gate-head h1 { font-size: 28px; }
   .gate-head p { font-size: 15px; }
   .door { min-height: 340px; }
   .door-body { padding: 28px 24px 30px; }
@@ -371,7 +376,7 @@ html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 31px; line-height: 1.
   .out-credit-l { left: 10px; }
   .out-credit-r { right: 10px; }
   .door-title { font-size: calc(34px * var(--hs)); }
-  html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 24px; }
+  html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-title { font-size: 24px; }
   .door-sub { font-size: 14.5px; }
   /* 11-16 사장님 「폰에서 INBOUND · SEOUL / 아웃바운드 · 스페인어권이 하늘색과 겹쳐 안 보임 — 고급진 색으로」 — 폰에서만 남색 띠 위 샴페인 금색 글자 (PC 는 그대로) */
   .door-label { color: #E3BE5C; font-weight: 700; text-shadow: 0 1px 2px rgba(15, 20, 35, .85), 0 0 10px rgba(15, 20, 35, .55); }   /* 11-16 사장님 「남색 띠를 없애고 금색 글자만」→「아직 흐릿하다, 좀 더 진하게」 — 진한 금색·굵게·글자 둘레만 살짝 어둡게 */
@@ -399,7 +404,7 @@ html:is([lang="ko"], [lang="ja"]) .door-title { font-size: 31px; line-height: 1.
 .review[hidden], .enq-form[hidden] { display: none; }
 .review .kicker { margin-bottom: 10px; }
 .rv-title { font-family: var(--serif); font-weight: 500; font-size: calc(34px * var(--hs)); line-height: 1.2; }
-html[lang="ja"] .rv-title { font-size: 25px; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .rv-title { font-size: 25px; }
 .rv-lead { margin-top: 12px; font-size: 15px; color: var(--ink-2); }
 .rv-sum { margin: 28px 0 8px; border-top: 1px solid var(--line); }
 .rv-sum div { display: grid; grid-template-columns: 170px 1fr; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); }
@@ -410,7 +415,7 @@ html[lang="ja"] .rv-title { font-size: 25px; }
 .rv-dh .day { margin: 0; }
 .rv-date { font-size: 13.5px; color: var(--ink-3); }
 .rv-day h4 { margin: 4px 0 10px; font-family: var(--serif); font-weight: 500; font-size: calc(26px * var(--hs)); line-height: 1.25; }
-html[lang="ja"] .rv-day h4 { font-size: 19px; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .rv-day h4 { font-size: 19px; }
 .rv-items { border-top: 1px solid var(--line); }
 .rv-items li { display: grid; grid-template-columns: 26px 118px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
 .rv-no { font-family: var(--latin); font-size: 19px; line-height: 1; color: var(--pink); }
@@ -432,14 +437,14 @@ html[lang="ja"] .rv-day h4 { font-size: 19px; }
 .pay-head { text-align: center; margin: 18px 0 40px; }
 .pay-head .kicker { margin-bottom: 12px; }
 .pay-head h1 { font-family: var(--serif); font-weight: 500; font-size: calc(54px * var(--hs)); line-height: 1.12; }
-html[lang="ja"] .pay-head h1 { font-size: 34px; line-height: 1.3; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .pay-head h1 { font-size: 34px; line-height: 1.3; }
 .pay-head p { margin-top: 14px; font-size: 16px; color: var(--ink-2); }
 .pay-msg { margin: 0 auto 40px; max-width: 640px; padding: 26px 28px; background: var(--ivory-2); border: 1px solid var(--ivory-3); text-align: center; font-size: 16px; color: var(--navy); }
 .pay-msg .art-orn { margin: 0 auto 14px; width: 56px; height: 56px; }
 .pay-msg a { color: var(--navy); }
 .pay-sec { margin-top: 48px; }
 .pay-sec > h2 { font-size: calc(36px * var(--hs)); margin-bottom: 18px; }
-html[lang="ja"] .pay-sec > h2 { font-size: 25px; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .pay-sec > h2 { font-size: 25px; }
 .qmeta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0; }
 .qmeta div { padding: 14px 16px 14px 0; }
 .qmeta dt, .tl dt { font: 500 11.5px/1.6 var(--sans); letter-spacing: var(--track); text-transform: uppercase; color: var(--ink-3); }
@@ -451,12 +456,12 @@ html[lang="ja"] .pay-sec > h2 { font-size: 25px; }
 .qtable td:first-child { padding-right: 18px; }
 .qtable td:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .qtable tr.qtot td { border-top: 2px solid var(--navy); padding-top: 16px; font-family: var(--serif); font-size: calc(28px * var(--hs)); font-weight: 500; }
-html[lang="ja"] .qtable tr.qtot td { font-size: 21px; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .qtable tr.qtot td { font-size: 21px; }
 .qfx { margin-top: 10px; text-align: right; font-size: 14.5px; color: var(--ink-2); }
 .qkrw { margin-top: 4px; text-align: right; font-size: 13.5px; color: var(--ink-3); }
 .terms { margin-top: 18px; padding: 24px 26px; background: var(--ivory-2); border: 1px solid var(--ivory-3); font-size: 14.5px; color: var(--ink-2); }
 .terms h3 { font-family: var(--serif); font-weight: 500; font-size: calc(24px * var(--hs)); color: var(--navy); margin-bottom: 10px; }
-html[lang="ja"] .terms h3 { font-size: 18px; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .terms h3 { font-size: 18px; }
 .terms ol { list-style: decimal; padding-left: 20px; }
 .terms li { margin: 6px 0; }
 .terms table { border-collapse: collapse; margin: 8px 0 4px; }
@@ -472,7 +477,7 @@ html[lang="ja"] .terms h3 { font-size: 18px; }
 .tcard { padding: 22px 24px; background: var(--ivory-2); border: 1px solid var(--ivory-3); }
 .tcard h3 { font: 500 12px/1.4 var(--sans); letter-spacing: var(--track); text-transform: uppercase; color: var(--pink); margin-bottom: 10px; }
 .tcard .who { font-family: var(--serif); font-size: calc(28px * var(--hs)); font-weight: 500; line-height: 1.2; color: var(--navy); }
-html[lang="ja"] .tcard .who { font-size: 21px; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .tcard .who { font-size: 21px; }
 .tcard p { margin-top: 6px; font-size: 15px; color: var(--ink-2); }
 .tcard a { color: var(--navy); }
 .tcard .later { font-size: 14.5px; color: var(--ink-3); }
@@ -495,7 +500,7 @@ html[lang="ja"] .tcard .who { font-size: 21px; }
   .pay-main { padding: 12px var(--gutter) 64px; }
   .pay-head { margin: 10px 0 30px; }
   .pay-head h1 { font-size: calc(38px * var(--hs)); }
-  html[lang="ja"] .pay-head h1 { font-size: 27px; }
+  html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .pay-head h1 { font-size: 27px; }
   .qmeta { grid-template-columns: 1fr 1fr; }
   .qmeta div:last-child { grid-column: 1 / -1; }
   .qmeta.qmeta2 { grid-template-columns: 1fr; }
@@ -519,7 +524,7 @@ html[lang="ja"] .tcard .who { font-size: 21px; }
 .legal-head { text-align: center; margin: 20px 0 64px; }
 .legal-head .kicker { margin-bottom: 14px; }
 .legal-head h1 { max-width: 18em; margin: 0 auto; font-family: var(--serif); font-weight: 500; font-size: calc(50px * var(--hs)); line-height: 1.15; letter-spacing: -.005em; }
-html:is([lang="ko"], [lang="ja"]) .legal-head h1 { line-height: 1.35; }
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .legal-head h1 { line-height: 1.35; }
 .legal-eff { margin-top: 18px; font-size: 14.5px; color: var(--ink-2); }
 .legal-jump { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .legal-jump a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 8px 22px; border: 1px solid rgba(31, 42, 68, .35); text-decoration: none; font-size: 14.5px; line-height: 1.4; color: var(--navy); transition: background .25s ease; }
@@ -527,11 +532,12 @@ html:is([lang="ko"], [lang="ja"]) .legal-head h1 { line-height: 1.35; }
 .legal-jump a:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
 .legal-doc { display: none; }
 html[data-lang="en"] .legal-doc[data-tl="en"], html[data-lang="ko"] .legal-doc[data-tl="ko"],
-html[data-lang="ja"] .legal-doc[data-tl="ja"], html[data-lang="es"] .legal-doc[data-tl="es"] { display: block; }
+html[data-lang="ja"] .legal-doc[data-tl="ja"], html[data-lang="es"] .legal-doc[data-tl="es"],
+html[data-lang="zhs"] .legal-doc[data-tl="zhs"], html[data-lang="zht"] .legal-doc[data-tl="zht"] { display: block; }
 .lg-sec { margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
 .lg-sec:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 .lg-sec h2 { margin-bottom: 22px; font-size: calc(40px * var(--hs)); }
-html:is([lang="ko"], [lang="ja"]) .lg-sec h2 { font-size: 28px; }
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .lg-sec h2 { font-size: 28px; }
 .lg-sec h3 { margin: 36px 0 10px; font: 500 16.5px/1.5 var(--sans); letter-spacing: .01em; color: var(--navy); }
 .lg-sec p { margin: 8px 0; font-size: 15.5px; line-height: 1.8; color: var(--ink-2); }
 .lg-sec .lp { display: flex; gap: .55em; }
@@ -554,11 +560,11 @@ html:is([lang="ko"], [lang="ja"]) .lg-sec h2 { font-size: 28px; }
 @media (max-width: 640px) {
   .legal-head { margin: 8px 0 44px; }
   .legal-head h1 { font-size: calc(36px * var(--hs)); }
-  html:is([lang="ko"], [lang="ja"]) .legal-head h1 { font-size: 25px; }
+  html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .legal-head h1 { font-size: 25px; }
   .legal-jump { flex-direction: column; align-items: stretch; }
   .lg-sec { margin-top: 48px; padding-top: 40px; }
   .lg-sec h2 { font-size: calc(32px * var(--hs)); }
-  html:is([lang="ko"], [lang="ja"]) .lg-sec h2 { font-size: 23px; }
+  html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .lg-sec h2 { font-size: 23px; }
   .lg-sec p { font-size: 15px; }
   .lg-sec .lp2 { padding-left: 1em; }
   .lg-sec table { font-size: 14px; }
@@ -570,3 +576,8 @@ html:is([lang="ko"], [lang="ja"]) .lg-sec h2 { font-size: 28px; }
 .bizinfo span { display: block; }
 .bizinfo a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
 .soon-page .bizinfo { text-align: center; margin-top: 40px; }
+
+/* 11-16 결제 뒤 투어앱(AI 안내) QR — 휴대폰에서는 감춤(이미 폰이라) */
+.app-qr { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+.app-qr img { width: 140px; height: 140px; flex: 0 0 auto; }
+@media (max-width: 700px) { .app-qr { display: none; } }

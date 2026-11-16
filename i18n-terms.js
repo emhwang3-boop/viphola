@@ -1,11 +1,11 @@
-// viphola.com/terms/ — 여행 약관·환불 규정 페이지 머리·꼬리 문구 (한국어 · English · 日本語 · Español)
+// viphola.com/terms/ — 여행 약관·환불 규정 페이지 머리·꼬리 문구 (한국어 · English · 日本語 · 简体中文 · 繁體中文 · Español — 11-16 스페인어 숨김, main.js OFF)
 //  · 11-16 사장님 「완성이 되면 표준약관과 환불규정을 사이트에 게시해」 · 본문은 terms/index.html 안에 언어별로(.legal-doc[data-tl]) — 원본 마케팅\VIP\약관\약관_환불규정_초안_{ko,en,ja,es}.md
 //  · 문구 언어: 주소 ?lang= → 사용자가 선택한 언어(저장값 mtp_lang) → 영어(기본값) — 대문과 같은 방식(main.js)
 //  · 시행일: 11-16 사장님 「머리에 시행일은 넣고 년 월 일로 비워 둬야지」 → 머리말에 빈칸(t.effb) · 날짜를 받으면 <span id="eff">YYYY-MM-DD</span> 로 바꾸면 언어별 날짜로 들어간다
 //  · 바로 가기 #terms·#refund 는 지금 보이는 언어 본문에 붙인다 (언어를 바꾸면 옮겨 붙임)
 window.PAGE = 'terms';
 window.DEFAULT_LANG = 'en';
-window.PAGE_LANGS = ['en', 'ko', 'ja', 'es'];
+window.PAGE_LANGS = ['en', 'ko', 'ja', 'zhs', 'zht', 'es'];   // es 는 main.js OFF 로 숨김
 window.I18N = {
   en: {
     'meta.title': 'VIPHola.com — Terms & refund policy',
@@ -34,6 +34,24 @@ window.I18N = {
     't.jumpA': 'A. 旅行約款', 't.jumpB': 'B. 取消・返金規定',
     'foot.company': 'Booman Inc.', 'foot.contact': 'お問い合わせ'
   },
+  zhs: {
+    'meta.title': 'VIPHola.com — 旅行条款与退款规定',
+    'meta.desc': 'VIPHola.com 定制旅行的旅行条款及取消与退款规定，说明取消手续费以及退款的方式与期限。',
+    'lang.label': '语言',
+    't.title': '旅行条款及取消与退款规定',
+    't.eff': '生效日期：', 't.effb': '生效日期：　　　　年　　　月　　　日',
+    't.jumpA': 'A. 旅行条款', 't.jumpB': 'B. 取消与退款规定',
+    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们'
+  },
+  zht: {
+    'meta.title': 'VIPHola.com — 旅行條款與退款規定',
+    'meta.desc': 'VIPHola.com 訂製旅行的旅行條款及取消與退款規定，說明取消手續費以及退款的方式與期限。',
+    'lang.label': '語言',
+    't.title': '旅行條款及取消與退款規定',
+    't.eff': '生效日期：', 't.effb': '生效日期：　　　　年　　　月　　　日',
+    't.jumpA': 'A. 旅行條款', 't.jumpB': 'B. 取消與退款規定',
+    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們'
+  },
   es: {
     'meta.title': 'VIPHola.com — Condiciones y política de reembolso',
     'meta.desc': 'Condiciones generales del viaje y política de cancelación y reembolso de los viajes a medida de VIPHola.com.',
@@ -47,7 +65,7 @@ window.I18N = {
 
 (function () {
   'use strict';
-  var LOC = { ko: 'ko-KR', en: 'en-GB', ja: 'ja-JP', es: 'es-ES' }, iso = null;
+  var LOC = { ko: 'ko-KR', en: 'en-GB', ja: 'ja-JP', es: 'es-ES', zhs: 'zh-CN', zht: 'zh-TW' }, iso = null;
   function fmt(s, l) {   // 2026-11-17 → 2026년 11월 17일 · 17 November 2026 · 2026年11月17日 · 17 de noviembre de 2026
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
     if (!m) return s;

@@ -1,20 +1,25 @@
 // viphola.com 공용 — 언어 변경 · 카드 넘기기 표시 (신청 칸은 request.js)
-//  · 쓸 수 있는 언어는 페이지마다: 대문 = 한국어·영어·일본어·스페인어 · 서울(인바운드) = 영어·일본어·스페인어 (11-15 사장님 「인바운드는 한국어 필요없어」) · 약관(/terms/) = 네 언어 (11-16)
+//  · 쓸 수 있는 언어는 페이지마다(PAGE_LANGS): 대문·약관 = 한국어·영어·일본어·중국어 간체·번체 · 서울(인바운드) = 영어·일본어·중국어 간체·번체 (11-15 사장님 「인바운드는 한국어 필요없어」 · 11-16 중국어 더함)
+//  · 🔴 11-16 사장님 — 스페인어는 숨김(아래 OFF 한 줄). 번역 자료(i18n-*.js 의 es·약관 es 본문·pay.js·허브)는 그대로 · ?lang=es 는 영어로
 //  · 처음 언어: 주소 ?lang= → 저장값(mtp_lang) → 기본값(영어) — 그 페이지에 없는 언어면 영어
 (function () {
   'use strict';
   var D = window.I18N || {};
-  var LANGS = window.PAGE_LANGS || ['en', 'ko', 'ja', 'es'];
-  var HTML_LANG = { en: 'en', ko: 'ko', ja: 'ja', es: 'es' };
+  var OFF = ['es'];   // 🔴 숨길 언어 — 다시 켜려면 여기서 'es' 를 빼면 대문·서울·약관의 언어 고르기와 서울 신청서 「메일 언어」에 다시 나온다
+  var LANGS = (window.PAGE_LANGS || ['en', 'ko', 'ja', 'zhs', 'zht', 'es']).filter(function (l) { return OFF.indexOf(l) < 0; });
+  window.VIP_LANGS = LANGS;   // request.js 「메일 언어」 칸도 이 목록으로
+  var HTML_LANG = { en: 'en', ko: 'ko', ja: 'ja', es: 'es', zhs: 'zh-Hans', zht: 'zh-Hant' };
   var KEY = 'mtp_lang';
   var cur = 'en';
 
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
-  function fromBrowser() {   // 한국어·일본어·스페인어 외에는 영어
+  function fromBrowser() {   // 한국어·일본어·중국어(간체·번체)·스페인어 외에는 영어 — 그 페이지에 없는 언어면 apply 가 영어로
     var l = '';
     try { l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase(); } catch (e) {}
     if (/^ko/.test(l) && LANGS.indexOf('ko') >= 0) return 'ko';
     if (/^ja/.test(l)) return 'ja';
+    if (/^zh-(hant|tw|hk|mo)\b/.test(l)) return 'zht';   // zh-TW·zh-HK·zh-MO·zh-Hant
+    if (/^zh\b/.test(l)) return 'zhs';                    // zh-CN·zh-SG·zh-Hans·zh
     if (/^es/.test(l)) return 'es';
     return 'en';
   }
@@ -40,6 +45,10 @@
     if (save) store(KEY, lang);
     try { document.dispatchEvent(new CustomEvent('vip:lang', { detail: lang })); } catch (e) {}
   }
+
+  // 언어 고르기 — 이 페이지 언어(LANGS)에 없는 단추는 숨기고(HTML 에서 hidden 으로 시작) 항목은 뺀다
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.hidden = LANGS.indexOf(b.getAttribute('data-set-lang')) < 0; });
+  document.querySelectorAll('.lang-select option').forEach(function (o) { if (LANGS.indexOf(o.value) < 0) o.parentNode.removeChild(o); });
 
   var q = null;
   try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}

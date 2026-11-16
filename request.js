@@ -10,7 +10,7 @@
   var t = function (k) { return window.VIPT ? window.VIPT(k) : k; };
   var L = function () { return window.VIP_LANG || 'en'; };
   var langTouched = false, last = null, busy = false;
-  var LOC = { en: 'en-GB', ja: 'ja-JP', es: 'es-ES' };
+  var LOC = { en: 'en-GB', ja: 'ja-JP', es: 'es-ES', zhs: 'zh-CN', zht: 'zh-TW' };
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function ymdOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
@@ -22,6 +22,7 @@
 
   var today = ymdOf(new Date()), minD = addDays(today, 30);
   $('f-date').min = minD; $('f-date').max = addDays(today, 730);
+  (function () { var ok = window.VIP_LANGS, sel = $('f-lang'); if (!ok) return; Array.prototype.slice.call(sel.options).forEach(function (o) { if (ok.indexOf(o.value) < 0) sel.removeChild(o); }); })();   // 「메일 언어」 = 사이트 언어 고르기와 같은 목록 (11-16 스페인어 숨김 — main.js OFF)
 
   function fill() {
     var g = $('f-guests'), gv = g.value || '2'; g.innerHTML = '';
@@ -79,9 +80,9 @@
 
   function render(d, j) {
     var opt = d.opts.map(function (k) { return t('c.' + k); }), car = (window.CARS || []).filter(function (x) { return x.v === d.car; })[0];
-    var langName = { en: 'English', ja: '日本語', es: 'Español' }[d.lang] || d.lang;
+    var langName = { en: 'English', ja: '日本語', es: 'Español', zhs: '简体中文', zht: '繁體中文' }[d.lang] || d.lang;
     var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 4 : 3))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
-      [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.' + d.craft)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
+      [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.' + d.craft)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
     if (d.req) rows.push([t('r.req'), d.req]);
     $('rv-sum').innerHTML = rows.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]).replace(/\n/g, '<br>') + '</dd></div>'; }).join('');
     $('rv-days').innerHTML = j.itin.days.map(function (x) {

@@ -9,11 +9,11 @@
 <link rel="icon" href="../img/mugunghwa-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../style.css?v=1116m">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css?v=1116zh">
 </head>
 <!-- 여행 약관·환불 규정 (11-16 사장님 「완성이 되면 표준약관과 환불규정을 사이트에 게시해」) — 원본: 마케팅\VIP\약관\약관_환불규정_초안_{ko,en,ja,es}.md
-     · 언어 4개(한국어·English·日本語·Español) — 고른 언어의 본문(.legal-doc[data-tl])만 보인다 · 언어 정하는 방식은 대문과 같음(?lang= → 저장값 mtp_lang → 영어)
+     · 언어(한국어·English·日本語·简体中文·繁體中文 · Español 은 숨김 11-16) — 고른 언어의 본문(.legal-doc[data-tl])만 보인다 · 중국어 본문(zhs·zht)은 11-16 한국어판을 바탕으로 옮김 · 언어 정하는 방식은 대문과 같음(?lang= → 저장값 mtp_lang → 영어)
      · 11-16 사장님 「이런 거 있으면 다 찾아서 지워」「무슨 11월 16일 17일이야」 — 사이트 오픈 전이라 시행일·부칙(경과 규정) 모두 뺌 -->
 <body data-page="terms" class="legal-page">
 <nav class="topbar" aria-label="Site">
@@ -25,7 +25,9 @@
     <button type="button" data-set-lang="ko" lang="ko">한국어</button>
     <button type="button" data-set-lang="en" lang="en">EN</button>
     <button type="button" data-set-lang="ja" lang="ja">日本語</button>
-    <button type="button" data-set-lang="es" lang="es">Español</button>
+    <button type="button" data-set-lang="zhs" lang="zh-Hans">简体中文</button>
+    <button type="button" data-set-lang="zht" lang="zh-Hant">繁體中文</button>
+    <button type="button" data-set-lang="es" lang="es" hidden>Español</button>
   </div>
   <label class="lang-mobile">
     <span class="sr" data-i18n="lang.label">Language</span>
@@ -33,6 +35,8 @@
       <option value="ko">한국어</option>
       <option value="en">EN</option>
       <option value="ja">日本語</option>
+      <option value="zhs">简体中文</option>
+      <option value="zht">繁體中文</option>
       <option value="es">Español</option>
     </select>
   </label>
@@ -139,14 +143,14 @@
 <h3>Article 18 (Start and end of the journey)</h3>
 <p>The journey begins when our staff or the airport service team meet you at Incheon International Airport on Day 1, and ends when departure assistance is completed on the last day. If the contract or itinerary is changed, the change applies.</p>
 <h3>Article 19 (Duty to explain)</h3>
-<p>We will explain the important terms of the contract, and any changes, in the language you chose (English, Japanese or Spanish) so that you can understand them.</p>
+<p>We will explain the important terms of the contract, and any changes, in the language you chose (English, Japanese, Simplified Chinese or Traditional Chinese) so that you can understand them.</p>
 <h3>Article 20 (Insurance)</h3>
 <p class="lp"><span class="ln">1.</span><span>We hold insurance or mutual-aid cover, or have placed a business guarantee deposit, to pay you compensation if you suffer loss in connection with the journey.</span></p>
 <p class="lp"><span class="ln">2.</span><span>The journey price does not include travel insurance. We recommend that you take out travel insurance covering medical treatment, accidents, belongings and cancellation.</span></p>
 <h3>Article 21 (Disputes, governing law and language)</h3>
 <p class="lp"><span class="ln">1.</span><span>Matters not covered by these terms, or disputes about their meaning, are settled by agreement between you and us; failing agreement, the Domestic Travel Standard Terms, the applicable laws and general practice apply.</span></p>
 <p class="lp"><span class="ln">2.</span><span>This contract is governed by the laws of the Republic of Korea. You may apply for mediation to the Korea Consumer Agency or another dispute mediation body. Court proceedings are brought before the court with jurisdiction under the Korean Civil Procedure Act.</span></p>
-<p class="lp"><span class="ln">3.</span><span>The Korean version of these terms is the original; English, Japanese and Spanish versions are provided alongside it. Where the meaning is unclear, it is interpreted in your favour.</span></p>
+<p class="lp"><span class="ln">3.</span><span>The Korean version of these terms is the original; English, Japanese, Simplified Chinese and Traditional Chinese versions are provided alongside it. Where the meaning is unclear, it is interpreted in your favour.</span></p>
 </section>
 <section class="lg-sec lg-refund" data-sec="refund" id="refund">
 <h2>B. Cancellation &amp; Refund Policy</h2>
@@ -299,14 +303,14 @@
 <h3>제18조(여행의 시작과 종료)</h3>
 <p>여행은 1일차에 인천국제공항에서 회사 직원이나 공항 의전 요원이 손님을 만난 때 시작하고, 마지막 날 출국 의전이 끝난 때 종료됩니다. 계약이나 일정을 변경한 경우에는 변경된 내용에 따릅니다.</p>
 <h3>제19조(설명 의무)</h3>
-<p>회사는 계약의 중요한 내용과 그 변경 사항을 손님이 이해할 수 있도록 손님이 선택한 언어(영어·일본어·스페인어)로 설명합니다.</p>
+<p>회사는 계약의 중요한 내용과 그 변경 사항을 손님이 이해할 수 있도록 손님이 선택한 언어(영어·일본어·중국어 간체·중국어 번체)로 설명합니다.</p>
 <h3>제20조(보험)</h3>
 <p class="lp"><span class="ln">①</span><span>회사는 여행과 관련하여 손님에게 손해가 생긴 경우 보험금을 지급하기 위한 보험 또는 공제에 가입하거나 영업보증금을 예치합니다.</span></p>
 <p class="lp"><span class="ln">②</span><span>여행 요금에는 여행자 보험료가 들어 있지 않습니다. 질병·사고 치료비, 휴대품 손해, 여행 취소 등에 대비해 여행자 보험에 가입하시기를 권합니다.</span></p>
 <h3>제21조(분쟁 해결, 준거법, 언어)</h3>
 <p class="lp"><span class="ln">①</span><span>이 약관에 없는 사항이나 이 약관의 해석에 다툼이 있으면 회사와 손님이 합의하여 정하고, 합의가 되지 않으면 국내여행 표준약관, 관계 법령, 일반 관례에 따릅니다.</span></p>
 <p class="lp"><span class="ln">②</span><span>이 계약에는 대한민국 법을 적용합니다. 손님은 한국소비자원 등 분쟁조정기관에 조정을 신청할 수 있으며, 소송은 민사소송법에 따른 관할 법원에 제기합니다.</span></p>
-<p class="lp"><span class="ln">③</span><span>이 약관은 한국어판을 원문으로 하며 영어·일본어·스페인어판을 함께 둡니다. 뜻이 분명하지 않은 부분은 손님에게 유리하게 해석합니다.</span></p>
+<p class="lp"><span class="ln">③</span><span>이 약관은 한국어판을 원문으로 하며 영어·일본어·중국어 간체·중국어 번체판을 함께 둡니다. 뜻이 분명하지 않은 부분은 손님에게 유리하게 해석합니다.</span></p>
 </section>
 <section class="lg-sec lg-refund" data-sec="refund" id="refund-ko">
 <h2>나. 환불 규정</h2>
@@ -372,7 +376,7 @@
 <div class="legal-doc" data-tl="ja" lang="ja">
 <section class="lg-sec lg-company" data-sec="company">
 <h2>会社情報</h2>
-<div class="lg-tbl"><table class="lg-co"><tbody><tr><th scope="row">商号</th><td>株式会社 富滿（Booman Inc.／주식회사 부만）</td></tr><tr><th scope="row">ブランド</th><td>VIPHola.com</td></tr><tr><th scope="row">代表者</th><td>全賢珍（Jeon Hyeonjin）</td></tr><tr><th scope="row">事業者登録番号</th><td>297-81-03712</td></tr><tr><th scope="row">所在地</th><td>220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea</td></tr><tr><th scope="row">電話</th><td><a href="tel:+821042217066">+82-10-4221-7066</a></td></tr><tr><th scope="row">メール</th><td><a href="mailto:concierge@viphola.com">concierge@viphola.com</a></td></tr></tbody></table></div>
+<div class="lg-tbl"><table class="lg-co"><tbody><tr><th scope="row">商号</th><td>株式会社 富滿（Booman Inc.）</td></tr><tr><th scope="row">ブランド</th><td>VIPHola.com</td></tr><tr><th scope="row">代表者</th><td>全賢珍（Jeon Hyeonjin）</td></tr><tr><th scope="row">事業者登録番号</th><td>297-81-03712</td></tr><tr><th scope="row">所在地</th><td>220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea</td></tr><tr><th scope="row">電話</th><td><a href="tel:+821042217066">+82-10-4221-7066</a></td></tr><tr><th scope="row">メール</th><td><a href="mailto:concierge@viphola.com">concierge@viphola.com</a></td></tr></tbody></table></div>
 </section>
 <section class="lg-sec lg-terms" data-sec="terms" id="terms-ja">
 <h2>A. 旅行約款</h2>
@@ -459,14 +463,14 @@
 <h3>第18条（旅行の開始と終了）</h3>
 <p>ご旅行は、1日目に仁川国際空港で当社スタッフまたは空港アシストの担当者がお客様をお迎えした時に始まり、最終日に出発アシストが終わった時に終了します。契約や旅程を変更した場合は、変更後の内容に従います。</p>
 <h3>第19条（説明義務）</h3>
-<p>当社は、契約の重要な内容とその変更について、お客様がお選びになった言語（英語・日本語・スペイン語）で、ご理解いただけるようご説明します。</p>
+<p>当社は、契約の重要な内容とその変更について、お客様がお選びになった言語（英語・日本語・中国語簡体字・中国語繁体字）で、ご理解いただけるようご説明します。</p>
 <h3>第20条（保険）</h3>
 <p class="lp"><span class="ln">①</span><span>当社は、旅行に関連してお客様に損害が生じた場合に保険金を支払うための保険または共済に加入するか、営業保証金を預託しています。</span></p>
 <p class="lp"><span class="ln">②</span><span>旅行代金に旅行保険料は含まれていません。ご病気・事故の治療費、携行品の損害、旅行の取消などに備えて、旅行保険へのご加入をおすすめします。</span></p>
 <h3>第21条（紛争の解決、準拠法、言語）</h3>
 <p class="lp"><span class="ln">①</span><span>本約款に定めのない事項や本約款の解釈について争いがある場合は、当社とお客様が協議して定め、協議が整わない場合は国内旅行標準約款、関係法令および一般慣行に従います。</span></p>
 <p class="lp"><span class="ln">②</span><span>本契約には大韓民国の法律が適用されます。お客様は韓国消費者院などの紛争調停機関に調停を申し立てることができ、訴訟は韓国の民事訴訟法に基づく管轄裁判所に提起します。</span></p>
-<p class="lp"><span class="ln">③</span><span>本約款は韓国語版を原文とし、英語・日本語・スペイン語版を併せて備えます。意味が明確でない部分は、お客様に有利に解釈します。</span></p>
+<p class="lp"><span class="ln">③</span><span>本約款は韓国語版を原文とし、英語・日本語・中国語簡体字・中国語繁体字版を併せて備えます。意味が明確でない部分は、お客様に有利に解釈します。</span></p>
 </section>
 <section class="lg-sec lg-refund" data-sec="refund" id="refund-ja">
 <h2>B. 取消・返金規定</h2>
@@ -619,14 +623,14 @@
 <h3>Artículo 18 (Inicio y fin del viaje)</h3>
 <p>El viaje comienza cuando nuestro personal o el equipo de asistencia aeroportuaria le recibe en el Aeropuerto Internacional de Incheon el día 1, y termina cuando concluye la asistencia a la salida el último día. Si se modifica el contrato o el itinerario, se aplica lo modificado.</p>
 <h3>Artículo 19 (Deber de información)</h3>
-<p>Le explicaremos las condiciones importantes del contrato, y cualquier cambio, en el idioma que haya elegido (inglés, japonés o español), de forma que pueda entenderlas.</p>
+<p>Le explicaremos las condiciones importantes del contrato, y cualquier cambio, en el idioma que haya elegido (inglés, japonés, chino simplificado o chino tradicional), de forma que pueda entenderlas.</p>
 <h3>Artículo 20 (Seguros)</h3>
 <p class="lp"><span class="ln">1.</span><span>Tenemos contratado un seguro o una cobertura mutua, o hemos constituido un depósito de garantía, para pagarle una indemnización si sufre daños en relación con el viaje.</span></p>
 <p class="lp"><span class="ln">2.</span><span>El precio del viaje no incluye el seguro de viaje. Le recomendamos contratar un seguro de viaje que cubra gastos médicos, accidentes, equipaje y cancelación.</span></p>
 <h3>Artículo 21 (Conflictos, ley aplicable e idioma)</h3>
 <p class="lp"><span class="ln">1.</span><span>Lo que no prevean estas condiciones, o las discrepancias sobre su interpretación, se resolverán de mutuo acuerdo; a falta de acuerdo, se aplicarán las Condiciones Generales Tipo para Viajes Nacionales, la legislación aplicable y los usos generales.</span></p>
 <p class="lp"><span class="ln">2.</span><span>Este contrato se rige por la legislación de la República de Corea. Usted puede solicitar una mediación ante la Agencia de Consumo de Corea (Korea Consumer Agency) u otro organismo de mediación. Las acciones judiciales se presentarán ante el tribunal competente conforme a la Ley de Enjuiciamiento Civil de Corea.</span></p>
-<p class="lp"><span class="ln">3.</span><span>La versión en coreano de estas condiciones es la original; se ofrecen también versiones en inglés, japonés y español. Cuando el sentido no sea claro, se interpretará a su favor.</span></p>
+<p class="lp"><span class="ln">3.</span><span>La versión en coreano de estas condiciones es la original; se ofrecen también versiones en inglés, japonés, chino simplificado y chino tradicional. Cuando el sentido no sea claro, se interpretará a su favor.</span></p>
 </section>
 <section class="lg-sec lg-refund" data-sec="refund" id="refund-es">
 <h2>B. Política de cancelación y reembolso</h2>
@@ -689,6 +693,326 @@
 </section>
 </div>
 
+<div class="legal-doc" data-tl="zhs" lang="zh-Hans">
+<section class="lg-sec lg-company" data-sec="company">
+<h2>公司信息</h2>
+<div class="lg-tbl"><table class="lg-co"><tbody><tr><th scope="row">公司名称</th><td>株式会社 富滿（Booman Inc.）</td></tr><tr><th scope="row">品牌</th><td>VIPHola.com</td></tr><tr><th scope="row">代表</th><td>Jeon Hyeonjin</td></tr><tr><th scope="row">营业执照号</th><td>297-81-03712</td></tr><tr><th scope="row">地址</th><td>220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea</td></tr><tr><th scope="row">电话</th><td><a href="tel:+821042217066">+82-10-4221-7066</a></td></tr><tr><th scope="row">电子邮箱</th><td><a href="mailto:concierge@viphola.com">concierge@viphola.com</a></td></tr></tbody></table></div>
+</section>
+<section class="lg-sec lg-terms" data-sec="terms" id="terms-zhs">
+<h2>A. 旅行条款</h2>
+<p>本条款以韩国公平交易委员会《国内旅行标准条款》（标准条款第10020号，2019年8月30日修订）为基础，并针对根据您的需求量身安排行程的定制旅行而制定。</p>
+<h3>第1条（目的）</h3>
+<p>本条款规定株式会社 富滿（以下称“本公司”）与旅行者（以下称“您”）之间签订的 VIPHola.com 定制旅行合同的具体履行事项，以及双方应遵守的事项。</p>
+<h3>第2条（用语定义）</h3>
+<p class="lp"><span class="ln">1.</span><span>“定制旅行”是指本公司根据您申请的日期、人数、车辆及附加项目，规划并实施交通、住宿、餐饮、观光等整体安排的旅行，相当于《国内旅行标准条款》中的“希望旅行”。</span></p>
+<p class="lp"><span class="ln">2.</span><span>“第1天”是指您抵达仁川国际机场的旅行首日，即报价单上载明的日期。</span></p>
+<p class="lp"><span class="ln">3.</span><span>“合作商家”是指本公司为本次旅行预订并代您支付费用的酒店、餐厅、水疗、车辆公司、机场礼宾服务公司、导游、体验项目及工坊、铁路、摄影师、韩服制作商等其他经营者。</span></p>
+<p class="lp"><span class="ln">4.</span><span>“报价单”是指本公司收到您的申请后，通过电子邮件发送的载明行程、包含项目、费用及有效期的文件及其付款页面。</span></p>
+<p class="lp"><span class="ln">5.</span><span>“行程费用”是指报价单上载明的合计金额（韩元），即您所支付的金额。</span></p>
+<p class="lp"><span class="ln">6.</span><span>“确认通知”是指本公司完成全部预订后，通过电子邮件及您的行程页面发送的预订确认内容。</span></p>
+<h3>第3条（本公司与您的义务）</h3>
+<p class="lp"><span class="ln">①</span><span>本公司为向您提供安全、满意的旅行，在规划和实施旅行的过程中，忠实履行所承担的职责。</span></p>
+<p class="lp"><span class="ln">②</span><span>为确保旅行安全，您应配合本公司及合作商家的指引，并在申请时告知健康状况、饮食禁忌、过敏、行动不便等旅行所需了解的事项。</span></p>
+<h3>第4条（合同的构成）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行合同由本条款（含“B. 取消与退款规定”）、报价单、行程表及确认通知组成。</span></p>
+<p class="lp"><span class="ln">②</span><span>行程表载明每日的游览地点与内容、交通方式、住宿地点、餐饮、购物安排，以及本公司提供的服务和注意事项。购物仅在行程表所列的地点、按所列的次数进行。</span></p>
+<p class="lp"><span class="ln">③</span><span>本公司的名称及所在地，以本文件开头的“公司信息”为准。</span></p>
+<h3>第5条（合同的成立）</h3>
+<p class="lp"><span class="ln">①</span><span>您在网站上提交申请后，本公司将在48小时内通过电子邮件发送报价单。仅提交申请并不构成合同成立，此阶段无需支付任何费用。</span></p>
+<p class="lp"><span class="ln">②</span><span>您在报价单付款页面阅读并同意本条款及特别条款、完成付款，且本公司通过页面和电子邮件告知付款完成时，合同即告成立。此时视为本公司已向您交付合同、条款及行程表（《国内旅行标准条款》第8条）。</span></p>
+<p class="lp"><span class="ln">③</span><span>报价单仅可在载明的有效期内付款。有效期届满后，您需要重新获取报价单，费用可能有所变动。</span></p>
+<h3>第6条（拒绝签订合同）</h3>
+<p>有下列情形之一的，本公司可以拒绝签订合同：</p>
+<p class="lp"><span class="ln">1.</span><span>因疾病、身体异常等需要个别照护，经认定难以安全实施本行程的；</span></p>
+<p class="lp"><span class="ln">2.</span><span>超过报价单载明的最多人数的；</span></p>
+<p class="lp"><span class="ln">3.</span><span>无法在您希望的日期落实住宿等主要预订，因而无法提供报价的。</span></p>
+<h3>第7条（特别条款）</h3>
+<p class="lp"><span class="ln">①</span><span>本公司与您可在不违反相关法律法规的范围内，以电子文件形式订立特别条款。</span></p>
+<p class="lp"><span class="ln">②</span><span>“B. 取消与退款规定”中标有 <strong><span class="lg-mark">【特别条款】</span></strong> 的内容，与《国内旅行标准条款》及《消费者纠纷解决标准》（公平交易委员会公告）不同，并优先于其适用。本公司在付款页面说明这一事实，仅在您另行勾选确认栏表示同意后才接受付款。</span></p>
+<p class="lp"><span class="ln">③</span><span>特别条款未规定的事项，依照本条款、《国内旅行标准条款》及相关法律法规处理。</span></p>
+<h3>第8条（合同文件的交付与安全信息的提供）</h3>
+<p class="lp"><span class="ln">①</span><span>合同成立后，本公司通过电子邮件及您的专属页面提供报价单、条款及行程表，并在完成预订后发送确认通知。</span></p>
+<p class="lp"><span class="ln">②</span><span>本公司提供旅行目的地的安全信息及紧急联系电话（报警112，火警与急救119，1330旅游咨询热线）；出发前如安全信息有变，也会将变更内容告知您。</span></p>
+<h3>第9条（行程费用）</h3>
+<p class="lp"><span class="ln">①</span><span>行程费用包括报价单上标为“已包含”的住宿、餐饮、专车及司机、机场礼宾服务、导游、礼宾服务、体验项目、行程表内的门票，以及旅行中所需的税费。由于是定制旅行，费用构成以报价单约定的内容为准（《国内旅行标准条款》第9条第1款但书）。</span></p>
+<p class="lp"><span class="ln">②</span><span>除报价单另有载明外，下列费用不包含在行程费用中：国际航班机票；入境韩国所需的签证或电子旅行许可（K-ETA）费用；旅行保险费；行程表以外的餐饮、饮品及购物费用；客房额外消费（迷你吧等）；个人开销；物品寄往海外时由目的地国家征收的关税等进口税费。</span></p>
+<p class="lp"><span class="ln">③</span><span>于22:00至06:00之间抵达或出发的航班，机场礼宾服务将加收费用，并计入报价单。</span></p>
+<p class="lp"><span class="ln">④</span><span><strong><span class="lg-mark">【特别条款】</span></strong> 行程费用以韩元（KRW）计价，在报价单付款页面以信用卡（KG Inicis）一次性全额支付。《国内旅行标准条款》第9条规定签约时支付定金（不超过行程费用的10%），余款于出发前一天付清；但本行程须在付款后立即向合作商家预订并支付费用，因此在付款时收取全额。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>发卡机构将韩元金额换算为信用卡币种时产生的汇率差额及境外交易手续费，依发卡机构的规定处理，并非由本公司设定或收取。</span></p>
+<p class="lp"><span class="ln">⑥</span><span>付款完成后，本公司不会提高行程费用。仅在您变更行程或附加项目时结算差额。</span></p>
+<h3>第10条（预订的落实与确认）</h3>
+<p class="lp"><span class="ln">①</span><span>本公司收到付款后向合作商家办理预订，全部预订落实后发送确认通知。</span></p>
+<p class="lp"><span class="ln">②</span><span>如无法落实报价单所列的商家或时间，本公司将通过电子邮件提出同等或更高水准的替代方案，并写明变更内容及费用差额，征得您的同意（《国内旅行标准条款》第10条第2款）；差额依第11条第4款结算。</span></p>
+<p class="lp"><span class="ln">③</span><span>如您不同意替代方案，可以解除合同，此时适用“B. 取消与退款规定”第3条（因本公司原因取消的情形）。</span></p>
+<h3>第11条（旅行条件的变更与费用结算）</h3>
+<p class="lp"><span class="ln">①</span><span>合同约定的旅行条件，仅在下列情形之一时可以变更：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>为保障您的安全与权益，经您提出请求，或因当地情况不得已而经双方协商一致的；</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>因自然灾害、战乱、政府命令、交通或住宿机构等罢工、停业等原因，无法实现旅行目的的。</span></p>
+<p class="lp"><span class="ln">②</span><span>本公司变更行程时，应在当日行程开始前写明变更的日期时间、变更内容及因变更产生的费用，征得您的书面（含电子邮件）同意。</span></p>
+<p class="lp"><span class="ln">③</span><span>因自然灾害、事故等紧急原因难以事先征得同意时，本公司可在未经同意的情况下变更行程，并事后以书面形式说明变更原因及费用。</span></p>
+<p class="lp"><span class="ln">④</span><span>因旅行条件变更导致费用增减的，出发前的变更部分在第1天之前结算，旅行中的变更部分在旅行最后一天起10日内结算。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>行程表中事先载明的替代安排（如第4天恰逢景福宫休馆的周二时改去 Leeum 美术馆等），不视为行程变更。</span></p>
+<h3>第12条（应您的要求变更）</h3>
+<p class="lp"><span class="ln">①</span><span>如您希望变更日期、人数、车辆或附加项目，请发送邮件至 <a href="mailto:concierge@viphola.com">concierge@viphola.com</a>。本公司将在可行范围内协助变更，并写明变更内容及费用，再次征得您的确认。</span></p>
+<p class="lp"><span class="ln">②</span><span>因变更而由合作商家收取的变更费、取消费及费用差额由您承担。取消附加项目等使费用减少的变更，按“B. 取消与退款规定”第2条第7款的部分取消处理。</span></p>
+<p class="lp"><span class="ln">③</span><span>如未能就变更达成一致，则按原合同执行，或由您依照“B. 取消与退款规定”取消。</span></p>
+<h3>第13条（旅行者地位的转让）</h3>
+<p class="lp"><span class="ln">①</span><span>您因个人原因欲将本次旅行转让给他人时，须经本公司同意。本公司可以您支付更改姓名等转让所产生的费用（含合作商家的手续费）为条件予以同意，并规定期限请求支付该费用。</span></p>
+<p class="lp"><span class="ln">②</span><span>如存在合作商家不接受更改姓名等难以转让的不得已情形，本公司可以不予同意。</span></p>
+<p class="lp"><span class="ln">③</span><span>转让自本公司同意时生效；以支付费用为条件同意的，自您在规定期限内支付该费用时生效。转让后，您在合同项下的全部权利和义务转移给受让人。</span></p>
+<h3>第14条（本公司的责任）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行存在瑕疵时，您可以要求本公司纠正瑕疵或减少费用。但纠正所需费用过高，或者存在其他无法合理期待纠正的情形时，不得要求纠正。</span></p>
+<p class="lp"><span class="ln">②</span><span>您可以请求损害赔偿，以代替要求纠正或减少费用，或与要求纠正、减少费用一并提出。</span></p>
+<p class="lp"><span class="ln">③</span><span>第1款和第2款的权利在旅行期间亦可行使，并应自旅行最后一天起6个月内行使。</span></p>
+<p class="lp"><span class="ln">④</span><span>自旅行开始至结束，本公司及其员工、合作商家及其员工（以下称“相关人员”）在旅行业务中因故意或过失给您造成损害的，由本公司承担责任。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>因行程内交通工具（专车、庆州延伸行程中的 KTX 等）延误或交通拥堵等给您造成损失的，由本公司赔偿；但本公司证明自身无故意或过失的除外。</span></p>
+<p class="lp"><span class="ln">⑥</span><span>本公司如不能证明本公司或相关人员在接收、交付、保管您的行李时已尽到注意义务，应赔偿因行李遗失、损坏或延误到达所造成的损失。</span></p>
+<h3>第15条（航班与入境）</h3>
+<p class="lp"><span class="ln">①</span><span>国际航班不包含在行程费用中，由您自行预订。本公司根据您告知的航班安排机场礼宾服务和车辆。</span></p>
+<p class="lp"><span class="ln">②</span><span>航班号或时间如有变动，请立即告知我们。因航班变更导致合作商家费用变动（如夜间加价等）的，差额由您承担。</span></p>
+<p class="lp"><span class="ln">③</span><span>入境韩国所需的护照及签证或电子旅行许可（K-ETA）由您自行准备。因被拒绝入境或签证、电子旅行许可不齐全而无法参加旅行的，视为您自身原因，适用“B. 取消与退款规定”第2条。</span></p>
+<p class="lp"><span class="ln">④</span><span>因航班延误或取消而在旅行中未能使用部分行程的，适用“B. 取消与退款规定”第5条第2款。</span></p>
+<h3>第16条（出发前解除合同）</h3>
+<p>您或本公司均可在第1天之前解除合同。此时的退款与赔偿，依照“B. 取消与退款规定”处理。</p>
+<h3>第17条（出发后终止合同）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行开始后，如有不得已的事由，您或本公司仍可终止合同。但该事由因一方过失而产生的，由该方向对方赔偿损失。</span></p>
+<p class="lp"><span class="ln">②</span><span>合同终止后，本公司将把您送至首尔的住宿地点或仁川国际机场。</span></p>
+<p class="lp"><span class="ln">③</span><span>因终止合同产生的额外费用，由事由所属的一方承担；事由不属于任何一方的，由双方各承担50%。</span></p>
+<p class="lp"><span class="ln">④</span><span>旅行存在重大瑕疵且未获纠正，或无法期待按合同内容履行的，您可以终止合同。此时本公司丧失费用请求权；但您已从已实施的旅行中获得利益的，应将该利益返还本公司。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>依第4款终止合同的，本公司采取终止所需的措施，并将您送至首尔的住宿地点或仁川国际机场，相关费用原则上由本公司承担。</span></p>
+<h3>第18条（旅行的开始与结束）</h3>
+<p>旅行自第1天本公司员工或机场礼宾人员在仁川国际机场与您会合时开始，至最后一天出境礼宾服务结束时终止。合同或行程有变更的，依变更后的内容。</p>
+<h3>第19条（说明义务）</h3>
+<p>本公司以您选择的语言（英语、日语、简体中文、繁体中文）说明合同的重要内容及其变更事项，以便您理解。</p>
+<h3>第20条（保险）</h3>
+<p class="lp"><span class="ln">①</span><span>为在与旅行相关的事项中给您造成损害时支付保险金，本公司投保保险或加入共济，或缴存营业保证金。</span></p>
+<p class="lp"><span class="ln">②</span><span>行程费用不含旅行保险费。建议您投保旅行保险，以应对疾病或意外的医疗费用、随身物品损失、行程取消等情况。</span></p>
+<h3>第21条（争议解决、准据法与语言）</h3>
+<p class="lp"><span class="ln">①</span><span>本条款未规定的事项，或对本条款的解释存在争议时，由本公司与您协商确定；协商不成的，依照《国内旅行标准条款》、相关法律法规及一般惯例处理。</span></p>
+<p class="lp"><span class="ln">②</span><span>本合同适用大韩民国法律。您可以向韩国消费者院等纠纷调解机构申请调解；诉讼应向依照韩国《民事诉讼法》具有管辖权的法院提起。</span></p>
+<p class="lp"><span class="ln">③</span><span>本条款以韩文版为原文，并同时提供英文、日文、简体中文、繁体中文版本。含义不明确之处，作有利于您的解释。</span></p>
+</section>
+<section class="lg-sec lg-refund" data-sec="refund" id="refund-zhs">
+<h2>B. 取消与退款规定</h2>
+<h3>第1条（适用范围与特别条款说明）</h3>
+<p class="lp"><span class="ln">①</span><span>本规定适用于 VIPHola.com 定制旅行的取消与退款。</span></p>
+<p class="lp"><span class="ln">②</span><span>本行程专为您安排，本公司在您付款后立即代您向酒店、餐厅、水疗、车辆、机场礼宾服务等合作商家预订并支付费用。因此，您取消时，可能产生合作商家依其自身规定收取的取消费。</span></p>
+<p class="lp"><span class="ln">③</span><span><strong><span class="lg-mark">【特别条款】</span></strong> 本规定中标有<span class="lg-mark">【特别条款】</span>的条款，与《国内旅行标准条款》（第10020号）及《消费者纠纷解决标准》（公平交易委员会公告）中有关国内旅行的标准不同，并优先于其适用。供您参考：《消费者纠纷解决标准》规定，旅行者取消含住宿的旅行时，第1天的5天前为止全额退款，2天前为止赔偿费用的10%，1天前为止赔偿20%，当天赔偿30%。本公司在付款页面说明此差异，仅在您勾选确认栏表示同意后才接受付款。</span></p>
+<h3>第2条（您取消的情形）<span class="lg-mark">【特别条款】</span></h3>
+<p class="lp"><span class="ln">①</span><span>退款金额按以下方式计算。</span></p>
+<p class="lg-formula"><strong>退款金额 ＝ 已付行程费用 − 合作商家取消费 − 本公司取消手续费</strong></p>
+<p class="lp"><span class="ln">②</span><span>本公司取消手续费为行程费用乘以下列比例所得的金额。</span></p>
+<div class="lg-tbl"><table><thead><tr><th scope="col">取消申请送达本公司的日期（以第1天为准，韩国时间）</th><th scope="col" class="n">本公司取消手续费（占行程费用的比例）</th></tr></thead><tbody><tr><td>第1天的30天前为止</td><td class="n">5%</td></tr><tr><td>第1天的29天前至8天前</td><td class="n">10%</td></tr><tr><td>第1天的7天前至旅行当天，以及未经联系而未出现的情形</td><td class="n">20%</td></tr></tbody></table></div>
+<p class="lp"><span class="ln">③</span><span>天数按从第1天起倒数的日历日（韩国时间0时至24时）计算。例如第1天为5月10日，则4月10日前送达的取消属于“30天前为止”，4月11日至5月2日送达的取消属于“29天前至8天前”，5月3日起送达的取消属于“7天前起”。</span></p>
+<p class="lp"><span class="ln">④</span><span>合作商家取消费按以下方式确定：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>仅扣除合作商家依其取消规定实际向本公司收取或未退还的金额，本公司不另行加收任何费用。</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>各商家的取消规定不尽相同，许多商家对前1天或当天的取消收取全额费用。如您要求，我们将向您出示商家名称、相应的取消规定及收费金额。</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>本公司会请求合作商家免除或减少取消费，日后如有退回的金额，将另行退还给您。</span></p>
+<p class="lp lp2"><span class="ln">4.</span><span>尚未预订或尚未支付费用的项目，不产生合作商家取消费。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>合作商家取消费与本公司取消手续费的合计金额，不超过您已支付的行程费用。</span></p>
+<p class="lp"><span class="ln">⑥</span><span>下列情形亦适用本条：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>因您患病、受伤，或家人去世、住院等您方原因而取消的。《国内旅行标准条款》第13条第2款第2项规定此类情形可无需赔偿解除合同，但本行程适用本条；</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>因被拒绝入境或签证、电子旅行许可不齐全，导致您无法参加旅行的；</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>因您严重打扰他人或合作商家，或显著妨碍旅行安全进行，本公司于出发前解除合同的。</span></p>
+<p class="lp"><span class="ln">⑦</span><span>仅取消部分附加项目或部分行程的，以该项目的金额为基准，同样适用第1款至第5款。两位中仅一位取消的，仅将餐饮、水疗等金额随人数变化的项目作为部分取消处理；客房、车辆、导游、礼宾服务、机场礼宾服务等按团计价的项目不予退款。</span></p>
+<h3>第3条（因本公司原因取消的情形）</h3>
+<p class="lp"><span class="ln">①</span><span>因本公司过错由本公司取消旅行，或因本公司未能遵守合同条件而由您在出发前解除合同的（含旅行条款第10条第3款的情形），本公司将全额退还您已支付的行程费用，并另行支付下列赔偿金。此时不收取合作商家取消费及本公司取消手续费。</span></p>
+<div class="lg-tbl"><table><thead><tr><th scope="col">本公司通知取消或变更合同条件的日期（以第1天为准）</th><th scope="col">赔偿金（占行程费用的比例）</th></tr></thead><tbody><tr><td>第1天的5天前为止</td><td>无（全额退款）</td></tr><tr><td>第1天的4天前至2天前</td><td>10%</td></tr><tr><td>第1天的前1天</td><td>20%</td></tr><tr><td>旅行当天或未通知的情形</td><td>30%</td></tr></tbody></table></div>
+<p class="lp"><span class="ln">②</span><span>上述赔偿标准与《消费者纠纷解决标准》中国内旅行（含住宿的旅行）的标准相同。</span></p>
+<h3>第4条（因自然灾害等不可归责于任何一方的事由取消的情形）</h3>
+<p class="lp"><span class="ln">①</span><span>因下列不可归责于本公司或您任何一方的事由而无法进行旅行的，本公司或您均可在出发前无需赔偿解除合同（《国内旅行标准条款》第13条第2款）：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>因自然灾害、战乱、政府命令、交通或住宿机构等罢工、停业等原因，无法实现旅行目的的；</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>旅行地区或设施被下达禁止聚集、关闭设施、暂停营业等行政命令，或被宣布为特别灾难地区，导致无法履行合同的；</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>因大韩民国政府采取禁止入境、隔离措施，或您所在国家与韩国之间的航班全面停飞，导致您无法来韩的。</span></p>
+<p class="lp"><span class="ln">②</span><span>此时本公司不收取取消手续费，并首先请求合作商家全额退款。<strong><span class="lg-mark">【特别条款】</span></strong> 仅凭证明扣除合作商家最终未退还的金额，其余全部退还给您。《消费者纠纷解决标准》规定，此类情形应在不收取违约金的情况下退款。</span></p>
+<p class="lp"><span class="ln">③</span><span><strong><span class="lg-mark">【特别条款】</span></strong> 在旅行地区被宣布进入灾难状态，或因一级传染病发布传染病危机预警“严重”级别、且政府建议取消或推迟旅行、减少出行等合同履行相当困难的情况下，您取消旅行的，本公司取消手续费减免50%。合作商家取消费依第2条第4款处理。《消费者纠纷解决标准》规定，此类情形违约金整体减免50%。</span></p>
+<h3>第5条（旅行中未使用部分服务的情形）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行开始后，因您自身原因未使用住宿、餐饮、观光等行程费用所含服务的，不得请求退还该部分费用（《国内旅行标准条款》第10条第6款）。但本公司将向合作商家请求退款，如有退回的金额，将如数退还给您。</span></p>
+<p class="lp"><span class="ln">②</span><span>因宫殿临时闭馆、天气恶劣、商家突然停业、航班延误或取消等不可归责于本公司或您任何一方的事由而无法进行部分行程的，本公司将尽可能提出同等水准的替代安排。替代安排的费用低于原安排，或无法替代的，本公司将退还无需向合作商家支付或已从合作商家收回的金额。</span></p>
+<p class="lp"><span class="ln">③</span><span>因本公司或合作商家的过错未能提供部分行程的，本公司退还该项目的金额，其他损失依旅行条款第14条赔偿。</span></p>
+<p class="lp"><span class="ln">④</span><span>旅行中终止合同的，适用旅行条款第17条。</span></p>
+<h3>第6条（取消申请方式）</h3>
+<p class="lp"><span class="ln">①</span><span>如需取消，请注明报价编号和姓名，发送电子邮件至 <a href="mailto:concierge@viphola.com">concierge@viphola.com</a>。以本公司收到邮件时的韩国时间作为取消时间。</span></p>
+<p class="lp"><span class="ln">②</span><span>旅行期间，您也可以先通过电话或 WhatsApp 告知专属礼宾专员。此时以该联系时间作为取消时间，本公司将通过电子邮件向您确认相关内容。</span></p>
+<p class="lp"><span class="ln">③</span><span>本公司收到取消申请后，将及时通过电子邮件告知受理情况、预计退款金额及合作商家取消费明细。</span></p>
+<h3>第7条（退款方式与期限）</h3>
+<p class="lp"><span class="ln">①</span><span>退款通过撤销所付信用卡的交易（全部或部分撤销）进行，按韩元金额原额退还。换算为信用卡币种后的金额，可能因发卡机构的汇率及手续费而与付款时不同。</span></p>
+<p class="lp"><span class="ln">②</span><span>退款期限如下：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>出发前取消：自收到取消申请之日起7日内撤销信用卡交易。但第1天早于该期限到来的，在第1天之前撤销（第1天当天收到的取消申请，自收到之日起7日内）。</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>合作商家取消费未能在上述期限内确定的，先按本公司确认的商家规定计算出的金额退款，确定后再补退差额。</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>旅行中产生的退款与结算：自旅行最后一天起10日内办理（《国内旅行标准条款》第10条第4款、第5款）。</span></p>
+<p class="lp lp2"><span class="ln">4.</span><span>第3条的赔偿金等超出付款金额、无法通过撤销信用卡交易退还的金额，将在上述期限内汇入您指定的银行账户，汇款手续费由本公司承担。</span></p>
+<p class="lp"><span class="ln">③</span><span>信用卡交易撤销反映在您账单上的时间，可能因发卡机构而异。</span></p>
+<p class="lp"><span class="ln">④</span><span>因所付信用卡已注销或遗失等原因无法撤销交易的，本公司将与您协商后汇入银行账户。</span></p>
+<h3>第8条（退款金额的计算方法）</h3>
+<p>以行程费用为₩10,000,000、于第1天的20天前取消、合作商家取消费合计₩1,200,000为例，计算如下：</p>
+<div class="lg-tbl"><table><thead><tr><th scope="col">项目</th><th scope="col" class="n">金额</th></tr></thead><tbody><tr><td>已付行程费用</td><td class="n">₩10,000,000</td></tr><tr><td>合作商家取消费</td><td class="n">− ₩1,200,000</td></tr><tr><td>本公司取消手续费（29天前至8天前：10%）</td><td class="n">− ₩1,000,000</td></tr><tr><td><strong>退款金额</strong></td><td class="n"><strong>₩7,800,000</strong></td></tr></tbody></table></div>
+</section>
+<section class="lg-sec lg-supp" data-sec="supp">
+<p class="lg-contact">联系我们：<a href="mailto:concierge@viphola.com">concierge@viphola.com</a></p>
+</section>
+</div>
+
+<div class="legal-doc" data-tl="zht" lang="zh-Hant">
+<section class="lg-sec lg-company" data-sec="company">
+<h2>公司資訊</h2>
+<div class="lg-tbl"><table class="lg-co"><tbody><tr><th scope="row">公司名稱</th><td>株式會社 富滿（Booman Inc.）</td></tr><tr><th scope="row">品牌</th><td>VIPHola.com</td></tr><tr><th scope="row">代表</th><td>Jeon Hyeonjin</td></tr><tr><th scope="row">營業執照號</th><td>297-81-03712</td></tr><tr><th scope="row">地址</th><td>220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea</td></tr><tr><th scope="row">電話</th><td><a href="tel:+821042217066">+82-10-4221-7066</a></td></tr><tr><th scope="row">電子郵件</th><td><a href="mailto:concierge@viphola.com">concierge@viphola.com</a></td></tr></tbody></table></div>
+</section>
+<section class="lg-sec lg-terms" data-sec="terms" id="terms-zht">
+<h2>A. 旅行條款</h2>
+<p>本條款以韓國公平交易委員會《國內旅行標準條款》（標準條款第10020號，2019年8月30日修訂）為基礎，並針對依您的需求量身安排行程的訂製旅行而訂定。</p>
+<h3>第1條（目的）</h3>
+<p>本條款規定株式會社 富滿（以下稱「本公司」）與旅行者（以下稱「您」）之間簽訂的 VIPHola.com 訂製旅行契約之具體履行事項，以及雙方應遵守的事項。</p>
+<h3>第2條（用語定義）</h3>
+<p class="lp"><span class="ln">1.</span><span>「訂製旅行」是指本公司依您申請的日期、人數、車輛及附加項目，規劃並實施交通、住宿、餐飲、觀光等整體安排的旅行，相當於《國內旅行標準條款》中的「希望旅行」。</span></p>
+<p class="lp"><span class="ln">2.</span><span>「第1天」是指您抵達仁川國際機場的旅行首日，即報價單上記載的日期。</span></p>
+<p class="lp"><span class="ln">3.</span><span>「合作業者」是指本公司為本次旅行預訂並代您支付費用的飯店、餐廳、水療、車輛公司、機場禮賓服務公司、導遊、體驗項目及工坊、鐵路、攝影師、韓服製作業者等其他業者。</span></p>
+<p class="lp"><span class="ln">4.</span><span>「報價單」是指本公司收到您的申請後，以電子郵件寄送的記載行程、包含項目、費用及有效期限的文件及其付款頁面。</span></p>
+<p class="lp"><span class="ln">5.</span><span>「行程費用」是指報價單上記載的合計金額（韓元），即您所支付的金額。</span></p>
+<p class="lp"><span class="ln">6.</span><span>「確認通知」是指本公司完成全部預訂後，以電子郵件及您的行程頁面寄送的預訂確認內容。</span></p>
+<h3>第3條（本公司與您的義務）</h3>
+<p class="lp"><span class="ln">①</span><span>本公司為提供您安全、滿意的旅行，在規劃與實施旅行的過程中，忠實履行所負責的職務。</span></p>
+<p class="lp"><span class="ln">②</span><span>為確保旅行安全，您應配合本公司及合作業者的引導，並於申請時告知健康狀況、飲食限制、過敏、行動不便等旅行所需知悉的事項。</span></p>
+<h3>第4條（契約的構成）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行契約由本條款（含「B. 取消與退款規定」）、報價單、行程表及確認通知構成。</span></p>
+<p class="lp"><span class="ln">②</span><span>行程表記載每日的造訪地點與內容、交通方式、住宿地點、餐飲、購物安排，以及本公司提供的服務與注意事項。購物僅在行程表所列的地點、依所列的次數進行。</span></p>
+<p class="lp"><span class="ln">③</span><span>本公司的名稱及所在地，以本文件開頭的「公司資訊」為準。</span></p>
+<h3>第5條（契約的成立）</h3>
+<p class="lp"><span class="ln">①</span><span>您在網站上送出申請後，本公司將於48小時內以電子郵件寄送報價單。僅送出申請並不構成契約成立，此階段無需支付任何費用。</span></p>
+<p class="lp"><span class="ln">②</span><span>您在報價單付款頁面閱讀並同意本條款及特別條款、完成付款，且本公司透過頁面與電子郵件告知付款完成時，契約即告成立。此時視為本公司已將契約、條款及行程表交付予您（《國內旅行標準條款》第8條）。</span></p>
+<p class="lp"><span class="ln">③</span><span>報價單僅可於記載的有效期限內付款。有效期限屆滿後，您須重新取得報價單，費用可能有所變動。</span></p>
+<h3>第6條（拒絕簽訂契約）</h3>
+<p>有下列情形之一者，本公司得拒絕簽訂契約：</p>
+<p class="lp"><span class="ln">1.</span><span>因疾病、身體異常等需要個別照護，經認定難以安全實施本行程者；</span></p>
+<p class="lp"><span class="ln">2.</span><span>超過報價單記載之最多人數者；</span></p>
+<p class="lp"><span class="ln">3.</span><span>無法於您希望的日期確保住宿等主要預訂，因而無法提供報價者。</span></p>
+<h3>第7條（特別條款）</h3>
+<p class="lp"><span class="ln">①</span><span>本公司與您得於不違反相關法令的範圍內，以電子文件形式訂立特別條款。</span></p>
+<p class="lp"><span class="ln">②</span><span>「B. 取消與退款規定」中標有 <strong><span class="lg-mark">【特別條款】</span></strong> 的內容，與《國內旅行標準條款》及《消費者紛爭解決標準》（公平交易委員會公告）不同，並優先於其適用。本公司於付款頁面說明此一事實，僅在您另行勾選確認欄表示同意後，始接受付款。</span></p>
+<p class="lp"><span class="ln">③</span><span>特別條款未規定的事項，依本條款、《國內旅行標準條款》及相關法令辦理。</span></p>
+<h3>第8條（契約文件的交付與安全資訊的提供）</h3>
+<p class="lp"><span class="ln">①</span><span>契約成立後，本公司以電子郵件及您的專屬頁面提供報價單、條款及行程表，並於完成預訂後寄送確認通知。</span></p>
+<p class="lp"><span class="ln">②</span><span>本公司提供旅遊目的地的安全資訊及緊急聯絡電話（報警112，消防與救護119，1330觀光諮詢熱線）；出發前如安全資訊有變更，亦將告知您變更內容。</span></p>
+<h3>第9條（行程費用）</h3>
+<p class="lp"><span class="ln">①</span><span>行程費用包括報價單上標示為「已包含」的住宿、餐飲、專車及司機、機場禮賓服務、導遊、禮賓服務、體驗項目、行程表內的門票，以及旅行中所需的稅費。由於是訂製旅行，費用構成以報價單約定的內容為準（《國內旅行標準條款》第9條第1項但書）。</span></p>
+<p class="lp"><span class="ln">②</span><span>除報價單另有記載外，下列費用不包含於行程費用中：國際航班機票；入境韓國所需的簽證或電子旅行許可（K-ETA）費用；旅行保險費；行程表以外的餐飲、飲料及購物費用；客房額外消費（迷你吧等）；個人花費；物品寄往海外時由目的地國家課徵的關稅等進口稅費。</span></p>
+<p class="lp"><span class="ln">③</span><span>於22:00至06:00之間抵達或出發的航班，機場禮賓服務將加收費用，並列入報價單。</span></p>
+<p class="lp"><span class="ln">④</span><span><strong><span class="lg-mark">【特別條款】</span></strong> 行程費用以韓元（KRW）計價，於報價單付款頁面以信用卡（KG Inicis）一次全額支付。《國內旅行標準條款》第9條規定簽約時支付訂金（不超過行程費用的10%），餘款於出發前一天付清；但本行程須於付款後立即向合作業者預訂並支付費用，因此於付款時收取全額。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>發卡機構將韓元金額換算為信用卡幣別時所產生的匯率差額及海外交易手續費，依發卡機構的規定辦理，並非由本公司訂定或收取。</span></p>
+<p class="lp"><span class="ln">⑥</span><span>付款完成後，本公司不會調高行程費用。僅在您變更行程或附加項目時結算差額。</span></p>
+<h3>第10條（預訂的確保與確認）</h3>
+<p class="lp"><span class="ln">①</span><span>本公司收到付款後向合作業者辦理預訂，全部預訂確保後寄送確認通知。</span></p>
+<p class="lp"><span class="ln">②</span><span>如無法確保報價單所列的業者或時間，本公司將以電子郵件提出同等或更高水準的替代方案，並載明變更內容及費用差額，徵得您的同意（《國內旅行標準條款》第10條第2項）；差額依第11條第4項結算。</span></p>
+<p class="lp"><span class="ln">③</span><span>如您不同意替代方案，得解除契約，此時適用「B. 取消與退款規定」第3條（因本公司事由取消的情形）。</span></p>
+<h3>第11條（旅行條件的變更與費用結算）</h3>
+<p class="lp"><span class="ln">①</span><span>契約約定的旅行條件，僅於下列情形之一時得變更：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>為保障您的安全與權益，經您提出請求，或因當地情況不得已而經雙方協議一致者；</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>因天災、戰亂、政府命令、交通或住宿機構等罷工、停業等原因，無法達成旅行目的者。</span></p>
+<p class="lp"><span class="ln">②</span><span>本公司變更行程時，應於當日行程開始前載明變更的日期時間、變更內容及因變更所產生的費用，徵得您的書面（含電子郵件）同意。</span></p>
+<p class="lp"><span class="ln">③</span><span>因天災、事故等緊急事由難以事先徵得同意時，本公司得於未經同意的情況下變更行程，並於事後以書面說明變更事由及費用。</span></p>
+<p class="lp"><span class="ln">④</span><span>因旅行條件變更導致費用增減者，出發前的變更部分於第1天之前結算，旅行中的變更部分於旅行最後一天起10日內結算。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>行程表中事先記載的替代安排（例如第4天適逢景福宮休館的週二時，改往 Leeum 美術館等），不視為行程變更。</span></p>
+<h3>第12條（應您的要求變更）</h3>
+<p class="lp"><span class="ln">①</span><span>如您希望變更日期、人數、車輛或附加項目，請來信 <a href="mailto:concierge@viphola.com">concierge@viphola.com</a>。本公司將於可行範圍內協助變更，並載明變更內容及費用，再次徵得您的確認。</span></p>
+<p class="lp"><span class="ln">②</span><span>因變更而由合作業者收取的變更費、取消費及費用差額由您負擔。取消附加項目等使費用減少的變更，依「B. 取消與退款規定」第2條第7項的部分取消辦理。</span></p>
+<p class="lp"><span class="ln">③</span><span>如未能就變更達成協議，則依原契約執行，或由您依「B. 取消與退款規定」取消。</span></p>
+<h3>第13條（旅行者地位的轉讓）</h3>
+<p class="lp"><span class="ln">①</span><span>您因個人因素欲將本次旅行轉讓予他人時，須經本公司同意。本公司得以您支付更改姓名等轉讓所生費用（含合作業者的手續費）為條件予以同意，並訂定期限請求支付該費用。</span></p>
+<p class="lp"><span class="ln">②</span><span>如有合作業者不接受更改姓名等難以轉讓的不得已情形，本公司得不予同意。</span></p>
+<p class="lp"><span class="ln">③</span><span>轉讓自本公司同意時生效；以支付費用為條件同意者，自您於規定期限內支付該費用時生效。轉讓後，您於契約上的一切權利與義務移轉予受讓人。</span></p>
+<h3>第14條（本公司的責任）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行有瑕疵時，您得請求本公司改善瑕疵或減少費用。但改善所需費用過鉅，或有其他無法合理期待改善的情形時，不得請求改善。</span></p>
+<p class="lp"><span class="ln">②</span><span>您得請求損害賠償，以代替請求改善或減少費用，或與請求改善、減少費用一併提出。</span></p>
+<p class="lp"><span class="ln">③</span><span>第1項及第2項的權利於旅行期間亦得行使，並應自旅行最後一天起6個月內行使。</span></p>
+<p class="lp"><span class="ln">④</span><span>自旅行開始至結束，本公司及其員工、合作業者及其員工（以下稱「相關人員」）於旅行業務中因故意或過失致您受有損害者，由本公司負責。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>因行程內交通工具（專車、慶州延伸行程中的 KTX 等）延誤或交通壅塞等致您受有損害者，由本公司賠償；但本公司證明自身無故意或過失者，不在此限。</span></p>
+<p class="lp"><span class="ln">⑥</span><span>本公司如不能證明本公司或相關人員於收受、交付、保管您的行李時已盡注意義務，應賠償因行李遺失、毀損或延誤抵達所生的損害。</span></p>
+<h3>第15條（航班與入境）</h3>
+<p class="lp"><span class="ln">①</span><span>國際航班不包含於行程費用中，由您自行預訂。本公司依您告知的航班安排機場禮賓服務與車輛。</span></p>
+<p class="lp"><span class="ln">②</span><span>航班編號或時間如有變動，請立即告知我們。因航班變更導致合作業者費用變動（例如夜間加價等）者，差額由您負擔。</span></p>
+<p class="lp"><span class="ln">③</span><span>入境韓國所需的護照及簽證或電子旅行許可（K-ETA）由您自行準備。因遭拒絕入境或簽證、電子旅行許可不齊全而無法參加旅行者，視為您個人因素，適用「B. 取消與退款規定」第2條。</span></p>
+<p class="lp"><span class="ln">④</span><span>因航班延誤或取消而於旅行中未能使用部分行程者，適用「B. 取消與退款規定」第5條第2項。</span></p>
+<h3>第16條（出發前解除契約）</h3>
+<p>您或本公司均得於第1天之前解除契約。此時的退款與賠償，依「B. 取消與退款規定」辦理。</p>
+<h3>第17條（出發後終止契約）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行開始後，如有不得已的事由，您或本公司仍得終止契約。但該事由係因一方的過失所致者，由該方賠償對方的損害。</span></p>
+<p class="lp"><span class="ln">②</span><span>契約終止後，本公司將送您至首爾的住宿地點或仁川國際機場。</span></p>
+<p class="lp"><span class="ln">③</span><span>因終止契約所生的額外費用，由事由所屬的一方負擔；事由不屬於任何一方者，由雙方各負擔50%。</span></p>
+<p class="lp"><span class="ln">④</span><span>旅行有重大瑕疵而未獲改善，或無法期待依契約內容履行時，您得終止契約。此時本公司喪失費用請求權；但您已自已實施的旅行獲得利益者，應將該利益返還本公司。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>依第4項終止契約者，本公司採取終止所需的措施，並送您至首爾的住宿地點或仁川國際機場，相關費用原則上由本公司負擔。</span></p>
+<h3>第18條（旅行的開始與結束）</h3>
+<p>旅行自第1天本公司員工或機場禮賓人員於仁川國際機場與您會合時開始，至最後一天出境禮賓服務結束時終止。契約或行程有變更者，依變更後的內容。</p>
+<h3>第19條（說明義務）</h3>
+<p>本公司以您選擇的語言（英語、日語、簡體中文、繁體中文）說明契約的重要內容及其變更事項，以便您理解。</p>
+<h3>第20條（保險）</h3>
+<p class="lp"><span class="ln">①</span><span>為於與旅行相關的事項中致您受有損害時支付保險金，本公司投保保險或加入共濟，或繳存營業保證金。</span></p>
+<p class="lp"><span class="ln">②</span><span>行程費用不含旅行保險費。建議您投保旅行保險，以因應疾病或意外的醫療費用、隨身物品損失、行程取消等情況。</span></p>
+<h3>第21條（爭議解決、準據法與語言）</h3>
+<p class="lp"><span class="ln">①</span><span>本條款未規定的事項，或對本條款的解釋有爭議時，由本公司與您協議訂定；協議不成者，依《國內旅行標準條款》、相關法令及一般慣例辦理。</span></p>
+<p class="lp"><span class="ln">②</span><span>本契約適用大韓民國法律。您得向韓國消費者院等紛爭調解機構申請調解；訴訟應向依韓國《民事訴訟法》具有管轄權的法院提起。</span></p>
+<p class="lp"><span class="ln">③</span><span>本條款以韓文版為原文，並同時提供英文、日文、簡體中文、繁體中文版本。意義不明確之處，作有利於您的解釋。</span></p>
+</section>
+<section class="lg-sec lg-refund" data-sec="refund" id="refund-zht">
+<h2>B. 取消與退款規定</h2>
+<h3>第1條（適用範圍與特別條款說明）</h3>
+<p class="lp"><span class="ln">①</span><span>本規定適用於 VIPHola.com 訂製旅行的取消與退款。</span></p>
+<p class="lp"><span class="ln">②</span><span>本行程專為您安排，本公司於您付款後立即代您向飯店、餐廳、水療、車輛、機場禮賓服務等合作業者預訂並支付費用。因此，您取消時，可能產生合作業者依其自身規定收取的取消費。</span></p>
+<p class="lp"><span class="ln">③</span><span><strong><span class="lg-mark">【特別條款】</span></strong> 本規定中標有<span class="lg-mark">【特別條款】</span>的條文，與《國內旅行標準條款》（第10020號）及《消費者紛爭解決標準》（公平交易委員會公告）中有關國內旅行的標準不同，並優先於其適用。供您參考：《消費者紛爭解決標準》規定，旅客取消含住宿的旅行時，第1天的5天前為止全額退款，2天前為止賠償費用的10%，1天前為止賠償20%，當天賠償30%。本公司於付款頁面說明此差異，僅在您勾選確認欄表示同意後，始接受付款。</span></p>
+<h3>第2條（您取消的情形）<span class="lg-mark">【特別條款】</span></h3>
+<p class="lp"><span class="ln">①</span><span>退款金額依下列方式計算。</span></p>
+<p class="lg-formula"><strong>退款金額 ＝ 已付行程費用 − 合作業者取消費 − 本公司取消手續費</strong></p>
+<p class="lp"><span class="ln">②</span><span>本公司取消手續費為行程費用乘以下列比例所得的金額。</span></p>
+<div class="lg-tbl"><table><thead><tr><th scope="col">取消申請送達本公司的日期（以第1天為準，韓國時間）</th><th scope="col" class="n">本公司取消手續費（占行程費用的比例）</th></tr></thead><tbody><tr><td>第1天的30天前為止</td><td class="n">5%</td></tr><tr><td>第1天的29天前至8天前</td><td class="n">10%</td></tr><tr><td>第1天的7天前至旅行當天，以及未經聯絡而未出現的情形</td><td class="n">20%</td></tr></tbody></table></div>
+<p class="lp"><span class="ln">③</span><span>天數依自第1天起倒數的日曆日（韓國時間0時至24時）計算。例如第1天為5月10日，則4月10日前送達的取消屬於「30天前為止」，4月11日至5月2日送達的取消屬於「29天前至8天前」，5月3日起送達的取消屬於「7天前起」。</span></p>
+<p class="lp"><span class="ln">④</span><span>合作業者取消費依下列方式決定：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>僅扣除合作業者依其取消規定實際向本公司收取或未退還的金額，本公司不另行加收任何費用。</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>各業者的取消規定不盡相同，許多業者對前1天或當天的取消收取全額費用。如您要求，我們將向您出示業者名稱、相應的取消規定及收費金額。</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>本公司會請求合作業者免除或減少取消費，日後如有退回的金額，將另行退還予您。</span></p>
+<p class="lp lp2"><span class="ln">4.</span><span>尚未預訂或尚未支付費用的項目，不產生合作業者取消費。</span></p>
+<p class="lp"><span class="ln">⑤</span><span>合作業者取消費與本公司取消手續費的合計金額，不超過您已支付的行程費用。</span></p>
+<p class="lp"><span class="ln">⑥</span><span>下列情形亦適用本條：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>因您生病、受傷，或家人過世、住院等您個人因素而取消者。《國內旅行標準條款》第13條第2項第2款規定此類情形得不經賠償解除契約，但本行程適用本條；</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>因遭拒絕入境或簽證、電子旅行許可不齊全，致您無法參加旅行者；</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>因您嚴重打擾他人或合作業者，或顯著妨礙旅行安全進行，本公司於出發前解除契約者。</span></p>
+<p class="lp"><span class="ln">⑦</span><span>僅取消部分附加項目或部分行程者，以該項目的金額為基準，同樣適用第1項至第5項。兩位中僅一位取消者，僅將餐飲、水療等金額隨人數變動的項目作為部分取消辦理；客房、車輛、導遊、禮賓服務、機場禮賓服務等以團為單位計價的項目不予退款。</span></p>
+<h3>第3條（因本公司事由取消的情形）</h3>
+<p class="lp"><span class="ln">①</span><span>因本公司過失由本公司取消旅行，或因本公司未能遵守契約條件而由您於出發前解除契約者（含旅行條款第10條第3項的情形），本公司將全額退還您已支付的行程費用，並另行支付下列賠償金。此時不收取合作業者取消費及本公司取消手續費。</span></p>
+<div class="lg-tbl"><table><thead><tr><th scope="col">本公司通知取消或變更契約條件的日期（以第1天為準）</th><th scope="col">賠償金（占行程費用的比例）</th></tr></thead><tbody><tr><td>第1天的5天前為止</td><td>無（全額退款）</td></tr><tr><td>第1天的4天前至2天前</td><td>10%</td></tr><tr><td>第1天的前1天</td><td>20%</td></tr><tr><td>旅行當天或未通知的情形</td><td>30%</td></tr></tbody></table></div>
+<p class="lp"><span class="ln">②</span><span>上述賠償標準與《消費者紛爭解決標準》中國內旅行（含住宿的旅行）的標準相同。</span></p>
+<h3>第4條（因天災等不可歸責於任何一方的事由取消的情形）</h3>
+<p class="lp"><span class="ln">①</span><span>因下列不可歸責於本公司或您任何一方的事由而無法進行旅行者，本公司或您均得於出發前不經賠償解除契約（《國內旅行標準條款》第13條第2項）：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>因天災、戰亂、政府命令、交通或住宿機構等罷工、停業等原因，無法達成旅行目的者；</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>旅行地區或設施遭下達禁止集會、關閉設施、暫停營業等行政命令，或經宣布為特別災區，致無法履行契約者；</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>因大韓民國政府採取禁止入境、隔離措施，或您所在國家與韓國之間的航班全面停飛，致您無法來韓者。</span></p>
+<p class="lp"><span class="ln">②</span><span>此時本公司不收取取消手續費，並首先請求合作業者全額退款。<strong><span class="lg-mark">【特別條款】</span></strong> 僅憑證明扣除合作業者最終未退還的金額，其餘全數退還予您。《消費者紛爭解決標準》規定，此類情形應於不收取違約金的情況下退款。</span></p>
+<p class="lp"><span class="ln">③</span><span><strong><span class="lg-mark">【特別條款】</span></strong> 於旅行地區經宣布進入災害狀態，或因第一級傳染病發布傳染病危機警報「嚴重」等級，且政府建議取消或延後旅行、減少移動等契約履行相當困難的情況下，您取消旅行者，本公司取消手續費減收50%。合作業者取消費依第2條第4項辦理。《消費者紛爭解決標準》規定，此類情形違約金整體減收50%。</span></p>
+<h3>第5條（旅行中未使用部分服務的情形）</h3>
+<p class="lp"><span class="ln">①</span><span>旅行開始後，因您個人因素未使用住宿、餐飲、觀光等行程費用所含服務者，不得請求退還該部分費用（《國內旅行標準條款》第10條第6項）。但本公司將向合作業者請求退款，如有退回的金額，將如數退還予您。</span></p>
+<p class="lp"><span class="ln">②</span><span>因宮殿臨時閉館、天候惡劣、業者突然停業、航班延誤或取消等不可歸責於本公司或您任何一方的事由而無法進行部分行程者，本公司將盡可能提出同等水準的替代安排。替代安排的費用低於原安排，或無法替代者，本公司將退還無須支付予合作業者或已自合作業者收回的金額。</span></p>
+<p class="lp"><span class="ln">③</span><span>因本公司或合作業者的過失未能提供部分行程者，本公司退還該項目的金額，其他損害依旅行條款第14條賠償。</span></p>
+<p class="lp"><span class="ln">④</span><span>旅行中終止契約者，適用旅行條款第17條。</span></p>
+<h3>第6條（取消申請方式）</h3>
+<p class="lp"><span class="ln">①</span><span>如需取消，請註明報價編號與姓名，寄送電子郵件至 <a href="mailto:concierge@viphola.com">concierge@viphola.com</a>。以本公司收到郵件時的韓國時間作為取消時間。</span></p>
+<p class="lp"><span class="ln">②</span><span>旅行期間，您亦可先以電話或 WhatsApp 告知專屬禮賓專員。此時以該聯絡時間作為取消時間，本公司將以電子郵件向您確認相關內容。</span></p>
+<p class="lp"><span class="ln">③</span><span>本公司收到取消申請後，將即時以電子郵件告知受理情形、預估退款金額及合作業者取消費明細。</span></p>
+<h3>第7條（退款方式與期限）</h3>
+<p class="lp"><span class="ln">①</span><span>退款以取消所付信用卡的交易（全部或部分取消）方式辦理，依韓元金額原額退還。換算為信用卡幣別後的金額，可能因發卡機構的匯率及手續費而與付款時不同。</span></p>
+<p class="lp"><span class="ln">②</span><span>退款期限如下：</span></p>
+<p class="lp lp2"><span class="ln">1.</span><span>出發前取消：自收到取消申請之日起7日內取消信用卡交易。但第1天早於該期限到來者，於第1天之前取消（第1天當天收到的取消申請，自收到之日起7日內）。</span></p>
+<p class="lp lp2"><span class="ln">2.</span><span>合作業者取消費未能於上述期限內確定者，先依本公司確認的業者規定計算出的金額退款，確定後再補退差額。</span></p>
+<p class="lp lp2"><span class="ln">3.</span><span>旅行中產生的退款與結算：自旅行最後一天起10日內辦理（《國內旅行標準條款》第10條第4項、第5項）。</span></p>
+<p class="lp lp2"><span class="ln">4.</span><span>第3條的賠償金等超出付款金額、無法以取消信用卡交易退還的金額，將於上述期限內匯入您指定的銀行帳戶，匯款手續費由本公司負擔。</span></p>
+<p class="lp"><span class="ln">③</span><span>信用卡交易取消反映於您帳單上的時間，可能因發卡機構而異。</span></p>
+<p class="lp"><span class="ln">④</span><span>因所付信用卡已停用或遺失等原因無法取消交易者，本公司將與您協議後匯入銀行帳戶。</span></p>
+<h3>第8條（退款金額的計算方式）</h3>
+<p>以行程費用為₩10,000,000、於第1天的20天前取消、合作業者取消費合計₩1,200,000為例，計算如下：</p>
+<div class="lg-tbl"><table><thead><tr><th scope="col">項目</th><th scope="col" class="n">金額</th></tr></thead><tbody><tr><td>已付行程費用</td><td class="n">₩10,000,000</td></tr><tr><td>合作業者取消費</td><td class="n">− ₩1,200,000</td></tr><tr><td>本公司取消手續費（29天前至8天前：10%）</td><td class="n">− ₩1,000,000</td></tr><tr><td><strong>退款金額</strong></td><td class="n"><strong>₩7,800,000</strong></td></tr></tbody></table></div>
+</section>
+<section class="lg-sec lg-supp" data-sec="supp">
+<p class="lg-contact">聯絡我們：<a href="mailto:concierge@viphola.com">concierge@viphola.com</a></p>
+</section>
+</div>
+
 </main>
 
 <footer class="gate-foot">
@@ -698,8 +1022,8 @@
   </div><div class="bizinfo"></div></div>
 </footer>
 
-<script src="../i18n-terms.js?v=1116k"></script>
-<script src="../bizinfo.js?v=1116m"></script>
-<script src="../main.js?v=1116j"></script>
+<script src="../i18n-terms.js?v=1116zh"></script>
+<script src="../bizinfo.js?v=1116zh"></script>
+<script src="../main.js?v=1116zh"></script>
 </body>
 </html>

@@ -9,8 +9,8 @@
 <link rel="icon" href="../img/mugunghwa-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../style.css?v=1116m">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css?v=1116zh">
 </head>
 <body data-page="seoul">
 
@@ -23,17 +23,21 @@
       <span class="art art-mark" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
       <span class="brand-name latin">VIP<em>Hola</em>.com</span>
     </a>
-    <!-- 11-15 사장님: 인바운드(서울)는 영어·일본어·스페인어만 — 한국어 없음 -->
+    <!-- 11-15 사장님: 인바운드(서울)는 한국어 없음 · 11-16 중국어(간체·번체) 더함 · 스페인어는 숨김(main.js OFF — 단추는 hidden, 항목은 main.js·request.js 가 뺌) -->
     <div class="lang" role="group" aria-label="Language">
     <button type="button" data-set-lang="en" lang="en">EN</button>
     <button type="button" data-set-lang="ja" lang="ja">日本語</button>
-    <button type="button" data-set-lang="es" lang="es">Español</button>
+    <button type="button" data-set-lang="zhs" lang="zh-Hans">简体中文</button>
+    <button type="button" data-set-lang="zht" lang="zh-Hant">繁體中文</button>
+    <button type="button" data-set-lang="es" lang="es" hidden>Español</button>
   </div>
     <label class="lang-mobile">
       <span class="sr" data-i18n="lang.label">Language</span>
       <select class="lang-select" aria-label="Language">
       <option value="en">EN</option>
       <option value="ja">日本語</option>
+      <option value="zhs">简体中文</option>
+      <option value="zht">繁體中文</option>
       <option value="es">Español</option>
     </select>
     </label>
@@ -267,6 +271,8 @@ privately curated.</h1>
             <select id="f-lang" name="lang">
               <option value="en">English</option>
               <option value="ja">日本語</option>
+              <option value="zhs">简体中文</option>
+              <option value="zht">繁體中文</option>
               <option value="es">Español</option>
             </select>
           </div>
@@ -325,6 +331,8 @@ privately curated.</h1>
       <select id="foot-lang" class="lang-select">
         <option value="en">English</option>
         <option value="ja">日本語</option>
+        <option value="zhs">简体中文</option>
+        <option value="zht">繁體中文</option>
         <option value="es">Español</option>
       </select>
     </div>
@@ -336,9 +344,9 @@ privately curated.</h1>
 </footer>
 
 <script src="../hub.js?v=1115e"></script>
-<script src="../i18n-seoul.js?v=1116s"></script>
-<script src="../bizinfo.js?v=1116m"></script>
-<script src="../main.js?v=1116j"></script>
-<script src="../request.js?v=1116o"></script>
+<script src="../i18n-seoul.js?v=1116zi"></script>
+<script src="../bizinfo.js?v=1116zh"></script>
+<script src="../main.js?v=1116zh"></script>
+<script src="../request.js?v=1116zh"></script>
 </body>
 </html>
