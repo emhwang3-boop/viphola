@@ -64,26 +64,6 @@
    "file_site_path": "/img/day2_secret_garden.jpg"
   },
   {
-   "file": "img/day3_namsan.jpg",
-   "use": "② DAY 3 카드",
-   "place_ko": "남산공원·N서울타워",
-   "place_en": "Namsan Park and N Seoul Tower",
-   "tourapi_title": "남산서울타워",
-   "contentid": "126535",
-   "serialnum": "3089670_1",
-   "cpyrhtDivCd": "Type1",
-   "license": "공공누리 제1유형(출처표시)",
-   "credit": "한국관광공사",
-   "credit_en": "Korea Tourism Organization",
-   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/70/3089670_image2_1.jpg",
-   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/70/3089670_image2_1.jpg",
-   "size": [
-    940,
-    627
-   ],
-   "file_site_path": "/img/day3_namsan.jpg"
-  },
-  {
    "file": "img/price_gyeongbokgung.jpg",
    "use": "④ 가격 줄 배경 · 대문(/) 인바운드 문",
    "place_ko": "경복궁 향원정",
@@ -104,27 +84,49 @@
    "file_site_path": "/img/price_gyeongbokgung.jpg"
   },
   {
-   "file": "img/day4_gyeongbokgung.jpg",
+   "file": "img/day4_palace_museum.jpg",
    "use": "② DAY 4 카드",
-   "place_ko": "경복궁 근정전 (처마 아래에서 본 모습)",
-   "place_en": "Geunjeongjeon Hall, Gyeongbokgung Palace",
-   "tourapi_title": "경복궁",
-   "contentid": "126508",
-   "serialnum": "3487601_2",
+   "place_ko": "국립고궁박물관 어좌와 일월오봉도 전시실",
+   "place_en": "Royal throne and Irworobongdo screen, National Palace Museum of Korea",
+   "tourapi_title": "국립고궁박물관",
+   "contentid": "129811",
+   "serialnum": "4054037_5",
    "cpyrhtDivCd": "Type1",
    "license": "공공누리 제1유형(출처표시)",
    "credit": "한국관광공사",
    "credit_en": "Korea Tourism Organization",
-   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/01/3487601_image2_1.jpg",
-   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/01/3487601_image1_1.jpg",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/37/4054037_image1_1.png",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/37/4054037_image1_1.png",
    "size": [
-    863,
-    1079
+    864,
+    1080
    ],
-   "edit": "원본 1620x1079 의 가운데를 4:5 로 자름",
-   "file_site_path": "/img/day4_gyeongbokgung.jpg",
-   "why": "11-16 사장님 — 4일차 궁궐 아침 (경복궁·국립고궁박물관)",
-   "replaces": "img/day4_bukchon.jpg (북촌한옥마을 골목, 126508 아님 — 2946075/2945805_2) → 빌드도구\\옛판\\day4_bukchon_1116.jpg"
+   "edit": "원본을 4:5 세로로 자름 (4일차사진후보 1번)",
+   "file_site_path": "/img/day4_palace_museum.jpg",
+   "why": "11-16 사장님 — 근정전 대신 「고궁박물관 안의 좀 화려한 사진」, 후보 1번 선택",
+   "replaces": "img/day4_gyeongbokgung.jpg (경복궁 근정전, 126508 / 3487601_2) → 빌드도구\\옛판\\day4_gyeongbokgung_1116.jpg"
+  },
+  {
+   "file": "img/day3_yangnyeongsi_gate.jpg",
+   "use": "③ DAY 3 카드",
+   "place_ko": "서울약령시 정문 (한옥 대문)",
+   "place_en": "Main gate of Seoul Yangnyeongsi herbal-medicine market",
+   "tourapi_title": "서울 약령시장",
+   "contentid": "132220",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/25/3526825_image1_1.jpg",
+   "edit": "원본 (250,0)-(1500,960) 잘라 나노바나나 한 번 편집(약 90원) — 사람·신호등·전선·오토바이·안내판 지움, 위쪽 하늘 늘려 4:5, 문을 정면으로 다시 그림(원본은 비스듬한 각도) · 864x1080",
+   "ai_source": "빌드도구\\3일차_약령시골목사진후보\\1_정문_AI정리.png",
+   "size": [
+    864,
+    1080
+   ],
+   "file_site_path": "/img/day3_yangnyeongsi_gate.jpg",
+   "why": "11-16 사장님 — 경동시장 빼고 약령시·한의약박물관으로, 약령시 입구 사진 1번 「전체가 다 나오게·사람·신호등 지우고 깔끔하게」 → 「좋아 이걸로 하자」",
+   "replaces": "img/day3_herbal_market.jpg (반려된 약령시 가게 사진, 배포 안 됨) → 빌드도구\\옛판\\day3_herbal_market_반려_1116.jpg"
   }
  ],
  "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
