@@ -5,7 +5,7 @@
   'use strict';
   var form = document.getElementById('req'); if (!form) return;
   var HUB = window.VIP_HUB || 'https://brief-live-hub.emhwang3.workers.dev';
-  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'bnb', 'nam', 'yacht', 'beauty', 'gj'];   // 11-16 yacht·beauty = 3일차 쇼핑 대신(둘 중 하나만)   // bnb·nam = 바꿔 넣기 (3일차 저녁 본앤브레드 · 3일차 오전 남산 산책 — 11-16 약령시 아침이 기본)   // gj = 경주 1박 2일 연장 (4일차 서울 대신 경주, 5일차 출국)
+  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'nam', 'noshop', 'gj'];   // 11-17 4박 5일 — nam = 3일차 오전 남산 산책(락고재 대신) · noshop = 「쇼핑 대신」 4일차 오전 봉은사·별마당 · gj = 경주 1박 2일 연장(5일차 서울 대신 경주, 6일차 출국) · 4일차 오후 요트/리움은 라디오(pm4)로 opts 에 하나 더함
   var $ = function (id) { return document.getElementById(id); };
   var t = function (k) { return window.VIPT ? window.VIPT(k) : k; };
   var L = function () { return window.VIP_LANG || 'en'; };
@@ -36,14 +36,13 @@
     if (!$('review').hidden && last) preview(true);   // 확인 단계에서 화면 언어를 바꾸면 일정도 그 언어로
   }
   function gjOn() { var i = form.querySelector('input[name="opt"][value="gj"]'); return !!(i && i.checked); }
-  function dep() { var v = $('f-date').value, g = gjOn(); $('f-dep').textContent = /^\d{4}-\d{2}-\d{2}$/.test(v) ? t(g ? 'f.dep5' : 'f.dep').replace('{d}', fmt(addDays(v, g ? 4 : 3))) : ''; }
+  function dep() { var v = $('f-date').value, g = gjOn(); $('f-dep').textContent = /^\d{4}-\d{2}-\d{2}$/.test(v) ? t(g ? 'f.dep5' : 'f.dep').replace('{d}', fmt(addDays(v, g ? 5 : 4))) : ''; }
   $('f-date').addEventListener('change', dep); $('f-date').addEventListener('input', dep);
   $('f-lang').addEventListener('change', function () { langTouched = true; });
   form.querySelector('input[name="opt"][value="gj"]').addEventListener('change', dep);
-  ['yacht', 'beauty'].forEach(function (k) {   // 쇼핑 대신 고르는 둘은 하나만 — 하나를 고르면 다른 하나는 풀림
-    var i = form.querySelector('input[name="opt"][value="' + k + '"]'); if (!i) return;
-    i.addEventListener('change', function () { if (!i.checked) return; var o = form.querySelector('input[name="opt"][value="' + (k === 'yacht' ? 'beauty' : 'yacht') + '"]'); if (o) o.checked = false; });
-  });
+  function nsOn() { var i = form.querySelector('input[name="opt"][value="noshop"]'); return !!(i && i.checked); }
+  function brandShow() { var f = $('f-brands'); if (f && (window.VIP_BRANDS || []).length) { f.hidden = nsOn(); f.style.display = nsOn() ? 'none' : ''; } }   // .f 칸의 display 가 hidden 을 이겨서 style 로도 숨김   // 11-17 「쇼핑 대신」을 고르면 좋아하는 브랜드 칸은 숨김(보내지도 않음)
+  form.querySelector('input[name="opt"][value="noshop"]').addEventListener('change', brandShow);
   document.addEventListener('vip:lang', fill);
   fill();
   (function () {   // 11-16 좋아하는 브랜드 — 로고 글자 그림 칸(여러 개) · 목록 brands.js
@@ -51,13 +50,15 @@
     if (!BR.length) { $('f-brands').hidden = true; return; }
     box.innerHTML = BR.map(function (b) { return '<label class="brand-chip" title="' + esc(b.n) + '"><input type="checkbox" name="brand" value="' + esc(b.k) + '"><img src="../img/brands/' + esc(b.f) + '" alt="' + esc(b.n) + '" loading="lazy"></label>'; }).join('');
   })();
-  function brandsOf() { return Array.prototype.slice.call(form.querySelectorAll('input[name="brand"]:checked')).map(function (i) { return i.value; }); }
+  brandShow();
+  function pmOf() { return (form.querySelector('input[name="pm4"]:checked') || {}).value === 'leeum' ? 'leeum' : 'yacht'; }   // 11-17 4일차 오후 하나
+  function brandsOf() { if (nsOn()) return []; return Array.prototype.slice.call(form.querySelectorAll('input[name="brand"]:checked')).map(function (i) { return i.value; }); }
   function brandName(k) { var b = (window.VIP_BRANDS || []).filter(function (x) { return x.k === k; })[0]; return b ? b.n : k; }
 
   function data() {
     return { ui: L(), lang: $('f-lang').value, date: $('f-date').value, guests: +$('f-guests').value, car: $('f-car').value,
-      opts: OPTS.filter(function (k) { var i = form.querySelector('input[name="opt"][value="' + k + '"]'); return i && i.checked; }),
-      craft: (form.querySelector('input[name="craft"]:checked') || {}).value || '', brands: brandsOf(), brandOther: ($('f-brand-other') ? $('f-brand-other').value.trim() : ''),
+      opts: OPTS.filter(function (k) { var i = form.querySelector('input[name="opt"][value="' + k + '"]'); return i && i.checked; }).concat([pmOf()]),
+      craft: (form.querySelector('input[name="craft"]:checked') || {}).value || '', brands: brandsOf(), brandOther: (!nsOn() && $('f-brand-other') ? $('f-brand-other').value.trim() : ''),
       req: $('f-req').value.trim(), name: $('f-name').value.trim(), email: $('f-email').value.trim(), phone: $('f-phone').value.trim() };
   }
   function check(d) {
@@ -86,10 +87,10 @@
   }
 
   function render(d, j) {
-    var opt = d.opts.map(function (k) { return t('c.' + k); }), car = (window.CARS || []).filter(function (x) { return x.v === d.car; })[0];
+    var opt = d.opts.filter(function (k) { return k !== 'yacht' && k !== 'leeum'; }).map(function (k) { return t('c.' + k); }), pm = d.opts.indexOf('leeum') >= 0 ? 'leeum' : 'yacht', car = (window.CARS || []).filter(function (x) { return x.v === d.car; })[0];
     var langName = { en: 'English', ja: '日本語', es: 'Español', zhs: '简体中文', zht: '繁體中文' }[d.lang] || d.lang;
-    var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 4 : 3))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
-      [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.' + d.craft)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
+    var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 5 : 4))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
+      [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.' + d.craft)], [t('r.pm'), t('pm.' + pm)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
     var bl = (d.brands || []).map(brandName).concat(d.brandOther ? [d.brandOther] : []);   // 로고 칸 + 자유 입력
     if (bl.length) rows.push([t('r.brands'), bl.join(', ')]);
     if (d.req) rows.push([t('r.req'), d.req]);

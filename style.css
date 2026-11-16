@@ -151,7 +151,7 @@ html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .hero-lead { max-width:
 
 /* ───────── ② 여정 ───────── */
 .journey { padding-bottom: 104px; }
-.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }   /* 11-17 4박 5일 — 카드 5장 */
 .card figure { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--ivory-3); }
 .card figure img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
 .card:hover figure img { transform: scale(1.035); }
@@ -302,7 +302,7 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-titl
 /* ───────── 폰·좁은 화면 ───────── */
 @media (max-width: 1080px) {
   :root { --gutter: 36px; }
-  .cards { gap: 20px; }
+  .cards { gap: 20px; grid-template-columns: repeat(3, 1fr); }   /* 11-17 좁은 PC·태블릿은 3장씩 두 줄 */
   .enq-grid { gap: 56px; }
   .lang button { padding: 6px 7px; }
 }
@@ -397,6 +397,7 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-titl
 .c-r { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.45; color: var(--pink); letter-spacing: .01em; }
 .c-d { display: block; margin-top: 3px; font-size: 13px; line-height: 1.5; color: var(--ink-3); }
 .qmeta.qmeta2 { grid-template-columns: 1fr 1.5fr 1.5fr; border-top: 0; }
+.qmeta.qmeta2.qmeta4 { grid-template-columns: 1fr 1.2fr 1.2fr 1.5fr; }   /* 11-17 결제 화면 — 4일차 오후 칸 더함 */
 .req-err { color: var(--navy); }
 .btn-line { background: transparent; color: var(--navy); }
 .btn-line:hover { background: var(--ivory-2); }
@@ -503,7 +504,7 @@ html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .tcard .who { font-size
   html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .pay-head h1 { font-size: 27px; }
   .qmeta { grid-template-columns: 1fr 1fr; }
   .qmeta div:last-child { grid-column: 1 / -1; }
-  .qmeta.qmeta2 { grid-template-columns: 1fr; }
+  .qmeta.qmeta2, .qmeta.qmeta2.qmeta4 { grid-template-columns: 1fr; }
   .qtable td { font-size: 14.5px; }
   .pay-go .btn, .contact-row .btn { width: 100%; min-width: 0; }
   .tcards { grid-template-columns: 1fr; }

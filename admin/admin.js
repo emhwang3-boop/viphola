@@ -11,10 +11,10 @@
   var $ = function (id) { return document.getElementById(id); };
   var ST_KO = { 'new': '신청', quoted: '견적 보냄', paid: '결제 완료', confirmed: '확정' };
   var LANG_KO = { en: '영어', ja: '일본어', es: '스페인어', zhs: '중국어 간체', zht: '중국어 번체' };
-  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', bnb: '본앤브레드 한우 맡김차림 (스시 카네사카 대신)', nam: '남산 아침 산책 (락고재 다도 대신)', yacht: '한강 프라이빗 요트 (3일차 갤러리아 명품관 쇼핑 대신)', beauty: '청담 K-뷰티 프라이빗 세션 (3일차 갤러리아 명품관 쇼핑 대신)' };
+  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', nam: '남산 아침 산책 (락고재 다도 대신)', noshop: '쇼핑 대신 봉은사·별마당 도서관 (4일차 오전)', yacht: '4일차 오후 한강 프라이빗 요트', leeum: '4일차 오후 리움미술관 큐레이터 해설' };   // 11-17 4박 5일 — 옛 bnb·beauty 는 기본 일정이 됨
   var VEN = null, VCATS = [], TPL = {}, vcat = 'seoul_hotel', vedit = null;   // 업체 목록 (허브 /vip/adm/vendors) — 손님에겐 안 보임
   var psrMin = 0;   // 11-16 더현대 PSR 최소 쇼핑금액(USD) — 견적서 칸, 밑에 원화 자동
-  var items = [], filter = 'all', cur = null, lines = [], fx = null, fxInfo = '', fxWarn = false, valid = '', trip = null, cfg = { wa: '', tel: '' }, PG = false;
+  var items = [], filter = 'all', cur = null, lines = [], fx = null, fxInfo = '', fxWarn = false, valid = '', trip = null, cfg = { wa: '', tel: '', line: '', wc: '' }, PG = false;
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function won(n) { var v = Math.round(Number(n) || 0); return (v < 0 ? '−' : '') + String(Math.abs(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'; }
@@ -68,8 +68,10 @@
       modal('설정', '<p class="mute">손님 여정 화면에 보이는 컨시어지 연락처입니다. 비워 두면 여정 화면에서 그 줄을 숨깁니다.</p>'
         + '<label class="fl">컨시어지 왓츠앱 번호 (국가 번호부터, 예: +82 10 1234 5678)<input type="text" id="cf-wa" value="' + esc(cfg.wa) + '"></label>'
         + '<label class="fl">컨시어지 전화번호<input type="text" id="cf-tel" value="' + esc(cfg.tel) + '"></label>'
+        + '<label class="fl">컨시어지 LINE 아이디 (개인 아이디 또는 공식 계정 @아이디)<input type="text" id="cf-line" value="' + esc(cfg.line || '') + '"></label>'   // 11-17 일본·대만 손님
+        + '<label class="fl">컨시어지 WeChat 아이디<input type="text" id="cf-wc" value="' + esc(cfg.wc || '') + '"></label>'   // 11-17 중국 본토 손님 — 손님 화면엔 아이디 + 복사 단추
         + '<div class="acts"><button type="button" class="b b-main" id="cf-save">저장</button></div>');
-      $('cf-save').onclick = function () { api('/vip/adm/cfg', { wa: $('cf-wa').value, tel: $('cf-tel').value }).then(function (r) { if (r && r.ok) { cfg = r.cfg; closeModal(); toast('설정을 저장했습니다.'); } else toast('저장하지 못했습니다.'); }).catch(fail); };
+      $('cf-save').onclick = function () { api('/vip/adm/cfg', { wa: $('cf-wa').value, tel: $('cf-tel').value, line: $('cf-line').value, wc: $('cf-wc').value }).then(function (r) { if (r && r.ok) { cfg = r.cfg; closeModal(); toast('설정을 저장했습니다.'); } else toast('저장하지 못했습니다.'); }).catch(fail); };
     }).catch(fail);
   });
 
@@ -134,7 +136,7 @@
     $('rows').innerHTML = rows.length ? rows.map(function (x) {
       return '<button type="button" class="it' + (cur && cur.rec.id === x.id ? ' on' : '') + '" data-id="' + esc(x.id) + '"><div class="it-top"><span class="it-id">' + esc(x.id) + ' · ' + esc(x.at) + '</span>'
         + '<span class="chip c-' + (x.expired ? 'exp' : x.st) + '">' + (x.expired ? '기간 지남' : ST_KO[x.st]) + '</span></div>'
-        + '<div class="it-nm">' + esc(x.name) + '</div><div class="it-sub">' + esc(x.date) + '부터 ' + (x.nights === 4 ? '4박 5일 (경주 연장)' : '3박 4일') + ' · ' + x.guests + '명 · ' + esc(x.car) + ' · ' + (LANG_KO[x.lang] || x.lang)
+        + '<div class="it-nm">' + esc(x.name) + '</div><div class="it-sub">' + esc(x.date) + '부터 ' + (x.nights === 5 ? '5박 6일 (경주 연장)' : '4박 5일') + ' · ' + x.guests + '명 · ' + esc(x.car) + ' · ' + (LANG_KO[x.lang] || x.lang)
         + (x.total ? ' · ' + won(x.total) : '') + '</div></button>'; }).join('') : '<p class="empty">신청이 없습니다.</p>';
   }
   $('tabs').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (!b) return; filter = b.getAttribute('data-f'); drawList(); });
@@ -233,9 +235,10 @@
     var v = venOf(l.c, id); l.v = v ? v.id : ''; l.vn = v ? { ko: v.name_ko || v.name_en, en: v.name_en || v.name_ko } : null; if (!v) return;
     var t = TPL[l.k], gl = cur.rec.lang;
     var nm = (l.vn.ko || '') + ' ' + (l.vn.en || ''), hit = t && t.byName ? t.byName.filter(function (b) { return new RegExp(b.re, 'i').test(nm); })[0] : null;   // 정해진 이름(4일차 오전: 리움·경복궁)
-    if (hit) { l.ko = hit.ko; l.g = hit[gl] || hit.en; }
+    if (hit) { l.ko = hit.ko.replace('{v}', l.vn.ko); l.g = (hit[gl] || hit.en).replace('{v}', l.vn.en); }
     else if (t) { l.ko = t.ko.replace('{v}', l.vn.ko); l.g = (t[gl] || t.en).replace('{v}', l.vn.en); }
     else if (l.k === 'x' || (!l.ko && !l.g)) { if (!l.ko) l.ko = l.vn.ko; if (!l.g) l.g = l.vn.en; }
+    l.ko = String(l.ko || '').replace('{d}', l.d || ''); l.g = String(l.g || '').replace('{d}', l.d || '');   // 11-17 줄의 날 번호(허브가 l.d 로 줌 — 휴무로 2·3일차를 바꾸면 바뀜)
   }
   function redrawLines() { var ro = cur.rec.st === 'paid' || cur.rec.st === 'confirmed'; $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, ro); }).join(''); recalc(); }
   function draw() {
@@ -245,7 +248,7 @@
       + '<div class="row">' + (ro ? '' : '<button type="button" class="b b-red b-sm" id="d-del">신청 삭제</button>') + '</div></div>';
     h += '<div class="sec"><h2>신청 내용 <button type="button" class="b b-ghost b-sm" data-pv="recv">접수 메일 보기</button></h2><dl class="kv">'
       + '<dt>이메일</dt><dd>' + esc(r.email) + '</dd><dt>전화·왓츠앱</dt><dd>' + esc(r.phone) + '</dd><dt>메일 언어</dt><dd>' + (LANG_KO[r.lang] || r.lang) + '</dd>'
-      + '<dt>일정</dt><dd>' + esc(r.date) + ' ~ ' + esc(r.end) + (r.nights === 4 ? ' (4박 5일 · 경주 연장)' : ' (3박 4일)') + '</dd><dt>인원</dt><dd>' + r.guests + '명</dd><dt>차량</dt><dd>' + esc(r.carKo) + '</dd>'
+      + '<dt>일정</dt><dd>' + esc(r.date) + ' ~ ' + esc(r.end) + (r.nights === 5 ? ' (5박 6일 · 경주 연장)' : ' (4박 5일)') + '</dd><dt>인원</dt><dd>' + r.guests + '명</dd><dt>차량</dt><dd>' + esc(r.carKo) + '</dd>'
       + (cur.craftKo ? '<dt>장인 체험</dt><dd>' + esc(cur.craftKo) + '</dd>' : '')
       + '<dt>옵션</dt><dd>' + (r.opts.length ? r.opts.map(function (k) { return OPT_KO[k]; }).filter(Boolean).join(', ') : '없음') + '</dd>'
       + (r.brands && r.brands.length ? '<dt>좋아하는 브랜드</dt><dd>' + esc(r.brands.join(', ')) + '</dd>' : '')   // 11-16 신청서 브랜드 칸
@@ -257,7 +260,7 @@
       + '<div id="qlines">' + lines.map(function (l, i) { return lineRow(l, i, ro); }).join('') + '</div>'
       + (ro ? '' : '<div class="qadd"><button type="button" class="b b-ghost b-sm" id="q-add">＋ 줄 추가</button></div>')
       + '<dl class="tot"><dt>원가 합계</dt><dd id="t-cost"></dd><dt>견적가 합계 (손님 결제 금액)</dt><dd class="big" id="t-total"></dd></dl>'
-      + ((r.opts || []).indexOf('yacht') >= 0 || (r.opts || []).indexOf('beauty') >= 0 ? '' : '<div class="psr"><label class="fl">더현대 PSR 최소 쇼핑금액 (USD) <small>TBD — 정해지면 넣기 · 비우면 손님에게 안 나감</small><input type="text" id="q-psr" inputmode="decimal" placeholder="예: 10000" value="' + (psrMin || '') + '"' + (ro ? ' disabled' : '') + '></label><p class="usd" id="q-psr-krw"></p></div>')
+      + ((r.opts || []).indexOf('noshop') >= 0 ? '' : '<div class="psr"><label class="fl">더현대 PSR 최소 쇼핑금액 (USD) <small>TBD — 정해지면 넣기 · 비우면 손님에게 안 나감</small><input type="text" id="q-psr" inputmode="decimal" placeholder="예: 10000" value="' + (psrMin || '') + '"' + (ro ? ' disabled' : '') + '></label><p class="usd" id="q-psr-krw"></p></div>')
       + '<div class="ref"><h3>참고 — 사장님만 봅니다 (손님 메일·결제 화면에는 안 나감)</h3><dl class="tot"><dt>카드 수수료 3.5%</dt><dd id="t-card"></dd><dt>매출 부가세 (견적가 합계의 10/110)</dt><dd id="t-vo"></dd>'
       + '<dt>매입 부가세 공제 (공제 체크한 줄 원가의 10/110)</dt><dd id="t-vi"></dd><dt>납부할 부가세 (예상)</dt><dd id="t-vp"></dd><dt><b>실제 남는 돈</b></dt><dd><b id="t-net"></b></dd></dl></div>'
       + '<div class="sec" style="border:0;padding:14px 0 0;margin-top:14px"><div class="fx"><label class="fl">환율 (USD 1 = 원)<input type="text" id="fx-rate" inputmode="decimal"' + (ro ? ' disabled' : '') + '></label>'
@@ -279,7 +282,7 @@
         + '<p class="mute" style="margin:8px 0">예약 — 손님 화면에 그대로 보입니다 (항목은 손님 언어 ' + (LANG_KO[r.lang] || '') + '로)</p>'
         + '<div class="rh"><span>항목</span><span>시각</span><span>확인번호</span><span>메모</span><span></span></div><div id="rlines">' + rsRows() + '</div>'
         + '<div class="qadd row"><button type="button" class="b b-ghost b-sm" id="r-add">＋ 예약 줄 추가</button><button type="button" class="b b-sm" id="tr-save">확정 정보 저장</button>' + (q ? '<a class="b b-sm b-ghost" href="' + esc(cur.link) + '" target="_blank" rel="noopener">손님 화면 열기</a>' : '') + '</div>'
-        + '<p class="mute" style="font-size:12.5px;margin:10px 0 0">컨시어지 왓츠앱·전화: ' + (cfg.wa || cfg.tel ? esc([cfg.wa ? '왓츠앱 ' + cfg.wa : '', cfg.tel ? '전화 ' + cfg.tel : ''].filter(Boolean).join(' · ')) : '비어 있음 — 여정 화면에서 숨겨집니다') + ' (위 「설정」에서 변경)</p></div>';
+        + '<p class="mute" style="font-size:12.5px;margin:10px 0 0">컨시어지 연락처: ' + (cfg.wa || cfg.tel || cfg.line || cfg.wc ? esc([cfg.wa ? '왓츠앱 ' + cfg.wa : '', cfg.line ? 'LINE ' + cfg.line : '', cfg.wc ? 'WeChat ' + cfg.wc : '', cfg.tel ? '전화 ' + cfg.tel : ''].filter(Boolean).join(' · ')) : '비어 있음 — 여정 화면에서 숨겨집니다') + ' (위 「설정」에서 변경)</p></div>';
       h += '<div class="sec"><h2>확정 메일 <small>' + (r.st === 'confirmed' ? '보낸 시각 ' + esc(r.confAt) : '예약을 모두 확보한 뒤 보내 주세요') + '</small></h2>'
         + '<label class="fl">손님에게 덧붙일 말 (선택 · 손님 언어 ' + (LANG_KO[r.lang] || '') + '로)<textarea class="note" id="cf-note">' + esc(r.confNote) + '</textarea></label>'
         + '<div class="acts"><button type="button" class="b b-ghost" data-pv="conf">확정 메일 미리보기</button><button type="button" class="b b-gold" id="cf-send">' + (r.st === 'confirmed' ? '확정 메일 다시 보내기' : '확정 메일 보내기') + '</button></div></div>';

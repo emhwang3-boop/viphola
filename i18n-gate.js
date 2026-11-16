@@ -3,6 +3,7 @@
 //  · 문구 언어: 주소 ?lang= → 사용자가 선택한 언어(저장값) → 영어(기본값, 11-15)
 //  · 아웃바운드 문 글자는 대문 언어와 상관없이 늘 한국어(HTML 에 바로 적음, 여기 없음)
 //  · 문 순서: 브라우저 언어가 한국어면 아웃바운드 문이 앞(왼쪽), 그 밖이면 인바운드 문이 앞
+//  · 11-17 4박 5일 — 서울 문 소개 「5일」
 //  · 인바운드 문을 누르면 서울 페이지가 지금 대문 언어로 열림(seoul/?lang=…)
 window.PAGE = 'gate';
 window.DEFAULT_LANG = 'en';   // 11-15 사장님 「기본값을 영어로」 — 브라우저 언어와 상관없이 처음엔 영어, 언어 칸으로 변경
@@ -17,7 +18,7 @@ window.I18N = {
     'g.lead': 'Private travel, arranged with care — into Korea, and out to the Spanish-speaking world.',
     'in.label': 'Inbound · Seoul',
     'in.title': 'Seoul, privately curated.',
-    'in.sub': 'Four private days in Seoul for guests visiting Korea.',
+    'in.sub': 'Five private days in Seoul for guests visiting Korea.',
     'in.cta': 'Enter',
     'in.soon': 'Opening soon',
     'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.terms': 'Terms & refund policy'
@@ -31,7 +32,7 @@ window.I18N = {
     'g.lead': '세심하게 준비하는 프라이빗 여행. 한국으로 오는 여정, 그리고 스페인어권으로 떠나는 여정.',
     'in.label': '인바운드 · 서울',
     'in.title': '두 분만을 위해 설계한 서울',
-    'in.sub': '한국을 찾는 해외 고객을 위한 서울 프라이빗 4일',
+    'in.sub': '한국을 찾는 해외 고객을 위한 서울 프라이빗 5일',
     'in.cta': '입장',
     'in.soon': '오픈 예정',
     'foot.company': '주식회사 부만', 'foot.contact': '문의', 'foot.terms': '약관·환불 규정'
@@ -45,7 +46,7 @@ window.I18N = {
     'g.lead': '心を込めて手配するプライベートな旅。韓国への旅、そしてスペイン語圏への旅。',
     'in.label': 'インバウンド・ソウル',
     'in.title': 'おふたりのためだけの、ソウル。',
-    'in.sub': '韓国を訪れるお客様のための、ソウルでのプライベートな4日間。',
+    'in.sub': '韓国を訪れるお客様のための、ソウルでのプライベートな5日間。',
     'in.cta': '詳しく見る',
     'in.soon': '近日オープン',
     'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.terms': '約款・返金規定'
@@ -59,7 +60,7 @@ window.I18N = {
     'g.lead': '精心安排的私人旅行——来到韩国的旅程，以及前往西班牙语国家的旅程。',
     'in.label': '韩国之旅 · 首尔',
     'in.title': '只为两位定制的首尔',
-    'in.sub': '为访韩宾客打造的首尔四天私人行程。',
+    'in.sub': '为访韩宾客打造的首尔五天私人行程。',
     'in.cta': '进入',
     'in.soon': '即将开放',
     'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.terms': '条款与退款规定'
@@ -73,7 +74,7 @@ window.I18N = {
     'g.lead': '精心安排的私人旅行——來到韓國的旅程，以及前往西班牙語系國家的旅程。',
     'in.label': '韓國之旅 · 首爾',
     'in.title': '只為兩位訂製的首爾',
-    'in.sub': '為訪韓貴賓打造的首爾四天私人行程。',
+    'in.sub': '為訪韓貴賓打造的首爾五天私人行程。',
     'in.cta': '進入',
     'in.soon': '即將開放',
     'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.terms': '條款與退款規定'
@@ -87,7 +88,7 @@ window.I18N = {
     'g.lead': 'Viajes privados organizados con esmero: a Corea y, desde Corea, al mundo hispanohablante.',
     'in.label': 'Viajes a Corea · Seúl',
     'in.title': 'Seúl, solo para ustedes.',
-    'in.sub': 'Cuatro días privados en Seúl para quienes visitan Corea.',
+    'in.sub': 'Cinco días privados en Seúl para quienes visitan Corea.',
     'in.cta': 'Entrar',
     'in.soon': 'Próximamente',
     'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.terms': 'Condiciones y reembolsos'

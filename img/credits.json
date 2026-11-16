@@ -85,7 +85,7 @@
   },
   {
    "file": "img/day4_palace_museum.jpg",
-   "use": "② DAY 4 카드",
+   "use": "② DAY 5 카드 (11-17 4박 5일 — 옛 4일차 카드가 5일차로)",
    "place_ko": "국립고궁박물관 어좌와 일월오봉도 전시실",
    "place_en": "Royal throne and Irworobongdo screen, National Palace Museum of Korea",
    "tourapi_title": "국립고궁박물관",
@@ -149,6 +149,28 @@
    "file_site_path": "/img/day3_lotte_world_tower.jpg",
    "why": "11-16 사장님 — 3일차 약령시 프로그램을 잠실 롯데월드타워(관광·쇼핑·점심)로 · 갤러리 62장 중 내가 고름(금빛 야경, 세로 구도)",
    "replaces": "img/day3_yangnyeongsi_gate.jpg (약령시 정문 — 대체 장소로 보관)"
+  },
+  {
+   "file": "img/day4_sebitseom.jpg",
+   "use": "② DAY 4 카드 (11-17 4박 5일 새 4일차 — 쇼핑과 한강)",
+   "place_ko": "세빛섬 야경 (반포한강공원)",
+   "place_en": "Sebitseom floating islands at dusk, Banpo Han River Park",
+   "tourapi_title": "세빛섬",
+   "contentid": "970052",
+   "serialnum": "3515813_3",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/13/3515813_image2_1.jpg",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/13/3515813_image1_1.jpg",
+   "edit": "원본 1620x1080 에서 (868,118)-(1516,928) 4:5 로 잘라 864x1080 — 왼쪽 행사 현수막·오른쪽 아래 관광공사 표시 빼고 (후보 빌드도구\u0004일차사진후보_4n5d\u0003.jpg)",
+   "size": [
+    864,
+    1080
+   ],
+   "file_site_path": "/img/day4_sebitseom.jpg",
+   "why": "11-17 사장님 「4박 5일로」 — 새 4일차(갤러리아 쇼핑·한강 요트·본앤브레드) 카드 · 후보 35장(세빛섬·반포한강공원·달빛무지개분수, 모두 Type1) 중 3일차 롯데월드타워 야경과 어울리는 금빛 야경"
   }
  ],
  "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
