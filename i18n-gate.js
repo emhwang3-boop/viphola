@@ -19,6 +19,7 @@ window.I18N = {
     'in.title': 'Seoul, privately curated.',
     'in.sub': 'Four private days in Seoul for guests visiting Korea.',
     'in.cta': 'Enter',
+    'in.soon': 'Opening soon',
     'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.terms': 'Terms & refund policy'
   },
   ko: {
@@ -32,6 +33,7 @@ window.I18N = {
     'in.title': '두 분만을 위해 설계한 서울',
     'in.sub': '한국을 찾는 해외 고객을 위한 서울 프라이빗 4일',
     'in.cta': '입장',
+    'in.soon': '오픈 예정',
     'foot.company': '주식회사 부만', 'foot.contact': '문의', 'foot.terms': '약관·환불 규정'
   },
   ja: {
@@ -45,6 +47,7 @@ window.I18N = {
     'in.title': 'おふたりのためだけの、ソウル。',
     'in.sub': '韓国を訪れるお客様のための、ソウルでのプライベートな4日間。',
     'in.cta': '詳しく見る',
+    'in.soon': '近日オープン',
     'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.terms': '約款・返金規定'
   },
   zhs: {
@@ -58,6 +61,7 @@ window.I18N = {
     'in.title': '只为两位定制的首尔',
     'in.sub': '为访韩宾客打造的首尔四天私人行程。',
     'in.cta': '进入',
+    'in.soon': '即将开放',
     'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.terms': '条款与退款规定'
   },
   zht: {
@@ -71,6 +75,7 @@ window.I18N = {
     'in.title': '只為兩位訂製的首爾',
     'in.sub': '為訪韓貴賓打造的首爾四天私人行程。',
     'in.cta': '進入',
+    'in.soon': '即將開放',
     'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.terms': '條款與退款規定'
   },
   es: {
@@ -84,6 +89,7 @@ window.I18N = {
     'in.title': 'Seúl, solo para ustedes.',
     'in.sub': 'Cuatro días privados en Seúl para quienes visitan Corea.',
     'in.cta': 'Entrar',
+    'in.soon': 'Próximamente',
     'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.terms': 'Condiciones y reembolsos'
   }
 };

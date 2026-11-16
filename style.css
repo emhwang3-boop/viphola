@@ -585,3 +585,7 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .lg-sec h2
 /* 11-16 대문 맨 아래 방문자 수 (main.js · 허브 /hc?s=vip) */
 .vcnt { margin: 14px 0 0; font-size: 11.5px; color: var(--ink-3); text-align: center; letter-spacing: .02em; }
 .vcnt:empty { display: none; }
+
+/* 11-16 대문 인바운드 문 「오픈 예정」 띠 — 왼쪽 위 모서리에 사선(사진 출처는 오른쪽 위) */
+.door-soon { position: absolute; top: 46px; left: -62px; width: 244px; z-index: 3; padding: 8px 0 7px; text-align: center; transform: rotate(-45deg); background: #E3BE5C; color: var(--navy); font: 600 12px/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; box-shadow: 0 2px 10px rgba(15, 20, 35, .3); pointer-events: none; }   /* 11-16 사장님 「왼쪽 구석에 사선으로」 — 띠 가운데가 모서리에서 대각선 60px 쯤, .door overflow:hidden 이 양끝을 자름 */
+html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-soon { letter-spacing: .08em; font-size: 13px; }
