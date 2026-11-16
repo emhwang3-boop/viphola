@@ -185,6 +185,13 @@
     $('fx-src').textContent = fxInfo || (fx ? (fx.src === 'manual' ? '직접 넣은 값' : '') : ''); $('fx-src').className = 'fxsrc' + (fxWarn ? ' warn' : '');
     recalc();
   }
+  // 11-16 사장님 「넣어」 — 쇼핑 줄에서 청담 플래그십(더현대가 아닌 업체)을 고르면 줄 아래에 손님이 고른 브랜드 + 청담 매장 주소 (사장님만 봄, 손님 견적엔 안 나감)
+  //   주소: 보그 코리아 2025-09 「서울에서 럭셔리를 찾는 법」 청담 지도 · 페라가모·셀린 기사 · 에르메스는 도산공원 앞 · 나머지는 이름만
+  var BR_ADDR = { 'Dolce & Gabbana': '압구정로 414', 'Audemars Piguet': '압구정로 428', 'Vacheron Constantin': '압구정로 430', 'Chanel': '압구정로 431', 'Ferragamo': '압구정로 433', 'Cartier': '압구정로 435 · 까르띠에 메종 청담',
+    'Van Cleef & Arpels': '압구정로 441', 'Richard Mille': '압구정로 450', 'Louis Vuitton': '압구정로 454 · 루이 비통 메종 서울', 'Gucci': '압구정로 462', 'Prada': '압구정로 463', 'Dior': '압구정로 464 · 하우스 오브 디올',
+    'Celine': '압구정로 466', 'Hermès': '메종 에르메스 도산 파크 · 신사동 도산공원 앞' };
+  function brandBox() { var b = (cur && cur.rec && cur.rec.brands) || [];
+    return '<div class="qn">손님이 고른 브랜드 · ' + (b.length ? b.map(function (n) { var a = BR_ADDR[n]; return '<b>' + esc(n) + '</b>' + (a ? ' (' + esc(a) + ')' : ''); }).join(' · ') : '없음 (신청서에서 고르지 않음)') + '</div>'; }
   function lineRow(l, i, ro) {
     var d = ro ? ' disabled' : '';
     return '<div class="ql" data-i="' + i + '"><div><span class="lb">항목 (관리용)</span><input type="text" data-k="ko" value="' + esc(l.ko) + '"' + d + '></div>'
@@ -195,6 +202,7 @@
       + '<div class="vt"><input type="checkbox" data-k="vat" title="매입 부가세 공제"' + (l.vat ? ' checked' : '') + d + '><span class="lb">매입 부가세 공제</span></div>'
       + '<div class="del">' + (ro ? '' : '<button type="button" class="x" data-del="' + i + '" aria-label="줄 삭제">✕</button>') + '</div>'
       + (l.nt ? '<div class="qn' + (l.nt.indexOf('🔴') >= 0 ? ' red' : '') + '">메모 · ' + esc(l.nt) + '</div>' : '')
+      + (l.k === 'dept' && l.vn && !/현대|hyundai/i.test((l.vn.ko || '') + ' ' + (l.vn.en || '')) ? brandBox() : '')   // 11-16 청담 플래그십 → 손님 브랜드
       + (l.k === 'photo' ? '<div class="qn">메모 · 사진작가 섭외처 — 영어 가능 스냅 작가를 시간 단위로 예약: <a href="https://www.trazy.com" target="_blank" rel="noopener">Trazy(트래지)</a> · <a href="https://www.klook.com" target="_blank" rel="noopener">Klook(클룩)</a> · <a href="https://www.myrealtrip.com" target="_blank" rel="noopener">마이리얼트립</a>. 사장님이 직접 예약·결제한 뒤 이 줄 원가에 넣으세요.</div>' : '')   // 사장님만 (손님에겐 안 나감)
       + venRow(l, i, ro) + '</div>';
   }
