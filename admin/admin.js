@@ -10,8 +10,9 @@
   var $ = function (id) { return document.getElementById(id); };
   var ST_KO = { 'new': '신청', quoted: '견적 보냄', paid: '결제 완료', confirmed: '확정' };
   var LANG_KO = { en: '영어', ja: '일본어', es: '스페인어' };
-  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', bnb: '본앤브레드 한우 맡김차림 (스시 카네사카 대신)', nam: '남산 아침 산책 (락고재 다도 대신)' };
+  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', bnb: '본앤브레드 한우 맡김차림 (스시 카네사카 대신)', nam: '남산 아침 산책 (락고재 다도 대신)', yacht: '한강 프라이빗 요트 (3일차 더현대 쇼핑 대신)', beauty: '청담 K-뷰티 프라이빗 세션 (3일차 더현대 쇼핑 대신)' };
   var VEN = null, VCATS = [], TPL = {}, vcat = 'seoul_hotel', vedit = null;   // 업체 목록 (허브 /vip/adm/vendors) — 손님에겐 안 보임
+  var psrMin = 0;   // 11-16 더현대 PSR 최소 쇼핑금액(USD) — 견적서 칸, 밑에 원화 자동
   var items = [], filter = 'all', cur = null, lines = [], fx = null, fxInfo = '', fxWarn = false, valid = '', trip = null, cfg = { wa: '', tel: '' }, PG = false;
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -157,7 +158,7 @@
   function openReq(id) {
     api('/vip/adm/get?id=' + encodeURIComponent(id)).then(function (j) {
       if (!j || !j.ok) { toast('신청을 열지 못했습니다.'); return; }
-      cur = j; lines = JSON.parse(JSON.stringify(j.draft.lines || [])); valid = j.draft.valid || ''; fx = j.draft.fx || null; fxInfo = ''; fxWarn = false;
+      cur = j; lines = JSON.parse(JSON.stringify(j.draft.lines || [])); valid = j.draft.valid || ''; fx = j.draft.fx || null; psrMin = j.draft.psrMin || 0; fxInfo = ''; fxWarn = false;
       trip = JSON.parse(JSON.stringify(j.trip || { drv: {}, gd: {}, rs: [] })); cfg = j.cfg || cfg;
       $('app').classList.add('open'); drawList(); draw(); window.scrollTo(0, 0);
       var editable = j.rec.st === 'new' || j.rec.st === 'quoted';
@@ -246,6 +247,7 @@
       + '<div id="qlines">' + lines.map(function (l, i) { return lineRow(l, i, ro); }).join('') + '</div>'
       + (ro ? '' : '<div class="qadd"><button type="button" class="b b-ghost b-sm" id="q-add">＋ 줄 추가</button></div>')
       + '<dl class="tot"><dt>원가 합계</dt><dd id="t-cost"></dd><dt>견적가 합계 (손님 결제 금액)</dt><dd class="big" id="t-total"></dd></dl>'
+      + ((r.opts || []).indexOf('yacht') >= 0 || (r.opts || []).indexOf('beauty') >= 0 ? '' : '<div class="psr"><label class="fl">더현대 PSR 최소 쇼핑금액 (USD) <small>TBD — 정해지면 넣기 · 비우면 손님에게 안 나감</small><input type="text" id="q-psr" inputmode="decimal" placeholder="예: 10000" value="' + (psrMin || '') + '"' + (ro ? ' disabled' : '') + '></label><p class="usd" id="q-psr-krw"></p></div>')
       + '<div class="ref"><h3>참고 — 사장님만 봅니다 (손님 메일·결제 화면에는 안 나감)</h3><dl class="tot"><dt>카드 수수료 3.5%</dt><dd id="t-card"></dd><dt>매출 부가세 (견적가 합계의 10/110)</dt><dd id="t-vo"></dd>'
       + '<dt>매입 부가세 공제 (공제 체크한 줄 원가의 10/110)</dt><dd id="t-vi"></dd><dt>납부할 부가세 (예상)</dt><dd id="t-vp"></dd><dt><b>실제 남는 돈</b></dt><dd><b id="t-net"></b></dd></dl></div>'
       + '<div class="sec" style="border:0;padding:14px 0 0;margin-top:14px"><div class="fx"><label class="fl">환율 (USD 1 = 원)<input type="text" id="fx-rate" inputmode="decimal"' + (ro ? ' disabled' : '') + '></label>'
@@ -254,7 +256,7 @@
       + '<p class="usd" id="t-usd"></p><p class="mute" style="font-size:12.5px;margin:4px 0 0">직접 고친 환율도 손님 메일에는 「매매기준율」로 표시됩니다 (시장 환율로 받은 값만 「시장 환율」).</p></div>'
       + '<p class="warnline" id="q-warn" hidden></p>'
       + (ro ? '' : '<div class="acts"><button type="button" class="b" id="q-save">저장</button><button type="button" class="b b-ghost" data-pv="quote">견적 메일 미리보기</button><button type="button" class="b b-main" id="q-send">' + (q ? '견적 다시 보내기' : '견적 보내기') + '</button></div>');
-    if (q) h += '<div class="sent"><b>보낸 견적 ' + esc(q.no) + '</b> · ' + esc(q.sentAt) + ' 보냄 · ' + won(q.total) + ' · 유효기간 ' + esc(q.valid) + (r.st === 'quoted' && q.valid < kstToday() ? ' <span class="chip c-exp">기간 지남</span>' : '')
+    if (q) h += '<div class="sent"><b>보낸 견적 ' + esc(q.no) + '</b> · ' + esc(q.sentAt) + ' 보냄 · ' + won(q.total) + ' · 유효기간 ' + esc(q.valid) + (q.psrMin ? ' · PSR 최소 쇼핑금액 US$ ' + Number(q.psrMin).toLocaleString('en-US') : '') + (r.st === 'quoted' && q.valid < kstToday() ? ' <span class="chip c-exp">기간 지남</span>' : '')
       + '<br>환율 ' + esc(q.fx.rate) + ' (' + esc(q.fx.date) + ') · 손님 화면 표시: ' + esc(fxLine(q.total, q.fx)) + '<div class="link"><input type="text" readonly value="' + esc(cur.link) + '" id="q-link"><button type="button" class="b b-sm" id="q-copy">복사</button><a class="b b-sm b-ghost" href="' + esc(cur.link) + '" target="_blank" rel="noopener">열기</a></div></div>';
     h += '</div>';
     if (r.pay) h += '<div class="sec"><h2>결제 <button type="button" class="b b-ghost b-sm" data-pv="paid">영수 메일 보기</button></h2><dl class="kv"><dt>결제 금액</dt><dd>' + won(r.pay.amount) + '</dd><dt>결제 시각</dt><dd>' + esc(r.pay.at) + '</dd>'
@@ -288,10 +290,11 @@
     $('t-cost').textContent = won(r.cost); $('t-total').textContent = won(r.total); $('t-card').textContent = won(r.card); $('t-vo').textContent = won(r.vo); $('t-vi').textContent = '− ' + won(r.vi);
     $('t-vp').textContent = won(r.vp); $('t-net').textContent = won(r.net) + ' (' + r.pct + '%)'; $('t-net').className = r.net < 0 ? 'neg' : '';
     $('t-usd').textContent = '손님 메일·결제 화면 표시: ' + fxLine(r.total);
+    var pk = $('q-psr-krw'); if (pk) pk.textContent = psrMin > 0 ? (fx && fx.rate > 0 ? '≈ ' + won(Math.round(psrMin * fx.rate)) + '  (USD 1 = ' + fx.rate + '원 기준 · 손님 견적 메일·결제 화면에 「최소 쇼핑금액 US$ ' + psrMin.toLocaleString('en-US') + ' (약 ' + won(Math.round(psrMin * fx.rate)) + ')」로 나감)' : '환율을 넣으면 원화로 바뀝니다') : '';
     var w = []; if (r.bad) w.push('마진이 100% 이상인 줄이 ' + r.bad + '개 있습니다.'); if (r.blank && r.total > 0) w.push('원가가 빈 줄 ' + r.blank + '개는 손님에게 「Included(포함)」로 보입니다.');
     var qw = $('q-warn'); if (qw) { qw.textContent = w.join(' '); qw.hidden = !w.length; }
   }
-  function body() { return { id: cur.rec.id, lines: lines, valid: $('q-valid') ? $('q-valid').value : valid, fx: fx }; }
+  function body() { return { id: cur.rec.id, lines: lines, valid: $('q-valid') ? $('q-valid').value : valid, fx: fx, psrMin: $('q-psr') ? psrMin : 0 }; }
   function tripBody() {
     var rs = []; document.querySelectorAll('#rlines .rl').forEach(function (row) { var o = {}; row.querySelectorAll('[data-r]').forEach(function (i) { o[i.getAttribute('data-r')] = i.value; }); rs.push(o); });
     return { drv: { name: $('tr-dn').value, phone: $('tr-dp').value, plate: $('tr-dc').value }, gd: { name: $('tr-gn').value, phone: $('tr-gp').value }, rs: rs };
@@ -320,6 +323,7 @@
       ql.addEventListener('click', function (e) { var b = e.target.closest('[data-del]'); if (!b) return; lines.splice(+b.getAttribute('data-del'), 1); $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, false); }).join(''); recalc(); });
     }
     if ($('q-add')) $('q-add').onclick = function () { lines.push({ k: 'x', c: '', v: '', ko: '', g: '', cost: null, m: 20, vat: true }); $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, false); }).join(''); recalc(); var ins = $('qlines').querySelectorAll('.ql'); ins[ins.length - 1].querySelector('input').focus(); };
+    if ($('q-psr')) $('q-psr').addEventListener('input', function () { var v = Number(this.value.replace(/[^\d.]/g, '')); psrMin = v > 0 ? Math.round(v) : 0; recalc(); });
     if ($('fx-rate')) $('fx-rate').addEventListener('input', function () { var v = Number(this.value.replace(/[^\d.]/g, '')); fx = { rate: v > 0 ? v : 0, date: $('fx-date').value || kstToday(), src: 'manual' }; fxInfo = '직접 넣은 값'; fxWarn = false; $('fx-src').textContent = fxInfo; $('fx-src').className = 'fxsrc'; recalc(); });
     if ($('fx-date')) $('fx-date').addEventListener('change', function () { if (fx) { fx.date = this.value; recalc(); } });
     if ($('fx-get')) $('fx-get').onclick = function () { getFx(true); };

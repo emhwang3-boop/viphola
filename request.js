@@ -5,7 +5,7 @@
   'use strict';
   var form = document.getElementById('req'); if (!form) return;
   var HUB = window.VIP_HUB || 'https://brief-live-hub.emhwang3.workers.dev';
-  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'bnb', 'nam', 'gj'];   // bnb·nam = 바꿔 넣기 (3일차 저녁 본앤브레드 · 3일차 오전 남산 산책 — 11-16 약령시 아침이 기본)   // gj = 경주 1박 2일 연장 (4일차 서울 대신 경주, 5일차 출국)
+  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'bnb', 'nam', 'yacht', 'beauty', 'gj'];   // 11-16 yacht·beauty = 3일차 쇼핑 대신(둘 중 하나만)   // bnb·nam = 바꿔 넣기 (3일차 저녁 본앤브레드 · 3일차 오전 남산 산책 — 11-16 약령시 아침이 기본)   // gj = 경주 1박 2일 연장 (4일차 서울 대신 경주, 5일차 출국)
   var $ = function (id) { return document.getElementById(id); };
   var t = function (k) { return window.VIPT ? window.VIPT(k) : k; };
   var L = function () { return window.VIP_LANG || 'en'; };
@@ -39,6 +39,10 @@
   $('f-date').addEventListener('change', dep); $('f-date').addEventListener('input', dep);
   $('f-lang').addEventListener('change', function () { langTouched = true; });
   form.querySelector('input[name="opt"][value="gj"]').addEventListener('change', dep);
+  ['yacht', 'beauty'].forEach(function (k) {   // 쇼핑 대신 고르는 둘은 하나만 — 하나를 고르면 다른 하나는 풀림
+    var i = form.querySelector('input[name="opt"][value="' + k + '"]'); if (!i) return;
+    i.addEventListener('change', function () { if (!i.checked) return; var o = form.querySelector('input[name="opt"][value="' + (k === 'yacht' ? 'beauty' : 'yacht') + '"]'); if (o) o.checked = false; });
+  });
   document.addEventListener('vip:lang', fill);
   fill();
 

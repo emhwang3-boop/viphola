@@ -10,7 +10,7 @@
   var TX = {
     en: { load: 'Loading your quote…', bad: 'This link is not valid. Please use the link in your email, or write to us at {m}.', net: 'We could not reach our server. Please refresh this page in a moment.',
       qk: 'Your quote', pkg: 'Seoul Wellness & Gastronomy', prep: 'Prepared for {n}', no: 'Quote no.', iss: 'Date of issue', valid: 'Valid until', car: 'Vehicle', opts: 'Options', none: 'None',
-      item: 'Item', amt: 'Amount', total: 'Total (KRW)', incl: 'Included', krw: 'Payment is made in Korean won (KRW). Your card issuer converts the amount into your card’s currency.',
+      item: 'Item', amt: 'Amount', total: 'Total (KRW)', incl: 'Included', psr: 'Minimum spend at The Hyundai Seoul private shopping room: {u} (about {k})', krw: 'Payment is made in Korean won (KRW). Your card issuer converts the amount into your card’s currency.',
       tt: 'Special terms for this bespoke journey: cancellation and refunds',
       t1: 'This journey is arranged especially for you, so the following special terms apply.',
       t1b: 'These special terms differ from the Korea Fair Trade Commission’s Domestic Travel Standard Terms and Consumer Dispute Settlement Criteria, and take precedence over them.',
@@ -30,10 +30,10 @@
       rsv: 'Reservations', conf: 'Confirmation no.', itin: 'Your itinerary',
       sos: '<b>In an emergency in Korea:</b> police 112 · fire and ambulance 119 · Korea Travel Hotline 1330 (24 hours, multilingual).',
       overH: 'Thank you for travelling with us', overP: 'We hope to welcome you to Seoul again. For anything at all, write to us at {m}.', guests1: '1 guest', guestsN: '{n} guests',
-      craftL: 'Craft experience', cr: { najeon: 'Mother-of-pearl hand mirror (Jeong Myeong-chae)', silver: 'Silver ring (Lee Hwang-jae)' }, opt: { porter: 'Porter service', photo: 'Professional photographer', hanbok: 'Bespoke hanbok', wine: 'Wine pairing', gj: 'Gyeongju extension, 1 night / 2 days', bnb: 'Born & Bred hanwoo omakase (replaces Sushi Kanesaka)', nam: 'Namsan morning walk (replaces the morning tea at Rakkojae)' }, co: 'Booman Inc.' },
+      craftL: 'Craft experience', cr: { najeon: 'Mother-of-pearl hand mirror (Jeong Myeong-chae)', silver: 'Silver ring (Lee Hwang-jae)' }, opt: { porter: 'Porter service', photo: 'Professional photographer', hanbok: 'Bespoke hanbok', wine: 'Wine pairing', gj: 'Gyeongju extension, 1 night / 2 days', bnb: 'Born & Bred hanwoo omakase (replaces Sushi Kanesaka)', nam: 'Namsan morning walk (replaces the morning tea at Rakkojae)', yacht: 'Private Han River yacht (replaces Day 3 shopping at The Hyundai Seoul)', beauty: 'Private K-beauty session in Cheongdam (replaces Day 3 shopping at The Hyundai Seoul)' }, co: 'Booman Inc.' },
     ja: { load: 'お見積りを読み込んでいます…', bad: 'このリンクは無効です。メールに記載のリンクをご利用いただくか、{m} までご連絡ください。', net: 'サーバーに接続できませんでした。しばらくしてからページを再読み込みしてください。',
       qk: 'お見積り', pkg: 'ソウル ウェルネス＆ガストロノミー', prep: '{n} 様', no: 'お見積り番号', iss: '発行日', valid: '有効期限', car: 'お車', opts: 'オプション', none: 'なし',
-      item: '項目', amt: '金額', total: '合計（KRW）', incl: '含まれます', krw: 'お支払いは韓国ウォン（KRW）建てです。お客様のカード会社が、カードの通貨に換算いたします。',
+      item: '項目', amt: '金額', total: '合計（KRW）', incl: '含まれます', psr: 'The Hyundai Seoul プライベートショッピングルームの最低ご購入額：{u}（約 {k}）', krw: 'お支払いは韓国ウォン（KRW）建てです。お客様のカード会社が、カードの通貨に換算いたします。',
       tt: 'ご旅行の特別条件（取消・返金）',
       t1: '本旅行はお客様のためにお仕立てする旅程のため、以下の特別条件が適用されます。',
       t1b: 'この特別条件は、韓国公正取引委員会の国内旅行標準約款および消費者紛争解決基準と異なり、これらに優先して適用されます。',
@@ -53,10 +53,10 @@
       rsv: 'ご予約', conf: '確認番号', itin: '旅程',
       sos: '<b>韓国での緊急時：</b>警察 112・消防／救急 119・観光案内電話 1330（24時間・多言語）',
       overH: 'ご旅行ありがとうございました', overP: 'またソウルでお目にかかれますように。ご用の際は {m} までご連絡ください。', guests1: '1名様', guestsN: '{n}名様',
-      craftL: '伝統工芸体験', cr: { najeon: '螺鈿の手鏡（チョン・ミョンチェ氏）', silver: '銀の指輪（イ・ファンジェ氏）' }, opt: { porter: 'ポーターサービス', photo: 'プロカメラマン', hanbok: 'オーダーメイドの韓服', wine: 'ワインペアリング', gj: '慶州への延長（1泊2日）', bnb: 'Born & Bred 韓牛おまかせ（鮨 かねさかと差し替え）', nam: '南山の朝の散策（楽古斎の茶礼と差し替え）' }, co: '株式会社 富滿（Booman Inc.）' },
+      craftL: '伝統工芸体験', cr: { najeon: '螺鈿の手鏡（チョン・ミョンチェ氏）', silver: '銀の指輪（イ・ファンジェ氏）' }, opt: { porter: 'ポーターサービス', photo: 'プロカメラマン', hanbok: 'オーダーメイドの韓服', wine: 'ワインペアリング', gj: '慶州への延長（1泊2日）', bnb: 'Born & Bred 韓牛おまかせ（鮨 かねさかと差し替え）', nam: '南山の朝の散策（楽古斎の茶礼と差し替え）', yacht: '漢江プライベートヨット（3日目のThe Hyundai Seoulでのショッピングと差し替え）', beauty: '清潭洞プライベートK-ビューティー（3日目のThe Hyundai Seoulでのショッピングと差し替え）' }, co: '株式会社 富滿（Booman Inc.）' },
     es: { load: 'Cargando su presupuesto…', bad: 'Este enlace no es válido. Utilice el enlace de su correo o escríbanos a {m}.', net: 'No hemos podido conectar con nuestro servidor. Actualice esta página en unos momentos.',
       qk: 'Su presupuesto', pkg: 'Seúl: bienestar y gastronomía', prep: 'Preparado para {n}', no: 'N.º de presupuesto', iss: 'Fecha de emisión', valid: 'Válido hasta', car: 'Vehículo', opts: 'Opciones', none: 'Ninguna',
-      item: 'Concepto', amt: 'Importe', total: 'Total (KRW)', incl: 'Incluido', krw: 'El pago se realiza en wones coreanos (KRW). El emisor de su tarjeta convierte el importe a la moneda de su tarjeta.',
+      item: 'Concepto', amt: 'Importe', total: 'Total (KRW)', incl: 'Incluido', psr: 'Compra mínima en la sala privada de compras de The Hyundai Seoul: {u} (aprox. {k})', krw: 'El pago se realiza en wones coreanos (KRW). El emisor de su tarjeta convierte el importe a la moneda de su tarjeta.',
       tt: 'Condiciones especiales de este viaje a medida: cancelación y reembolsos',
       t1: 'Este viaje se organiza especialmente para usted, por lo que se aplican las siguientes condiciones especiales.',
       t1b: 'Estas condiciones especiales difieren de las Condiciones Generales Tipo para Viajes Nacionales y de los Criterios de Resolución de Conflictos de Consumo de la Comisión de Comercio Justo de Corea, y prevalecen sobre ellos.',
@@ -76,7 +76,7 @@
       rsv: 'Reservas', conf: 'N.º de confirmación', itin: 'Su itinerario',
       sos: '<b>En caso de emergencia en Corea:</b> policía 112 · bomberos y ambulancia 119 · línea de ayuda al turista 1330 (24 horas, varios idiomas).',
       overH: 'Gracias por viajar con nosotros', overP: 'Esperamos recibirle de nuevo en Seúl. Para cualquier cosa, escríbanos a {m}.', guests1: '1 persona', guestsN: '{n} personas',
-      craftL: 'Artesanía', cr: { najeon: 'Espejo de nácar (Jeong Myeong-chae)', silver: 'Anillo de plata (Lee Hwang-jae)' }, opt: { porter: 'Servicio de equipaje', photo: 'Fotógrafo profesional', hanbok: 'Hanbok a medida', wine: 'Maridaje de vinos', gj: 'Extensión a Gyeongju, 1 noche / 2 días', bnb: 'Omakase hanwoo en Born & Bred (en lugar de Sushi Kanesaka)', nam: 'Paseo matinal por Namsan (en lugar de la ceremonia del té en Rakkojae)' }, co: 'Booman Inc.' }
+      craftL: 'Artesanía', cr: { najeon: 'Espejo de nácar (Jeong Myeong-chae)', silver: 'Anillo de plata (Lee Hwang-jae)' }, opt: { porter: 'Servicio de equipaje', photo: 'Fotógrafo profesional', hanbok: 'Hanbok a medida', wine: 'Maridaje de vinos', gj: 'Extensión a Gyeongju, 1 noche / 2 días', bnb: 'Omakase hanwoo en Born & Bred (en lugar de Sushi Kanesaka)', nam: 'Paseo matinal por Namsan (en lugar de la ceremonia del té en Rakkojae)', yacht: 'Yate privado por el río Han (en lugar de las compras del día 3 en The Hyundai Seoul)', beauty: 'Sesión privada de K-beauty en Cheongdam (en lugar de las compras del día 3 en The Hyundai Seoul)' }, co: 'Booman Inc.' }
   };
   function T(k) { var s = (TX[L] && TX[L][k]); return s == null ? TX.en[k] : s; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -114,7 +114,8 @@
       + '<table class="qtable"><thead><tr><th>' + esc(T('item')) + '</th><th>' + esc(T('amt')) + '</th></tr></thead><tbody>'
       + q.lines.map(function (l) { return '<tr><td>' + esc(l.g) + '</td><td>' + (l.p > 0 ? krw(l.p) : esc(T('incl'))) + '</td></tr>'; }).join('')
       + '<tr class="qtot"><td>' + esc(T('total')) + '</td><td>' + krw(q.total) + '</td></tr></tbody></table>'
-      + (q.fxLine ? '<p class="qfx">' + esc(q.fxLine) + '</p>' : '') + '<p class="qkrw">' + esc(T('krw')) + '</p>';
+      + (q.fxLine ? '<p class="qfx">' + esc(q.fxLine) + '</p>' : '') + '<p class="qkrw">' + esc(T('krw')) + '</p>'
+      + (q.psrMin > 0 && q.psrKrw > 0 ? '<p class="qfx qpsr">' + esc(T('psr').replace('{u}', 'US$ ' + Number(q.psrMin).toLocaleString('en-US')).replace('{k}', krw(q.psrKrw))) + '</p>' : '');   // 11-16 더현대 PSR 최소 쇼핑금액
   }
 
   function render() {
