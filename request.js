@@ -49,7 +49,7 @@
   (function () {   // 11-16 좋아하는 브랜드 — 로고 글자 그림 칸(여러 개) · 목록 brands.js
     var box = $('f-brand-list'); if (!box) return; var BR = window.VIP_BRANDS || [];
     if (!BR.length) { $('f-brands').hidden = true; return; }
-    box.innerHTML = BR.map(function (b) { return '<label class="brand" title="' + esc(b.n) + '"><input type="checkbox" name="brand" value="' + esc(b.k) + '"><img src="../img/brands/' + esc(b.f) + '" alt="' + esc(b.n) + '" loading="lazy"></label>'; }).join('');
+    box.innerHTML = BR.map(function (b) { return '<label class="brand-chip" title="' + esc(b.n) + '"><input type="checkbox" name="brand" value="' + esc(b.k) + '"><img src="../img/brands/' + esc(b.f) + '" alt="' + esc(b.n) + '" loading="lazy"></label>'; }).join('');
   })();
   function brandsOf() { return Array.prototype.slice.call(form.querySelectorAll('input[name="brand"]:checked')).map(function (i) { return i.value; }); }
   function brandName(k) { var b = (window.VIP_BRANDS || []).filter(function (x) { return x.k === k; })[0]; return b ? b.n : k; }
