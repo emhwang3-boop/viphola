@@ -63,6 +63,30 @@
     s.addEventListener('change', function () { apply(s.value, true); });
   });
 
+  // 방문자 수 (11-16 사장님 「누적 방문자 수·오늘 방문자수·오늘 조회수 … 나는 빼줘」) — 허브 /hc?s=vip (MosaicTrip 홈페이지와 같은 방식, 따로 셈)
+  //  · 세는 곳: 이 파일을 쓰는 공개 페이지(대문·서울·약관)를 열 때마다 조회 1 · 방문자 = 브라우저 난수(vip_vid, 개인정보 없음)
+  //  · 안 세는 것: 사장님 기기(vip_owner — 관리자 화면을 연 기기, 또는 ?me=EM2410 로 한 번 연 기기) · viphola.com 밖(이 PC 미리보기)
+  //               · 사장님 집 인터넷·로봇·헤드리스 시험은 허브가 뺌 · 숫자는 대문 맨 아래(#vcnt)에만 보임
+  var VC = null;
+  function vcPaint() {
+    var e = document.getElementById('vcnt'); if (!e || !VC) return;
+    var f = function (x) { return Number(x || 0).toLocaleString('en-US'); };
+    var T = { ko: ['누적 방문자 ', '명 · 오늘 방문자 ', '명 · 오늘 조회 ', '회'], en: ['Total visitors ', ' · Visitors today ', ' · Views today ', ''],
+      ja: ['累計訪問者 ', '人 · 今日の訪問者 ', '人 · 今日の閲覧 ', '回'], zhs: ['累计访客 ', '人 · 今日访客 ', '人 · 今日浏览 ', '次'],
+      zht: ['累計訪客 ', '人 · 今日訪客 ', '人 · 今日瀏覽 ', '次'], es: ['Visitantes totales ', ' · Visitantes hoy ', ' · Visitas hoy ', ''] }[cur] || null;
+    if (!T) T = ['Total visitors ', ' · Visitors today ', ' · Views today ', ''];
+    e.textContent = T[0] + f(VC.uniq) + T[1] + f(VC.tuniq) + T[2] + f(VC.today) + T[3];
+  }
+  try {
+    var vid = '', n = '1';
+    try { if (/[?&]me=EM2410/i.test(location.search)) localStorage.setItem('vip_owner', '1'); if (localStorage.getItem('vip_owner')) n = '0'; } catch (e) {}
+    try { vid = localStorage.getItem('vip_vid') || ''; if (!vid) { vid = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('vip_vid', vid); } } catch (e) {}
+    if (!/(^|\.)viphola\.com$/i.test(location.hostname)) n = '0';
+    fetch((window.VIP_HUB || 'https://brief-live-hub.emhwang3.workers.dev') + '/hc?s=vip&n=' + n + '&vid=' + encodeURIComponent(vid), { cache: 'no-store' })
+      .then(function (r) { return r.json(); }).then(function (j) { VC = j; vcPaint(); }).catch(function () {});
+    document.addEventListener('vip:lang', vcPaint);
+  } catch (e) {}
+
   // 카드 넘기기 표시(폰)
   var cards = document.getElementById('cards'), dots = document.getElementById('dots');
   if (cards && dots) {

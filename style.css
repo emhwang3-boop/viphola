@@ -581,3 +581,7 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .lg-sec h2
 .app-qr { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
 .app-qr img { width: 140px; height: 140px; flex: 0 0 auto; }
 @media (max-width: 700px) { .app-qr { display: none; } }
+
+/* 11-16 대문 맨 아래 방문자 수 (main.js · 허브 /hc?s=vip) */
+.vcnt { margin: 14px 0 0; font-size: 11.5px; color: var(--ink-3); text-align: center; letter-spacing: .02em; }
+.vcnt:empty { display: none; }

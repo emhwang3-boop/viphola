@@ -6,6 +6,7 @@
 (function () {
   'use strict';
   var HUB = window.VIP_HUB || 'https://brief-live-hub.emhwang3.workers.dev';
+  try { localStorage.setItem('vip_owner', '1'); } catch (e) {}   // 11-16 관리자 화면을 연 기기 = 사장님 기기 → 대문 방문자 수에서 뺌 (main.js)
   var TOK = '', ADM2 = ''; try { TOK = localStorage.getItem('vipadm_tok') || ''; ADM2 = localStorage.getItem('vipadm_t2') || ''; } catch (e) {}
   var $ = function (id) { return document.getElementById(id); };
   var ST_KO = { 'new': '신청', quoted: '견적 보냄', paid: '결제 완료', confirmed: '확정' };
