@@ -93,6 +93,7 @@
     L = l === 'ja' || l === 'es' ? l : 'en';
     document.documentElement.lang = L; document.documentElement.setAttribute('data-lang', L);
     document.getElementById('pf-co').textContent = T('co');
+    if (window.VIP_BIZINFO) window.VIP_BIZINFO(L);   // 11-16 맨 아래 사업자 정보(투어앱과 같은 내용) — 견적 언어로
     var ft = document.getElementById('pf-terms'); if (ft) { ft.textContent = T('ft'); ft.setAttribute('href', '../terms/?lang=' + L); }   // 꼬리말 약관 링크 — 견적 언어 그대로 (11-16)
   }
 
