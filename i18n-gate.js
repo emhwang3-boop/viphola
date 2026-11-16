@@ -18,7 +18,7 @@ window.I18N = {
     'in.title': 'Seoul, privately curated.',
     'in.sub': 'Four private days in Seoul for guests visiting Korea.',
     'in.cta': 'Enter',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.terms': 'Terms & refund policy'
   },
   ko: {
     'meta.title': 'VIPHola.com — 프라이빗 여정',
@@ -31,7 +31,7 @@ window.I18N = {
     'in.title': '두 분만을 위해 설계한 서울',
     'in.sub': '한국을 찾는 해외 고객을 위한 서울 프라이빗 4일',
     'in.cta': '입장',
-    'foot.company': '주식회사 부만', 'foot.contact': '문의'
+    'foot.company': '주식회사 부만', 'foot.contact': '문의', 'foot.terms': '약관·환불 규정'
   },
   ja: {
     'meta.title': 'VIPHola.com — プライベートな旅',
@@ -44,7 +44,7 @@ window.I18N = {
     'in.title': 'おふたりのためだけの、ソウル。',
     'in.sub': '韓国を訪れるお客様のための、ソウルでのプライベートな4日間。',
     'in.cta': '詳しく見る',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'お問い合わせ'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'お問い合わせ', 'foot.terms': '約款・返金規定'
   },
   es: {
     'meta.title': 'VIPHola.com — Viajes privados',
@@ -57,6 +57,6 @@ window.I18N = {
     'in.title': 'Seúl, solo para ustedes.',
     'in.sub': 'Cuatro días privados en Seúl para quienes visitan Corea.',
     'in.cta': 'Entrar',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.terms': 'Condiciones y reembolsos'
   }
 };

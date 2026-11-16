@@ -108,7 +108,7 @@
   },
   {
    "file": "img/day3_yangnyeongsi_gate.jpg",
-   "use": "③ DAY 3 카드",
+   "use": "(11-16 3일차 롯데월드타워로 바뀌어 카드에서 내림 — 파일은 대체용으로 남김)",
    "place_ko": "서울약령시 정문 (한옥 대문)",
    "place_en": "Main gate of Seoul Yangnyeongsi herbal-medicine market",
    "tourapi_title": "서울 약령시장",
@@ -127,6 +127,28 @@
    "file_site_path": "/img/day3_yangnyeongsi_gate.jpg",
    "why": "11-16 사장님 — 경동시장 빼고 약령시·한의약박물관으로, 약령시 입구 사진 1번 「전체가 다 나오게·사람·신호등 지우고 깔끔하게」 → 「좋아 이걸로 하자」",
    "replaces": "img/day3_herbal_market.jpg (반려된 약령시 가게 사진, 배포 안 됨) → 빌드도구\\옛판\\day3_herbal_market_반려_1116.jpg"
+  },
+  {
+   "file": "img/day3_lotte_world_tower.jpg",
+   "use": "③ DAY 3 카드",
+   "place_ko": "롯데월드타워 야경 (석촌호수에서)",
+   "place_en": "Lotte World Tower at night, from Seokchon Lake",
+   "tourapi_title": "롯데월드타워 (관광공사 사진 갤러리)",
+   "gallery_contentid": "2505792",
+   "photographer": "IR 스튜디오",
+   "shot": "2017-04",
+   "license": "한국관광공사 사진 갤러리 (공공데이터포털 PhotoGalleryService1) — 출처 표시",
+   "credit": "한국관광공사",
+   "credit_en": "Korea Tourism Organization",
+   "downloaded_url": "https://tong.visitkorea.or.kr/cms2/website/92/2505792.jpg",
+   "edit": "세로 원본 854x1280 에서 위 100px 아래부터 4:5 로 자르고(0,100)-(854,1168) 864x1080 으로 줄임",
+   "size": [
+    864,
+    1080
+   ],
+   "file_site_path": "/img/day3_lotte_world_tower.jpg",
+   "why": "11-16 사장님 — 3일차 약령시 프로그램을 잠실 롯데월드타워(관광·쇼핑·점심)로 · 갤러리 62장 중 내가 고름(금빛 야경, 세로 구도)",
+   "replaces": "img/day3_yangnyeongsi_gate.jpg (약령시 정문 — 대체 장소로 보관)"
   }
  ],
  "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
@@ -158,28 +180,24 @@
   {
    "file": "img/outbound_uyuni.jpg",
    "use": "대문(/) 아웃바운드 문 — 오른쪽 반쪽",
-   "place": "볼리비아 우유니 소금사막 (해 뜨기 전 푸른 시간, 물 고인 거울 반사)",
-   "source": "Wikimedia Commons",
-   "commons_status": [
-    "Quality images"
-   ],
-   "title": "File:Salar de Uyuni, Bolivia, 2016-02-04, DD 10-12 HDR.JPG",
-   "page": "https://commons.wikimedia.org/wiki/File:Salar_de_Uyuni,_Bolivia,_2016-02-04,_DD_10-12_HDR.JPG",
-   "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Salar_de_Uyuni%2C_Bolivia%2C_2016-02-04%2C_DD_01-03_HDR.JPG",
+   "place": "볼리비아 우유니 소금사막 (낮, 뭉게구름이 물에 비친 거울 반사)",
+   "source": "iStock (Getty Images)",
+   "istock_id": "177709823",
+   "page": "https://www.istockphoto.com/kr/%EC%82%AC%EC%A7%84/%EC%9A%B0%EC%9C%A0%EB%8B%88-%EC%97%BC%ED%98%B8-%EC%86%8C%EA%B8%88-%ED%8F%89%ED%8E%B8-%EB%B3%BC%EB%A6%AC%EB%B9%84%EC%95%84%EC%97%90-gm177709823-23950667",
    "original_size": [
-    8656,
-    5771
+    5446,
+    3616
    ],
-   "artist": "Diego Delso",
-   "license": "CC BY-SA 4.0",
-   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-   "credit_shown": "Photo: Diego Delso / CC BY-SA 4.0",
-   "changes": "1920px 판에서 가운데를 세로 4:5 로 자르고 960×1200 으로 줄임 (같은 라이선스로 사용)",
-   "why": "11-15 사장님이 직접 고름",
-   "size_kb": 70,
-   "raw_file": "C:\\kiwoom_work\\마케팅\\VIP\\빌드도구\\원본사진\\Salar_de_Uyuni,_Bolivia,_2016-02-04,_DD_10-12_HDR_1920.jpg"
+   "artist": "zanskar",
+   "license": "iStock 표준 라이선스 (Royalty-free, 기본 컬렉션)",
+   "purchased": "2026-11-16 사장님 구매 (약 $12, 1장)",
+   "credit_shown": "Photo: iStock.com/zanskar",
+   "changes": "원본 가운데를 세로 4:5 로 자르고(x 1276~4169) 960×1200 으로 줄임 — 오른쪽 끝 사람은 잘려 나감",
+   "why": "11-16 사장님 — laif 1번(Heiko Meyer, 바로 구매 불가)과 닮은 후보 7장 중 5번",
+   "size_kb": 123,
+   "raw_file": "C:\\kiwoom_work\\마케팅\\VIP\\빌드도구\\원본사진\\iStock-177709823.jpg"
   }
  ],
- "note_outbound": "대문 아웃바운드 문 사진 2장은 위키미디어 공용 Featured/Quality 사진(CC BY-SA). 사진 위에 「Photo: 작가 / 라이선스」 표시.",
+ "note_outbound": "대문 아웃바운드 문 사진 2장 — 왼쪽 마추픽추는 위키미디어 공용 Quality 사진(CC BY-SA), 오른쪽 우유니는 iStock 구매(표준 라이선스). 사진 위에 「Photo: 작가 / 출처」 표시.",
  "updated": "2026-11-16"
 }

@@ -506,3 +506,61 @@ html[lang="ja"] .tcard .who { font-size: 21px; }
   .rsv .rt { text-align: left; }
   .terms { padding: 20px 18px; }
 }
+
+/* ───────── 약관·환불 규정 링크 (11-16) — 서울 꼬리말 · 결제 화면 특약 ───────── */
+.foot-terms { margin-top: 12px; }
+.terms-full { margin-top: 14px; }
+.terms-full a { color: var(--navy); }
+
+/* ───────── 여행 약관·환불 규정 (/terms/, 11-16) — 네 언어 본문 가운데 고른 언어만 보인다 ───────── */
+.legal-page { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+.legal-page .topbar { position: relative; }
+.legal-main { flex: 1; max-width: 880px; padding-top: 16px; padding-bottom: 96px; }
+.legal-head { text-align: center; margin: 20px 0 64px; }
+.legal-head .kicker { margin-bottom: 14px; }
+.legal-head h1 { max-width: 18em; margin: 0 auto; font-family: var(--serif); font-weight: 500; font-size: calc(50px * var(--hs)); line-height: 1.15; letter-spacing: -.005em; }
+html:is([lang="ko"], [lang="ja"]) .legal-head h1 { line-height: 1.35; }
+.legal-eff { margin-top: 18px; font-size: 14.5px; color: var(--ink-2); }
+.legal-jump { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.legal-jump a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 8px 22px; border: 1px solid rgba(31, 42, 68, .35); text-decoration: none; font-size: 14.5px; line-height: 1.4; color: var(--navy); transition: background .25s ease; }
+.legal-jump a:hover { background: var(--ivory-2); }
+.legal-jump a:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+.legal-doc { display: none; }
+html[data-lang="en"] .legal-doc[data-tl="en"], html[data-lang="ko"] .legal-doc[data-tl="ko"],
+html[data-lang="ja"] .legal-doc[data-tl="ja"], html[data-lang="es"] .legal-doc[data-tl="es"] { display: block; }
+.lg-sec { margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
+.lg-sec:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.lg-sec h2 { margin-bottom: 22px; font-size: calc(40px * var(--hs)); }
+html:is([lang="ko"], [lang="ja"]) .lg-sec h2 { font-size: 28px; }
+.lg-sec h3 { margin: 36px 0 10px; font: 500 16.5px/1.5 var(--sans); letter-spacing: .01em; color: var(--navy); }
+.lg-sec p { margin: 8px 0; font-size: 15.5px; line-height: 1.8; color: var(--ink-2); }
+.lg-sec .lp { display: flex; gap: .55em; }
+.lg-sec .ln { flex: none; min-width: 1.35em; color: var(--navy); font-weight: 400; }
+.lg-sec .lp2 { padding-left: 1.9em; }
+.lg-sec strong { font-weight: 500; color: var(--navy); }
+.lg-mark { color: var(--pink); }
+.lg-sec a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.lg-sec .lg-formula { margin: 18px 0; padding: 16px 20px; border-left: 3px solid var(--pink); background: var(--ivory-2); }
+.lg-sec .lg-contact { margin-top: 28px; }
+.lg-tbl { max-width: 100%; margin: 16px 0 20px; overflow-x: auto; }
+.lg-sec table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.6; }
+.lg-sec th, .lg-sec td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.lg-sec thead th { font: 500 12px/1.5 var(--sans); letter-spacing: .04em; color: var(--ink-3); border-bottom-color: var(--navy); }
+.lg-sec td { color: var(--navy); }
+.lg-sec .n { padding-right: 0; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.lg-sec thead .n { white-space: normal; }
+.lg-co { border-top: 1px solid var(--line); }
+.lg-co th { width: 34%; font: 400 13.5px/1.6 var(--sans); color: var(--ink-3); }
+@media (max-width: 640px) {
+  .legal-head { margin: 8px 0 44px; }
+  .legal-head h1 { font-size: calc(36px * var(--hs)); }
+  html:is([lang="ko"], [lang="ja"]) .legal-head h1 { font-size: 25px; }
+  .legal-jump { flex-direction: column; align-items: stretch; }
+  .lg-sec { margin-top: 48px; padding-top: 40px; }
+  .lg-sec h2 { font-size: calc(32px * var(--hs)); }
+  html:is([lang="ko"], [lang="ja"]) .lg-sec h2 { font-size: 23px; }
+  .lg-sec p { font-size: 15px; }
+  .lg-sec .lp2 { padding-left: 1em; }
+  .lg-sec table { font-size: 14px; }
+  .lg-co th { width: 38%; }
+}

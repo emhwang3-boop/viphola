@@ -1,5 +1,5 @@
 // viphola.com 공용 — 언어 변경 · 카드 넘기기 표시 (신청 칸은 request.js)
-//  · 쓸 수 있는 언어는 페이지마다: 대문 = 한국어·영어·일본어·스페인어 · 서울(인바운드) = 영어·일본어·스페인어 (11-15 사장님 「인바운드는 한국어 필요없어」)
+//  · 쓸 수 있는 언어는 페이지마다: 대문 = 한국어·영어·일본어·스페인어 · 서울(인바운드) = 영어·일본어·스페인어 (11-15 사장님 「인바운드는 한국어 필요없어」) · 약관(/terms/) = 네 언어 (11-16)
 //  · 처음 언어: 주소 ?lang= → 저장값(mtp_lang) → 기본값(영어) — 그 페이지에 없는 언어면 영어
 (function () {
   'use strict';
@@ -33,6 +33,10 @@
     document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false'); });
     document.querySelectorAll('.lang-select').forEach(function (s) { s.value = lang; });
     var din = document.getElementById('door-in'); if (din) din.setAttribute('href', 'seoul/?lang=' + (lang === 'ko' ? 'en' : lang));   // 대문 언어 그대로 서울 페이지로 (서울은 한국어가 없어 영어로)
+    document.querySelectorAll('a[data-lang-href]').forEach(function (a) {   // 꼬리말 「약관·환불 규정」 — 지금 언어 그대로 약관 페이지로 (11-16)
+      var h = a.getAttribute('data-lang-href'), i = h.indexOf('#');
+      a.setAttribute('href', (i < 0 ? h : h.slice(0, i)) + '?lang=' + lang + (i < 0 ? '' : h.slice(i)));
+    });
     if (save) store(KEY, lang);
     try { document.dispatchEvent(new CustomEvent('vip:lang', { detail: lang })); } catch (e) {}
   }
