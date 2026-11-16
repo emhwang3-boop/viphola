@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../style.css?v=1116zh">
+<link rel="stylesheet" href="../style.css?v=1116bo">
 </head>
 <body data-page="seoul">
 
@@ -93,7 +93,7 @@ privately curated.</h1>
             <li data-i18n="d3.i1">Private tea ceremony at Rakkojae, a hanok in Bukchon</li>
             <li data-i18n="d3.i2">Lunch at STAY by Yannick Alléno, on the 81st floor of Signiel Seoul</li>
             <li data-i18n="d3.i3">Seoul Sky observatory, floors 117–123 of Lotte World Tower</li>
-            <li data-i18n="d3.i4">The Hyundai Seoul: private shopping room for international VIP guests (TBD)</li>
+            <li data-i18n="d3.i4">The Hyundai Seoul: private shopping room for international VIP guests (TBD), or private appointments at flagship boutiques in Cheongdam</li>
             <li data-i18n="d3.i5">Dinner at Sushi Kanesaka</li>
           </ul>
         </article>
@@ -131,7 +131,7 @@ privately curated.</h1>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Expert guide</p><p class="inc-desc" data-i18n="inc.6">A specialist in palaces and architecture</p></div></li>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">24-hour dedicated concierge</p><p class="inc-desc" data-i18n="inc.7">With you through the day, on call through the night</p></div></li>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Artisan craft experience</p><p class="inc-desc" data-i18n="inc.9">A mother-of-pearl mirror or a silver ring, made with a master artisan; yours to take home</p></div></li>
-        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Private luxury shopping</p><p class="inc-desc" data-i18n="inc.8">The Hyundai Seoul, private shopping room for international VIP guests — TBD; a minimum spend may apply</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Private luxury shopping</p><p class="inc-desc" data-i18n="inc.8">The Hyundai Seoul’s private shopping room for international VIP guests (TBD; a minimum spend may apply), or private appointments at flagship boutiques in Cheongdam</p></div></li>
       </ul>
       <p class="note" data-i18n="inc.note">Flights are not included (land only).</p>
     </div>
@@ -250,6 +250,12 @@ privately curated.</h1>
               <label><input type="checkbox" name="opt" value="gj"><span><span data-i18n="c.gj">Gyeongju, 1 night / 2 days</span> <small class="c-q" data-i18n="c.q">quoted separately</small><small class="c-d" data-i18n="c.gj.d">KTX first class to Gyeongju, Bulguksa and Seokguram (UNESCO), and one night in Gyeongju. Replaces Day 4 in Seoul; you fly home on Day 5.</small></span></label>
             </div>
           </fieldset>
+          <fieldset class="f f-wide" id="f-brands">   <!-- 11-16 좋아하는 브랜드 (여러 개, 선택 사항) — 목록은 brands.js, 칸은 request.js 가 그림 -->
+            <legend data-i18n="f.brands">Favourite brands (optional)</legend>
+            <p class="fine brand-hint" data-i18n="f.brands.d">Choose as many as you like. It helps us shape your days in Seoul around your taste.</p>
+            <div class="brand-grid" id="f-brand-list"></div>
+            <input class="brand-other" id="f-brand-other" type="text" maxlength="120" autocomplete="off" data-i18n-ph="f.brands.other" placeholder="Any other brands you love">   <!-- 11-16 목록에 없는 브랜드는 자유롭게 -->
+          </fieldset>
           <div class="f f-wide">
             <label for="f-req" data-i18n="f.req">Special requests</label>
             <textarea id="f-req" name="requests" rows="4" maxlength="2000" data-i18n-ph="f.req.ph" placeholder="Flight numbers, dietary needs, celebrations, interests…"></textarea>
@@ -344,9 +350,10 @@ privately curated.</h1>
 </footer>
 
 <script src="../hub.js?v=1115e"></script>
-<script src="../i18n-seoul.js?v=1116zi"></script>
+<script src="../i18n-seoul.js?v=1116bo"></script>
 <script src="../bizinfo.js?v=1116zh"></script>
 <script src="../main.js?v=1116vc"></script>
-<script src="../request.js?v=1116zh"></script>
+<script src="../brands.js?v=1116hm"></script>
+<script src="../request.js?v=1116bo"></script>
 </body>
 </html>

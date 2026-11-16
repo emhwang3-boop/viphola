@@ -199,5 +199,148 @@
   }
  ],
  "note_outbound": "대문 아웃바운드 문 사진 2장 — 왼쪽 마추픽추는 위키미디어 공용 Quality 사진(CC BY-SA), 오른쪽 우유니는 iStock 구매(표준 라이선스). 사진 위에 「Photo: 작가 / 출처」 표시.",
- "updated": "2026-11-16"
+ "updated": "2026-11-16",
+ "brands": [
+  {
+   "file": "img/brands/audemarspiguet.svg",
+   "brand": "Audemars Piguet",
+   "commons": "File:Audemars Pigue logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Pigue_logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/bottegaveneta.svg",
+   "brand": "Bottega Veneta",
+   "commons": "File:Logo Bottega Veneta.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Logo_Bottega_Veneta.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/burberry.svg",
+   "brand": "Burberry",
+   "commons": "File:Burberry Logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Burberry_Logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/cartier.svg",
+   "brand": "Cartier",
+   "commons": "File:Cartier logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Cartier_logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/celine.svg",
+   "brand": "Celine",
+   "commons": "File:Celine logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Celine_logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/chanel.svg",
+   "brand": "Chanel",
+   "commons": "File:Chanel logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Chanel_logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/dior.svg",
+   "brand": "Dior",
+   "commons": "File:Dior Logo 2022.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Dior_Logo_2022.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/dolcegabbana.svg",
+   "brand": "Dolce & Gabbana",
+   "commons": "File:Dolce & Gabbana - logo (Italy, 1985-).svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Dolce_%26_Gabbana_-_logo_(Italy,_1985-).svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/ferragamo.svg",
+   "brand": "Ferragamo",
+   "commons": "File:Fergamo - logo (Italy, 2022).svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Fergamo_-_logo_(Italy,_2022).svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/gucci.svg",
+   "brand": "Gucci",
+   "commons": "File:Gucci Logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Gucci_Logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/loewe.svg",
+   "brand": "Loewe",
+   "commons": "File:LOEWE-Logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:LOEWE-Logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/louisvuitton.svg",
+   "brand": "Louis Vuitton",
+   "commons": "File:Louis Vuitton CL.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Louis_Vuitton_CL.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/miumiu.svg",
+   "brand": "Miu Miu",
+   "commons": "File:Miu Miu - logo (Italy, 1993).svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Miu_Miu_-_logo_(Italy,_1993).svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/moncler.svg",
+   "brand": "Moncler",
+   "commons": "File:Logo Moncler Group.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Logo_Moncler_Group.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/prada.svg",
+   "brand": "Prada",
+   "commons": "File:Prada-Logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Prada-Logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/richardmille.svg",
+   "brand": "Richard Mille",
+   "commons": "File:Logo Richard Mille.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Logo_Richard_Mille.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/saintlaurent.svg",
+   "brand": "Saint Laurent",
+   "commons": "File:Saint Laurent logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Saint_Laurent_logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/vacheronconstantin.svg",
+   "brand": "Vacheron Constantin",
+   "commons": "File:Vacheron Constantin.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Vacheron_Constantin.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/vancleefarpels.svg",
+   "brand": "Van Cleef & Arpels",
+   "commons": "File:Van Cleef Arpels logo.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Van_Cleef_Arpels_logo.svg",
+   "license": "Public domain"
+  },
+  {
+   "file": "img/brands/hermes.svg",
+   "brand": "Hermès",
+   "commons": "File:Hermes wordmark.svg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hermes_wordmark.svg",
+   "license": "Public domain"
+  }
+ ],
+ "note_brands": "11-16 신청서 좋아하는 브랜드 칸 — 위키미디어 공용(Wikimedia Commons)의 공개(Public domain) 글자 로고 · 청담 명품 거리 매장 브랜드(보그 코리아 2025-09 청담 지도 등) · 몽클레르는 Moncler Group 로고에서 GROUP 줄을 잘라냄(viewBox)"
 }

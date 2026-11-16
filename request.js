@@ -46,11 +46,18 @@
   });
   document.addEventListener('vip:lang', fill);
   fill();
+  (function () {   // 11-16 좋아하는 브랜드 — 로고 글자 그림 칸(여러 개) · 목록 brands.js
+    var box = $('f-brand-list'); if (!box) return; var BR = window.VIP_BRANDS || [];
+    if (!BR.length) { $('f-brands').hidden = true; return; }
+    box.innerHTML = BR.map(function (b) { return '<label class="brand" title="' + esc(b.n) + '"><input type="checkbox" name="brand" value="' + esc(b.k) + '"><img src="../img/brands/' + esc(b.f) + '" alt="' + esc(b.n) + '" loading="lazy"></label>'; }).join('');
+  })();
+  function brandsOf() { return Array.prototype.slice.call(form.querySelectorAll('input[name="brand"]:checked')).map(function (i) { return i.value; }); }
+  function brandName(k) { var b = (window.VIP_BRANDS || []).filter(function (x) { return x.k === k; })[0]; return b ? b.n : k; }
 
   function data() {
     return { ui: L(), lang: $('f-lang').value, date: $('f-date').value, guests: +$('f-guests').value, car: $('f-car').value,
       opts: OPTS.filter(function (k) { var i = form.querySelector('input[name="opt"][value="' + k + '"]'); return i && i.checked; }),
-      craft: (form.querySelector('input[name="craft"]:checked') || {}).value || '',
+      craft: (form.querySelector('input[name="craft"]:checked') || {}).value || '', brands: brandsOf(), brandOther: ($('f-brand-other') ? $('f-brand-other').value.trim() : ''),
       req: $('f-req').value.trim(), name: $('f-name').value.trim(), email: $('f-email').value.trim(), phone: $('f-phone').value.trim() };
   }
   function check(d) {
@@ -83,6 +90,8 @@
     var langName = { en: 'English', ja: '日本語', es: 'Español', zhs: '简体中文', zht: '繁體中文' }[d.lang] || d.lang;
     var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 4 : 3))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
       [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.' + d.craft)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
+    var bl = (d.brands || []).map(brandName).concat(d.brandOther ? [d.brandOther] : []);   // 로고 칸 + 자유 입력
+    if (bl.length) rows.push([t('r.brands'), bl.join(', ')]);
     if (d.req) rows.push([t('r.req'), d.req]);
     $('rv-sum').innerHTML = rows.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]).replace(/\n/g, '<br>') + '</dd></div>'; }).join('');
     $('rv-days').innerHTML = j.itin.days.map(function (x) {

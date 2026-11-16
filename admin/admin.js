@@ -240,6 +240,7 @@
       + '<dt>일정</dt><dd>' + esc(r.date) + ' ~ ' + esc(r.end) + (r.nights === 4 ? ' (4박 5일 · 경주 연장)' : ' (3박 4일)') + '</dd><dt>인원</dt><dd>' + r.guests + '명</dd><dt>차량</dt><dd>' + esc(r.carKo) + '</dd>'
       + (cur.craftKo ? '<dt>장인 체험</dt><dd>' + esc(cur.craftKo) + '</dd>' : '')
       + '<dt>옵션</dt><dd>' + (r.opts.length ? r.opts.map(function (k) { return OPT_KO[k]; }).filter(Boolean).join(', ') : '없음') + '</dd>'
+      + (r.brands && r.brands.length ? '<dt>좋아하는 브랜드</dt><dd>' + esc(r.brands.join(', ')) + '</dd>' : '')   // 11-16 신청서 브랜드 칸
       + '<dt>요청 사항</dt><dd>' + (r.req ? esc(r.req).replace(/\n/g, '<br>') : '—') + '</dd></dl></div>';
     h += '<div class="sec itin"><h2>일정 <small>손님이 고른 옵션까지 넣은 대략 시각</small></h2>' + it.days.map(function (d, k) {
       return '<details' + (k === 0 ? ' open' : '') + '><summary>' + esc(d.day) + ' · ' + esc(d.dl) + ' — ' + esc(d.title) + '</summary><ol>' + d.items.map(function (x) { return '<li><span class="n">' + x.no + '</span><span class="t">' + esc(x.t) + '</span><span>' + esc(x.x) + '</span></li>'; }).join('') + '</ol></details>'; }).join('') + '</div>';

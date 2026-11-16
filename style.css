@@ -589,3 +589,17 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .lg-sec h2
 /* 11-16 대문 인바운드 문 「오픈 예정」 띠 — 왼쪽 위 모서리에 사선(사진 출처는 오른쪽 위) */
 .door-soon { position: absolute; top: 46px; left: -62px; width: 244px; z-index: 3; padding: 8px 0 7px; text-align: center; transform: rotate(-45deg); background: #E3BE5C; color: var(--navy); font: 600 12px/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; box-shadow: 0 2px 10px rgba(15, 20, 35, .3); pointer-events: none; }   /* 11-16 사장님 「왼쪽 구석에 사선으로」 — 띠 가운데가 모서리에서 대각선 60px 쯤, .door overflow:hidden 이 양끝을 자름 */
 html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-soon { letter-spacing: .08em; font-size: 13px; }
+
+/* 11-16 신청서 좋아하는 브랜드 — 로고 글자 칸(여러 개 선택) */
+.brand-hint { margin: 2px 0 12px; }
+.brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.brand { position: relative; display: flex; align-items: center; justify-content: center; height: 64px; padding: 10px 14px; background: #fff; border: 1px solid var(--line); cursor: pointer; margin: 0; transition: border-color .15s, box-shadow .15s; }
+.brand input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.brand img { display: block; max-width: 80%; max-height: 32px; width: auto; height: auto; object-fit: contain; filter: brightness(0); opacity: .72; transition: opacity .15s, filter .15s; }
+.brand:hover img { opacity: 1; }
+.brand:has(input:checked) { border-color: var(--navy); box-shadow: inset 0 0 0 1px var(--navy); }
+.brand:has(input:checked) img { opacity: 1; }
+.brand:has(input:checked)::after { content: "✓"; position: absolute; top: 3px; right: 7px; font: 600 12px/1 var(--sans); color: var(--navy); }
+.brand:has(input:focus-visible) { outline: 2px solid var(--pink); outline-offset: 2px; }
+@media (max-width: 700px) { .brand-grid { grid-template-columns: repeat(2, 1fr); } .brand { height: 58px; } }
+.brand-other { display: block; width: 100%; margin-top: 14px; }   /* 11-16 목록에 없는 브랜드 자유 입력 */
