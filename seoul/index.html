@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../style.css?v=1117yt">
+<link rel="stylesheet" href="../style.css?v=1117ft">
 </head>
 <body data-page="seoul">
 
@@ -235,6 +235,16 @@ privately curated.</h1>
             <label for="f-car" data-i18n="f.car">Vehicle</label>
             <select id="f-car" name="vehicle"></select>
           </div>
+          <fieldset class="f f-wide" id="f-flights">   <!-- 11-17 사장님 「입국 출국 비행기 칸을 만들어」「옵션으로 두지 마」 — 필수 · 입국 의전=도착 시각, 출국 의전=출발 3시간 전 -->
+            <legend data-i18n="f.flt">Flights</legend>
+            <p class="fine brand-hint" data-i18n="f.flt.d">We arrange your airport assistance and your first and last days around your flights.</p>
+            <div class="flt-row">
+              <label class="flt"><span data-i18n="f.fin">Arrival flight</span><input id="f-fin" type="text" required maxlength="12" autocomplete="off" data-i18n-ph="f.fno.ph" placeholder="e.g. KE082"></label>
+              <label class="flt"><span data-i18n="f.fint">Landing time at Incheon</span><input id="f-fint" type="time" required></label>
+              <label class="flt"><span data-i18n="f.fout">Departure flight</span><input id="f-fout" type="text" required maxlength="12" autocomplete="off" data-i18n-ph="f.fno.ph" placeholder="e.g. KE081"></label>
+              <label class="flt"><span data-i18n="f.foutt">Departure time from Incheon</span><input id="f-foutt" type="time" required></label>
+            </div>
+          </fieldset>
           <!-- 11-17 장인 체험 고르기 칸 없앰 — 진주쉘 「DIY Mother-of-Pearl Experience」 하나(늘 najeon) -->
           <fieldset class="f f-wide">
             <legend data-i18n="f.opts">Options</legend>
@@ -278,7 +288,7 @@ privately curated.</h1>
           </fieldset>
           <div class="f f-wide">
             <label for="f-req" data-i18n="f.req">Special requests</label>
-            <textarea id="f-req" name="requests" rows="4" maxlength="2000" data-i18n-ph="f.req.ph" placeholder="Flight numbers, dietary needs, celebrations, interests…"></textarea>
+            <textarea id="f-req" name="requests" rows="4" maxlength="2000" data-i18n-ph="f.req.ph" placeholder="Dietary needs, celebrations, interests…"></textarea>
           </div>
           <div class="f">
             <label for="f-name" data-i18n="f.name">Name</label>
@@ -370,10 +380,10 @@ privately curated.</h1>
 </footer>
 
 <script src="../hub.js?v=1115e"></script>
-<script src="../i18n-seoul.js?v=1117hm"></script>
+<script src="../i18n-seoul.js?v=1117fr"></script>
 <script src="../bizinfo.js?v=1116zh"></script>
 <script src="../main.js?v=1116vc"></script>
 <script src="../brands.js?v=1116hm"></script>
-<script src="../request.js?v=1117hm"></script>
+<script src="../request.js?v=1117fr"></script>
 </body>
 </html>
