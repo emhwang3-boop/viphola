@@ -58,7 +58,7 @@
   function data() {
     return { ui: L(), lang: $('f-lang').value, date: $('f-date').value, guests: +$('f-guests').value, car: $('f-car').value,
       opts: OPTS.filter(function (k) { var i = form.querySelector('input[name="opt"][value="' + k + '"]'); return i && i.checked; }).concat([pmOf()]),
-      craft: (form.querySelector('input[name="craft"]:checked') || {}).value || '', brands: brandsOf(), brandOther: (!nsOn() && $('f-brand-other') ? $('f-brand-other').value.trim() : ''),
+      craft: (form.querySelector('input[name="craft"]:checked') || {}).value || '', brands: brandsOf(), brandOther: (!nsOn() && $('f-brand-other') ? $('f-brand-other').value.trim() : ''), wine: ($('f-wine') ? $('f-wine').value.trim().slice(0, 120) : ''),   // 11-17 좋아하는 와인
       req: $('f-req').value.trim(), name: $('f-name').value.trim(), email: $('f-email').value.trim(), phone: $('f-phone').value.trim() };
   }
   function check(d) {
@@ -93,6 +93,7 @@
       [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.' + d.craft)], [t('r.pm'), t('pm.' + pm)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
     var bl = (d.brands || []).map(brandName).concat(d.brandOther ? [d.brandOther] : []);   // 로고 칸 + 자유 입력
     if (bl.length) rows.push([t('r.brands'), bl.join(', ')]);
+    if (d.wine) rows.push([t('r.wine'), d.wine]);   // 11-17
     if (d.req) rows.push([t('r.req'), d.req]);
     $('rv-sum').innerHTML = rows.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]).replace(/\n/g, '<br>') + '</dd></div>'; }).join('');
     $('rv-days').innerHTML = j.itin.days.map(function (x) {

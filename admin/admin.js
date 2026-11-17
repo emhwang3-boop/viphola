@@ -192,8 +192,8 @@
   var BR_ADDR = { 'Dolce & Gabbana': '압구정로 414', 'Audemars Piguet': '압구정로 428', 'Vacheron Constantin': '압구정로 430', 'Chanel': '압구정로 431', 'Ferragamo': '압구정로 433', 'Cartier': '압구정로 435 · 까르띠에 메종 청담',
     'Van Cleef & Arpels': '압구정로 441', 'Richard Mille': '압구정로 450', 'Louis Vuitton': '압구정로 454 · 루이 비통 메종 서울', 'Gucci': '압구정로 462', 'Prada': '압구정로 463', 'Dior': '압구정로 464 · 하우스 오브 디올',
     'Celine': '압구정로 466', 'Hermès': '메종 에르메스 도산 파크 · 신사동 도산공원 앞' };
-  function brandBox() { var b = (cur && cur.rec && cur.rec.brands) || [];
-    return '<div class="qn">손님이 고른 브랜드 · ' + (b.length ? b.map(function (n) { var a = BR_ADDR[n]; return '<b>' + esc(n) + '</b>' + (a ? ' (' + esc(a) + ')' : ''); }).join(' · ') : '없음 (신청서에서 고르지 않음)') + '</div>'; }
+  function brandBox(na) { var b = (cur && cur.rec && cur.rec.brands) || [];   // na = 주소 빼기(11-17 롯데면세점)
+    return '<div class="qn">손님이 고른 브랜드 · ' + (b.length ? b.map(function (n) { var a = na ? '' : BR_ADDR[n]; return '<b>' + esc(n) + '</b>' + (a ? ' (' + esc(a) + ')' : ''); }).join(' · ') : '없음 (신청서에서 고르지 않음)') + '</div>'; }
   function lineRow(l, i, ro) {
     var d = ro ? ' disabled' : '';
     return '<div class="ql" data-i="' + i + '"><div><span class="lb">항목 (관리용)</span><input type="text" data-k="ko" value="' + esc(l.ko) + '"' + d + '></div>'
@@ -204,7 +204,8 @@
       + '<div class="vt"><input type="checkbox" data-k="vat" title="매입 부가세 공제"' + (l.vat ? ' checked' : '') + d + '><span class="lb">매입 부가세 공제</span></div>'
       + '<div class="del">' + (ro ? '' : '<button type="button" class="x" data-del="' + i + '" aria-label="줄 삭제">✕</button>') + '</div>'
       + (l.nt ? '<div class="qn' + (l.nt.indexOf('🔴') >= 0 ? ' red' : '') + '">메모 · ' + esc(l.nt) + '</div>' : '')
-      + (l.k === 'dept' && l.vn && !/현대|hyundai/i.test((l.vn.ko || '') + ' ' + (l.vn.en || '')) ? brandBox() : '')   // 11-16 청담 플래그십 → 손님 브랜드
+      + (l.k === 'dept' && l.vn && !/현대|hyundai/i.test((l.vn.ko || '') + ' ' + (l.vn.en || '')) ? brandBox(/롯데면세점|lotte duty free/i.test((l.vn.ko || '') + ' ' + (l.vn.en || ''))) : '')   // 11-16 청담 플래그십 → 손님 브랜드 · 11-17 롯데면세점이면 청담 주소 없이 브랜드만
+      + ((l.k === 'pm4' || l.k === 'wine') && cur && cur.rec && cur.rec.wine ? '<div class="qn">손님이 좋아하는 와인 · <b>' + esc(cur.rec.wine) + '</b></div>' : '')   // 11-17 요트 와인 패키지·와인 페어링에 맞추기
       + (l.k === 'photo' ? '<div class="qn">메모 · 사진작가 섭외처 — 영어 가능 스냅 작가를 시간 단위로 예약: <a href="https://www.trazy.com" target="_blank" rel="noopener">Trazy(트래지)</a> · <a href="https://www.klook.com" target="_blank" rel="noopener">Klook(클룩)</a> · <a href="https://www.myrealtrip.com" target="_blank" rel="noopener">마이리얼트립</a>. 사장님이 직접 예약·결제한 뒤 이 줄 원가에 넣으세요.</div>' : '')   // 사장님만 (손님에겐 안 나감)
       + venRow(l, i, ro) + '</div>';
   }
@@ -252,6 +253,7 @@
       + (cur.craftKo ? '<dt>장인 체험</dt><dd>' + esc(cur.craftKo) + '</dd>' : '')
       + '<dt>옵션</dt><dd>' + (r.opts.length ? r.opts.map(function (k) { return OPT_KO[k]; }).filter(Boolean).join(', ') : '없음') + '</dd>'
       + (r.brands && r.brands.length ? '<dt>좋아하는 브랜드</dt><dd>' + esc(r.brands.join(', ')) + '</dd>' : '')   // 11-16 신청서 브랜드 칸
+      + (r.wine ? '<dt>좋아하는 와인</dt><dd>' + esc(r.wine) + '</dd>' : '')   // 11-17 신청서 와인 칸
       + '<dt>요청 사항</dt><dd>' + (r.req ? esc(r.req).replace(/\n/g, '<br>') : '—') + '</dd></dl></div>';
     h += '<div class="sec itin"><h2>일정 <small>손님이 고른 옵션까지 넣은 대략 시각</small></h2>' + it.days.map(function (d, k) {
       return '<details' + (k === 0 ? ' open' : '') + '><summary>' + esc(d.day) + ' · ' + esc(d.dl) + ' — ' + esc(d.title) + '</summary><ol>' + d.items.map(function (x) { return '<li><span class="n">' + x.no + '</span><span class="t">' + esc(x.t) + '</span><span>' + esc(x.x) + '</span></li>'; }).join('') + '</ol></details>'; }).join('') + '</div>';
