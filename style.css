@@ -195,7 +195,7 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .opt-group
 .steps h3 { font-family: var(--serif); font-weight: 500; font-size: calc(28px * var(--hs)); line-height: 1.25; margin-bottom: 10px; }
 html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .steps h3 { font-size: 21px; }
 .steps p { font-size: 15px; color: var(--ink-2); }
-.process .note { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line); font-size: 15px; color: var(--navy); }
+.process .note { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line); font-size: 15px; color: var(--pink); }   /* 11-17 사장님 「다른 곳에서 쓰는 진홍색으로」 — 30일 전 신청 공지 */
 
 /* ───────── ⑥ 문의 ───────── */
 .enquire { padding-top: 104px; }
