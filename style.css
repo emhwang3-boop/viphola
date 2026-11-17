@@ -611,3 +611,11 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-soon
 .f label.flt { display: flex; flex-direction: column; gap: 6px; margin: 0; text-transform: none; letter-spacing: 0; font: 400 13px/1.4 var(--sans); color: var(--ink-2); }
 .f input[type="time"] { min-height: 46px; cursor: pointer; }
 @media (max-width: 600px) { .flt-row { grid-template-columns: 1fr; } }
+
+/* 11-17 결제 뒤 여행자 정보(여권) */
+.tv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 18px 0 8px; }
+.tv-p { border: 1px solid rgba(31, 42, 68, .16); padding: 12px 16px 6px; margin: 0; }
+.tv-p legend { font: 500 12px/1.4 var(--sans); letter-spacing: .06em; text-transform: uppercase; padding: 0 6px; }
+.tv-p label { display: flex; flex-direction: column; gap: 4px; margin: 0 0 12px; font: 400 13px/1.4 var(--sans); }
+.tv-p input { font: inherit; font-size: 15px; padding: 8px 2px; border: 0; border-bottom: 1px solid rgba(31, 42, 68, .35); background: transparent; color: inherit; border-radius: 0; min-height: 40px; }
+.tv-p input:focus { outline: none; border-bottom-color: #1f2a44; }
