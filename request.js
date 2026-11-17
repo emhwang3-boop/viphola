@@ -59,6 +59,7 @@
     return { ui: L(), lang: $('f-lang').value, date: $('f-date').value, guests: +$('f-guests').value, car: $('f-car').value,
       opts: OPTS.filter(function (k) { var i = form.querySelector('input[name="opt"][value="' + k + '"]'); return i && i.checked; }).concat([pmOf()]),
       craft: 'najeon',   /* 11-17 진주쉘 자개 체험 하나 — 고르기 칸 없앰 */ brands: brandsOf(), brandOther: (!nsOn() && $('f-brand-other') ? $('f-brand-other').value.trim() : ''), wine: ($('f-wine') ? $('f-wine').value.trim().slice(0, 120) : ''),   // 11-17 좋아하는 와인
+      fia: ($('f-fia') ? $('f-fia').value : 'icn'), foa: ($('f-foa') ? $('f-foa').value : 'icn'),   // 11-17 공항
       fin: ($('f-fin') ? $('f-fin').value.trim().toUpperCase().slice(0, 12) : ''), fint: ($('f-fint') ? $('f-fint').value : ''), fout: ($('f-fout') ? $('f-fout').value.trim().toUpperCase().slice(0, 12) : ''), foutt: ($('f-foutt') ? $('f-foutt').value : ''),   // 11-17 입국·출국 항공편
       req: $('f-req').value.trim(), name: $('f-name').value.trim(), email: $('f-email').value.trim(), phone: $('f-phone').value.trim() };
   }
@@ -95,8 +96,8 @@
     var bl = (d.brands || []).map(brandName).concat(d.brandOther ? [d.brandOther] : []);   // 로고 칸 + 자유 입력
     if (bl.length) rows.push([t('r.brands'), bl.join(', ')]);
     if (d.wine) rows.push([t('r.wine'), d.wine]);   // 11-17
-    if (d.fin || d.fint) rows.push([t('f.fin'), [d.fin, d.fint].filter(Boolean).join(' · ')]);   // 11-17 입국·출국 항공편
-    if (d.fout || d.foutt) rows.push([t('f.fout'), [d.fout, d.foutt].filter(Boolean).join(' · ')]);
+    if (d.fin || d.fint) rows.push([t('f.fin'), [t('ap.' + d.fia), d.fin, d.fint].filter(Boolean).join(' · ')]);   // 11-17 입국·출국 공항·항공편
+    if (d.fout || d.foutt) rows.push([t('f.fout'), [t('ap.' + d.foa), d.fout, d.foutt].filter(Boolean).join(' · ')]);
     if (d.req) rows.push([t('r.req'), d.req]);
     $('rv-sum').innerHTML = rows.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]).replace(/\n/g, '<br>') + '</dd></div>'; }).join('');
     $('rv-days').innerHTML = j.itin.days.map(function (x) {

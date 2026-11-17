@@ -254,8 +254,8 @@
       + '<dt>옵션</dt><dd>' + (r.opts.length ? r.opts.map(function (k) { return OPT_KO[k]; }).filter(Boolean).join(', ') : '없음') + '</dd>'
       + (r.brands && r.brands.length ? '<dt>좋아하는 브랜드</dt><dd>' + esc(r.brands.join(', ')) + '</dd>' : '')   // 11-16 신청서 브랜드 칸
       + (r.wine ? '<dt>좋아하는 와인</dt><dd>' + esc(r.wine) + '</dd>' : '')   // 11-17 신청서 와인 칸
-      + '<dt>입국 항공편</dt><dd>' + (r.fin || r.fint ? esc([r.fin, r.fint ? r.fint + ' 도착' : ''].filter(Boolean).join(' ')) : '미정') + '</dd>'   // 11-17 입국·출국 항공편
-      + '<dt>출국 항공편</dt><dd>' + (r.fout || r.foutt ? esc([r.fout, r.foutt ? r.foutt + ' 출발' : ''].filter(Boolean).join(' ')) : '미정') + '</dd>'
+      + '<dt>입국 항공편</dt><dd>' + (r.fin || r.fint ? esc([{'icn': '인천', 'gmp': '김포', 'jet': '김포 전용기 터미널'}[r.fia] || '', r.fin, r.fint ? r.fint + ' 도착' : ''].filter(Boolean).join(' ')) : '미정') + '</dd>'   // 11-17 입국·출국 항공편
+      + '<dt>출국 항공편</dt><dd>' + (r.fout || r.foutt ? esc([{'icn': '인천', 'gmp': '김포', 'jet': '김포 전용기 터미널'}[r.foa] || '', r.fout, r.foutt ? r.foutt + ' 출발' : ''].filter(Boolean).join(' ')) : '미정') + '</dd>'
       + '<dt>요청 사항</dt><dd>' + (r.req ? esc(r.req).replace(/\n/g, '<br>') : '—') + '</dd></dl></div>';
     h += '<div class="sec itin"><h2>일정 <small>손님이 고른 옵션까지 넣은 대략 시각</small></h2>' + it.days.map(function (d, k) {
       return '<details' + (k === 0 ? ' open' : '') + '><summary>' + esc(d.day) + ' · ' + esc(d.dl) + ' — ' + esc(d.title) + '</summary><ol>' + d.items.map(function (x) { return '<li><span class="n">' + x.no + '</span><span class="t">' + esc(x.t) + '</span><span>' + esc(x.x) + '</span></li>'; }).join('') + '</ol></details>'; }).join('') + '</div>';

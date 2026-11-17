@@ -607,7 +607,7 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-soon
 .brand-other { display: block; width: 100%; margin-top: 14px; }   /* 11-16 목록에 없는 브랜드 자유 입력 */
 
 /* 11-17 입국·출국 항공편 칸 — PC 두 칸씩, 폰 한 줄씩 */
-.flt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-top: 14px; }
+.flt-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 16px 24px; margin-top: 14px; }   /* 11-17 공항 · 편명 · 시각 */
 .f label.flt { display: flex; flex-direction: column; gap: 6px; margin: 0; text-transform: none; letter-spacing: 0; font: 400 13px/1.4 var(--sans); color: var(--ink-2); }
 .f input[type="time"] { min-height: 46px; cursor: pointer; }
 @media (max-width: 600px) { .flt-row { grid-template-columns: 1fr; } }
