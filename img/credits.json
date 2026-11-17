@@ -151,26 +151,21 @@
    "replaces": "img/day3_yangnyeongsi_gate.jpg (약령시 정문 — 대체 장소로 보관)"
   },
   {
-   "file": "img/day4_sebitseom.jpg",
-   "use": "② DAY 4 카드 (11-17 4박 5일 새 4일차 — 쇼핑과 한강)",
-   "place_ko": "세빛섬 야경 (반포한강공원)",
-   "place_en": "Sebitseom floating islands at dusk, Banpo Han River Park",
-   "tourapi_title": "세빛섬",
-   "contentid": "970052",
-   "serialnum": "3515813_3",
-   "cpyrhtDivCd": "Type1",
-   "license": "공공누리 제1유형(출처표시)",
-   "credit": "한국관광공사",
-   "credit_en": "Korea Tourism Organization",
-   "api_originimgurl": "https://tong.visitkorea.or.kr/cms/resource/13/3515813_image2_1.jpg",
-   "downloaded_url": "https://tong.visitkorea.or.kr/cms/resource/13/3515813_image1_1.jpg",
-   "edit": "원본 1620x1080 에서 (868,118)-(1516,928) 4:5 로 잘라 864x1080 — 왼쪽 행사 현수막·오른쪽 아래 관광공사 표시 빼고 (후보 빌드도구\u0004일차사진후보_4n5d\u0003.jpg)",
+   "file": "img/day4_seoulmarina.jpg",
+   "use": "② DAY 4 카드 (쇼핑과 한강 요트)",
+   "place_ko": "여의도 서울마리나 전경 (해 질 녘 항공 사진)",
+   "place_en": "Seoul Marina, Yeouido, at sunset (aerial)",
+   "credit": "서울마리나 클럽앤요트",
+   "credit_en": "Seoul Marina Club & Yacht",
+   "source_url": "https://seoulmarina.club/marina (사진 원본 https://seoulmarina.club/media/%EB%B3%80%EA%B2%BD_%EC%84%9C%EC%9A%B8%EB%A7%88%EB%A6%AC%EB%82%98_01.jpg)",
+   "edit": "원본 1995x2992 에서 (0,249)-(1995,2743) 4:5 가운데로 잘라 864x1080 (후보 빌드도구\u0004일차사진후보_요트\\s07.jpg)",
    "size": [
     864,
     1080
    ],
-   "file_site_path": "/img/day4_sebitseom.jpg",
-   "why": "11-17 사장님 「4박 5일로」 — 새 4일차(갤러리아 쇼핑·한강 요트·본앤브레드) 카드 · 후보 35장(세빛섬·반포한강공원·달빛무지개분수, 모두 Type1) 중 3일차 롯데월드타워 야경과 어울리는 금빛 야경"
+   "file_site_path": "/img/day4_seoulmarina.jpg",
+   "why": "11-17 사장님 「4일차 사진을 요트 사진으로」「요트 선착장 사진 나온 거, 그 회사 가면 있을 거야」「좋아 A로 해」 — 4일차 요트 기본 업체(서울마리나 클럽앤요트) 홈페이지 사진 · 관광공사엔 서울 요트 1유형 사진이 현대요트 입구 1장뿐(광고판)",
+   "replaces": "img/day4_sebitseom.jpg (세빛섬 야경, 관광공사 970052 / 3515813_3) → 빌드도구\\옛판\\day4_sebitseom_1117.jpg"
   }
  ],
  "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
