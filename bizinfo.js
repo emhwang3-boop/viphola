@@ -14,9 +14,12 @@
     zht: ['Booman Inc.（株式會社 富滿） | 營業執照號 : 297-81-03712 | 通信銷售業申告號 : (     ) | 位置服務業務申報號 : 第1866號', '代表 : Jeon Hyeonjin | 個人資料管理負責人 : Hwang Euiman', '客服 : +82-10-4221-7066 | 電郵 : ' + em, ADDR_EN],
     es: ['Booman Inc. | N.º de registro mercantil : 297-81-03712 | N.º de venta a distancia : (     ) | N.º de servicio de localización : 1866', 'Representante : Jeon Hyeonjin | Resp. de privacidad : Hwang Euiman', 'Atención : +82-10-4221-7066 | Correo : ' + em, ADDR_EN]
   };
+  // 관광사업자 등록번호 — 모든 화면(대문·서울·약관·결제·스페인어권), 사업자등록번호 바로 뒤 (11-17 사장님 「서울·약관·결제 화면 맨 아래도 바꿔줘」 · 「관광사업자 등록번호 : 제00000호 로 해서 … viphola.com 첫 페이지 아래에」) · 번호 나오면 여기만 바꾼다
+  var TR = { ko: '관광사업자 등록번호 : 제00000호', en: 'Tourism Business Reg. No. 00000', ja: '観光事業者登録番号 : 第00000号', zhs: '旅游业登记号 : 第00000号', zht: '旅遊業登記號 : 第00000號', es: 'N.º de registro de empresa turística : 00000' };
   function render(l) {
     document.querySelectorAll('.bizinfo').forEach(function (el) {
-      var a = F[el.getAttribute('data-lang') || l] || F.en;
+      var lg = el.getAttribute('data-lang') || l, a = F[lg] || F.en;
+      { var p = a[0].split(' | '); p.splice(2, 0, TR[F[lg] ? lg : 'en']); a = [p.join(' | ')].concat(a.slice(1)); }
       el.innerHTML = a.map(function (x) { return '<span>' + x + '</span>'; }).join('');
     });
   }
