@@ -269,7 +269,7 @@
       + '<div class="qh"><span>항목 (관리용)</span><span>손님에게 보이는 이름 (' + (LANG_KO[r.lang] || '') + ')</span><span>원가 (원)</span><span>마진 %</span><span>견적가</span><span>공제</span><span></span></div>'
       + '<div id="qlines">' + lines.map(function (l, i) { return lineRow(l, i, ro); }).join('') + '</div>'
       + (ro ? '' : '<div class="qadd"><button type="button" class="b b-ghost b-sm" id="q-add">＋ 줄 추가</button></div>')
-      + '<dl class="tot"><dt>원가 합계</dt><dd id="t-cost"></dd><dt>견적가 합계 (손님 결제 금액)</dt><dd class="big" id="t-total"></dd></dl>'
+      + '<dl class="tot"><dt>원가 합계</dt><dd id="t-cost"></dd><dt>견적가 합계 (손님 결제 금액)</dt><dd class="big" id="t-total"></dd><dt>손님 견적에 보이는 두 줄</dt><dd id="t-split"></dd></dl>'   // 11-17 실비 합계 + 서비스 피
       + ((r.opts || []).indexOf('noshop') >= 0 ? '' : '<div class="psr"><label class="fl">더현대 PSR 최소 쇼핑금액 (USD) <small>TBD — 정해지면 넣기 · 비우면 손님에게 안 나감</small><input type="text" id="q-psr" inputmode="decimal" placeholder="예: 10000" value="' + (psrMin || '') + '"' + (ro ? ' disabled' : '') + '></label><p class="usd" id="q-psr-krw"></p></div>')
       + '<div class="ref"><h3>참고 — 사장님만 봅니다 (손님 메일·결제 화면에는 안 나감)</h3><dl class="tot"><dt>카드 수수료 3.5%</dt><dd id="t-card"></dd><dt>매출 부가세 (견적가 합계의 10/110)</dt><dd id="t-vo"></dd>'
       + '<dt>매입 부가세 공제 (공제 체크한 줄 원가의 10/110)</dt><dd id="t-vi"></dd><dt>납부할 부가세 (예상)</dt><dd id="t-vp"></dd><dt><b>실제 남는 돈</b></dt><dd><b id="t-net"></b></dd></dl></div>'
@@ -310,7 +310,7 @@
     if (!$('t-total')) return; var r = calc();
     lines.forEach(function (l, i) { var e = document.querySelector('[data-pr="' + i + '"]'); if (!e) return; var p = price(lc(l), l.m);
       if (p < 0) { e.textContent = '마진 100% 이상은 이 공식으로 계산할 수 없습니다'; e.className = 'pr bad'; } else { e.textContent = p > 0 ? won(p) : '— (포함)'; e.className = 'pr'; } });
-    $('t-cost').textContent = won(r.cost); $('t-total').textContent = won(r.total); $('t-card').textContent = won(r.card); $('t-vo').textContent = won(r.vo); $('t-vi').textContent = '− ' + won(r.vi);
+    $('t-cost').textContent = won(r.cost); $('t-total').textContent = won(r.total); if ($('t-split')) $('t-split').textContent = r.cost > 0 && r.total > r.cost ? '실비(손님 대신 지급) ' + won(r.cost) + ' · VIP 컨시어지·일정 기획·24시간 현장 지원 수수료(부가세 포함) ' + won(r.total - r.cost) : '—'; $('t-card').textContent = won(r.card); $('t-vo').textContent = won(r.vo); $('t-vi').textContent = '− ' + won(r.vi);
     $('t-vp').textContent = won(r.vp); $('t-net').textContent = won(r.net) + ' (' + r.pct + '%)'; $('t-net').className = r.net < 0 ? 'neg' : '';
     $('t-usd').textContent = '손님 메일·결제 화면 표시: ' + fxLine(r.total);
     var pk = $('q-psr-krw'); if (pk) pk.textContent = psrMin > 0 ? (fx && fx.rate > 0 ? '≈ ' + won(Math.round(psrMin * fx.rate)) + '  (USD 1 = ' + fx.rate + '원 기준 · 손님 견적 메일·결제 화면에 「최소 쇼핑금액 US$ ' + psrMin.toLocaleString('en-US') + ' (약 ' + won(Math.round(psrMin * fx.rate)) + ')」로 나감)' : '환율을 넣으면 원화로 바뀝니다') : '';

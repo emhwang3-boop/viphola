@@ -137,12 +137,16 @@
         + '</ol>' + (x.note ? '<p class="rv-note">' + esc(x.note) + '</p>' : '') + '</section>';
     }).join('') + '<p class="rv-all">' + esc(it.all) + '</p></section>';
   }
+  var SPX = {"en": {"inc": "Included in your journey", "pass": "Travel services paid on your behalf (accommodation, dining, private car, guide, experiences)", "fee": "VIP Concierge, Itinerary Curation & 24/7 On-site Support Fee (VAT included)"}, "ja": {"inc": "ご旅行に含まれるもの", "pass": "お客様に代わってお支払いする旅行サービス費（宿泊・お食事・専用車・ガイド・体験）", "fee": "VIPコンシェルジュ・旅程プランニング・24時間現地サポート料（付加価値税込み）"}, "es": {"inc": "Incluido en su viaje", "pass": "Servicios de viaje pagados en su nombre (alojamiento, comidas, coche privado, guía, experiencias)", "fee": "Tarifa de conserjería VIP, diseño del itinerario y asistencia presencial 24/7 (IVA incluido)"}, "zhs": {"inc": "行程包含", "pass": "代您支付的旅行服务费用（住宿、餐饮、专车、导游、体验）", "fee": "VIP礼宾、行程定制及24小时现场支持服务费（含增值税）"}, "zht": {"inc": "行程包含", "pass": "代您支付的旅行服務費用（住宿、餐飲、專車、導遊、體驗）", "fee": "VIP禮賓、行程規劃及24小時現場支援服務費（含加值稅）"}};   // 11-17 사장님 「바꿔」 — 포함 내역 + 실비 합계 + 서비스 피
   function quoteHtml() {
     var q = D.q, op = D.opts.filter(function (k) { return k !== 'yacht' && k !== 'leeum'; }).map(function (k) { return T('opt')[k]; }).filter(Boolean), pm = D.opts.indexOf('leeum') >= 0 ? 'leeum' : 'yacht';   // 11-17 4일차 오후(요트·리움)는 따로 칸
     return '<dl class="qmeta"><div><dt>' + esc(T('no')) + '</dt><dd>' + esc(q.no) + '</dd></div><div><dt>' + esc(T('iss')) + '</dt><dd>' + esc(fd(q.issued)) + '</dd></div><div><dt>' + esc(T('valid')) + '</dt><dd>' + esc(fd(q.valid)) + '</dd></div></dl>'
       + '<dl class="qmeta qmeta2' + (D.craft ? ' qmeta4' : '') + '"><div><dt>' + esc(T('car')) + '</dt><dd>' + esc(D.car) + '</dd></div>' + (D.craft ? '<div><dt>' + esc(T('craftL')) + '</dt><dd>' + esc(T('cr')[D.craft] || '') + '</dd></div>' : '') + '<div><dt>' + esc(T('pmL')) + '</dt><dd>' + esc(T('opt')[pm]) + '</dd></div><div><dt>' + esc(T('opts')) + '</dt><dd>' + esc(op.length ? op.join(L === 'ja' || L === 'zhs' || L === 'zht' ? '、' : ', ') : T('none')) + '</dd></div></dl>'
-      + '<table class="qtable"><thead><tr><th>' + esc(T('item')) + '</th><th>' + esc(T('amt')) + '</th></tr></thead><tbody>'
-      + q.lines.map(function (l) { return '<tr><td>' + esc(l.g) + '</td><td>' + (l.p > 0 ? krw(l.p) : esc(T('incl'))) + '</td></tr>'; }).join('')
+      + (q.split ? '<table class="qtable"><thead><tr><th colspan="2">' + esc((SPX[L] || SPX.en).inc) + '</th></tr></thead><tbody>'
+        + q.lines.map(function (l) { return '<tr class="qinc"><td colspan="2">' + esc(l.g) + '</td></tr>'; }).join('')
+        + '<tr class="qsp"><td>' + esc((SPX[L] || SPX.en).pass) + '</td><td>' + krw(q.split.pass) + '</td></tr><tr class="qsp"><td>' + esc((SPX[L] || SPX.en).fee) + '</td><td>' + krw(q.split.fee) + '</td></tr>'
+      : '<table class="qtable"><thead><tr><th>' + esc(T('item')) + '</th><th>' + esc(T('amt')) + '</th></tr></thead><tbody>'
+        + q.lines.map(function (l) { return '<tr><td>' + esc(l.g) + '</td><td>' + (l.p > 0 ? krw(l.p) : esc(T('incl'))) + '</td></tr>'; }).join(''))
       + '<tr class="qtot"><td>' + esc(T('total')) + '</td><td>' + krw(q.total) + '</td></tr></tbody></table>'
       + (q.fxLine ? '<p class="qfx">' + esc(q.fxLine) + '</p>' : '') + '<p class="qkrw">' + esc(T('krw')) + '</p>'
       + (q.psrMin > 0 && q.psrKrw > 0 ? '<p class="qfx qpsr">' + esc(T('psr').replace('{u}', 'US$ ' + Number(q.psrMin).toLocaleString('en-US')).replace('{k}', krw(q.psrKrw))) + '</p>' : '');   // 11-16 더현대 PSR 최소 쇼핑금액
