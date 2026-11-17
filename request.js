@@ -89,7 +89,7 @@
     var opt = d.opts.filter(function (k) { return k !== 'yacht' && k !== 'leeum'; }).map(function (k) { return t('c.' + k); }), pm = d.opts.indexOf('leeum') >= 0 ? 'leeum' : 'yacht', car = (window.CARS || []).filter(function (x) { return x.v === d.car; })[0];
     var langName = { en: 'English', ja: '日本語', es: 'Español', zhs: '简体中文', zht: '繁體中文' }[d.lang] || d.lang;
     var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 5 : 4))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
-      [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.' + (d.date && new Date(d.date + 'T00:00:00').getDay() === 6 ? 'hw' : d.craft))], [t('r.pm'), t('pm.' + pm)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
+      [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.hw')], [t('r.pm'), t('pm.' + pm)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
     var bl = (d.brands || []).map(brandName).concat(d.brandOther ? [d.brandOther] : []);   // 로고 칸 + 자유 입력
     if (bl.length) rows.push([t('r.brands'), bl.join(', ')]);
     if (d.wine) rows.push([t('r.wine'), d.wine]);   // 11-17
