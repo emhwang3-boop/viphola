@@ -144,9 +144,10 @@
 
   // ── 견적 계산 (허브 vipPrice·vipCalc 와 같은 공식) ──
   function price(cost, m) { var c = Math.round(Number(cost) || 0), mm = Number(m); if (!(c > 0)) return 0; if (!isFinite(mm) || mm >= 100) return -1; var x = Math.round(c * 100 / (100 - mm) * 100) / 100; return Math.ceil(x / 1000) * 1000; }
+  function lc(l) { var pc = Math.round(Number(l.pc) || 0); return (l.cost == null || l.cost === '') && !(pc > 0) ? l.cost : Math.round(Number(l.cost) || 0) + pc; }   // 11-17 음식 원가 + 페어링 원가
   function calc() {
     var r = { cost: 0, total: 0, ded: 0, bad: 0, blank: 0 };
-    lines.forEach(function (l) { var p = price(l.cost, l.m); if (p < 0) r.bad++; l.p = p < 0 ? 0 : p; var c = Math.round(Number(l.cost) || 0); if (!(c > 0)) r.blank++; r.cost += c; r.total += l.p; if (l.vat) r.ded += c; });
+    lines.forEach(function (l) { var p = price(lc(l), l.m); if (p < 0) r.bad++; l.p = p < 0 ? 0 : p; var c = Math.round(Number(lc(l)) || 0); if (!(c > 0)) r.blank++; r.cost += c; r.total += l.p; if (l.vat) r.ded += c; });
     r.card = Math.round(r.total * 0.035); r.vo = Math.round(r.total / 11); r.vi = Math.round(r.ded / 11); r.vp = r.vo - r.vi; r.net = r.total - r.cost - r.card - r.vp; r.pct = r.total ? Math.round(r.net / r.total * 1000) / 10 : 0;
     return r;
   }
@@ -197,15 +198,17 @@
   function lineRow(l, i, ro) {
     var d = ro ? ' disabled' : '';
     return '<div class="ql" data-i="' + i + '"><div><span class="lb">항목 (관리용)</span><input type="text" data-k="ko" value="' + esc(l.ko) + '"' + d + '></div>'
-      + '<div><span class="lb">손님에게 보이는 이름 (' + (LANG_KO[cur.rec.lang] || '') + ')</span><input type="text" data-k="g" value="' + esc(l.g) + '"' + d + '></div>'
+      + '<div><span class="lb">손님에게 보이는 이름 (' + (LANG_KO[cur.rec.lang] || '') + ')' + (l.pr ? ' · 뒤에 「' + (l.pr === 'sake' ? '사케' : '와인') + ' 페어링 포함」 붙음' : '') + '</span><input type="text" data-k="g" value="' + esc(l.g) + '"' + d + '></div>'
       + '<div><span class="lb">원가 (원)</span><input type="text" class="num" data-k="cost" inputmode="numeric" placeholder="원가" value="' + (l.cost == null || l.cost === '' ? '' : num(l.cost)) + '"' + d + '></div>'
+      + (l.pr != null && l.pr !== undefined && (l.pr || l.pc != null) ? '<div><span class="lb">페어링</span><select data-k="pr"' + d + '><option value="wine"' + (l.pr === 'wine' ? ' selected' : '') + '>와인 페어링</option><option value="sake"' + (l.pr === 'sake' ? ' selected' : '') + '>사케 페어링</option><option value=""' + (!l.pr ? ' selected' : '') + '>없음</option></select></div>'
+        + '<div><span class="lb">페어링 원가 (원)</span><input type="text" class="num" data-k="pc" inputmode="numeric" placeholder="1인 값 × 인원" value="' + (l.pc == null || l.pc === '' ? '' : num(l.pc)) + '"' + d + '></div>' : '')   // 11-17 와인·사케 페어링 — 음식 원가에 합쳐 견적가
       + '<div><span class="lb">마진 %</span><input type="text" class="num" data-k="m" inputmode="decimal" value="' + esc(l.m) + '"' + d + '></div>'
       + '<div><span class="lb">견적가</span><div class="pr" data-pr="' + i + '"></div></div>'
       + '<div class="vt"><input type="checkbox" data-k="vat" title="매입 부가세 공제"' + (l.vat ? ' checked' : '') + d + '><span class="lb">매입 부가세 공제</span></div>'
       + '<div class="del">' + (ro ? '' : '<button type="button" class="x" data-del="' + i + '" aria-label="줄 삭제">✕</button>') + '</div>'
       + (l.nt ? '<div class="qn' + (l.nt.indexOf('🔴') >= 0 ? ' red' : '') + '">메모 · ' + esc(l.nt) + '</div>' : '')
       + (l.k === 'dept' && l.vn && !/현대|hyundai/i.test((l.vn.ko || '') + ' ' + (l.vn.en || '')) ? brandBox(/롯데면세점|lotte duty free/i.test((l.vn.ko || '') + ' ' + (l.vn.en || ''))) : '')   // 11-16 청담 플래그십 → 손님 브랜드 · 11-17 롯데면세점이면 청담 주소 없이 브랜드만
-      + ((l.k === 'pm4' || l.k === 'wine') && cur && cur.rec && cur.rec.wine ? '<div class="qn">손님이 좋아하는 와인 · <b>' + esc(cur.rec.wine) + '</b></div>' : '')   // 11-17 요트 와인 패키지·와인 페어링에 맞추기
+      + ((l.k === 'pm4' || l.k === 'wine' || (l.pr === 'wine')) && cur && cur.rec && cur.rec.wine ? '<div class="qn">손님이 좋아하는 와인 · <b>' + esc(cur.rec.wine) + '</b></div>' : '')   // 11-17 요트 와인 패키지·와인 페어링에 맞추기
       + (l.k === 'photo' ? '<div class="qn">메모 · 사진작가 섭외처 — 영어 가능 스냅 작가를 시간 단위로 예약: <a href="https://www.trazy.com" target="_blank" rel="noopener">Trazy(트래지)</a> · <a href="https://www.klook.com" target="_blank" rel="noopener">Klook(클룩)</a> · <a href="https://www.myrealtrip.com" target="_blank" rel="noopener">마이리얼트립</a>. 사장님이 직접 예약·결제한 뒤 이 줄 원가에 넣으세요.</div>' : '')   // 사장님만 (손님에겐 안 나감)
       + venRow(l, i, ro) + '</div>';
   }
@@ -236,6 +239,7 @@
     var v = venOf(l.c, id); l.v = v ? v.id : ''; l.vn = v ? { ko: v.name_ko || v.name_en, en: v.name_en || v.name_ko } : null; if (!v) return;
     var t = TPL[l.k], gl = cur.rec.lang;
     var nm = (l.vn.ko || '') + ' ' + (l.vn.en || ''), hit = t && t.byName ? t.byName.filter(function (b) { return new RegExp(b.re, 'i').test(nm); })[0] : null;   // 정해진 이름(4일차 오전: 리움·경복궁)
+    if (l.pr) l.pr = /카네사카|kanesaka|스시|sushi|鮨|오마카세|omakase|일식|가이세키|kaiseki/i.test(nm) ? 'sake' : 'wine';   // 11-17 저녁 업체를 바꾸면 페어링 종류도 자동
     if (hit) { l.ko = hit.ko.replace('{v}', l.vn.ko); l.g = (hit[gl] || hit.en).replace('{v}', l.vn.en); }
     else if (t) { l.ko = t.ko.replace('{v}', l.vn.ko); l.g = (t[gl] || t.en).replace('{v}', l.vn.en); }
     else if (l.k === 'x' || (!l.ko && !l.g)) { if (!l.ko) l.ko = l.vn.ko; if (!l.g) l.g = l.vn.en; }
@@ -304,7 +308,7 @@
   }
   function recalc() {
     if (!$('t-total')) return; var r = calc();
-    lines.forEach(function (l, i) { var e = document.querySelector('[data-pr="' + i + '"]'); if (!e) return; var p = price(l.cost, l.m);
+    lines.forEach(function (l, i) { var e = document.querySelector('[data-pr="' + i + '"]'); if (!e) return; var p = price(lc(l), l.m);
       if (p < 0) { e.textContent = '마진 100% 이상은 이 공식으로 계산할 수 없습니다'; e.className = 'pr bad'; } else { e.textContent = p > 0 ? won(p) : '— (포함)'; e.className = 'pr'; } });
     $('t-cost').textContent = won(r.cost); $('t-total').textContent = won(r.total); $('t-card').textContent = won(r.card); $('t-vo').textContent = won(r.vo); $('t-vi').textContent = '− ' + won(r.vi);
     $('t-vp').textContent = won(r.vp); $('t-net').textContent = won(r.net) + ' (' + r.pct + '%)'; $('t-net').className = r.net < 0 ? 'neg' : '';
@@ -336,7 +340,7 @@
     if (ql) {
       ql.addEventListener('input', function (e) { var t = e.target, row = t.closest('.ql'); if (!row) return; var l = lines[+row.getAttribute('data-i')], k = t.getAttribute('data-k');
         if (k === 'c' || k === 'v') return;
-        if (k === 'cost') { var v = t.value.replace(/[^\d]/g, ''); l.cost = v === '' ? null : +v; } else if (k === 'm') { l.m = t.value.trim() === '' ? '' : Number(t.value); } else if (k === 'vat') l.vat = t.checked; else l[k] = t.value; recalc(); });
+        if (k === 'cost') { var v = t.value.replace(/[^\d]/g, ''); l.cost = v === '' ? null : +v; } else if (k === 'pc') { var v2 = t.value.replace(/[^\d]/g, ''); l.pc = v2 === '' ? null : +v2; } else if (k === 'm') { l.m = t.value.trim() === '' ? '' : Number(t.value); } else if (k === 'vat') l.vat = t.checked; else l[k] = t.value; recalc(); });
       ql.addEventListener('change', function (e) { var t = e.target, kk = t.getAttribute('data-k');
         if (kk === 'c' || kk === 'v') { var ln = lines[+t.closest('.ql').getAttribute('data-i')]; if (kk === 'c') { ln.c = t.value; ln.v = ''; ln.vn = null; } else pickVen(ln, t.value); redrawLines(); return; } if (t.getAttribute('data-k') === 'cost' && t.value) { var v = t.value.replace(/[^\d]/g, ''); t.value = v ? num(v) : ''; } if (t.getAttribute('data-k') === 'vat') { lines[+t.closest('.ql').getAttribute('data-i')].vat = t.checked; recalc(); } });
       ql.addEventListener('click', function (e) { var b = e.target.closest('[data-del]'); if (!b) return; lines.splice(+b.getAttribute('data-del'), 1); $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, false); }).join(''); recalc(); });
