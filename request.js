@@ -58,7 +58,7 @@
   function data() {
     return { ui: L(), lang: $('f-lang').value, date: $('f-date').value, guests: +$('f-guests').value, car: $('f-car').value,
       opts: OPTS.filter(function (k) { var i = form.querySelector('input[name="opt"][value="' + k + '"]'); return i && i.checked; }).concat([pmOf()]),
-      craft: (form.querySelector('input[name="craft"]:checked') || {}).value || '', brands: brandsOf(), brandOther: (!nsOn() && $('f-brand-other') ? $('f-brand-other').value.trim() : ''), wine: ($('f-wine') ? $('f-wine').value.trim().slice(0, 120) : ''),   // 11-17 좋아하는 와인
+      craft: 'najeon',   /* 11-17 진주쉘 자개 체험 하나 — 고르기 칸 없앰 */ brands: brandsOf(), brandOther: (!nsOn() && $('f-brand-other') ? $('f-brand-other').value.trim() : ''), wine: ($('f-wine') ? $('f-wine').value.trim().slice(0, 120) : ''),   // 11-17 좋아하는 와인
       req: $('f-req').value.trim(), name: $('f-name').value.trim(), email: $('f-email').value.trim(), phone: $('f-phone').value.trim() };
   }
   function check(d) {
@@ -66,7 +66,6 @@
     if (!/^\d{4}-\d{2}-\d{2}$/.test(d.date) || d.date < minD) e.push('date');
     if (!(d.guests >= 1)) e.push('guests');
     if (!d.car) e.push('car');
-    if (!d.craft) e.push('craft');
     if (!d.name) e.push('name');
     if (!/^[^\s@<>"']+@[^\s@<>"']+\.[A-Za-z]{2,}$/.test(d.email)) e.push('email');
     if (!/^\+?[\d][\d\s().-]{5,38}$/.test(d.phone)) e.push('phone');

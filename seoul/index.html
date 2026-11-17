@@ -78,7 +78,7 @@ privately curated.</h1>
           <p class="day" data-i18n="d2.day">Day 2</p>
           <h3 data-i18n="d2.title">Spa, palace &amp; craft</h3>
           <ul class="items">
-            <li data-i18n="d2.i1">Artisan craft with a master: mother-of-pearl mirror or silver ring, your choice</li>
+            <li data-i18n="d2.i1">DIY Mother-of-Pearl Experience: make a mother-of-pearl hand mirror at a workshop run by a master artisan in Bukchon</li>
             <li data-i18n="d2.i2">Lunch of Korean temple cuisine</li>
             <li data-i18n="d2.i3">The Secret Garden of Changdeokgung</li>
             <li data-i18n="d2.i4">Couple spa at Four Seasons in the late afternoon, 120 minutes</li>
@@ -142,7 +142,7 @@ privately curated.</h1>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Private spa</p><p class="inc-desc" data-i18n="inc.5">One couple’s session at the Four Seasons, 120 minutes</p></div></li>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Expert guide</p><p class="inc-desc" data-i18n="inc.6">A specialist in palaces and architecture</p></div></li>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">24-hour dedicated concierge</p><p class="inc-desc" data-i18n="inc.7">With you through the day, on call through the night</p></div></li>
-        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Artisan craft experience</p><p class="inc-desc" data-i18n="inc.9">A mother-of-pearl mirror or a silver ring, made with a master artisan; yours to take home</p></div></li>
+        <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Artisan craft experience</p><p class="inc-desc" data-i18n="inc.9">DIY Mother-of-Pearl Experience: a mother-of-pearl hand mirror, made at a workshop run by a master artisan in Bukchon; yours to take home the same day</p></div></li>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Private K-beauty session</p><p class="inc-desc" data-i18n="inc.10">Personal colour analysis and a one-to-one make-up lesson in Cheongdam</p></div></li>
         <li><span class="dot" aria-hidden="true"></span><div><p class="inc-name latin">Duty-free luxury shopping</p><p class="inc-desc" data-i18n="inc.8">Lotte Duty Free’s Myeongdong Main Store, with more brands than any other duty-free store in Korea; luxury purchases are collected at the airport when you depart</p></div></li>
       </ul>
@@ -235,13 +235,7 @@ privately curated.</h1>
             <label for="f-car" data-i18n="f.car">Vehicle</label>
             <select id="f-car" name="vehicle"></select>
           </div>
-          <fieldset class="f f-wide" id="f-craft">
-            <legend data-i18n="f.craft">Artisan craft experience — choose one</legend>
-            <div class="checks checks-1">
-              <label><input type="radio" name="craft" value="najeon" required><span><span data-i18n="cr.najeon">Mother-of-pearl hand mirror with master artisan Jeong Myeong-chae</span><small class="c-d" data-i18n="cr.najeon.d">National Intangible Heritage holder (najeonchilgi). You take your mirror home.</small></span></label>
-              <label><input type="radio" name="craft" value="silver"><span><span data-i18n="cr.silver">Silver ring with artisan Lee Hwang-jae</span><small class="c-d" data-i18n="cr.silver.d">Made by your own hand. You take your ring home.</small></span></label>
-            </div>
-          </fieldset>
+          <!-- 11-17 장인 체험 고르기 칸 없앰 — 진주쉘 「DIY Mother-of-Pearl Experience」 하나(늘 najeon) -->
           <fieldset class="f f-wide">
             <legend data-i18n="f.opts">Options</legend>
             <div class="checks">
@@ -255,7 +249,7 @@ privately curated.</h1>
             <legend data-i18n="f.swap">Prefer something else? (optional)</legend>
             <div class="checks checks-1">
               <label><input type="checkbox" name="opt" value="nam"><span><span data-i18n="sw.nam">Morning walk on Namsan with your guide</span><small class="c-d" data-i18n="sw.nam.d">Forest trails in the heart of Seoul, before lunch at Lotte World Tower.</small><small class="c-r" data-i18n="sw.nam.r">Replaces: Day 3 morning tea ceremony at Rakkojae</small></span></label>
-              <label><input type="checkbox" name="opt" value="noshop"><span><span data-i18n="sw.noshop">A temple morning instead of shopping</span><small class="c-d" data-i18n="sw.noshop.d">A guided walk through Bongeunsa, a thousand-year-old temple in Gangnam, then on foot to Starfield Library at COEX and coffee nearby.</small><small class="c-r" data-i18n="sw.noshop.r">Replaces: Day 4 morning shopping at Galleria Luxury Hall</small></span></label>
+              <label><input type="checkbox" name="opt" value="noshop"><span><span data-i18n="sw.noshop">A temple morning instead of shopping</span><small class="c-d" data-i18n="sw.noshop.d">A guided walk through Bongeunsa, a thousand-year-old temple in Gangnam, then on foot to Starfield Library at COEX and coffee nearby.</small><small class="c-r" data-i18n="sw.noshop.r">Replaces: Day 4 morning duty-free shopping at Lotte Duty Free’s Myeongdong Main Store</small></span></label>
             </div>
           </fieldset>
           <fieldset class="f f-wide" id="f-pm">   <!-- 11-17 4일차 오후 — 요트(기본)·리움 중 하나 -->
@@ -376,10 +370,10 @@ privately curated.</h1>
 </footer>
 
 <script src="../hub.js?v=1115e"></script>
-<script src="../i18n-seoul.js?v=1117yt"></script>
+<script src="../i18n-seoul.js?v=1117jk"></script>
 <script src="../bizinfo.js?v=1116zh"></script>
 <script src="../main.js?v=1116vc"></script>
 <script src="../brands.js?v=1116hm"></script>
-<script src="../request.js?v=1117wn"></script>
+<script src="../request.js?v=1117jj"></script>
 </body>
 </html>
