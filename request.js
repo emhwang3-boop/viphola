@@ -5,7 +5,7 @@
   'use strict';
   var form = document.getElementById('req'); if (!form) return;
   var HUB = window.VIP_HUB || 'https://brief-live-hub.emhwang3.workers.dev';
-  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'nam', 'noshop', 'gj'];   // 11-17 4박 5일 — nam = 3일차 오전 남산 산책(락고재 대신) · noshop = 「쇼핑 대신」 4일차 오전 봉은사·별마당 · gj = 경주 1박 2일 연장(5일차 서울 대신 경주, 6일차 출국) · 4일차 오후 요트/리움은 라디오(pm4)로 opts 에 하나 더함
+  var OPTS = ['porter', 'photo', 'hanbok', 'wine', 'nam', 'shop', 'gj'];   // 11-18 기본 봉은사 — shop = 면세점 쇼핑(대체)   // 11-17 4박 5일 — nam = 3일차 오전 남산 산책(락고재 대신) · noshop = 「쇼핑 대신」 4일차 오전 봉은사·별마당 · gj = 경주 1박 2일 연장(5일차 서울 대신 경주, 6일차 출국) · 4일차 오후 요트/리움은 라디오(pm4)로 opts 에 하나 더함
   var $ = function (id) { return document.getElementById(id); };
   var t = function (k) { return window.VIPT ? window.VIPT(k) : k; };
   var L = function () { return window.VIP_LANG || 'en'; };
@@ -40,9 +40,9 @@
   $('f-date').addEventListener('change', dep); $('f-date').addEventListener('input', dep);
   $('f-lang').addEventListener('change', function () { langTouched = true; });
   form.querySelector('input[name="opt"][value="gj"]').addEventListener('change', dep);
-  function nsOn() { var i = form.querySelector('input[name="opt"][value="noshop"]'); return !!(i && i.checked); }
+  function nsOn() { var i = form.querySelector('input[name="opt"][value="shop"]'); return !(i && i.checked); }   // 11-18 「쇼핑 안 함」= 면세점을 안 고름(기본)
   function brandShow() { var f = $('f-brands'); if (f && (window.VIP_BRANDS || []).length) { f.hidden = nsOn(); f.style.display = nsOn() ? 'none' : ''; } }   // .f 칸의 display 가 hidden 을 이겨서 style 로도 숨김   // 11-17 「쇼핑 대신」을 고르면 좋아하는 브랜드 칸은 숨김(보내지도 않음)
-  form.querySelector('input[name="opt"][value="noshop"]').addEventListener('change', brandShow);
+  form.querySelector('input[name="opt"][value="shop"]').addEventListener('change', brandShow);
   document.addEventListener('vip:lang', fill);
   fill();
   (function () {   // 11-16 좋아하는 브랜드 — 로고 글자 그림 칸(여러 개) · 목록 brands.js
