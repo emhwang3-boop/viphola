@@ -11,7 +11,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var ST_KO = { 'new': '신청', quoted: '견적 보냄', paid: '결제 완료', confirmed: '확정' };
   var LANG_KO = { en: '영어', ja: '일본어', es: '스페인어', zhs: '중국어 간체', zht: '중국어 번체' };
-  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', nam: '남산 아침 산책 (락고재 다도 대신)', noshop: '쇼핑 대신 봉은사·별마당 도서관 (4일차 오전)', yacht: '4일차 오후 한강 프라이빗 요트', leeum: '4일차 오후 리움미술관 큐레이터 해설', show: '4일차 오후 국립극장 공연 VIP석 (점심 신라호텔 팔선)' };   // 11-17 4박 5일 — 옛 bnb·beauty 는 기본 일정이 됨
+  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', nam: '남산 아침 산책 (락고재 다도 대신)', noshop: '쇼핑 대신 봉은사·별마당 도서관 (4일차 오전)', shop: '4일차 오전 면세점 쇼핑 (봉은사 대신)', yacht: '4일차 오후 한강 프라이빗 요트', leeum: '4일차 오후 리움미술관 큐레이터 해설', show: '4일차 오후 국립극장 공연 VIP석 (점심 신라호텔 팔선)' };   // 11-17 4박 5일 — 옛 bnb·beauty 는 기본 일정이 됨
   var VEN = null, VCATS = [], TPL = {}, vcat = 'seoul_hotel', vedit = null;   // 업체 목록 (허브 /vip/adm/vendors) — 손님에겐 안 보임
   var psrMin = 0;   // 11-16 더현대 PSR 최소 쇼핑금액(USD) — 견적서 칸, 밑에 원화 자동
   var items = [], filter = 'all', cur = null, lines = [], fx = null, fxInfo = '', fxWarn = false, valid = '', trip = null, cfg = { wa: '', tel: '', line: '', wc: '' }, PG = false;
@@ -276,7 +276,7 @@
       + '<div id="qlines">' + lines.map(function (l, i) { return lineRow(l, i, ro); }).join('') + '</div>'
       + (ro ? '' : '<div class="qadd"><button type="button" class="b b-ghost b-sm" id="q-add">＋ 줄 추가</button></div>')
       + '<dl class="tot"><dt>원가 합계</dt><dd id="t-cost"></dd><dt>견적가 합계 (손님 결제 금액)</dt><dd class="big" id="t-total"></dd><dt>손님 견적에 보이는 두 줄</dt><dd id="t-split"></dd></dl>'   // 11-17 실비 합계 + 서비스 피
-      + ((r.opts || []).indexOf('noshop') >= 0 ? '' : '<div class="psr"><label class="fl">더현대 PSR 최소 쇼핑금액 (USD) <small>TBD — 정해지면 넣기 · 비우면 손님에게 안 나감</small><input type="text" id="q-psr" inputmode="decimal" placeholder="예: 10000" value="' + (psrMin || '') + '"' + (ro ? ' disabled' : '') + '></label><p class="usd" id="q-psr-krw"></p></div>')
+      + ((r.opts || []).indexOf('shop') < 0 ? '' : '<div class="psr"><label class="fl">더현대 PSR 최소 쇼핑금액 (USD) <small>TBD — 정해지면 넣기 · 비우면 손님에게 안 나감</small><input type="text" id="q-psr" inputmode="decimal" placeholder="예: 10000" value="' + (psrMin || '') + '"' + (ro ? ' disabled' : '') + '></label><p class="usd" id="q-psr-krw"></p></div>')
       + '<div class="ref"><h3>참고 — 사장님만 봅니다 (손님 메일·결제 화면에는 안 나감)</h3><dl class="tot"><dt>카드 수수료 3.5%</dt><dd id="t-card"></dd><dt>매출 부가세 (견적가 합계의 10/110)</dt><dd id="t-vo"></dd>'
       + '<dt>매입 부가세 공제 (공제 체크한 줄 원가의 10/110)</dt><dd id="t-vi"></dd><dt>납부할 부가세 (예상)</dt><dd id="t-vp"></dd><dt><b>실제 남는 돈</b></dt><dd><b id="t-net"></b></dd></dl></div>'
       + '<div class="sec" style="border:0;padding:14px 0 0;margin-top:14px"><div class="fx"><label class="fl">환율 (USD 1 = 원)<input type="text" id="fx-rate" inputmode="decimal"' + (ro ? ' disabled' : '') + '></label>'
