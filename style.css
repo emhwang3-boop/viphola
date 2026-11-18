@@ -625,3 +625,14 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-soon
 .qtable thead th[colspan] { font-size: 11.5px; padding: 12px 0 8px; }
 .qtable tr.qsp td { padding: 14px 0 12px; font-weight: 600; }
 .qtable tr.qsp:first-of-type td, .qtable tr.qinc + tr.qsp td { border-top: 2px solid var(--line); }
+
+/* 11-18 날짜·시각 칸 — 브라우저 언어 글자(연도-월-일·오전/오후)는 숨기고 사이트 언어 글자를 덮음 (dtl.js) */
+.dtl { position: relative; display: block; }
+.dtl > input.dtl-in { color: transparent; -webkit-text-fill-color: transparent; caret-color: transparent; }
+.dtl > input.dtl-in::-webkit-datetime-edit { opacity: 0; }
+.dtl-txt { position: absolute; left: 0; right: 34px; top: 0; bottom: 0; display: flex; align-items: center; pointer-events: none;
+  font: 400 16px/1.5 var(--sans); color: var(--navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dtl-txt.dtl-ph { color: rgba(31, 42, 68, .42); font-weight: 300; }
+.tv-p .dtl-txt { left: 2px; font-size: 15px; color: inherit; }
+.tv-p .dtl-txt.dtl-ph { color: rgba(31, 42, 68, .42); }
+.dtl > input.dtl-in { width: 100%; box-sizing: border-box; }   /* 감싼 뒤에도 칸 너비 그대로 (여권 칸) */
