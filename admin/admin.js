@@ -78,11 +78,17 @@
   // ── 업체 목록 (분류 · 이름 · 영문 이름 · 기본/대체 · 전화 · 이메일 · 웹 · 주소 · 메모) ──
   function loadVen(after) { return api('/vip/adm/vendors').then(function (j) { if (j && j.ok) { VEN = j.ven; VCATS = j.cats || []; TPL = j.tpl || {}; if (cur && $('qlines')) redrawLines(); if (after) after(); } }).catch(fail); }
   function venSet(j, msg) { if (j && j.ok) { VEN = j.ven; VCATS = j.cats || VCATS; TPL = j.tpl || TPL; if (cur && $('qlines')) redrawLines(); drawVen(); if (msg) toast(msg); } else toast(j && j.err === 'name' ? '이름(한글 또는 영문)을 넣어 주세요.' : '저장하지 못했습니다.'); }
+  // 11-18 사장님 「대체는 1스타 이상 우선, 2스타 이상·카네사카는 참고, 별 수를 보여줘」 — 별은 메모의 「2026 ★…」에서, 참고는 메모 앞 「참고(」
+  function venStar(v) { var m = /20\d\d\s*(★{1,3})/.exec(v.note || ''); return m ? m[1] : ''; }
+  function venRef(v) { return /^참고\(/.test(v.note || ''); }
+  function venRank(v) { return v.role === '기본' ? 0 : venRef(v) ? 2 : 1; }
+  function venSort(a, b) { return venRank(a) - venRank(b); }
+  function venTag(v) { var s = venStar(v); return v.role + (s ? ' ' + s : '') + (venRef(v) ? ' · 참고' : ''); }
   function drawVen() {
     if ($('modal').hidden || !$('ven-box')) return;
-    var list = (VEN.cats[vcat] || []).slice().sort(function (a, b) { return (a.role === '기본' ? 0 : 1) - (b.role === '기본' ? 0 : 1); });
+    var list = (VEN.cats[vcat] || []).slice().sort(venSort);
     $('ven-tabs').innerHTML = VCATS.map(function (c) { return '<button type="button" class="tab' + (c[0] === vcat ? ' on' : '') + '" data-vc="' + c[0] + '">' + esc(c[1]) + ' ' + ((VEN.cats[c[0]] || []).length) + '</button>'; }).join('');
-    $('ven-list').innerHTML = list.length ? list.map(function (v) { return '<div class="vrow"><div><b>' + esc(v.name_ko || v.name_en) + '</b>' + (v.name_en && v.name_ko ? ' <span class="mute">' + esc(v.name_en) + '</span>' : '') + ' <span class="chip' + (v.role === '기본' ? ' c-quoted' : '') + '">' + v.role + '</span>' + (flagWord(v) ? ' <span class="chip c-exp">⚠ ' + esc(flagWord(v)) + '</span>' : '')
+    $('ven-list').innerHTML = list.length ? list.map(function (v) { return '<div class="vrow"><div><b>' + esc(v.name_ko || v.name_en) + '</b>' + (v.name_en && v.name_ko ? ' <span class="mute">' + esc(v.name_en) + '</span>' : '') + ' <span class="chip' + (v.role === '기본' ? ' c-quoted' : '') + '">' + esc(venTag(v)) + '</span>' + (flagWord(v) ? ' <span class="chip c-exp">⚠ ' + esc(flagWord(v)) + '</span>' : '')
       + '<div class="qv-c">' + contacts(v) + '</div></div><div class="row"><button type="button" class="b b-sm" data-ve="' + esc(v.id) + '">수정</button><button type="button" class="b b-sm b-red" data-vd="' + esc(v.id) + '">삭제</button></div></div>'; }).join('') : '<p class="mute">이 분류에 업체가 없습니다.</p>';
     var e = vedit || { role: '대체' };
     $('ven-form').innerHTML = '<h3>' + (e.id ? '업체 수정' : '업체 추가') + '</h3><div class="grid3"><label class="fl">분류<select id="vf-cat">' + VCATS.map(function (c) { return '<option value="' + c[0] + '"' + (c[0] === vcat ? ' selected' : '') + '>' + esc(c[1]) + '</option>'; }).join('') + '</select></label>'
@@ -230,8 +236,8 @@
   function venRow(l, i, ro) {   // 줄마다 분류·업체 — 고르면 줄 이름이 바뀌고 연락처가 바로 보인다(전화·메일은 눌러서 연결)
     var d = ro ? ' disabled' : '', c = l.c || '', list = (VEN && VEN.cats && VEN.cats[c]) || [], v = l.v ? (venOf(c, l.v) || venFind(l.v)) : null;
     var co = '<option value="">분류 없음</option>' + VCATS.map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === c ? ' selected' : '') + '>' + esc(x[1]) + '</option>'; }).join('');
-    var vo = '<option value="">' + (list.length ? '— 업체 선택 —' : (c ? '이 분류에 업체 없음' : '— 분류부터 선택 —')) + '</option>' + list.slice().sort(function (a, b) { return (a.role === '기본' ? 0 : 1) - (b.role === '기본' ? 0 : 1); }).map(function (x) {
-      return '<option value="' + esc(x.id) + '"' + (x.id === l.v ? ' selected' : '') + '>' + esc((x.name_ko || x.name_en) + (x.name_en && x.name_ko ? ' · ' + x.name_en : '') + ' (' + x.role + ')' + (flagWord(x) ? ' ⚠ ' + flagWord(x) : '')) + '</option>'; }).join('');
+    var vo = '<option value="">' + (list.length ? '— 업체 선택 —' : (c ? '이 분류에 업체 없음' : '— 분류부터 선택 —')) + '</option>' + list.slice().sort(venSort).map(function (x) {
+      return '<option value="' + esc(x.id) + '"' + (x.id === l.v ? ' selected' : '') + '>' + esc((x.name_ko || x.name_en) + (x.name_en && x.name_ko ? ' · ' + x.name_en : '') + ' (' + venTag(x) + ')' + (flagWord(x) ? ' ⚠ ' + flagWord(x) : '')) + '</option>'; }).join('');
     if (l.v && !v) vo += '<option value="' + esc(l.v) + '" selected>' + esc(((l.vn && (l.vn.ko || l.vn.en)) || '') + ' (목록에서 지운 업체)') + '</option>';
     return '<div class="qv"><span class="qv-l">업체</span><select data-k="c"' + d + '>' + co + '</select><select data-k="v"' + d + '>' + vo + '</select><div class="qv-c">' + contacts(v) + '</div></div>';
   }
