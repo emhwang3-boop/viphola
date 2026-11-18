@@ -660,3 +660,9 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-soon
 .dtl-clk { display: flex; gap: 4px; padding: 6px; }
 .dtl-col { height: 228px; width: 58px; overflow-y: auto; display: flex; flex-direction: column; scrollbar-width: thin; }
 .dtl-pop .dtl-t { flex: 0 0 34px; font-size: 15px; }
+
+/* 11-18 아웃바운드 문 사진 세 칸(멕시코·볼리비아·페루) */
+.door-photos.n3 img { width: 33.334%; }
+.door-photos.n3 img + img { border-left: 1px solid rgba(247, 243, 234, .6); }
+.door-photos.n3::after { display: none; }
+.out-credit-3 { position: absolute; right: 14px; bottom: 10px; left: auto; font-size: 10.5px; opacity: .8; }
