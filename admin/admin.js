@@ -11,7 +11,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var ST_KO = { 'new': '신청', quoted: '견적 보냄', paid: '결제 완료', confirmed: '확정' };
   var LANG_KO = { en: '영어', ja: '일본어', es: '스페인어', zhs: '중국어 간체', zht: '중국어 번체' };
-  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', nam: '남산 아침 산책 (락고재 다도 대신)', noshop: '쇼핑 대신 봉은사·별마당 도서관 (4일차 오전)', yacht: '4일차 오후 한강 프라이빗 요트', leeum: '4일차 오후 리움미술관 큐레이터 해설' };   // 11-17 4박 5일 — 옛 bnb·beauty 는 기본 일정이 됨
+  var OPT_KO = { porter: '포터 서비스', photo: '전문 사진작가', hanbok: '맞춤 한복', wine: '와인 페어링', gj: '경주 1박 2일 연장', nam: '남산 아침 산책 (락고재 다도 대신)', noshop: '쇼핑 대신 봉은사·별마당 도서관 (4일차 오전)', yacht: '4일차 오후 한강 프라이빗 요트', leeum: '4일차 오후 리움미술관 큐레이터 해설', show: '4일차 오후 국립극장 공연 VIP석 (점심 신라호텔 팔선)' };   // 11-17 4박 5일 — 옛 bnb·beauty 는 기본 일정이 됨
   var VEN = null, VCATS = [], TPL = {}, vcat = 'seoul_hotel', vedit = null;   // 업체 목록 (허브 /vip/adm/vendors) — 손님에겐 안 보임
   var psrMin = 0;   // 11-16 더현대 PSR 최소 쇼핑금액(USD) — 견적서 칸, 밑에 원화 자동
   var items = [], filter = 'all', cur = null, lines = [], fx = null, fxInfo = '', fxWarn = false, valid = '', trip = null, cfg = { wa: '', tel: '', line: '', wc: '' }, PG = false;
