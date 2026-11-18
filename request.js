@@ -51,7 +51,7 @@
     box.innerHTML = BR.map(function (b) { return '<label class="brand-chip" title="' + esc(b.n) + '"><input type="checkbox" name="brand" value="' + esc(b.k) + '"><img src="../img/brands/' + esc(b.f) + '" alt="' + esc(b.n) + '" loading="lazy"></label>'; }).join('');
   })();
   brandShow();
-  function pmOf() { return (form.querySelector('input[name="pm4"]:checked') || {}).value === 'leeum' ? 'leeum' : 'yacht'; }   // 11-17 4일차 오후 하나
+  function pmOf() { var v = (form.querySelector('input[name="pm4"]:checked') || {}).value; return v === 'leeum' || v === 'show' ? v : 'yacht'; }   // 11-18 공연 더함   // 11-17 4일차 오후 하나
   function brandsOf() { if (nsOn()) return []; return Array.prototype.slice.call(form.querySelectorAll('input[name="brand"]:checked')).map(function (i) { return i.value; }); }
   function brandName(k) { var b = (window.VIP_BRANDS || []).filter(function (x) { return x.k === k; })[0]; return b ? b.n : k; }
 
@@ -89,7 +89,7 @@
   }
 
   function render(d, j) {
-    var opt = d.opts.filter(function (k) { return k !== 'yacht' && k !== 'leeum'; }).map(function (k) { return t('c.' + k); }), pm = d.opts.indexOf('leeum') >= 0 ? 'leeum' : 'yacht', car = (window.CARS || []).filter(function (x) { return x.v === d.car; })[0];
+    var opt = d.opts.filter(function (k) { return k !== 'yacht' && k !== 'leeum' && k !== 'show'; }).map(function (k) { return t('c.' + k); }), pm = d.opts.indexOf('show') >= 0 ? 'show' : d.opts.indexOf('leeum') >= 0 ? 'leeum' : 'yacht', car = (window.CARS || []).filter(function (x) { return x.v === d.car; })[0];
     var langName = { en: 'English', ja: '日本語', es: 'Español', zhs: '简体中文', zht: '繁體中文' }[d.lang] || d.lang;
     var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 5 : 4))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
       [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.hw')], [t('r.pm'), t('pm.' + pm)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
