@@ -166,6 +166,18 @@
    "file_site_path": "/img/day4_seoulmarina.jpg",
    "why": "11-17 사장님 「4일차 사진을 요트 사진으로」「요트 선착장 사진 나온 거, 그 회사 가면 있을 거야」「좋아 A로 해」 — 4일차 요트 기본 업체(서울마리나 클럽앤요트) 홈페이지 사진 · 관광공사엔 서울 요트 1유형 사진이 현대요트 입구 1장뿐(광고판)",
    "replaces": "img/day4_sebitseom.jpg (세빛섬 야경, 관광공사 970052 / 3515813_3) → 빌드도구\\옛판\\day4_sebitseom_1117.jpg"
+  },
+  {
+   "file": "img/day4_bongeunsa.jpg",
+   "use": "④ 4일차 카드 (11-18 봉은사 기본)",
+   "place_ko": "봉은사 미륵대불",
+   "place_en": "Maitreya Buddha, Bongeunsa Temple",
+   "tourapi_title": "봉은사(서울)",
+   "contentid": "126504",
+   "serialnum": "3493331_1",
+   "cpyrhtDivCd": "Type1",
+   "license": "공공누리 제1유형(출처표시)",
+   "url": "https://tong.visitkorea.or.kr/cms/resource/31/3493331_image2_1.jpg"
   }
  ],
  "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
