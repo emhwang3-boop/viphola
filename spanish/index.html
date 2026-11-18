@@ -2,40 +2,134 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>스페인어권 VIP 여행 — 준비 중</title>
-<meta name="description" content="스페인어권 VIP 여행 프로그램은 앞으로 구성할 예정입니다.">
-<meta name="robots" content="noindex">
-<meta name="theme-color" content="#F7F3EA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스페인어권 VIP 여행 — VIPHola.com</title>
 <link rel="icon" href="../img/mugunghwa-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../style.css?v=1116fx">
+<link rel="stylesheet" href="../style.css?v=1118out">
+<style>
+  /* 11-18 사장님 — 스페인어권 VIP 여행: 서울편 틀 + 나라 풀다운(한국어만) · 말레이시아는 숨김 */
+  body { --serif: 'Noto Serif KR', serif; --sans: 'Noto Sans KR', system-ui, sans-serif; word-break: keep-all; }
+  .country { display: flex; align-items: center; gap: 10px; color: #1f2a44; font: 500 13px/1 var(--sans); letter-spacing: .08em; }
+  .country select { appearance: none; -webkit-appearance: none; background: rgba(255, 255, 255, .85) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%231F2A44' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 12px center;
+    border: 1px solid rgba(31, 42, 68, .45); color: #1f2a44; font: 500 15px/1 var(--sans); padding: 10px 36px 10px 14px; border-radius: 0; cursor: pointer; }
+  .country select option { color: #1f2a44; }
+  .hero.noimg { background: #1f2a44; }
+  .soon-card { border: 1px dashed rgba(31, 42, 68, .3); padding: 28px; text-align: center; color: rgba(31, 42, 68, .7); }
+</style>
 </head>
-<body data-page="soon" class="soon-page">
+<body>
 
-<nav class="topbar" aria-label="Site">
-  <a class="brand" href="../">
-    <span class="art art-mark" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
-    <span class="brand-name latin">VIP<em>Hola</em>.com</span>
-  </a>
-</nav>
+<header class="hero" id="top">
+  <img class="hero-img" id="hero-img" src="../img/outbound_mulu.jpg" alt="">
+  <div class="hero-veil" aria-hidden="true"></div>
+  <nav class="topbar" aria-label="Site">
+    <a class="brand" href="../">
+      <span class="art art-mark" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt=""></span>
+      <span class="brand-name latin">VIP<em>Hola</em>.com</span>
+    </a>
+    <label class="country">나라
+      <select id="country" aria-label="나라 선택">
+        <option value="my" hidden disabled>말레이시아</option>   <!-- 11-18 사장님 「말레이시아는 일단 숨기고」 -->
+        <option value="mx">멕시코</option>
+        <option value="bo">볼리비아</option>
+        <option value="pe">페루</option>
+      </select>
+    </label>
+  </nav>
+  <div class="hero-copy wrap">
+    <h1 id="hero-title">말레이시아,<br>열대우림의 시간.</h1>
+    <p class="hero-lead" id="hero-lead">가장 오래된 열대우림 가운데 하나인 타만 네가라와 보르네오의 국립공원 — 두 분만을 위해 꾸린 프라이빗 여행.</p>
+    <a class="btn" href="#foot">여행 문의하기</a>
+  </div>
+  <span class="credit credit-hero" id="hero-credit">사진 Nur Nafis Naim / CC BY-SA 4.0</span>
+</header>
 
-<main class="soon-main wrap">
-  <span class="art art-big" data-ph="무궁화"><img src="../img/mugunghwa.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
-  <p class="kicker">아웃바운드 · 스페인어권 VIP 여행</p>
-  <h1>준비 중</h1>
-  <p class="soon-text">아웃바운드 여행 프로그램은 앞으로 구성할 예정입니다.</p>
-  <p class="soon-text-2">지금은 이 화면을 열어도 작동하지 않습니다.</p>
-  <p class="soon-links">
-    <a href="../">← 첫 화면으로</a>
-    <a href="mailto:concierge@viphola.com">문의 concierge@viphola.com</a>
-    <a href="../terms/?lang=ko">약관·환불 규정</a>
-  </p>
-  <div class="bizinfo" data-lang="ko"></div>
+<main>
+  <section class="sec journey" id="journey">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">여정</p>
+        <h2 id="j-title">말레이시아 국립공원 여행</h2>
+        <p class="meta" id="j-meta">일정 예시 · 두 분 프라이빗</p>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <div class="ornament" aria-hidden="true"><span class="art art-orn"><img class="nf" src="../img/flower_my.png" alt="" loading="lazy"></span></div>
+
+  <section class="sec enquire" id="request">
+    <div class="wrap enq-grid">
+      <div class="enq-side">
+        <p class="kicker">신청</p>
+        <h2>여행 설계하기</h2>
+        <p class="enq-lead">원하시는 날짜와 인원을 알려 주시면 48시간 안에 일정과 견적을 보내 드립니다.</p>
+        <span class="art art-big"><img class="nf" src="../img/flower_my.png" alt="" loading="lazy"></span>
+      </div>
+    </div>
+  </section>
 </main>
-<script src="../bizinfo.js?v=1117tr"></script>
 
+<footer class="foot" id="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <span class="art art-mark" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"></span>
+      <div>
+        <p class="foot-name latin">VIP<em>Hola</em>.com</p>
+        <p class="foot-co">주식회사 부만</p>
+      </div>
+    </div>
+    <div class="foot-contact">
+      <p class="foot-label">문의</p>
+      <a href="mailto:concierge@viphola.com">concierge@viphola.com</a>
+      <p class="foot-terms"><a href="../terms/?lang=ko">약관·환불 규정</a></p>
+    </div>
+  </div>
+  <div class="wrap"><div class="foot-base">
+    <p>사진: 위키미디어 공용(사진마다 작가·라이선스 표시) · iStock</p>
+    <p class="latin-sm">© 2026 VIPHola.com</p>
+  </div><div class="bizinfo" data-lang="ko"></div></div>
+</footer>
+
+<script>
+(function () {
+  var C = {
+    my: { img: '../img/outbound_mulu.jpg', credit: '사진 Nur Nafis Naim / CC BY-SA 4.0', title: '말레이시아,<br>열대우림의 시간.', lead: '가장 오래된 열대우림 가운데 하나인 타만 네가라와 보르네오의 국립공원 — 두 분만을 위해 꾸린 프라이빗 여행.',
+      jt: '말레이시아 국립공원 여행',
+      cards: [['../img/my_tamannegara.jpg', '말레이 반도', '타만 네가라', '말레이 반도의 오래된 열대우림 · 숲 위 산책로와 강 보트', '사진 Vyacheslav Argenberg / CC BY 4.0'],
+              ['../img/outbound_mulu.jpg', '보르네오 · 사라왁', '구눙 물루', '유네스코 세계유산 · 석회암 피너클과 거대한 동굴', '사진 Nur Nafis Naim / CC BY-SA 4.0'],
+              ['../img/my_kinabalu.jpg', '보르네오 · 사바', '키나발루', '유네스코 세계유산 · 안개 낀 산악 숲과 고유종 새', '사진 Boonlong / CC BY 3.0'],
+              ['../img/my_bako.jpg', '보르네오 · 사라왁', '바코', '바다와 맞닿은 국립공원 · 해변 바위와 맹그로브', '사진 Borneo mobilegrapher / CC BY-SA 4.0'],
+              ['../img/my_hornbill.jpg', '보르네오', '코뿔새를 찾아서', '「코뿔새의 땅」 사라왁 — 전문 가이드와 새 관찰', '사진 Caroline Jones / CC BY 2.0']] },
+    mx: { img: '../img/outbound_chichenitza.jpg', credit: '사진 Daniel Schwen / CC BY-SA 4.0', title: '멕시코,<br>카리브해와 마야.', lead: '칸쿤의 카리브해, 마야의 치첸이트사, 그리고 카리브해 크루즈 — 두 분만을 위해 꾸린 프라이빗 여행.', jt: '칸쿤 · 카리브해 크루즈',
+      cards: [['../img/mx_cancun.jpg', '킨타나로오 · 칸쿤', '칸쿤', '카리브해를 내려다보는 호텔 존 스위트 · 프라이빗 해변', '사진 dronepicr / CC BY 2.0'],
+              ['../img/outbound_chichenitza.jpg', '유카탄', '치첸이트사', '유네스코 세계유산 · 마야의 쿠쿨칸 피라미드 — 칸쿤에서 전용 차량으로', '사진 Daniel Schwen / CC BY-SA 4.0'],
+              ['../img/mx_cenote.jpg', '유카탄', '세노테 익킬', '덩굴이 드리운 천연 석회암 샘 — 치첸이트사와 같은 날', '사진 Shinya Suzuki / CC BY 2.0'],
+              ['../img/mx_cruise.jpg', '카리브해', '카리브해 크루즈', '선상 스위트에서 맞는 카리브해 일출 · 코수멜 등 서카리브해 기항', '사진 ImagePerson / CC BY 4.0']] },
+    bo: { img: '../img/outbound_uyuni.jpg?v=1116z', credit: '사진 iStock.com/zanskar', title: '볼리비아,<br>하늘을 비추는 소금 사막.', lead: '우유니 소금 사막 — 프로그램을 준비하고 있습니다.', jt: '볼리비아 여행', cards: [] },
+    pe: { img: '../img/outbound_machupicchu.jpg', credit: '사진 Diego Delso / CC BY-SA 4.0', title: '페루,<br>잉카의 하늘 도시.', lead: '마추픽추 — 프로그램을 준비하고 있습니다.', jt: '페루 여행', cards: [] }
+  };
+  var FL = { my: 'flower_my', mx: 'flower_mx', bo: 'flower_bo', pe: 'flower_pe' };
+  var $ = function (id) { return document.getElementById(id); };
+  function show(k) {
+    var c = C[k] || C.my, hero = document.querySelector('.hero');
+    $('hero-img').style.display = c.img ? '' : 'none'; if (c.img) $('hero-img').src = c.img; hero.classList.toggle('noimg', !c.img);
+    $('hero-credit').textContent = c.credit; $('hero-title').innerHTML = c.title; $('hero-lead').textContent = c.lead; $('j-title').textContent = c.jt;
+    $('cards').innerHTML = c.cards.length ? c.cards.map(function (x, i) {
+      return '<article class="card"><figure><img src="' + x[0] + '" alt="" loading="lazy">' + (x[4] ? '<span class="credit">' + x[4] + '</span>' : '') + '</figure><p class="day">' + x[1] + '</p><h3>' + x[2] + '</h3><ul class="items"><li>' + x[3] + '</li></ul></article>'; }).join('')
+      : '<div class="soon-card">일정 준비 중입니다</div>';
+    Array.prototype.forEach.call(document.querySelectorAll('img.nf'), function (im) { im.src = '../img/' + (FL[k] || 'flower_my') + '.png'; });
+    try { history.replaceState(null, '', '?c=' + k); } catch (e) {}
+  }
+  var HIDE = { my: 1 };   // 숨긴 나라
+  var q = (location.search.match(/[?&]c=(\w+)/) || [])[1]; $('country').value = q && C[q] && !HIDE[q] ? q : 'mx';
+  $('country').addEventListener('change', function () { show(this.value); });
+  show($('country').value);
+})();
+</script>
+<script src="../bizinfo.js?v=1117tr"></script>
 </body>
 </html>
