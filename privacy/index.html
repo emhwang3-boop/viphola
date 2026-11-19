@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · VIPHola.com</title>
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--ink:#111827;--sub:#5b6474;--line:#e6e9ef;--green:#2f9e44;--blue:#3d5af1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;-webkit-text-size-adjust:100%;line-height:1.7}
+html,body{word-break:keep-all;overflow-wrap:break-word}   /* 11-10 앱과 같게 — 낱말 중간에서 줄을 안 바꾼다(칸보다 긴 낱말만 넘김) */
+html:lang(ja) body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif}
+html:lang(zh-Hans) body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif}
+html:lang(zh-Hant) body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'PingFang TC','Microsoft JhengHei','Noto Sans TC',sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:18px 16px 60px}
+.langbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:4px 0 22px}
+.langbar button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;font-size:13px;font-weight:700;padding:6px 13px;cursor:pointer;font-family:inherit}
+.langbar button.on{background:var(--green);border-color:var(--green);color:#fff}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:-.3px}
+.eff{color:var(--sub);font-size:13px;margin:0 0 20px}
+h2{font-size:16.5px;margin:26px 0 8px;padding-top:14px;border-top:1px solid var(--line);letter-spacing:-.2px}
+p{margin:8px 0}
+ul{margin:8px 0;padding-left:20px}
+li{margin:4px 0}
+a{color:var(--blue)}
+.note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:10px 0}
+.op{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:30px 0 0;font-size:14px;color:var(--sub)}
+.op b{color:var(--ink)}
+.op div{margin:3px 0}
+.back{display:inline-block;margin-top:24px;font-size:14px;font-weight:700}
+.ph{color:#b02a37;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="langbar" id="langbar"></div>
+  <div id="doc"></div>
+  <a class="back" id="back" href="https://viphola.com/">← <span id="backt">VIPHola.com으로 돌아가기</span></a>
+</div>
+<script>
+"use strict";
+var LANGS=["ko","en","ja","zhs","zht","es"];
+var LANG_ON=["ko","en","ja","zhs","zht","es"];   // 11-20 VIPHola 사이트는 여섯 언어 모두 사용 — 고르는 칸에 여섯 개 다 보임
+var HLANG={ko:"ko",en:"en",ja:"ja",zhs:"zh-Hans",zht:"zh-Hant",es:"es"};
+var LBL={ko:"한국어",en:"English",ja:"日本語",zhs:"简体",zht:"繁體",es:"Español"};
+
+/* operator block labels per language */
+var OP={
+ ko:{t:"사업자 정보",co:"상호",cn:"주식회사 부만 (Booman Inc.)",rn:"사업자등록번호",rv:"297-81-03712",ceo:"대표",cev:"전현진",po:"개인정보 보호책임자",pov:"황의만",cs:"고객센터",csv:"010-4221-7066",em:"이메일",ad:"주소",adv:"경기도 남양주시 진접읍 해밀예당1로 220, 707호 씨64호(엠타워)"},
+ en:{t:"Operator information",co:"Company",cn:"Booman Inc.",rn:"Business Reg. No.",rv:"297-81-03712",ceo:"CEO",cev:"Jeon Hyeonjin",po:"Privacy Officer",pov:"Hwang Euiman",cs:"Support",csv:"+82-10-4221-7066",em:"Email",ad:"Address",adv:"220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea"},
+ ja:{t:"事業者情報",co:"商号",cn:"株式会社 富滿（Booman Inc.）",rn:"事業者登録番号",rv:"297-81-03712",ceo:"代表",cev:"全賢珍（Jeon Hyeonjin）",po:"個人情報保護責任者",pov:"黄義晩（Hwang Euiman）",cs:"カスタマーセンター",csv:"+82-10-4221-7066",em:"メール",ad:"住所",adv:"220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea"},
+ zhs:{t:"经营者信息",co:"名称",cn:"Booman Inc.（株式会社 富滿）",rn:"营业执照号",rv:"297-81-03712",ceo:"代表",cev:"Jeon Hyeonjin",po:"个人信息保护负责人",pov:"Hwang Euiman",cs:"客服",csv:"+82-10-4221-7066",em:"邮箱",ad:"地址",adv:"220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea"},
+ zht:{t:"經營者資訊",co:"名稱",cn:"Booman Inc.（株式會社 富滿）",rn:"營業執照號",rv:"297-81-03712",ceo:"代表",cev:"Jeon Hyeonjin",po:"個人資料保護負責人",pov:"Hwang Euiman",cs:"客服",csv:"+82-10-4221-7066",em:"電郵",ad:"地址",adv:"220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea"},
+ es:{t:"Información del operador",co:"Empresa",cn:"Booman Inc.",rn:"N.º de registro mercantil",rv:"297-81-03712",ceo:"Representante",cev:"Jeon Hyeonjin",po:"Responsable de privacidad",pov:"Hwang Euiman",cs:"Atención",csv:"+82-10-4221-7066",em:"Correo",ad:"Dirección",adv:"220 Haemilyedang 1-ro, Jinjeop-eup, Namyangju-si, Gyeonggi-do, Rm 707 C64 (M Tower), Korea"}
+};
+var BACK={ko:"VIPHola.com으로 돌아가기",en:"Back to VIPHola.com",ja:"VIPHola.comに戻る",zhs:"返回 VIPHola.com",zht:"返回 VIPHola.com",es:"Volver a VIPHola.com"};
+
+/* Each language: title, effective-date line, and sections [{h, b:[ "para" | ["li",...] ]}] */
+var D={};
+D.ko={title:"개인정보 처리방침", eff:"시행일: ______________________", app:"VIPHola.com",
+ sec:[
+ {h:"", b:["주식회사 부만(이하 '회사')은 「개인정보 보호법」 등 관련 법령을 준수하며, 고객의 개인정보를 소중히 보호합니다. 본 방침은 회사가 운영하는 프라이빗 VIP 여행 서비스 'VIPHola.com'(https://viphola.com, 이하 '서비스')에 적용됩니다."]},
+ {h:"1. 수집하는 개인정보 항목 및 수집 방법", b:[
+   "회사는 여행 상담과 예약에 꼭 필요한 정보만 수집합니다.",
+   ["여행 신청 시 — 이름, 이메일 주소, 전화번호(또는 WhatsApp 번호), 안내 메일 언어, 여행 날짜와 인원, 도착·출발 공항과 항공편·시각, 선택한 일정과 취향(브랜드·와인 등), 특별 요청 사항(식사 제한·기념일 등 고객이 직접 적은 내용)",
+    "결제 후 여행자 정보 — 여행자별 여권상 이름, 국적, 생년월일, 여권 번호, 여권 만료일 (전용 차량·공항 의전 예약 목적)",
+    "결제 시 — 결제 금액, 결제 상태, 주문 번호. 카드 번호 등 결제 수단 정보는 결제대행사(포트원·KG이니시스)가 처리하며, 회사는 저장하지 않습니다.",
+    "상담 중 — 이메일·메신저(WhatsApp·LINE·WeChat)로 고객이 보낸 내용",
+    "자동 수집 — 신청 남용 방지와 방문자 수 집계를 위한 IP 주소의 일방향 암호화 값 (원래 IP 주소는 저장하지 않습니다)"],
+   "수집 방법: 서비스 화면의 신청서와 여행자 정보 칸에 고객이 직접 입력하거나, 이메일·메신저로 고객이 보낸 내용을 통해 수집합니다."]},
+ {h:"2. 개인정보의 수집·이용 목적", b:[
+   ["여행 상담, 견적서 작성과 안내 메일 발송",
+    "호텔·식당·차량·공항 의전·체험 등 여행 일정의 예약과 진행",
+    "결제 확인과 환불 처리",
+    "여행 중 연락과 긴급 상황 대응 (24시간 컨시어지)",
+    "부정 이용과 신청 남용 방지"]]},
+ {h:"3. 개인정보의 보유 및 이용 기간", b:[
+   "회사는 수집·이용 목적을 달성하면 개인정보를 지체 없이 파기합니다.",
+   ["여권 정보: 여행 종료 15일 후 삭제합니다.",
+    "여행 상담·예약 정보: 상담과 여행이 끝나 목적을 달성하면 삭제합니다. 다만 아래와 같이 관계 법령에 따라 보관해야 하는 정보는 그 기간 동안 보관합니다.",
+    "계약 또는 청약철회 등에 관한 기록: 5년 (「전자상거래 등에서의 소비자보호에 관한 법률」)",
+    "대금결제 및 재화 등의 공급에 관한 기록: 5년 (같은 법)",
+    "소비자의 불만 또는 분쟁처리에 관한 기록: 3년 (같은 법)",
+    "신청 남용 방지용 암호화 값: 짧은 기간만 쓰고 삭제합니다."],
+   "고객이 삭제를 요청하면 법령에 따라 보관해야 하는 정보를 제외하고 지체 없이 파기합니다."]},
+ {h:"4. 개인정보의 제3자 제공", b:[
+   "회사는 고객의 개인정보를 판매하지 않습니다. 여행 예약을 위해 아래와 같이 필요한 범위에서만 제공합니다.",
+   ["제공받는 자: 고객의 견적서에 들어 있는 호텔·식당·차량(리무진) 회사·공항 의전 회사·체험·공연·관람 시설",
+    "제공 목적: 예약과 여행 서비스 제공",
+    "제공 항목: 예약자 이름, 인원, 일정과 시각, 항공편, 식사 제한 등 요청 사항. 공항 의전·차량 회사에는 의전·보안 절차에 필요한 경우 여권상 이름·국적·생년월일·여권 번호",
+    "보유 기간: 각 업체가 예약을 이행하는 데 필요한 기간"],
+   "제공받는 업체는 고객의 일정에 따라 달라지며, 견적서에 들어 있는 업체에만 제공합니다.",
+   "그 밖에 법령에 근거가 있거나 수사기관의 적법한 요청이 있는 경우를 제외하고는 제3자에게 제공하지 않습니다."]},
+ {h:"5. 개인정보 처리 위탁 및 국외 이전", b:[
+   "회사는 서비스 운영을 위해 아래 업체에 개인정보 처리를 맡기고 있습니다.",
+   ["Cloudflare(미국): 서비스 서버 운영과 자료 보관 — 위 자료 (여권 정보 등은 암호화해 보관)",
+    "Resend(미국): 견적·안내 메일 발송 — 고객의 이메일 주소와 메일 내용",
+    "텔레그램(Telegram): 새 신청 등을 회사 담당자에게 알림 — 신청 요약",
+    "포트원(PortOne)·KG이니시스: 카드 결제 처리 — 결제 금액, 주문 번호와 결제에 필요한 정보",
+    "WhatsApp(Meta)·LINE(LY Corporation)·WeChat(Tencent): 고객이 메신저로 연락하는 경우 — 주고받은 메시지 (각 메신저 회사의 방침에 따라 처리)"],
+   "위 해외 서비스를 이용하는 과정에서 일부 정보가 국외(해외 서버)로 전송될 수 있습니다. 이는 서비스 제공에 꼭 필요한 범위로 한정됩니다."]},
+ {h:"6. 이용자의 권리와 행사 방법", b:[
+   "고객은 언제든지 자신의 개인정보에 대한 열람·정정·삭제를 요청하고 동의를 철회할 수 있습니다.",
+   "요청은 고객센터(010-4221-7066) 또는 이메일(concierge@viphola.com)로 할 수 있으며, 회사는 지체 없이 처리합니다."]},
+ {h:"7. 개인정보의 안전성 확보 조치", b:[
+   "회사는 여권 정보 등 중요한 개인정보를 암호화해 보관하고, 담당 컨시어지만 볼 수 있도록 접근 권한을 제한합니다."]},
+ {h:"8. 개인정보 보호책임자", b:[
+   "개인정보 처리에 관한 문의·불만·피해 구제는 아래 보호책임자에게 연락하실 수 있습니다.",
+   ["개인정보 보호책임자: 황의만",
+    "고객센터: 010-4221-7066",
+    "이메일: concierge@viphola.com"]]},
+ {h:"9. 아동의 개인정보", b:[
+   "만 14세 미만 아동이 함께 여행하는 경우, 아동의 여행자 정보는 보호자가 동의하고 직접 입력합니다."]},
+ {h:"10. 방침의 변경", b:[
+   "본 방침이 변경되는 경우 시행일과 변경 내용을 본 페이지를 통해 공지합니다."]},
+ {h:"언어", b:["이 방침은 한국어로 작성되었으며, 다른 언어 번역본과 내용이 다를 때는 한국어판이 우선합니다."]}
+ ]};
+
+D.en={title:"Privacy Policy", eff:"Effective date: ______________________", app:"VIPHola.com",
+ sec:[
+ {h:"", b:["Booman Inc. (\"the Company\") respects your privacy and complies with the Personal Information Protection Act and other applicable laws of the Republic of Korea. This policy applies to \"VIPHola.com\" (https://viphola.com, \"the Service\"), the private VIP travel service operated by the Company."]},
+ {h:"1. Information we collect and how", b:[
+   "We collect only the information that is strictly necessary to advise you on and book your journey.",
+   ["When you request a journey — name, email address, phone number (or WhatsApp number), language for our emails, travel dates and number of travellers, arrival and departure airports, flights and times, your chosen itinerary and preferences (brands, wine, etc.), and any special requests you write yourself (dietary restrictions, anniversaries, etc.)",
+    "Traveller details after payment — for each traveller, the full name as shown in the passport, nationality, date of birth, passport number and passport expiry date (to book your private car and airport assistance)",
+    "At payment — amount paid, payment status and order number. Card numbers and other payment details are processed by our payment providers (PortOne and KG Inicis); the Company does not store them.",
+    "During consultation — what you send us by email or messenger (WhatsApp, LINE, WeChat)",
+    "Collected automatically — a one-way encrypted value of your IP address, used to prevent abuse of the request form and to count visitors (your original IP address is not stored)"],
+   "Collection method: entered directly by you in the request form and traveller details fields on the Service, or sent by you by email or messenger."]},
+ {h:"2. Purpose of collection and use", b:[
+   ["To advise you on your journey, prepare your quote and send you information emails",
+    "To book and run your itinerary, including hotels, restaurants, cars, airport assistance and experiences",
+    "To confirm payments and process refunds",
+    "To contact you during your journey and respond to emergencies (24/7 concierge)",
+    "To prevent fraudulent use and abuse of the request form"]]},
+ {h:"3. Retention and use period", b:[
+   "The Company destroys personal information without delay once the purpose of its collection and use has been achieved.",
+   ["Passport details: deleted 15 days after your journey ends.",
+    "Travel consultation and booking information: deleted once the consultation and journey are over and the purpose has been achieved. However, information that must be kept under applicable laws, as listed below, is kept for the period required.",
+    "Records of contracts or withdrawal of offers, etc.: 5 years (Act on the Consumer Protection in Electronic Commerce, Etc.)",
+    "Records of payment and supply of goods, etc.: 5 years (same Act)",
+    "Records of consumer complaints or dispute resolution: 3 years (same Act)",
+    "Encrypted values used to prevent abuse of the request form: used for a short period only, then deleted."],
+   "If you ask us to delete your information, we destroy it without delay, except for information that must be kept by law."]},
+ {h:"4. Provision to third parties", b:[
+   "The Company does not sell your personal information. To book your journey, we provide it only to the extent necessary, as follows:",
+   ["Recipients: the hotels, restaurants, car (limousine) companies, airport assistance companies, and experience, performance and admission venues included in your quote",
+    "Purpose: making bookings and providing the travel services",
+    "Information provided: the booking name, number of travellers, itinerary and times, flights, and requests such as dietary restrictions. To airport assistance and car companies, where needed for their assistance and security procedures, also the full name as shown in the passport, nationality, date of birth and passport number",
+    "Retention period: as long as each provider needs to fulfil the booking"],
+   "The recipients depend on your itinerary, and we provide information only to those included in your quote.",
+   "We do not otherwise provide information to third parties, except where required by law or upon a lawful request from an investigative authority."]},
+ {h:"5. Outsourcing of processing and overseas transfer", b:[
+   "To operate the Service, the Company entrusts the processing of personal information to the following companies:",
+   ["Cloudflare (USA): running the Service's servers and storing data — the data above (passport details and similar information are stored encrypted)",
+    "Resend (USA): sending quote and information emails — your email address and the email content",
+    "Telegram: notifying Company staff of new requests, etc. — a summary of the request",
+    "PortOne and KG Inicis: card payment processing — amount paid, order number and the information needed for payment",
+    "WhatsApp (Meta), LINE (LY Corporation) and WeChat (Tencent): when you contact us by messenger — the messages exchanged (processed under each messenger company's own policy)"],
+   "In the course of using the overseas services above, some information may be transferred outside Korea (to overseas servers). This is limited to what is necessary to provide the Service."]},
+ {h:"6. Your rights", b:[
+   "You may at any time request access to, correction or deletion of your personal information, and withdraw consent.",
+   "Requests can be made to Support (+82-10-4221-7066) or by email (concierge@viphola.com), and we will act without delay."]},
+ {h:"7. Security measures", b:[
+   "The Company stores important personal information such as passport details in encrypted form, and restricts access so that only your concierge team can view it."]},
+ {h:"8. Privacy Officer", b:[
+   "For questions, complaints or remedies regarding personal information, please contact:",
+   ["Privacy Officer: Hwang Euiman",
+    "Support: +82-10-4221-7066",
+    "Email: concierge@viphola.com"]]},
+ {h:"9. Children", b:[
+   "When a child under the age of 14 travels with you, the parent or guardian gives consent and personally enters the child's traveller details."]},
+ {h:"10. Changes to this policy", b:[
+   "If this policy changes, we will announce the effective date and the changes on this page."]},
+ {h:"Language", b:["This Policy is written in Korean. If a translation in another language differs from the Korean version, the Korean version prevails."]}
+ ]};
+
+D.ja={title:"個人情報処理方針", eff:"施行日：______________________", app:"VIPHola.com",
+ sec:[
+ {h:"", b:["株式会社 富滿（Booman Inc.、以下「当社」）は、韓国の「個人情報保護法」等の関連法令を遵守し、お客様の個人情報を大切に保護します。本方針は、当社が運営するプライベートVIP旅行サービス「VIPHola.com」（https://viphola.com、以下「本サービス」）に適用されます。"]},
+ {h:"1. 収集する個人情報の項目および方法", b:[
+   "当社は、旅行のご相談とご予約に必要な情報のみを収集します。",
+   ["旅行のお申し込み時 — 氏名、メールアドレス、電話番号（またはWhatsApp番号）、ご案内メールの言語、旅行日程と人数、到着・出発空港と航空便・時刻、お選びいただいた日程とお好み（ブランド・ワインなど）、特別なご要望（食事制限・記念日など、お客様ご自身がご記入された内容）",
+    "お支払い後のご旅行者情報 — ご旅行者ごとのパスポート記載の氏名、国籍、生年月日、パスポート番号、パスポート有効期限（専用車と空港アシストの手配のため）",
+    "お支払い時 — お支払い金額、決済状況、注文番号。カード番号などの決済手段の情報は決済代行会社（PortOne・KGイニシス）が処理し、当社は保存しません。",
+    "ご相談中 — メール・メッセンジャー（WhatsApp・LINE・WeChat）でお客様からお送りいただいた内容",
+    "自動収集 — お申し込みの濫用防止と訪問者数の集計のための、IPアドレスを一方向暗号化した値（元のIPアドレスは保存しません）"],
+   "収集方法：本サービス画面のお申し込みフォームとご旅行者情報の欄にお客様が直接ご入力いただくか、メール・メッセンジャーでお客様からお送りいただいた内容を通じて収集します。"]},
+ {h:"2. 収集・利用の目的", b:[
+   ["旅行のご相談、お見積りの作成とご案内メールの送信",
+    "ホテル・レストラン・専用車・空港アシスト・体験など、旅行日程の予約と実施",
+    "お支払いの確認と返金の処理",
+    "旅行中のご連絡と緊急時の対応（24時間コンシェルジュ）",
+    "不正利用とお申し込みの濫用の防止"]]},
+ {h:"3. 保有および利用期間", b:[
+   "当社は、収集・利用の目的を達成した後は、個人情報を遅滞なく破棄します。",
+   ["パスポート情報：旅程終了の15日後に削除します。",
+    "旅行のご相談・ご予約の情報：ご相談とご旅行が終了し、目的を達成した後に削除します。ただし、以下のとおり関係法令により保管が義務付けられている情報は、その期間保管します。",
+    "契約または申込みの撤回等に関する記録：5年（「電子商取引等における消費者保護に関する法律」）",
+    "代金決済および財貨等の供給に関する記録：5年（同法）",
+    "消費者の苦情または紛争処理に関する記録：3年（同法）",
+    "お申し込みの濫用防止用の暗号化値：短期間のみ使用し、削除します。"],
+   "お客様から削除のご依頼があった場合は、法令により保管が必要な情報を除き、遅滞なく破棄します。"]},
+ {h:"4. 個人情報の第三者提供", b:[
+   "当社はお客様の個人情報を販売しません。ご旅行の予約のため、以下のとおり必要な範囲でのみ提供します。",
+   ["提供先：お客様のお見積りに含まれるホテル・レストラン・ハイヤー会社・空港アシスト会社・体験・公演・観覧施設",
+    "提供目的：予約および旅行サービスの提供",
+    "提供項目：予約者氏名、人数、日程と時刻、航空便、食事制限などのご要望。空港アシスト会社・ハイヤー会社には、アシスト・保安手続きに必要な場合、パスポート記載の氏名・国籍・生年月日・パスポート番号",
+    "保有期間：各提携先が予約を履行するために必要な期間"],
+   "提供先はお客様の日程によって異なり、お見積りに含まれる提携先にのみ提供します。",
+   "そのほか、法令に根拠がある場合や捜査機関の適法な要請がある場合を除き、第三者には提供しません。"]},
+ {h:"5. 個人情報の処理委託および国外移転", b:[
+   "当社は、本サービスの運営のため、以下の事業者に個人情報の処理を委託しています。",
+   ["Cloudflare（米国）：サービスのサーバー運営とデータの保管 — 上記のデータ（パスポート情報などは暗号化して保管）",
+    "Resend（米国）：お見積り・ご案内メールの送信 — お客様のメールアドレスとメール内容",
+    "Telegram：新しいお申し込みなどを当社担当者に通知 — お申し込みの概要",
+    "PortOne・KGイニシス：カード決済の処理 — お支払い金額、注文番号と決済に必要な情報",
+    "WhatsApp（Meta）・LINE（LINEヤフー株式会社）・WeChat（Tencent）：お客様がメッセンジャーでご連絡される場合 — やり取りしたメッセージ（各メッセンジャー運営会社の方針に従って処理）"],
+   "上記の海外サービスを利用する過程で、一部の情報が韓国国外（海外サーバー）へ転送される場合があります。これはサービス提供に必要な範囲に限られます。"]},
+ {h:"6. お客様の権利", b:[
+   "お客様はいつでもご自身の個人情報の閲覧・訂正・削除を求め、同意を撤回できます。",
+   "ご請求はカスタマーセンター（+82-10-4221-7066）またはメール（concierge@viphola.com）で行え、当社は遅滞なく対応します。"]},
+ {h:"7. 安全性確保の措置", b:[
+   "当社は、パスポート情報などの重要な個人情報を暗号化して保管し、担当コンシェルジュのみが閲覧できるようアクセス権限を制限します。"]},
+ {h:"8. 個人情報保護責任者", b:[
+   "個人情報の取り扱いに関する問い合わせ・苦情・救済は、下記の保護責任者にご連絡ください。",
+   ["個人情報保護責任者：黄義晩（Hwang Euiman）",
+    "カスタマーセンター：+82-10-4221-7066",
+    "メール：concierge@viphola.com"]]},
+ {h:"9. 児童の個人情報", b:[
+   "満14歳未満のお子様がご一緒に旅行される場合、お子様のご旅行者情報は、保護者が同意のうえ直接ご入力いただきます。"]},
+ {h:"10. 方針の変更", b:[
+   "本方針が変更される場合、施行日および変更内容を本ページで告知します。"]},
+ {h:"言語", b:["本方針は韓国語で作成されています。他の言語の翻訳と内容が異なる場合は、韓国語版が優先します。"]}
+ ]};
+
+D.zhs={title:"隐私政策", eff:"施行日期：______________________", app:"VIPHola.com",
+ sec:[
+ {h:"", b:["株式会社 富滿（Booman Inc.，以下称“本公司”）遵守韩国《个人信息保护法》等相关法律，珍视并保护客户的个人信息。本政策适用于本公司运营的私人VIP旅行服务“VIPHola.com”（https://viphola.com，以下称“本服务”）。"]},
+ {h:"1. 收集的个人信息项目及方式", b:[
+   "本公司仅收集旅行咨询和预订所必需的信息。",
+   ["申请旅行时 — 姓名、电子邮箱、电话号码（或WhatsApp号码）、通知邮件语言、旅行日期和人数、抵达及出发机场与航班、时间、所选行程与偏好（品牌、葡萄酒等）、特别要求（饮食限制、纪念日等由客户亲自填写的内容）",
+    "付款后的旅客信息 — 每位旅客护照上的姓名、国籍、出生日期、护照号码、护照有效期（用于预订专车和机场礼宾服务）",
+    "付款时 — 付款金额、付款状态、订单号。卡号等支付方式信息由支付代理机构（PortOne、KG Inicis）处理，本公司不予保存。",
+    "咨询过程中 — 客户通过电子邮件或即时通讯工具（WhatsApp、LINE、微信）发送的内容",
+    "自动收集 — 为防止滥用申请和统计访客数量，对IP地址进行单向加密后的值（不保存原始IP地址）"],
+   "收集方式：由客户在本服务页面的申请表和旅客信息栏中直接填写，或通过客户以电子邮件、即时通讯工具发送的内容收集。"]},
+ {h:"2. 收集与使用目的", b:[
+   ["旅行咨询、制作报价单及发送通知邮件",
+    "预订并执行酒店、餐厅、车辆、机场礼宾服务、体验项目等旅行行程",
+    "确认付款及办理退款",
+    "旅行期间的联系与紧急情况应对（24小时礼宾服务）",
+    "防止不正当使用和滥用申请"]]},
+ {h:"3. 保存及使用期限", b:[
+   "本公司在达成收集与使用目的后，立即销毁个人信息。",
+   ["护照信息：行程结束15天后删除。",
+    "旅行咨询与预订信息：咨询和旅行结束、目的达成后删除。但依照下列相关法律须保存的信息，在规定期限内保存。",
+    "关于合同或撤回要约等的记录：5年（《电子商务等消费者保护法》）",
+    "关于货款结算及商品等供应的记录：5年（同法）",
+    "关于消费者投诉或纠纷处理的记录：3年（同法）",
+    "用于防止滥用申请的加密值：仅短期使用后删除。"],
+   "客户要求删除时，除依法须保存的信息外，立即予以销毁。"]},
+ {h:"4. 向第三方提供个人信息", b:[
+   "本公司不出售客户的个人信息。为预订旅行，仅在必要范围内按下列方式提供：",
+   ["接收方：客户报价单中所列的酒店、餐厅、车辆（豪华专车）公司、机场礼宾服务公司以及体验、演出、参观场所",
+    "提供目的：办理预订及提供旅行服务",
+    "提供项目：预订人姓名、人数、行程与时间、航班、饮食限制等要求。机场礼宾服务公司及车辆公司在礼宾、安检手续上需要时，另提供护照上的姓名、国籍、出生日期、护照号码",
+    "保存期限：各合作商家履行预订所需的期限"],
+   "接收方因客户行程而异，仅向报价单中所列的商家提供。",
+   "除法律有依据或侦查机关提出合法请求外，不向第三方提供。"]},
+ {h:"5. 个人信息处理委托及跨境转移", b:[
+   "为运营本服务，本公司委托下列企业处理个人信息：",
+   ["Cloudflare（美国）：服务器运营及资料保存 — 上述资料（护照信息等加密保存）",
+    "Resend（美国）：发送报价及通知邮件 — 客户的电子邮箱地址及邮件内容",
+    "Telegram：向本公司负责人通知新申请等 — 申请摘要",
+    "PortOne、KG Inicis：处理银行卡支付 — 付款金额、订单号及支付所需信息",
+    "WhatsApp（Meta）、LINE（LY Corporation）、微信（腾讯）：客户通过即时通讯工具联系时 — 往来消息（按各通讯工具公司的政策处理）"],
+   "在使用上述海外服务的过程中，部分信息可能传输至韩国境外（海外服务器）。此仅限于提供服务所必需的范围。"]},
+ {h:"6. 客户的权利", b:[
+   "客户可随时请求查阅、更正、删除本人个人信息，并撤回同意。",
+   "可通过客服（+82-10-4221-7066）或邮箱（concierge@viphola.com）提出，本公司将及时处理。"]},
+ {h:"7. 安全保障措施", b:[
+   "本公司对护照信息等重要个人信息进行加密保存，并限制访问权限，仅由您的礼宾团队查看。"]},
+ {h:"8. 个人信息保护负责人", b:[
+   "有关个人信息处理的咨询、投诉、救济，请联系下列负责人：",
+   ["个人信息保护负责人：Hwang Euiman",
+    "客服：+82-10-4221-7066",
+    "邮箱：concierge@viphola.com"]]},
+ {h:"9. 儿童个人信息", b:[
+   "如有未满14周岁的儿童同行，儿童的旅客信息由监护人同意后亲自填写。"]},
+ {h:"10. 政策变更", b:[
+   "本政策如有变更，将通过本页面公告施行日期及变更内容。"]},
+ {h:"语言", b:["本政策以韩语撰写。如其他语言译本与韩语版内容不一致，以韩语版为准。"]}
+ ]};
+
+D.zht={title:"隱私政策", eff:"施行日期：______________________", app:"VIPHola.com",
+ sec:[
+ {h:"", b:["株式會社 富滿（Booman Inc.，以下稱「本公司」）遵守韓國《個人資料保護法》等相關法律，珍視並保護客戶的個人資料。本政策適用於本公司經營的私人VIP旅遊服務「VIPHola.com」（https://viphola.com，以下稱「本服務」）。"]},
+ {h:"1. 蒐集的個人資料項目及方式", b:[
+   "本公司僅蒐集旅遊諮詢與預訂所必需的資料。",
+   ["申請旅遊時 — 姓名、電子郵件地址、電話號碼（或WhatsApp號碼）、通知郵件語言、旅遊日期與人數、抵達及出發機場與航班、時間、所選行程與偏好（品牌、葡萄酒等）、特別要求（飲食限制、紀念日等由客戶親自填寫的內容）",
+    "付款後的旅客資料 — 每位旅客護照上的姓名、國籍、出生日期、護照號碼、護照有效期限（用於預訂專車與機場禮賓服務）",
+    "付款時 — 付款金額、付款狀態、訂單編號。卡號等付款方式資料由金流服務商（PortOne、KG Inicis）處理，本公司不予儲存。",
+    "諮詢期間 — 客戶透過電子郵件或通訊軟體（WhatsApp、LINE、微信）傳送的內容",
+    "自動蒐集 — 為防止濫用申請及統計訪客人數，將IP位址單向加密後的值（不儲存原始IP位址）"],
+   "蒐集方式：由客戶於本服務頁面的申請表及旅客資料欄位中直接填寫，或透過客戶以電子郵件、通訊軟體傳送的內容蒐集。"]},
+ {h:"2. 蒐集與使用目的", b:[
+   ["旅遊諮詢、製作報價單及寄送通知郵件",
+    "預訂並執行飯店、餐廳、車輛、機場禮賓服務、體驗等旅遊行程",
+    "確認付款及辦理退款",
+    "旅遊期間的聯繫與緊急狀況處理（24小時禮賓服務）",
+    "防止不當使用及濫用申請"]]},
+ {h:"3. 保存及使用期限", b:[
+   "本公司於達成蒐集與使用目的後，立即銷毀個人資料。",
+   ["護照資料：行程結束15天後刪除。",
+    "旅遊諮詢與預訂資料：於諮詢與旅遊結束、達成目的後刪除。但依下列相關法律須保存的資料，於規定期間內保存。",
+    "契約或撤回要約等相關紀錄：5年（《電子商務等消費者保護法》）",
+    "價款結算及商品等供應相關紀錄：5年（同法）",
+    "消費者申訴或爭議處理相關紀錄：3年（同法）",
+    "用於防止濫用申請的加密值：僅短期使用後刪除。"],
+   "客戶要求刪除時，除依法須保存的資料外，立即予以銷毀。"]},
+ {h:"4. 向第三方提供個人資料", b:[
+   "本公司不出售客戶的個人資料。為預訂旅遊，僅於必要範圍內依下列方式提供：",
+   ["接收者：客戶報價單中所列的飯店、餐廳、車輛（豪華禮車）公司、機場禮賓服務公司及體驗、表演、參觀場所",
+    "提供目的：辦理預訂及提供旅遊服務",
+    "提供項目：預訂人姓名、人數、行程與時間、航班、飲食限制等要求。機場禮賓服務公司及車輛公司於禮賓、安檢程序有需要時，另提供護照上的姓名、國籍、出生日期、護照號碼",
+    "保存期間：各合作業者履行預訂所需的期間"],
+   "接收者依客戶行程而異，僅向報價單中所列的業者提供。",
+   "除法律有依據或偵查機關提出合法請求外，不向第三方提供。"]},
+ {h:"5. 個人資料處理委託及跨境傳輸", b:[
+   "為經營本服務，本公司委託下列業者處理個人資料：",
+   ["Cloudflare（美國）：伺服器營運及資料保存 — 上述資料（護照資料等加密儲存）",
+    "Resend（美國）：寄送報價及通知郵件 — 客戶的電子郵件地址及郵件內容",
+    "Telegram：向本公司負責人通知新申請等 — 申請摘要",
+    "PortOne、KG Inicis：處理信用卡付款 — 付款金額、訂單編號及付款所需資料",
+    "WhatsApp（Meta）、LINE（LY Corporation）、微信（騰訊）：客戶透過通訊軟體聯絡時 — 往來訊息（依各通訊軟體公司的政策處理）"],
+   "於使用上述海外服務的過程中，部分資訊可能傳輸至韓國境外（海外伺服器）。此僅限於提供服務所必需的範圍。"]},
+ {h:"6. 客戶的權利", b:[
+   "客戶可隨時請求查閱、更正、刪除本人個人資料，並撤回同意。",
+   "可透過客服（+82-10-4221-7066）或電郵（concierge@viphola.com）提出，本公司將及時處理。"]},
+ {h:"7. 安全保障措施", b:[
+   "本公司將護照資料等重要個人資料加密保存，並限制存取權限，僅由您的禮賓團隊查看。"]},
+ {h:"8. 個人資料保護負責人", b:[
+   "有關個人資料處理的諮詢、投訴、救濟，請聯絡下列負責人：",
+   ["個人資料保護負責人：Hwang Euiman",
+    "客服：+82-10-4221-7066",
+    "電郵：concierge@viphola.com"]]},
+ {h:"9. 兒童個人資料", b:[
+   "如有未滿14歲的兒童同行，兒童的旅客資料由法定代理人同意後親自填寫。"]},
+ {h:"10. 政策變更", b:[
+   "本政策如有變更，將透過本頁面公告施行日期及變更內容。"]},
+ {h:"語言", b:["本政策以韓語撰寫。如其他語言譯本與韓語版內容不一致，以韓語版為準。"]}
+ ]};
+
+D.es={title:"Política de Privacidad", eff:"Fecha de entrada en vigor: ______________________", app:"VIPHola.com",
+ sec:[
+ {h:"", b:["Booman Inc. («la Empresa») respeta su privacidad y cumple con la Ley de Protección de Información Personal y demás leyes aplicables de la República de Corea. Esta política se aplica a «VIPHola.com» (https://viphola.com, «el Servicio»), el servicio privado de viajes VIP que opera la Empresa."]},
+ {h:"1. Información que recopilamos y cómo", b:[
+   "Solo recopilamos la información estrictamente necesaria para asesorarle sobre su viaje y reservarlo.",
+   ["Al solicitar un viaje — nombre, correo electrónico, número de teléfono (o de WhatsApp), idioma de los correos informativos, fechas del viaje y número de viajeros, aeropuertos de llegada y salida con vuelos y horarios, itinerario y preferencias elegidos (marcas, vinos, etc.) y peticiones especiales que usted mismo escriba (restricciones alimentarias, aniversarios, etc.)",
+    "Datos de los viajeros tras el pago — de cada viajero, el nombre tal como figura en el pasaporte, la nacionalidad, la fecha de nacimiento, el número de pasaporte y la fecha de caducidad del pasaporte (para reservar el coche privado y la asistencia en el aeropuerto)",
+    "Al pagar — importe, estado del pago y número de pedido. Los datos del medio de pago, como el número de tarjeta, los procesan las pasarelas de pago (PortOne y KG Inicis); la Empresa no los guarda.",
+    "Durante la asesoría — lo que usted nos envíe por correo electrónico o mensajería (WhatsApp, LINE, WeChat)",
+    "Recopilación automática — un valor cifrado de forma unidireccional de su dirección IP, para evitar el uso abusivo del formulario de solicitud y contar las visitas (no guardamos la dirección IP original)"],
+   "Método de recopilación: usted introduce los datos directamente en el formulario de solicitud y en los campos de datos de los viajeros del Servicio, o nos los envía por correo electrónico o mensajería."]},
+ {h:"2. Finalidad de la recopilación y el uso", b:[
+   ["Asesorarle sobre el viaje, preparar el presupuesto y enviarle correos informativos",
+    "Reservar y llevar a cabo el itinerario: hoteles, restaurantes, vehículos, asistencia en el aeropuerto, experiencias, etc.",
+    "Confirmar pagos y tramitar reembolsos",
+    "Contactarle durante el viaje y atender emergencias (conserjería 24 horas)",
+    "Prevenir el uso fraudulento y el abuso del formulario de solicitud"]]},
+ {h:"3. Plazo de conservación y uso", b:[
+   "La Empresa destruye los datos personales sin demora una vez cumplida la finalidad de su recopilación y uso.",
+   ["Datos del pasaporte: se eliminan 15 días después del final del viaje.",
+    "Datos de asesoría y reserva del viaje: se eliminan una vez finalizados la asesoría y el viaje y cumplida su finalidad. No obstante, la información que deba conservarse conforme a la legislación aplicable, como se indica a continuación, se conserva durante el plazo correspondiente.",
+    "Registros sobre contratos o desistimiento, etc.: 5 años (Ley de Protección del Consumidor en el Comercio Electrónico, etc.)",
+    "Registros sobre el pago y el suministro de bienes, etc.: 5 años (misma ley)",
+    "Registros sobre reclamaciones de consumidores o resolución de conflictos: 3 años (misma ley)",
+    "Valores cifrados para evitar el uso abusivo del formulario: se usan solo durante un periodo breve y después se eliminan."],
+   "Si usted solicita la eliminación, destruimos los datos sin demora, salvo los que deban conservarse por ley."]},
+ {h:"4. Cesión de datos a terceros", b:[
+   "La Empresa no vende sus datos personales. Para reservar su viaje, solo los cede en la medida necesaria, como se indica a continuación:",
+   ["Destinatarios: los hoteles, restaurantes, empresas de vehículos (limusinas), servicios de asistencia en el aeropuerto y lugares de experiencias, espectáculos y visitas incluidos en su presupuesto",
+    "Finalidad: realizar las reservas y prestar los servicios del viaje",
+    "Datos cedidos: nombre de la reserva, número de viajeros, itinerario y horarios, vuelos y peticiones como restricciones alimentarias. A los servicios de asistencia en el aeropuerto y a las empresas de vehículos, cuando lo requieran sus procedimientos de asistencia y seguridad, también el nombre tal como figura en el pasaporte, la nacionalidad, la fecha de nacimiento y el número de pasaporte",
+    "Plazo de conservación: el necesario para que cada proveedor cumpla la reserva"],
+   "Los destinatarios varían según su itinerario, y solo cedemos datos a los proveedores incluidos en su presupuesto.",
+   "Por lo demás, no cedemos información a terceros, salvo cuando lo exija la ley o ante una solicitud legítima de una autoridad investigadora."]},
+ {h:"5. Encargo del tratamiento y transferencia internacional", b:[
+   "Para operar el Servicio, la Empresa encarga el tratamiento de datos personales a las siguientes empresas:",
+   ["Cloudflare (EE. UU.): funcionamiento de los servidores del Servicio y almacenamiento de datos — los datos anteriores (los datos del pasaporte y otros similares se guardan cifrados)",
+    "Resend (EE. UU.): envío de presupuestos y correos informativos — su dirección de correo y el contenido del correo",
+    "Telegram: avisar al personal de la Empresa de nuevas solicitudes, etc. — un resumen de la solicitud",
+    "PortOne y KG Inicis: procesamiento de pagos con tarjeta — importe, número de pedido y datos necesarios para el pago",
+    "WhatsApp (Meta), LINE (LY Corporation) y WeChat (Tencent): cuando usted nos contacta por mensajería — los mensajes intercambiados (tratados según la política de cada empresa de mensajería)"],
+   "Al usar los servicios en el extranjero mencionados, parte de la información puede transferirse fuera de Corea (a servidores en el extranjero). Esto se limita a lo necesario para prestar el Servicio."]},
+ {h:"6. Sus derechos", b:[
+   "En cualquier momento puede solicitar el acceso, la rectificación o la eliminación de sus datos personales, y retirar su consentimiento.",
+   "Las solicitudes pueden hacerse a Atención (+82-10-4221-7066) o por correo (concierge@viphola.com), y actuaremos sin demora."]},
+ {h:"7. Medidas de seguridad", b:[
+   "La Empresa guarda cifrados los datos personales importantes, como los del pasaporte, y restringe el acceso para que solo su equipo de conserjería pueda verlos."]},
+ {h:"8. Responsable de privacidad", b:[
+   "Para consultas, reclamaciones o reparación relativas a los datos personales, puede contactar con:",
+   ["Responsable de privacidad: Hwang Euiman",
+    "Atención: +82-10-4221-7066",
+    "Correo: concierge@viphola.com"]]},
+ {h:"9. Menores", b:[
+   "Cuando un menor de 14 años viaje con usted, su padre, madre o tutor legal dará el consentimiento e introducirá personalmente los datos de viajero del menor."]},
+ {h:"10. Cambios en esta política", b:[
+   "Si esta política cambia, anunciaremos la fecha de entrada en vigor y los cambios en esta página."]},
+ {h:"Idioma", b:["Esta Política se ha redactado en coreano. Si una traducción a otro idioma difiere de la versión en coreano, prevalecerá la versión en coreano."]}
+ ]};
+
+function esc(s){ return String(s==null?"":s).replace(/[&<>]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
+/* escape the text, then turn the contact email into a mail link */
+function inline(s){ return esc(s).replace(/concierge@viphola\.com/g,'<a href="mailto:concierge@viphola.com">concierge@viphola.com</a>'); }
+
+function opBlock(lang){ var o=OP[lang]; var L=[
+  ['', '<b>'+esc(o.cn)+'</b>'],
+  [o.rn, o.rv],[o.ceo, o.cev],[o.po, o.pov],
+  [o.cs, o.csv],[o.em, '<a href="mailto:concierge@viphola.com">concierge@viphola.com</a>'],
+  [o.ad, o.adv]];
+  var h='<div class="op"><div><b>'+esc(o.t)+'</b></div>';
+  for(var i=0;i<L.length;i++){ h+='<div>'+(L[i][0]?esc(L[i][0])+' : ':'')+L[i][1]+'</div>'; }
+  return h+'</div>';
+}
+
+function render(lang){
+  if(LANGS.indexOf(lang)<0) lang="ko";
+  document.documentElement.lang=HLANG[lang];
+  var d=D[lang], h='';
+  h+='<h1>'+esc(d.title)+'</h1>';
+  h+='<p class="eff">'+esc(d.app)+' · '+esc(d.eff)+'</p>';
+  for(var i=0;i<d.sec.length;i++){ var s=d.sec[i];
+    if(s.h) h+='<h2>'+esc(s.h)+'</h2>';
+    for(var j=0;j<s.b.length;j++){ var b=s.b[j];
+      if(Object.prototype.toString.call(b)==="[object Array]"){ h+='<ul>'; for(var k=0;k<b.length;k++) h+='<li>'+inline(b[k])+'</li>'; h+='</ul>'; }
+      else h+='<p>'+inline(b)+'</p>';
+    }
+  }
+  h+=opBlock(lang);
+  document.getElementById("doc").innerHTML=h;
+  document.getElementById("backt").textContent=BACK[lang];
+  document.getElementById("back").href="https://viphola.com/?lang="+lang;
+  document.title=d.title+" · "+(d.app||"VIPHola.com");
+  var bs=document.getElementById("langbar").children;
+  for(var m=0;m<bs.length;m++) bs[m].className=(bs[m].getAttribute("data-l")===lang)?"on":"";
+  try{ localStorage.setItem("mpv_lang",lang); }catch(e){}
+  try{ history.replaceState(null,"","?lang="+lang); }catch(e){}
+}
+
+function pick(){ var r=pick0(); return LANG_ON.indexOf(r)>=0?r:"en"; }   // 숨긴 언어는 영어로 (11-13)
+function pick0(){
+  var q=(location.search.match(/[?&]lang=([a-z]+)/)||[])[1];
+  if(q&&LANGS.indexOf(q)>=0) return q;
+  var st; try{ st=localStorage.getItem("mpv_lang"); }catch(e){}
+  if(st&&LANGS.indexOf(st)>=0) return st;
+  var n=(navigator.language||"en").toLowerCase();
+  if(n.indexOf("ko")===0) return "ko";
+  if(n.indexOf("ja")===0) return "ja";
+  if(n.indexOf("es")===0) return "es";
+  if(n.indexOf("zh")===0) return (n.indexOf("tw")>=0||n.indexOf("hant")>=0||n.indexOf("hk")>=0)?"zht":"zhs";
+  return "en";
+}
+
+(function(){
+  var bar=document.getElementById("langbar"),h="";
+  for(var i=0;i<LANG_ON.length;i++) h+='<button data-l="'+LANG_ON[i]+'">'+LBL[LANG_ON[i]]+'</button>';
+  bar.innerHTML=h;
+  var btns=bar.children;
+  for(var j=0;j<btns.length;j++) btns[j].addEventListener("click",function(){ render(this.getAttribute("data-l")); });
+  render(pick());
+})();
+</script>
+</body>
+</html>
