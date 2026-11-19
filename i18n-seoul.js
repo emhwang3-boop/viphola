@@ -79,7 +79,7 @@ window.I18N = {
     'r.send': 'Send request', 'r.edit': 'Edit', 'r.fine': 'No payment now. We will email your quote within 48 hours.', 'r.sending': 'Sending…',
     'ok.text2': 'Your request {id} has been received. We will send your quote to {email} within 48 hours.',
     'ok.title': 'Thank you', 'ok.text': 'Your request {id} has been received. A confirmation has been sent to {email}, and we will send your quote within 48 hours.',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.photo': 'Photography: Korea Tourism Organization (KOGL Type 1)', 'foot.terms': 'Terms & refund policy'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.photo': 'Photography: Korea Tourism Organization (KOGL Type 1)', 'foot.terms': 'Terms & refund policy', 'foot.privacy': 'Privacy policy'
   },
   ja: {
     'meta.title': 'VIPHola.com — おふたりのためだけの、ソウル',
@@ -154,7 +154,7 @@ window.I18N = {
     'r.send': 'この内容で送信する', 'r.edit': '修正する', 'r.fine': '現時点でのお支払いはありません。48時間以内にお見積りをメールでお送りします。', 'r.sending': '送信しています…',
     'ok.text2': 'ご依頼（{id}）を承りました。48時間以内にお見積りを {email} にお送りいたします。',
     'ok.title': 'ありがとうございます', 'ok.text': 'ご依頼（{id}）を承りました。確認のメールを {email} にお送りしました。48時間以内にお見積りをお送りいたします。',
-    'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.photo': '写真：韓国観光公社（公共ヌリ 第1類型）', 'foot.terms': '約款・返金規定'
+    'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.photo': '写真：韓国観光公社（公共ヌリ 第1類型）', 'foot.terms': '約款・返金規定', 'foot.privacy': 'プライバシーポリシー'
   },
   zhs: {
     'meta.title': 'VIPHola.com — 只为两位定制的首尔',
@@ -229,7 +229,7 @@ window.I18N = {
     'r.send': '发送申请', 'r.edit': '修改', 'r.fine': '现在无需付款。我们将在48小时内通过邮件发送报价。', 'r.sending': '正在发送…',
     'ok.text2': '我们已收到您的申请（{id}），将在48小时内把报价发送至 {email}。',
     'ok.title': '谢谢您', 'ok.text': '我们已收到您的申请（{id}），确认邮件已发送至 {email}。我们将在48小时内发送报价。',
-    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.photo': '图片：韩国观光公社（KOGL 第1类）', 'foot.terms': '条款与退款规定'
+    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.photo': '图片：韩国观光公社（KOGL 第1类）', 'foot.terms': '条款与退款规定', 'foot.privacy': '隐私政策'
   },
   zht: {
     'meta.title': 'VIPHola.com — 只為兩位訂製的首爾',
@@ -304,7 +304,7 @@ window.I18N = {
     'r.send': '送出申請', 'r.edit': '修改', 'r.fine': '現在無需付款。我們將在48小時內以電子郵件寄送報價。', 'r.sending': '正在送出…',
     'ok.text2': '我們已收到您的申請（{id}），將在48小時內把報價寄至 {email}。',
     'ok.title': '謝謝您', 'ok.text': '我們已收到您的申請（{id}），確認郵件已寄至 {email}。我們將在48小時內寄送報價。',
-    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.photo': '照片：韓國觀光公社（KOGL 第1類）', 'foot.terms': '條款與退款規定'
+    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.photo': '照片：韓國觀光公社（KOGL 第1類）', 'foot.terms': '條款與退款規定', 'foot.privacy': '隱私權政策'
   },
   es: {
     'meta.title': 'VIPHola.com — Seúl, solo para ustedes',
@@ -379,7 +379,7 @@ window.I18N = {
     'r.send': 'Enviar solicitud', 'r.edit': 'Modificar', 'r.fine': 'No se paga nada ahora. Le enviaremos su presupuesto por correo en un plazo de 48 horas.', 'r.sending': 'Enviando…',
     'ok.text2': 'Hemos recibido su solicitud {id}. Le enviaremos su presupuesto a {email} en un plazo de 48 horas.',
     'ok.title': 'Muchas gracias', 'ok.text': 'Hemos recibido su solicitud {id}. Le hemos enviado una confirmación a {email} y le haremos llegar su presupuesto en un plazo de 48 horas.',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.photo': 'Fotografía: Organización de Turismo de Corea (KOGL Tipo 1)', 'foot.terms': 'Condiciones y reembolsos'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.photo': 'Fotografía: Organización de Turismo de Corea (KOGL Tipo 1)', 'foot.terms': 'Condiciones y reembolsos', 'foot.privacy': 'Política de privacidad'
   }
 };
 // 차량 선택칸 (이름은 그대로, 뒤 표시는 언어별) — 가격 없음
