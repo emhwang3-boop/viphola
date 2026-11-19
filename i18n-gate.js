@@ -21,7 +21,7 @@ window.I18N = {
     'in.sub': 'Five private days in Seoul for guests visiting Korea.',
     'in.cta': 'Enter',
     'in.soon': 'Opening soon',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.terms': 'Terms & refund policy'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.terms': 'Terms & refund policy', 'foot.privacy': 'Privacy policy'
   },
   ko: {
     'meta.title': 'VIPHola.com — 프라이빗 여정',
@@ -35,7 +35,7 @@ window.I18N = {
     'in.sub': '한국을 찾는 해외 고객을 위한 서울 프라이빗 5일',
     'in.cta': '입장',
     'in.soon': '오픈 예정',
-    'foot.company': '주식회사 부만', 'foot.contact': '문의', 'foot.terms': '약관·환불 규정'
+    'foot.company': '주식회사 부만', 'foot.contact': '문의', 'foot.terms': '약관·환불 규정', 'foot.privacy': '개인정보처리방침'
   },
   ja: {
     'meta.title': 'VIPHola.com — プライベートな旅',
@@ -49,7 +49,7 @@ window.I18N = {
     'in.sub': '韓国を訪れるお客様のための、ソウルでのプライベートな5日間。',
     'in.cta': '詳しく見る',
     'in.soon': '近日オープン',
-    'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.terms': '約款・返金規定'
+    'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.terms': '約款・返金規定', 'foot.privacy': 'プライバシーポリシー'
   },
   zhs: {
     'meta.title': 'VIPHola.com — 私人定制之旅',
@@ -63,7 +63,7 @@ window.I18N = {
     'in.sub': '为访韩宾客打造的首尔五天私人行程。',
     'in.cta': '进入',
     'in.soon': '即将开放',
-    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.terms': '条款与退款规定'
+    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.terms': '条款与退款规定', 'foot.privacy': '隐私政策'
   },
   zht: {
     'meta.title': 'VIPHola.com — 私人訂製之旅',
@@ -77,7 +77,7 @@ window.I18N = {
     'in.sub': '為訪韓貴賓打造的首爾五天私人行程。',
     'in.cta': '進入',
     'in.soon': '即將開放',
-    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.terms': '條款與退款規定'
+    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.terms': '條款與退款規定', 'foot.privacy': '隱私權政策'
   },
   es: {
     'meta.title': 'VIPHola.com — Viajes privados',
@@ -91,6 +91,6 @@ window.I18N = {
     'in.sub': 'Cinco días privados en Seúl para quienes visitan Corea.',
     'in.cta': 'Entrar',
     'in.soon': 'Próximamente',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.terms': 'Condiciones y reembolsos'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.terms': 'Condiciones y reembolsos', 'foot.privacy': 'Política de privacidad'
   }
 };
