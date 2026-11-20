@@ -173,3 +173,10 @@ textarea.note { width: 100%; min-height: 90px; padding: 9px 11px; border: 1px so
   .tabs { top: 0; }
   .brand b { font-size: 17px; }
 }
+
+/* 11-20 사전 등록 목록 */
+.etab-wrap { overflow-x: auto; }
+.etab { width: 100%; border-collapse: collapse; font-size: 13px; }
+.etab th, .etab td { border-bottom: 1px solid #E7DFCE; padding: 7px 8px; text-align: left; vertical-align: top; white-space: nowrap; }
+.etab th { font-weight: 500; color: #555; }
+.etab small { color: #888; }
