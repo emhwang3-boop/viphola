@@ -42,7 +42,7 @@
   function pub(path, body) { return fetch(HUB + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(function (r) { return r.json().catch(function () { return { ok: false }; }); }); }
 
   // ── 로그인 ──
-  function showLogin(m) { $('login').hidden = false; $('app').hidden = true; ['btn-cfg', 'btn-out', 'pgchip', 'btn-ven', 'btn-early'].forEach(function (i) { $(i).hidden = true; }); $('lg-msg').textContent = m || ''; }
+  function showLogin(m) { $('login').hidden = false; $('app').hidden = true; ['btn-cfg', 'btn-out', 'pgchip', 'btn-ven', 'btn-early', 'btn-remind'].forEach(function (i) { $(i).hidden = true; }); $('lg-msg').textContent = m || ''; }
   function fail(e) {
     var m = e && e.message;
     if (m === '2fa') { showLogin(''); $('lg-2fa').hidden = false; pub('/vip/adm/code', { a: TOK }).then(function (r) { $('lg-msg').textContent = r && r.wait ? '방금 보낸 코드를 넣어 주세요 (1분 뒤 다시 받을 수 있습니다).' : r && r.ok ? '' : '코드를 보내지 못했습니다.'; }); return; }
@@ -122,18 +122,21 @@
   var delArm = '';
   function confirmDel(v) { if (delArm === v.id) { delArm = ''; return true; } delArm = v.id; toast('한 번 더 누르면 「' + (v.name_ko || v.name_en) + '」을(를) 지웁니다.', 2600); return false; }
 
-  // ── 11-20 오픈 전 사전 등록 목록 (허브 /vip/adm/early) — 이메일 모두 복사 · 한 줄 지우기(두 번 눌러) ──
+  // ── 11-20 오픈 전 사전 등록 목록 (허브 /vip/adm/early) — 11-20 오후: 신청서 전체를 받음 · 이메일 모두 복사 · 한 줄 지우기(두 번 눌러) ──
   var EARLY = [];
-  function eMonth(m) { return m === 'tbd' ? '미정' : String(m).slice(0, 4) + '년 ' + parseInt(String(m).slice(5, 7), 10) + '월'; }
+  function eMonth(d) { return d ? d.slice(0, 4) + '년 ' + parseInt(d.slice(5, 7), 10) + '월' : '날짜 없음'; }
+  function eOpts(o) { var a = (o || []).map(function (k) { return OPT_KO[k]; }).filter(Boolean); return a.length ? a.join(', ') : '없음'; }
+  function eRemind(rm) { return !rm ? '<span class="mute">미발송</span>' : rm.ok ? '발송<br><small>' + esc(rm.atK) + '</small>' : '<span class="red">실패</span><br><small>' + esc(rm.atK) + ' · 다음 「보내기」 때 재발송</small>'; }
   function drawEarly() {
-    var cnt = {}; EARLY.forEach(function (x) { cnt[x.month] = (cnt[x.month] || 0) + 1; });
-    var sum = Object.keys(cnt).sort().map(function (k) { return eMonth(k) + ' ' + cnt[k] + '건'; }).join(' · ');
-    $('early-box').innerHTML = '<p class="mute">viphola.com/seoul/ 사전 등록 ' + EARLY.length + '건' + (sum ? ' — ' + esc(sum) : '') + '. 2027년 4월 1일 0시부터 손님 화면의 등록 칸은 저절로 사라지고 원래 신청서가 나옵니다.</p>'
+    var cnt = {}; EARLY.forEach(function (x) { var k = (x.date || '').slice(0, 7); cnt[k] = (cnt[k] || 0) + 1; });
+    var sum = Object.keys(cnt).sort().map(function (k) { return eMonth(k) + ' 도착 ' + cnt[k] + '건'; }).join(' · ');
+    $('early-box').innerHTML = '<p class="mute">viphola.com/seoul/ 사전 등록 ' + EARLY.length + '건' + (sum ? ' — ' + esc(sum) : '') + '. 손님이 신청서를 다 채우고 일정을 확인한 뒤 등록한 내용입니다. 2027년 4월 1일 0시부터 손님 화면은 사전 등록 단계 없이 원래 신청(「Send request」)으로 돌아갑니다.</p>'
       + (EARLY.length ? '<div class="row" style="margin:8px 0"><button type="button" class="b b-sm b-ghost" id="early-copy">이메일 모두 복사</button></div>'
-        + '<div class="etab-wrap"><table class="etab"><thead><tr><th>등록</th><th>이름</th><th>이메일</th><th>원하는 때</th><th>인원</th><th>언어</th><th></th></tr></thead><tbody>'
+        + '<div class="etab-wrap"><table class="etab"><thead><tr><th>등록 일시</th><th>이름</th><th>이메일</th><th>전화·왓츠앱</th><th>도착일</th><th>인원</th><th>차량</th><th>옵션</th><th>메일 언어</th><th>리마인드 메일</th><th></th></tr></thead><tbody>'
         + EARLY.map(function (x) {
-          return '<tr><td>' + esc(x.id) + '<br><small>' + esc(x.at) + (x.up ? ' · 다시 보냄 ' + esc(x.up) : '') + '</small></td><td>' + esc(x.name) + '</td><td>' + esc(x.email) + '</td><td>' + esc(eMonth(x.month))
-            + (x.dates ? '<br><small>' + esc(x.dates) + '</small>' : '') + '</td><td>' + esc(x.guests) + '명</td><td>' + esc(LANG_KO[x.lang] || x.lang) + '</td><td><button type="button" class="b b-sm b-ghost" data-ed="' + esc(x.id) + '">지우기</button></td></tr>'; }).join('')
+          return '<tr><td>' + esc(x.at) + '<br><small>' + esc(x.id) + (x.up ? ' · 다시 등록 ' + esc(x.up) : '') + '</small></td><td>' + esc(x.name) + '</td><td>' + esc(x.email) + '</td><td>' + esc(x.phone) + '</td>'
+            + '<td>' + esc(x.date) + '<br><small>' + (x.nights === 5 ? '5박 6일 (경주 연장)' : x.nights === 4 ? '4박 5일' : '') + '</small></td><td>' + esc(x.guests) + '명</td><td>' + esc(x.car) + '</td><td class="wrap">' + esc(eOpts(x.opts)) + '</td>'
+            + '<td>' + esc(LANG_KO[x.lang] || x.lang) + '</td><td>' + eRemind(x.rm) + '</td><td><button type="button" class="b b-sm b-ghost" data-ed="' + esc(x.id) + '">지우기</button></td></tr>'; }).join('')
         + '</tbody></table></div>' : '<p class="empty">아직 사전 등록이 없습니다.</p>');
   }
   function loadEarly(cb) {
@@ -155,6 +158,45 @@
     });
   });
 
+  // ── 11-20 사장님 「4월 1일 리마인드 메일」 (허브 /vip/adm/remind) — 사전 등록 손님에게 손님 언어로 사이트 링크 · 2027-04-01 0시(KST)부터 「보내기」 · 하루 상한(허브 VIP_REMIND_DAY_CAP) 넘으면 다음 날 다시 ──
+  var REM = null, remL = 'en', remArm = false, remRes = '';
+  var REM_LANGS = [['en', '영어'], ['ja', '일본어'], ['zhs', '중국어 간체'], ['zht', '중국어 번체'], ['es', '스페인어']];
+  function remHtml(L) { var h = REM.previews[L].html; Object.keys(REM.img || {}).forEach(function (k) { h = h.split('cid:' + k).join(REM.img[k]); }); return h; }
+  function drawRemind() {
+    var R = REM, byL = {}; EARLY.forEach(function (x) { byL[x.lang] = (byL[x.lang] || 0) + 1; });
+    var can = R.open && R.left > 0 && R.todayLeft > 0;
+    $('rem-box').innerHTML = '<p class="mute">사전 등록한 손님에게 손님이 고른 메일 언어로 사이트 링크(viphola.com/seoul/?lang=…#request)를 담아 보냅니다. 등록한 도착일·체류 기간·인원이 함께 들어갑니다. 숨은참조로 concierge@viphola.com 에도 한 통씩 갑니다.</p>'
+      + '<p class="rem-cnt">수신자 <b>' + R.total + '</b>명 · 발송 완료 <b>' + R.sent + '</b>명 · 미발송 <b>' + R.left + '</b>명' + (R.failed ? ' (그중 실패 ' + R.failed + '명)' : '') + '</p>'
+      + '<div class="acts" style="margin-top:6px"><button type="button" class="b b-main" id="rem-go"' + (can ? '' : ' disabled') + '>보내기</button></div>'
+      + '<p class="mute rem-note">' + (!R.open ? '2027년 4월 1일 0시(한국 시간)부터 누를 수 있습니다. 그 전에는 미리보기만 됩니다.'
+        : !R.left ? '모든 수신자에게 보냈습니다.' : !R.todayLeft ? '오늘 발송 상한(' + R.cap + '통)에 닿았습니다. 내일 다시 「보내기」를 눌러 주세요.'
+        : '한 번 누를 때 아직 안 보낸 수신자에게, 먼저 등록한 순서로 오늘 최대 ' + R.todayLeft + '통 보냅니다 (하루 상한 ' + R.cap + '통 — Resend 하루 한도 보호). 남으면 다음 날 다시 누르면 이어서 보냅니다.') + '</p>'
+      + (remRes ? '<p class="rem-res">' + remRes + '</p>' : '')
+      + '<h3 class="rem-h">미리보기</h3><div class="tabs rem-tabs" id="rem-tabs">' + REM_LANGS.map(function (l) { return '<button type="button" class="tab' + (l[0] === remL ? ' on' : '') + '" data-rl="' + l[0] + '">' + l[1] + (byL[l[0]] ? ' ' + byL[l[0]] : '') + '</button>'; }).join('') + '</div>'
+      + '<p class="mute">제목: ' + esc(R.previews[remL].subject) + ' · 예시 손님(도착 2027-05-10 · 4박 5일 · 2명)으로 보여 줍니다.</p><iframe id="rem-frame" title="리마인드 메일 미리보기"></iframe>';
+    $('rem-frame').srcdoc = remHtml(remL);
+  }
+  function loadRemind(cb) { api('/vip/adm/remind').then(function (j) { if (!j || !j.ok) { toast('리마인드 메일 정보를 받지 못했습니다.'); return; } REM = j; if (cb) cb(); }).catch(fail); }
+  $('btn-remind').addEventListener('click', function () {
+    remArm = false; remRes = '';
+    var go = function () {
+      modal('4월 1일 리마인드 메일', '<div id="rem-box"></div>'); $('m-body').closest('.mbox').classList.add('wide'); drawRemind();
+      $('rem-box').onclick = function (e) {
+        var t = e.target.closest('[data-rl]'); if (t) { remL = t.getAttribute('data-rl'); drawRemind(); return; }
+        if (e.target.id !== 'rem-go' || e.target.disabled) return;
+        if (!remArm) { remArm = true; toast('한 번 더 누르면 미발송 ' + REM.left + '명 중 오늘 최대 ' + Math.min(REM.left, REM.todayLeft) + '명에게 보냅니다.', 3000); setTimeout(function () { remArm = false; }, 3000); return; }
+        remArm = false; e.target.disabled = true; e.target.textContent = '보내는 중…';
+        api('/vip/adm/remind', { op: 'send' }).then(function (j) {
+          if (!j || !j.ok) { remRes = j && j.err === 'notopen' ? '아직 보낼 수 없습니다 (2027년 4월 1일 0시부터).' : j && j.err === 'busy' ? '이미 보내는 중입니다. 잠시 뒤 목록을 다시 열어 확인해 주세요.' : '보내지 못했습니다.'; }
+          else remRes = '이번에 ' + j.sentNow + '통 발송' + (j.failedNow ? ' · ' + j.failedNow + '통 실패' : '') + ' — 미발송 ' + j.left + '명 남음.'
+            + (j.stop === 'cap' ? ' 오늘 상한(' + j.cap + '통)에 닿았습니다. 내일 다시 「보내기」를 눌러 주세요.' : j.stop === 'fail' ? ' 잇달아 보내지 못해 멈췄습니다. 잠시 뒤 다시 눌러 주세요.' : j.stop === 'time' ? ' 시간이 오래 걸려 끊었습니다. 다시 눌러 주세요.' : '');
+          loadEarly(function () { loadRemind(drawRemind); });
+        }).catch(fail);
+      };
+    };
+    loadEarly(function () { loadRemind(go); });
+  });
+
   // ── 목록 ──
   function loadList(keepId) {
     return api('/vip/adm/list').then(function (j) {
@@ -162,7 +204,7 @@
       $('login').hidden = true; $('app').hidden = false; $('btn-cfg').hidden = false; $('btn-out').hidden = false;
       PG = !!j.pg; var c = $('pgchip'); c.hidden = false; c.className = 'chip c-pg'; c.textContent = PG ? '카드 결제: 켜짐 (KG이니시스)' : '카드 결제: 채널 키 전 — 손님이 「결제하기」를 눌러도 결제창이 안 열림(결제 안 됨)';
       items = j.items || []; drawList(); $('btn-ven').hidden = false;
-      $('btn-early').hidden = false; loadEarly();   // 11-20 사전 등록 건수
+      $('btn-early').hidden = false; $('btn-remind').hidden = false; loadEarly();   // 11-20 사전 등록 건수 · 4월 1일 리마인드 메일
       if (!VEN) loadVen();
       if (keepId) openReq(keepId);
     }).catch(fail);
