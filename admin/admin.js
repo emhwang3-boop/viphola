@@ -42,7 +42,7 @@
   function pub(path, body) { return fetch(HUB + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(function (r) { return r.json().catch(function () { return { ok: false }; }); }); }
 
   // ── 로그인 ──
-  function showLogin(m) { $('login').hidden = false; $('app').hidden = true; ['btn-cfg', 'btn-out', 'pgchip', 'btn-ven'].forEach(function (i) { $(i).hidden = true; }); $('lg-msg').textContent = m || ''; }
+  function showLogin(m) { $('login').hidden = false; $('app').hidden = true; ['btn-cfg', 'btn-out', 'pgchip', 'btn-ven', 'btn-early'].forEach(function (i) { $(i).hidden = true; }); $('lg-msg').textContent = m || ''; }
   function fail(e) {
     var m = e && e.message;
     if (m === '2fa') { showLogin(''); $('lg-2fa').hidden = false; pub('/vip/adm/code', { a: TOK }).then(function (r) { $('lg-msg').textContent = r && r.wait ? '방금 보낸 코드를 넣어 주세요 (1분 뒤 다시 받을 수 있습니다).' : r && r.ok ? '' : '코드를 보내지 못했습니다.'; }); return; }
@@ -122,6 +122,39 @@
   var delArm = '';
   function confirmDel(v) { if (delArm === v.id) { delArm = ''; return true; } delArm = v.id; toast('한 번 더 누르면 「' + (v.name_ko || v.name_en) + '」을(를) 지웁니다.', 2600); return false; }
 
+  // ── 11-20 오픈 전 사전 등록 목록 (허브 /vip/adm/early) — 이메일 모두 복사 · 한 줄 지우기(두 번 눌러) ──
+  var EARLY = [];
+  function eMonth(m) { return m === 'tbd' ? '미정' : String(m).slice(0, 4) + '년 ' + parseInt(String(m).slice(5, 7), 10) + '월'; }
+  function drawEarly() {
+    var cnt = {}; EARLY.forEach(function (x) { cnt[x.month] = (cnt[x.month] || 0) + 1; });
+    var sum = Object.keys(cnt).sort().map(function (k) { return eMonth(k) + ' ' + cnt[k] + '건'; }).join(' · ');
+    $('early-box').innerHTML = '<p class="mute">viphola.com/seoul/ 사전 등록 ' + EARLY.length + '건' + (sum ? ' — ' + esc(sum) : '') + '. 2027년 4월 1일 0시부터 손님 화면의 등록 칸은 저절로 사라지고 원래 신청서가 나옵니다.</p>'
+      + (EARLY.length ? '<div class="row" style="margin:8px 0"><button type="button" class="b b-sm b-ghost" id="early-copy">이메일 모두 복사</button></div>'
+        + '<div class="etab-wrap"><table class="etab"><thead><tr><th>등록</th><th>이름</th><th>이메일</th><th>원하는 때</th><th>인원</th><th>언어</th><th></th></tr></thead><tbody>'
+        + EARLY.map(function (x) {
+          return '<tr><td>' + esc(x.id) + '<br><small>' + esc(x.at) + (x.up ? ' · 다시 보냄 ' + esc(x.up) : '') + '</small></td><td>' + esc(x.name) + '</td><td>' + esc(x.email) + '</td><td>' + esc(eMonth(x.month))
+            + (x.dates ? '<br><small>' + esc(x.dates) + '</small>' : '') + '</td><td>' + esc(x.guests) + '명</td><td>' + esc(LANG_KO[x.lang] || x.lang) + '</td><td><button type="button" class="b b-sm b-ghost" data-ed="' + esc(x.id) + '">지우기</button></td></tr>'; }).join('')
+        + '</tbody></table></div>' : '<p class="empty">아직 사전 등록이 없습니다.</p>');
+  }
+  function loadEarly(cb) {
+    api('/vip/adm/early').then(function (j) { if (!j || !j.ok) { toast('사전 등록 목록을 받지 못했습니다.'); return; } EARLY = j.items || []; $('btn-early').textContent = '사전 등록 ' + EARLY.length; if (cb) cb(); }).catch(fail);
+  }
+  $('btn-early').addEventListener('click', function () {
+    loadEarly(function () {
+      modal('사전 등록', '<div id="early-box"></div>'); $('m-body').closest('.mbox').classList.add('wide'); drawEarly();
+      $('early-box').onclick = function (e) {
+        if (e.target.id === 'early-copy') {
+          var tx = EARLY.map(function (x) { return x.email; }).join(', ');
+          (navigator.clipboard ? navigator.clipboard.writeText(tx) : Promise.reject()).then(function () { toast('이메일 ' + EARLY.length + '개를 복사했습니다.'); }).catch(function () { toast('복사하지 못했습니다.'); });
+          return;
+        }
+        var b = e.target.closest('[data-ed]'); if (!b) return;
+        var id = b.getAttribute('data-ed'), x = EARLY.filter(function (y) { return y.id === id; })[0]; if (!x || !confirmDel({ id: id, name_ko: x.name })) return;
+        api('/vip/adm/early', { op: 'del', id: id }).then(function (j) { if (!j || !j.ok) { toast('지우지 못했습니다.'); return; } toast('지웠습니다.'); loadEarly(drawEarly); }).catch(fail);
+      };
+    });
+  });
+
   // ── 목록 ──
   function loadList(keepId) {
     return api('/vip/adm/list').then(function (j) {
@@ -129,6 +162,7 @@
       $('login').hidden = true; $('app').hidden = false; $('btn-cfg').hidden = false; $('btn-out').hidden = false;
       PG = !!j.pg; var c = $('pgchip'); c.hidden = false; c.className = 'chip c-pg'; c.textContent = PG ? '카드 결제: 켜짐 (KG이니시스)' : '카드 결제: 채널 키 전 — 손님이 「결제하기」를 눌러도 결제창이 안 열림(결제 안 됨)';
       items = j.items || []; drawList(); $('btn-ven').hidden = false;
+      $('btn-early').hidden = false; loadEarly();   // 11-20 사전 등록 건수
       if (!VEN) loadVen();
       if (keepId) openReq(keepId);
     }).catch(fail);
