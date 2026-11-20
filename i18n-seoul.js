@@ -79,7 +79,8 @@ window.I18N = {
     'r.send': 'Send request', 'r.edit': 'Edit', 'r.fine': 'No payment now. We will email your quote within 48 hours.', 'r.sending': 'Sending…',
     'ok.text2': 'Your request {id} has been received. We will send your quote to {email} within 48 hours.',
     'ok.title': 'Thank you', 'ok.text': 'Your request {id} has been received. A confirmation has been sent to {email}, and we will send your quote within 48 hours.',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.photo': 'Photography: Korea Tourism Organization (KOGL Type 1)', 'foot.terms': 'Terms & refund policy', 'foot.privacy': 'Privacy policy'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Enquiries', 'foot.photo': 'Photography: Korea Tourism Organization (KOGL Type 1)', 'foot.terms': 'Terms & refund policy', 'foot.privacy': 'Privacy policy',
+    'pre.band': 'Opening April 2027', 'pre.band.cta': 'Request early access', 'pre.cta': 'Request early access', 'pre.s1.t': 'Register your interest', 'pre.s1.d': 'Tell us your preferred dates and the number of guests. No payment at this stage.', 'pre.s2.t': 'Your itinerary and quote', 'pre.s2.d': 'About two months before your dates, as reservations open, we email your itinerary and quote.', 'pre.note': 'We open in April 2027. Registering now is free and commits you to nothing.', 'pre.kicker': 'Early access', 'pre.title': 'Opening April 2027', 'pre.lead': 'Seoul’s most sought-after tables open only weeks in advance and fill within minutes, and private shopping appointments are limited. Tell us your preferred dates now, and your concierge will be ready to request them the moment reservations open.', 'ea.month': 'Preferred month', 'ea.month.pick': 'Select a month', 'ea.month.tbd': 'Not decided yet', 'ea.dates': 'Exact dates, if known (optional)', 'ea.dates.ph': 'e.g. 12–16 April', 'ea.go': 'Request early access', 'ea.fine': 'No payment now. Your concierge will send your itinerary and quote about two months before your dates.', 'ea.ok': 'Your dates are noted. We will write to {email} as reservations open.', 'ea.e.month': 'Please choose your preferred month.',   // 11-20 오픈 전 사전 등록 (early.js)
   },
   ja: {
     'meta.title': 'VIPHola.com — おふたりのためだけの、ソウル',
@@ -154,7 +155,8 @@ window.I18N = {
     'r.send': 'この内容で送信する', 'r.edit': '修正する', 'r.fine': '現時点でのお支払いはありません。48時間以内にお見積りをメールでお送りします。', 'r.sending': '送信しています…',
     'ok.text2': 'ご依頼（{id}）を承りました。48時間以内にお見積りを {email} にお送りいたします。',
     'ok.title': 'ありがとうございます', 'ok.text': 'ご依頼（{id}）を承りました。確認のメールを {email} にお送りしました。48時間以内にお見積りをお送りいたします。',
-    'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.photo': '写真：韓国観光公社（公共ヌリ 第1類型）', 'foot.terms': '約款・返金規定', 'foot.privacy': 'プライバシーポリシー'
+    'foot.company': '株式会社 富滿', 'foot.contact': 'お問い合わせ', 'foot.photo': '写真：韓国観光公社（公共ヌリ 第1類型）', 'foot.terms': '約款・返金規定', 'foot.privacy': 'プライバシーポリシー',
+    'pre.band': '2027年4月オープン', 'pre.band.cta': '事前登録はこちら', 'pre.cta': '事前登録', 'pre.s1.t': 'ご希望をお知らせください', 'pre.s1.d': 'ご希望の時期と人数をお知らせください。この段階でのお支払いはありません。', 'pre.s2.t': '旅程とお見積り', 'pre.s2.d': 'ご旅行の約2か月前、予約受付の開始に合わせて、旅程とお見積りをメールでお送りします。', 'pre.note': '2027年4月オープン。事前登録は無料で、ご予約の義務もありません。', 'pre.kicker': '事前登録', 'pre.title': '2027年4月オープン', 'pre.lead': 'ソウルの人気レストランは、数週間前に予約受付が始まり、数分で満席になります。プライベートショッピングの枠も限られています。ご希望の日程を今お知らせいただければ、予約受付が始まるその時にすぐお申し込みできるよう、コンシェルジュが準備いたします。', 'ea.month': 'ご希望の月', 'ea.month.pick': '月を選択', 'ea.month.tbd': '未定', 'ea.dates': 'ご希望の日程（お決まりの場合・任意）', 'ea.dates.ph': '例：4月12日〜16日', 'ea.go': '事前登録する', 'ea.fine': '現在お支払いは不要です。ご旅行の約2か月前に、コンシェルジュが旅程とお見積りをお送りします。', 'ea.ok': 'ご希望の日程を承りました。予約受付が始まる頃に、{email} 宛てにご連絡いたします。', 'ea.e.month': 'ご希望の月を選択してください。',   // 11-20 오픈 전 사전 등록 (early.js)
   },
   zhs: {
     'meta.title': 'VIPHola.com — 只为两位定制的首尔',
@@ -229,7 +231,8 @@ window.I18N = {
     'r.send': '发送申请', 'r.edit': '修改', 'r.fine': '现在无需付款。我们将在48小时内通过邮件发送报价。', 'r.sending': '正在发送…',
     'ok.text2': '我们已收到您的申请（{id}），将在48小时内把报价发送至 {email}。',
     'ok.title': '谢谢您', 'ok.text': '我们已收到您的申请（{id}），确认邮件已发送至 {email}。我们将在48小时内发送报价。',
-    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.photo': '图片：韩国观光公社（KOGL 第1类）', 'foot.terms': '条款与退款规定', 'foot.privacy': '隐私政策'
+    'foot.company': '株式会社 富滿', 'foot.contact': '联系我们', 'foot.photo': '图片：韩国观光公社（KOGL 第1类）', 'foot.terms': '条款与退款规定', 'foot.privacy': '隐私政策',
+    'pre.band': '2027年4月开放', 'pre.band.cta': '预先登记', 'pre.cta': '预先登记', 'pre.s1.t': '告诉我们您的意向', 'pre.s1.d': '请告知希望的出行时间和人数。此阶段无需付款。', 'pre.s2.t': '行程与报价', 'pre.s2.d': '在您出行前约两个月、预订开放之际，我们将通过电子邮件发送行程与报价。', 'pre.note': '2027年4月开放。预先登记免费，也无需承担任何预订义务。', 'pre.kicker': '预先登记', 'pre.title': '2027年4月开放', 'pre.lead': '首尔最抢手的餐厅只在数周前开放预订，几分钟内便会订满；私人购物预约名额也十分有限。现在告诉我们您希望的日期，礼宾团队将在预订开放的第一时间为您提交申请。', 'ea.month': '希望出行的月份', 'ea.month.pick': '请选择月份', 'ea.month.tbd': '尚未确定', 'ea.dates': '具体日期（如已确定，选填）', 'ea.dates.ph': '例如：4月12日至16日', 'ea.go': '预先登记', 'ea.fine': '现在无需付款。礼宾团队将在您出行前约两个月发送行程与报价。', 'ea.ok': '已收到您希望的日期。预订开放时，我们将发送邮件至 {email}。', 'ea.e.month': '请选择希望出行的月份。',   // 11-20 오픈 전 사전 등록 (early.js)
   },
   zht: {
     'meta.title': 'VIPHola.com — 只為兩位訂製的首爾',
@@ -304,7 +307,8 @@ window.I18N = {
     'r.send': '送出申請', 'r.edit': '修改', 'r.fine': '現在無需付款。我們將在48小時內以電子郵件寄送報價。', 'r.sending': '正在送出…',
     'ok.text2': '我們已收到您的申請（{id}），將在48小時內把報價寄至 {email}。',
     'ok.title': '謝謝您', 'ok.text': '我們已收到您的申請（{id}），確認郵件已寄至 {email}。我們將在48小時內寄送報價。',
-    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.photo': '照片：韓國觀光公社（KOGL 第1類）', 'foot.terms': '條款與退款規定', 'foot.privacy': '隱私權政策'
+    'foot.company': '株式會社 富滿', 'foot.contact': '聯絡我們', 'foot.photo': '照片：韓國觀光公社（KOGL 第1類）', 'foot.terms': '條款與退款規定', 'foot.privacy': '隱私權政策',
+    'pre.band': '2027年4月開放', 'pre.band.cta': '預先登記', 'pre.cta': '預先登記', 'pre.s1.t': '告訴我們您的意向', 'pre.s1.d': '請告知希望的出行時間和人數。此階段無需付款。', 'pre.s2.t': '行程與報價', 'pre.s2.d': '在您出行前約兩個月、預訂開放之際，我們將以電子郵件寄送行程與報價。', 'pre.note': '2027年4月開放。預先登記免費，也無需承擔任何預訂義務。', 'pre.kicker': '預先登記', 'pre.title': '2027年4月開放', 'pre.lead': '首爾最搶手的餐廳只在數週前開放預訂，幾分鐘內便會訂滿；私人購物預約名額也十分有限。現在告訴我們您希望的日期，禮賓團隊將在預訂開放的第一時間為您提出申請。', 'ea.month': '希望出行的月份', 'ea.month.pick': '請選擇月份', 'ea.month.tbd': '尚未確定', 'ea.dates': '確切日期（如已確定，選填）', 'ea.dates.ph': '例如：4月12日至16日', 'ea.go': '預先登記', 'ea.fine': '現在無需付款。禮賓團隊將在您出行前約兩個月寄送行程與報價。', 'ea.ok': '已收到您希望的日期。預訂開放時，我們將寄信至 {email}。', 'ea.e.month': '請選擇希望出行的月份。',   // 11-20 오픈 전 사전 등록 (early.js)
   },
   es: {
     'meta.title': 'VIPHola.com — Seúl, solo para ustedes',
@@ -379,7 +383,8 @@ window.I18N = {
     'r.send': 'Enviar solicitud', 'r.edit': 'Modificar', 'r.fine': 'No se paga nada ahora. Le enviaremos su presupuesto por correo en un plazo de 48 horas.', 'r.sending': 'Enviando…',
     'ok.text2': 'Hemos recibido su solicitud {id}. Le enviaremos su presupuesto a {email} en un plazo de 48 horas.',
     'ok.title': 'Muchas gracias', 'ok.text': 'Hemos recibido su solicitud {id}. Le hemos enviado una confirmación a {email} y le haremos llegar su presupuesto en un plazo de 48 horas.',
-    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.photo': 'Fotografía: Organización de Turismo de Corea (KOGL Tipo 1)', 'foot.terms': 'Condiciones y reembolsos', 'foot.privacy': 'Política de privacidad'
+    'foot.company': 'Booman Inc.', 'foot.contact': 'Consultas', 'foot.photo': 'Fotografía: Organización de Turismo de Corea (KOGL Tipo 1)', 'foot.terms': 'Condiciones y reembolsos', 'foot.privacy': 'Política de privacidad',
+    'pre.band': 'Apertura en abril de 2027', 'pre.band.cta': 'Solicite acceso anticipado', 'pre.cta': 'Solicitar acceso anticipado', 'pre.s1.t': 'Registre su interés', 'pre.s1.d': 'Indíquenos sus fechas preferidas y el número de viajeros. Sin pago en esta etapa.', 'pre.s2.t': 'Su itinerario y presupuesto', 'pre.s2.d': 'Unos dos meses antes de sus fechas, cuando se abren las reservas, le enviamos por correo su itinerario y presupuesto.', 'pre.note': 'Abrimos en abril de 2027. Registrarse es gratuito y no implica ningún compromiso.', 'pre.kicker': 'Acceso anticipado', 'pre.title': 'Apertura en abril de 2027', 'pre.lead': 'Las mesas más codiciadas de Seúl abren sus reservas con solo unas semanas de antelación y se llenan en minutos, y las citas de compras privadas son limitadas. Indíquenos ahora sus fechas preferidas y su concierge estará listo para solicitarlas en cuanto se abran las reservas.', 'ea.month': 'Mes preferido', 'ea.month.pick': 'Elija un mes', 'ea.month.tbd': 'Aún sin decidir', 'ea.dates': 'Fechas exactas, si ya las conoce (opcional)', 'ea.dates.ph': 'p. ej., del 12 al 16 de abril', 'ea.go': 'Solicitar acceso anticipado', 'ea.fine': 'Sin pago ahora. Su concierge le enviará el itinerario y el presupuesto unos dos meses antes de sus fechas.', 'ea.ok': 'Hemos anotado sus fechas. Le escribiremos a {email} cuando se abran las reservas.', 'ea.e.month': 'Elija su mes preferido.',   // 11-20 오픈 전 사전 등록 (early.js)
   }
 };
 // 차량 선택칸 (이름은 그대로, 뒤 표시는 언어별) — 가격 없음
