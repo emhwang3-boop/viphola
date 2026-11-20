@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500&display=swap">
-<link rel="stylesheet" href="admin.css?v=1120ea">
+<link rel="stylesheet" href="admin.css?v=1120rm">
 </head>
 <!-- VIP 견적 관리 (사장님만) — 투어 관리자 비밀번호 + 텔레그램 2단계 코드 · 검색 안 됨(noindex · robots Disallow /admin/) -->
 <body>
@@ -19,6 +19,7 @@
   <div class="top-r">
     <span class="chip" id="pgchip" hidden></span>
     <button type="button" class="b b-ghost" id="btn-early" hidden>사전 등록</button>   <!-- 11-20 오픈 전 사전 등록 목록 -->
+    <button type="button" class="b b-ghost" id="btn-remind" hidden>4월 1일 리마인드 메일</button>   <!-- 11-20 오후 사장님 — 사전 등록 손님에게 오픈 안내(링크) · 2027-04-01 0시부터 보내기 -->
     <button type="button" class="b b-ghost" id="btn-ven" hidden>업체 목록</button>
     <button type="button" class="b b-ghost" id="btn-cfg" hidden>설정</button>
     <button type="button" class="b b-ghost" id="btn-out" hidden>로그아웃</button>
@@ -52,6 +53,6 @@
 <div class="toast" id="toast" hidden></div>
 
 <script src="../hub.js?v=1115e"></script>
-<script src="admin.js?v=1120ea"></script>
+<script src="admin.js?v=1120rm"></script>
 </body>
 </html>
