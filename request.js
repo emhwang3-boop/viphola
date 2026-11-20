@@ -1,6 +1,7 @@
 // viphola.com/seoul/ 신청 칸 (11-15 사장님 「실행해」) — 결제 없음
 //  입력(날짜·인원·차량·옵션·요청 사항·이름·이메일·전화/왓츠앱·메일 언어) → 「Review your request」 = 마지막 확인(날마다 1·2·3 번호 · 대략 시작~끝 시각 · 고른 옵션을 알맞은 자리에)
 //  → 「Send request」 → 허브 POST /vip/req (저장 · 손님에게 금색 접수 메일 · 사장님 텔레그램) · 일정 글은 허브 한 곳(vip_hub.js vipItin)에서 받아 메일과 똑같다
+//  · 11-20 오픈 전(2027-04-01 0시 KST 전)엔 early.js 가 window.VIP_PRE 를 둔다 — 도착일 최소 2027-04-01 · 마지막 확인의 단추 = 「Next」 → 사전 등록 단계(early.js) · 4월 1일부터는 VIP_PRE 가 없어 원래대로
 (function () {
   'use strict';
   var form = document.getElementById('req'); if (!form) return;
@@ -21,6 +22,8 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
   var today = ymdOf(new Date()), minD = addDays(today, 30);
+  function pre() { return window.VIP_PRE || null; }   // 11-20 오픈 전에만 (early.js)
+  function minOf() { var p = pre(); return p && p.min > minD ? p.min : minD; }   // 오픈 전엔 2027-04-01 과 30일 뒤 중 늦은 날
   $('f-date').min = minD; $('f-date').max = addDays(today, 730);
   (function () { var ok = window.VIP_LANGS, sel = $('f-lang'); if (!ok) return; Array.prototype.slice.call(sel.options).forEach(function (o) { if (ok.indexOf(o.value) < 0) sel.removeChild(o); }); })();   // 「메일 언어」 = 사이트 언어 고르기와 같은 목록 (11-16 스페인어 숨김 — main.js OFF)
 
@@ -65,7 +68,7 @@
   }
   function check(d) {
     var e = [];
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.date) || d.date < minD) e.push('date');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.date) || d.date < minOf()) e.push('date');
     if (!(d.guests >= 1)) e.push('guests');
     if (!d.car) e.push('car');
     if (!d.name) e.push('name');
@@ -78,7 +81,7 @@
   function showErr(box, list, msg) {
     Object.keys(FIELD).forEach(function (k) { $(FIELD[k]).removeAttribute('aria-invalid'); });
     (list || []).forEach(function (k) { if (FIELD[k]) $(FIELD[k]).setAttribute('aria-invalid', 'true'); });
-    var lines = (list || []).map(function (k) { return t('e.' + k); }).filter(Boolean); if (msg) lines.push(msg);
+    var lines = (list || []).map(function (k) { return t(k === 'date' && minOf() > minD ? 'pre.e.date' : 'e.' + k); }).filter(Boolean); if (msg) lines.push(msg);   // 11-20 오픈 전 — 「2027년 4월 1일부터」 안내
     box.innerHTML = lines.map(esc).join('<br>'); box.hidden = !lines.length;
     if (list && list.length && FIELD[list[0]]) { var fe = $(FIELD[list[0]]); if (fe.tagName === 'FIELDSET') fe.scrollIntoView({ behavior: 'smooth', block: 'center' }); else fe.focus(); }
   }
@@ -122,6 +125,7 @@
   form.addEventListener('submit', function (ev) { ev.preventDefault(); preview(false); });
   $('rv-edit').addEventListener('click', function () { $('review').hidden = true; form.hidden = false; $('request').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   $('rv-send').addEventListener('click', function () {
+    if (!busy && last && pre()) { $('review').hidden = true; pre().next(Object.assign({}, last, { ui: L() })); return; }   // 11-20 오픈 전 — 「Next」 → 사전 등록 단계 (early.js)
     if (busy || !last) return; busy = true; var b = $('rv-send'); b.disabled = true; b.textContent = t('r.sending');
     post(Object.assign({}, last, { ui: L() })).then(function (j) {
       busy = false; b.disabled = false; b.textContent = t('r.send');
