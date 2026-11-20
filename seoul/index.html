@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../style.css?v=1119cq">
+<link rel="stylesheet" href="../style.css?v=1120ea">
 </head>
 <body data-page="seoul">
 
@@ -42,11 +42,13 @@
     </select>
     </label>
   </nav>
+  <!-- 11-20 사장님 「실행해」 — 오픈 전(2027-04-01 0시 KST 전)에만 보이는 띠 · early.js 가 켜고 4월 1일부터 저절로 사라짐 -->
+  <a class="pre-band" id="pre-band" href="#request" hidden><span data-i18n="pre.band">Opening April 2027</span><b data-i18n="pre.band.cta">Request early access</b></a>
   <div class="hero-copy wrap">
     <h1 data-i18n="hero.title">Seoul,
 privately curated.</h1>
     <p class="hero-lead" data-i18n="hero.lead">Michelin dining, palace mornings and a quiet spa — five days arranged for two.</p>
-    <a class="btn" href="#request" data-i18n="hero.cta">Plan your journey</a>
+    <a class="btn" href="#request" data-i18n="hero.cta" data-i18n-pre="pre.cta">Plan your journey</a>
   </div>
   <span class="credit credit-hero" data-i18n="photo">Photo © Korea Tourism Organization</span>
 </header>
@@ -202,11 +204,11 @@ privately curated.</h1>
         <h2 data-i18n="proc.title">From request to arrival</h2>
       </div>
       <ol class="steps">
-        <li><span class="num latin">1</span><h3 data-i18n="s1.t">Send your request</h3><p data-i18n="s1.d">Choose your dates, car and options below. No payment at this stage.</p></li>
-        <li><span class="num latin">2</span><h3 data-i18n="s2.t">Your quote within 48 hours</h3><p data-i18n="s2.d">A detailed quote by email, with a secure link to pay by card.</p></li>
+        <li><span class="num latin">1</span><h3 data-i18n="s1.t" data-i18n-pre="pre.s1.t">Send your request</h3><p data-i18n="s1.d" data-i18n-pre="pre.s1.d">Choose your dates, car and options below. No payment at this stage.</p></li>
+        <li><span class="num latin">2</span><h3 data-i18n="s2.t" data-i18n-pre="pre.s2.t">Your quote within 48 hours</h3><p data-i18n="s2.d" data-i18n-pre="pre.s2.d">A detailed quote by email, with a secure link to pay by card.</p></li>
         <li><span class="num latin">3</span><h3 data-i18n="s3.t">Confirmation</h3><p data-i18n="s3.d">We confirm once every reservation is secured, and look after you from arrival to departure.</p></li>
       </ol>
-      <p class="note note-center" data-i18n="proc.note">Please send your request at least 30 days before you travel: Michelin restaurants and private experiences book up weeks in advance.</p>
+      <p class="note note-center" data-i18n="proc.note" data-i18n-pre="pre.note">Please send your request at least 30 days before you travel: Michelin restaurants and private experiences book up weeks in advance.</p>
     </div>
   </section>
 
@@ -216,12 +218,46 @@ privately curated.</h1>
   <section class="sec enquire" id="request">
     <div class="wrap enq-grid">
       <div class="enq-side">
-        <p class="kicker" data-i18n="enq.kicker">Request</p>
-        <h2 data-i18n="enq.title">Plan your journey</h2>
-        <p class="enq-lead" data-i18n="enq.lead">Choose your dates and preferences. We will send your quote within 48 hours.</p>
+        <p class="kicker" data-i18n="enq.kicker" data-i18n-pre="pre.kicker">Request</p>
+        <h2 data-i18n="enq.title" data-i18n-pre="pre.title">Plan your journey</h2>
+        <p class="enq-lead" data-i18n="enq.lead" data-i18n-pre="pre.lead">Choose your dates and preferences. We will send your quote within 48 hours.</p>
         <span class="art art-big" data-ph="무궁화"><img src="../img/mugunghwa.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"></span>
       </div>
       <div class="req-box">
+        <!-- 11-20 오픈 전 사전 등록 (이름·이메일·원하는 달·날짜(선택)·인원) → 허브 POST /vip/early · 2027-04-01 0시 KST 부터 숨고 아래 원래 신청서가 나옴 (early.js) -->
+        <form class="enq-form" id="early" novalidate hidden>
+          <div class="f">
+            <label for="e-name" data-i18n="f.name">Name</label>
+            <input id="e-name" name="name" type="text" autocomplete="name" maxlength="80" required>
+          </div>
+          <div class="f">
+            <label for="e-email" data-i18n="f.email">Email</label>
+            <input id="e-email" name="email" type="email" autocomplete="email" maxlength="100" required>
+          </div>
+          <div class="f">
+            <label for="e-month" data-i18n="ea.month">Preferred month</label>
+            <select id="e-month" name="month" required></select>
+          </div>
+          <div class="f">
+            <label for="e-guests" data-i18n="f.guests">Guests</label>
+            <select id="e-guests" name="guests"></select>
+          </div>
+          <div class="f f-wide">
+            <label for="e-dates" data-i18n="ea.dates">Exact dates, if known (optional)</label>
+            <input id="e-dates" name="dates" type="text" maxlength="60" autocomplete="off" data-i18n-ph="ea.dates.ph" placeholder="e.g. 12–16 April">
+          </div>
+          <div class="f-wide send-row">
+            <button class="btn" type="submit" id="e-go" data-i18n="ea.go">Request early access</button>
+            <p class="fine" data-i18n="ea.fine">No payment now. Your concierge will send your itinerary and quote about two months before your dates.</p>
+          </div>
+          <p class="enq-status req-err" id="e-err" role="alert" hidden></p>
+        </form>
+        <div class="review req-done" id="early-done" hidden>
+          <span class="art art-orn" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
+          <h3 class="rv-title" data-i18n="ok.title">Thank you</h3>
+          <p class="rv-lead" id="e-ok-text"></p>
+        </div>
+
         <form class="enq-form" id="req" novalidate>
           <div class="f">
             <label for="f-date" data-i18n="f.date">Arrival date (Day 1)</label>
@@ -384,11 +420,12 @@ privately curated.</h1>
 </footer>
 
 <script src="../hub.js?v=1115e"></script>
-<script src="../i18n-seoul.js?v=1118jg"></script>
+<script src="../i18n-seoul.js?v=1120ea"></script>
 <script src="../bizinfo.js?v=1117tr"></script>
 <script src="../main.js?v=1116vc"></script>
 <script src="../brands.js?v=1116hm"></script>
 <script src="../request.js?v=1118sw"></script>
 <script src="../dtl.js?v=1118cl"></script>
+<script src="../early.js?v=1120ea"></script>
 </body>
 </html>
