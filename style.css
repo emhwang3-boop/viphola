@@ -516,6 +516,8 @@ html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .tcard .who { font-size
 
 /* ───────── 약관·환불 규정 링크 (11-16) — 서울 꼬리말 · 결제 화면 특약 ───────── */
 .foot-terms { margin-top: 12px; }
+.foot-terms a { font-size: 15px; text-decoration: none; border-bottom: 1px solid var(--line); }   /* 11-20 회사 이름 밑으로 옮긴 뒤에도 예전(문의 칸)과 같은 크기·얇은 밑줄 */
+.foot-terms a:hover { border-bottom-color: var(--navy); }
 .terms-full { margin-top: 14px; }
 .terms-full a { color: var(--navy); }
 
