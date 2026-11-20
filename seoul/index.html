@@ -42,13 +42,13 @@
     </select>
     </label>
   </nav>
-  <!-- 11-20 사장님 「실행해」 — 오픈 전(2027-04-01 0시 KST 전)에만 보이는 띠 · early.js 가 켜고 4월 1일부터 저절로 사라짐 -->
-  <a class="pre-band" id="pre-band" href="#request" hidden><span data-i18n="pre.band">Opening April 2027</span><b data-i18n="pre.band.cta">Request early access</b></a>
+  <!-- 11-20 사장님 「실행해」 — 오픈 전(2027-04-01 0시 KST 전)에만 보이는 띠 · early.js 가 켜고 4월 1일부터 저절로 사라짐 · 11-20 오후 오른쪽 글자를 「Plan your journey →」(첫 화면 단추와 같은 글자)로 -->
+  <a class="pre-band" id="pre-band" href="#request" hidden><span data-i18n="pre.band">Opening April 2027</span><b data-i18n="hero.cta">Plan your journey</b></a>
   <div class="hero-copy wrap">
     <h1 data-i18n="hero.title">Seoul,
 privately curated.</h1>
     <p class="hero-lead" data-i18n="hero.lead">Michelin dining, palace mornings and a quiet spa — five days arranged for two.</p>
-    <a class="btn" href="#request" data-i18n="hero.cta" data-i18n-pre="pre.cta">Plan your journey</a>
+    <a class="btn" href="#request" data-i18n="hero.cta">Plan your journey</a>
   </div>
   <span class="credit credit-hero" data-i18n="photo">Photo © Korea Tourism Organization</span>
 </header>
@@ -218,46 +218,12 @@ privately curated.</h1>
   <section class="sec enquire" id="request">
     <div class="wrap enq-grid">
       <div class="enq-side">
-        <p class="kicker" data-i18n="enq.kicker" data-i18n-pre="pre.kicker">Request</p>
-        <h2 data-i18n="enq.title" data-i18n-pre="pre.title">Plan your journey</h2>
+        <p class="kicker" data-i18n="enq.kicker">Request</p>
+        <h2 data-i18n="enq.title">Plan your journey</h2>
         <p class="enq-lead" data-i18n="enq.lead" data-i18n-pre="pre.lead">Choose your dates and preferences. We will send your quote within 48 hours.</p>
         <span class="art art-big" data-ph="무궁화"><img src="../img/mugunghwa.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"></span>
       </div>
       <div class="req-box">
-        <!-- 11-20 오픈 전 사전 등록 (이름·이메일·원하는 달·날짜(선택)·인원) → 허브 POST /vip/early · 2027-04-01 0시 KST 부터 숨고 아래 원래 신청서가 나옴 (early.js) -->
-        <form class="enq-form" id="early" novalidate hidden>
-          <div class="f">
-            <label for="e-name" data-i18n="f.name">Name</label>
-            <input id="e-name" name="name" type="text" autocomplete="name" maxlength="80" required>
-          </div>
-          <div class="f">
-            <label for="e-email" data-i18n="f.email">Email</label>
-            <input id="e-email" name="email" type="email" autocomplete="email" maxlength="100" required>
-          </div>
-          <div class="f">
-            <label for="e-month" data-i18n="ea.month">Preferred month</label>
-            <select id="e-month" name="month" required></select>
-          </div>
-          <div class="f">
-            <label for="e-guests" data-i18n="f.guests">Guests</label>
-            <select id="e-guests" name="guests"></select>
-          </div>
-          <div class="f f-wide">
-            <label for="e-dates" data-i18n="ea.dates">Exact dates, if known (optional)</label>
-            <input id="e-dates" name="dates" type="text" maxlength="60" autocomplete="off" data-i18n-ph="ea.dates.ph" placeholder="e.g. 12–16 April">
-          </div>
-          <div class="f-wide send-row">
-            <button class="btn" type="submit" id="e-go" data-i18n="ea.go">Request early access</button>
-            <p class="fine" data-i18n="ea.fine">No payment now. Your concierge will send your itinerary and quote about two months before your dates.</p>
-          </div>
-          <p class="enq-status req-err" id="e-err" role="alert" hidden></p>
-        </form>
-        <div class="review req-done" id="early-done" hidden>
-          <span class="art art-orn" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
-          <h3 class="rv-title" data-i18n="ok.title">Thank you</h3>
-          <p class="rv-lead" id="e-ok-text"></p>
-        </div>
-
         <form class="enq-form" id="req" novalidate>
           <div class="f">
             <label for="f-date" data-i18n="f.date">Arrival date (Day 1)</label>
@@ -368,11 +334,31 @@ privately curated.</h1>
           <div class="rv-days" id="rv-days"></div>
           <p class="rv-all" id="rv-all"></p>
           <div class="send-row rv-actions">
-            <button class="btn" type="button" id="rv-send" data-i18n="r.send">Send request</button>
+            <button class="btn" type="button" id="rv-send" data-i18n="r.send" data-i18n-pre="pre.r.send">Send request</button>
             <button class="btn btn-line" type="button" id="rv-edit" data-i18n="r.edit">Edit</button>
           </div>
-          <p class="fine rv-fine" data-i18n="r.fine">No payment now. We will email your quote within 48 hours.</p>
+          <p class="fine rv-fine" data-i18n="r.fine" data-i18n-pre="pre.r.fine">No payment now. We will email your quote within 48 hours.</p>
           <p class="enq-status req-err" id="rv-err" role="alert" hidden></p>
+        </div>
+
+        <!-- 11-20 오후 사장님 — 오픈 전(2027-04-01 0시 KST 전)에만: 마지막 확인의 「Next」 → 사전 등록 단계 → 「Request early access」 = 신청서 전체를 허브 POST /vip/early 로 (early.js) · 4월 1일부터는 안 나옴 -->
+        <div class="review" id="early" hidden>
+          <p class="kicker" data-i18n="ea.kicker">Early access</p>
+          <h3 class="rv-title" data-i18n="ea.title">Opening April 2027</h3>
+          <p class="rv-lead" data-i18n="ea.p1">Seoul’s most sought-after tables open only weeks in advance and fill within minutes, and private shopping appointments are limited. Tell us your preferred dates now, and your concierge will be ready to request them the moment reservations open.</p>
+          <p class="rv-lead" data-i18n="ea.p2">Register now and we will email you a reminder with a link when we open on 1 April 2027.</p>
+          <dl class="rv-sum"><div><dt data-i18n="f.email">Email</dt><dd id="ea-email"></dd></div></dl>
+          <div class="send-row rv-actions">
+            <button class="btn" type="button" id="ea-go" data-i18n="ea.go">Request early access</button>
+            <button class="btn btn-line" type="button" id="ea-edit" data-i18n="r.edit">Edit</button>
+          </div>
+          <p class="fine rv-fine" data-i18n="ea.fine">No payment now.</p>
+          <p class="enq-status req-err" id="ea-err" role="alert" hidden></p>
+        </div>
+        <div class="review req-done" id="early-done" hidden>
+          <span class="art art-orn" data-ph="무궁화"><img src="../img/mugunghwa-mark.png" alt="" onerror="this.parentNode.classList.add('missing')"></span>
+          <h3 class="rv-title" data-i18n="ok.title">Thank you</h3>
+          <p class="rv-lead" id="ea-ok-text"></p>
         </div>
 
         <!-- 보낸 뒤 -->
@@ -420,12 +406,12 @@ privately curated.</h1>
 </footer>
 
 <script src="../hub.js?v=1115e"></script>
-<script src="../i18n-seoul.js?v=1120ea"></script>
+<script src="../i18n-seoul.js?v=1120rm"></script>
 <script src="../bizinfo.js?v=1117tr"></script>
 <script src="../main.js?v=1116vc"></script>
 <script src="../brands.js?v=1116hm"></script>
-<script src="../request.js?v=1118sw"></script>
+<script src="../request.js?v=1120rm"></script>
 <script src="../dtl.js?v=1118cl"></script>
-<script src="../early.js?v=1120ea"></script>
+<script src="../early.js?v=1120rm"></script>
 </body>
 </html>
