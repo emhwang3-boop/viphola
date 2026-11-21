@@ -135,7 +135,7 @@
         + '<div class="etab-wrap"><table class="etab"><thead><tr><th>등록 일시</th><th>이름</th><th>이메일</th><th>전화·왓츠앱</th><th>도착일</th><th>인원</th><th>차량</th><th>옵션</th><th>메일 언어</th><th>리마인드 메일</th><th></th></tr></thead><tbody>'
         + EARLY.map(function (x) {
           return '<tr><td>' + esc(x.at) + '<br><small>' + esc(x.id) + (x.up ? ' · 다시 등록 ' + esc(x.up) : '') + '</small></td><td>' + esc(x.name) + '</td><td>' + esc(x.email) + '</td><td>' + esc(x.phone) + '</td>'
-            + '<td>' + esc(x.date) + '<br><small>' + (x.nights === 5 ? '5박 6일 (경주 연장)' : x.nights === 4 ? '4박 5일' : '') + '</small></td><td>' + esc(x.guests) + '명</td><td>' + esc(x.car) + '</td><td class="wrap">' + esc(eOpts(x.opts)) + '</td>'
+            + '<td>' + esc(x.date) + '<br><small>' + (x.nights === 6 ? '6박 7일 (경주 연장)' : x.nights === 4 ? '4박 5일' : '') + '</small></td><td>' + esc(x.guests) + '명</td><td>' + esc(x.car) + '</td><td class="wrap">' + esc(eOpts(x.opts)) + '</td>'
             + '<td>' + esc(LANG_KO[x.lang] || x.lang) + '</td><td>' + eRemind(x.rm) + '</td><td><button type="button" class="b b-sm b-ghost" data-ed="' + esc(x.id) + '">지우기</button></td></tr>'; }).join('')
         + '</tbody></table></div>' : '<p class="empty">아직 사전 등록이 없습니다.</p>');
   }
@@ -218,7 +218,7 @@
     $('rows').innerHTML = rows.length ? rows.map(function (x) {
       return '<button type="button" class="it' + (cur && cur.rec.id === x.id ? ' on' : '') + '" data-id="' + esc(x.id) + '"><div class="it-top"><span class="it-id">' + esc(x.id) + ' · ' + esc(x.at) + '</span>'
         + '<span class="chip c-' + (x.expired ? 'exp' : x.st) + '">' + (x.expired ? '기간 지남' : ST_KO[x.st]) + '</span></div>'
-        + '<div class="it-nm">' + esc(x.name) + '</div><div class="it-sub">' + esc(x.date) + '부터 ' + (x.nights === 5 ? '5박 6일 (경주 연장)' : '4박 5일') + ' · ' + x.guests + '명 · ' + esc(x.car) + ' · ' + (LANG_KO[x.lang] || x.lang)
+        + '<div class="it-nm">' + esc(x.name) + '</div><div class="it-sub">' + esc(x.date) + '부터 ' + (x.nights === 6 ? '6박 7일 (경주 연장)' : '4박 5일') + ' · ' + x.guests + '명 · ' + esc(x.car) + ' · ' + (LANG_KO[x.lang] || x.lang)
         + (x.total ? ' · ' + won(x.total) : '') + '</div></button>'; }).join('') : '<p class="empty">신청이 없습니다.</p>';
   }
   $('tabs').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (!b) return; filter = b.getAttribute('data-f'); drawList(); });
@@ -319,7 +319,7 @@
   }
   function pickVen(l, id) {   // 업체를 고르면 줄 이름 채우기 — 틀이 있는 줄(호텔·식당·스파·다도·면세점·백화점·경주 숙소)은 틀대로, 새 줄은 업체 이름 그대로, 차량·의전·가이드·열차는 이름 그대로
     var v = venOf(l.c, id); l.v = v ? v.id : ''; l.vn = v ? { ko: v.name_ko || v.name_en, en: v.name_en || v.name_ko } : null; if (!v) return;
-    var t = TPL[l.k], gl = cur.rec.lang;
+    var t = TPL[l.tk || l.k], gl = cur.rec.lang;   // 11-21 경주 연장 줄(서울 숙소 5박·5일차 점심)은 허브가 l.tk 로 다른 틀을 줌
     var nm = (l.vn.ko || '') + ' ' + (l.vn.en || ''), hit = t && t.byName ? t.byName.filter(function (b) { return new RegExp(b.re, 'i').test(nm); })[0] : null;   // 정해진 이름(4일차 오전: 리움·경복궁)
     if (l.pr) l.pr = /카네사카|kanesaka|스시|sushi|鮨|오마카세|omakase|일식|가이세키|kaiseki/i.test(nm) ? 'sake' : 'wine';   // 11-17 저녁 업체를 바꾸면 페어링 종류도 자동
     if (hit) { l.ko = hit.ko.replace('{v}', l.vn.ko); l.g = (hit[gl] || hit.en).replace('{v}', l.vn.en); }
@@ -335,7 +335,7 @@
       + '<div class="row">' + (ro ? '' : '<button type="button" class="b b-red b-sm" id="d-del">신청 삭제</button>') + '</div></div>';
     h += '<div class="sec"><h2>신청 내용 <button type="button" class="b b-ghost b-sm" data-pv="recv">접수 메일 보기</button></h2><dl class="kv">'
       + '<dt>이메일</dt><dd>' + esc(r.email) + '</dd><dt>전화·왓츠앱</dt><dd>' + esc(r.phone) + '</dd><dt>메일 언어</dt><dd>' + (LANG_KO[r.lang] || r.lang) + '</dd>'
-      + '<dt>일정</dt><dd>' + esc(r.date) + ' ~ ' + esc(r.end) + (r.nights === 5 ? ' (5박 6일 · 경주 연장)' : ' (4박 5일)') + '</dd><dt>인원</dt><dd>' + r.guests + '명</dd><dt>차량</dt><dd>' + esc(r.carKo) + '</dd>'
+      + '<dt>일정</dt><dd>' + esc(r.date) + ' ~ ' + esc(r.end) + (r.nights === 6 ? ' (6박 7일 · 경주 연장)' : ' (4박 5일)') + '</dd><dt>인원</dt><dd>' + r.guests + '명</dd><dt>차량</dt><dd>' + esc(r.carKo) + '</dd>'
       + (cur.craftKo ? '<dt>장인 체험</dt><dd>' + esc(cur.craftKo) + '</dd>' : '')
       + '<dt>옵션</dt><dd>' + (r.opts.length ? r.opts.map(function (k) { return OPT_KO[k]; }).filter(Boolean).join(', ') : '없음') + '</dd>'
       + (r.brands && r.brands.length ? '<dt>좋아하는 브랜드</dt><dd>' + esc(r.brands.join(', ')) + '</dd>' : '')   // 11-16 신청서 브랜드 칸
