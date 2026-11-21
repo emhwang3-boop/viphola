@@ -130,7 +130,7 @@
     post(Object.assign({}, last, { ui: L() })).then(function (j) {
       busy = false; b.disabled = false; b.textContent = t('r.send');
       if (!j || !j.ok) { $('rv-err').textContent = j && j.fields ? (j.fields.map(function (k) { return t('e.' + k); }).join(' ')) : errMsg(j); $('rv-err').hidden = false; return; }
-      $('review').hidden = true; $('req-done').hidden = false;
+      $('review').hidden = true; $('req-done').hidden = false; if (window.vipPx) window.vipPx('Lead', { content_name: 'trip_request' });   // 11-21 메타 픽셀 — 여행 신청 1건 (4월 1일부터, px.js)
       $('ok-text').textContent = t(j.mailed === false ? 'ok.text2' : 'ok.text').replace('{id}', j.id).replace('{email}', last.email);
       $('request').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }).catch(function () { busy = false; b.disabled = false; b.textContent = t('r.send'); $('rv-err').textContent = t('e.net'); $('rv-err').hidden = false; });
