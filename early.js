@@ -50,6 +50,7 @@
           return;
         }
         sentTo = body.email; step.hidden = true; $('early-done').hidden = false;
+        if (window.vipPx) window.vipPx('Lead', { content_name: 'early_access' });   // 11-21 메타 픽셀 — 사전 등록 1건 (손님 정보는 안 보냄, px.js)
         $('ea-ok-text').textContent = t('ea.ok').replace('{email}', sentTo);
         top();
       })
