@@ -21,7 +21,8 @@
     1620,
     1079
    ],
-   "file_site_path": "/img/hero_injeongjeon.jpg"
+   "file_site_path": "/img/hero_injeongjeon.jpg",
+   "status": "11-21 사이트에서 내림 (Adobe Stock 사진으로 바꿈) — 파일만 남김"
   },
   {
    "file": "img/day1_hanok.jpg",
@@ -41,7 +42,8 @@
     1620,
     1080
    ],
-   "file_site_path": "/img/day1_hanok.jpg"
+   "file_site_path": "/img/day1_hanok.jpg",
+   "status": "11-21 사이트에서 내림 (Adobe Stock 사진으로 바꿈) — 파일만 남김"
   },
   {
    "file": "img/day2_secret_garden.jpg",
@@ -61,7 +63,8 @@
     1620,
     1079
    ],
-   "file_site_path": "/img/day2_secret_garden.jpg"
+   "file_site_path": "/img/day2_secret_garden.jpg",
+   "status": "11-21 사이트에서 내림 (Adobe Stock 사진으로 바꿈) — 파일만 남김"
   },
   {
    "file": "img/price_gyeongbokgung.jpg",
@@ -81,7 +84,8 @@
     1620,
     1079
    ],
-   "file_site_path": "/img/price_gyeongbokgung.jpg"
+   "file_site_path": "/img/price_gyeongbokgung.jpg",
+   "status": "11-21 사이트에서 내림 (Adobe Stock 사진으로 바꿈) — 파일만 남김"
   },
   {
    "file": "img/day4_palace_museum.jpg",
@@ -104,7 +108,8 @@
    "edit": "원본을 4:5 세로로 자름 (4일차사진후보 1번)",
    "file_site_path": "/img/day4_palace_museum.jpg",
    "why": "11-16 사장님 — 근정전 대신 「고궁박물관 안의 좀 화려한 사진」, 후보 1번 선택",
-   "replaces": "img/day4_gyeongbokgung.jpg (경복궁 근정전, 126508 / 3487601_2) → 빌드도구\\옛판\\day4_gyeongbokgung_1116.jpg"
+   "replaces": "img/day4_gyeongbokgung.jpg (경복궁 근정전, 126508 / 3487601_2) → 빌드도구\\옛판\\day4_gyeongbokgung_1116.jpg",
+   "status": "11-21 사이트에서 내림 (Adobe Stock 사진으로 바꿈) — 파일만 남김"
   },
   {
    "file": "img/day3_yangnyeongsi_gate.jpg",
@@ -148,7 +153,8 @@
    ],
    "file_site_path": "/img/day3_lotte_world_tower.jpg",
    "why": "11-16 사장님 — 3일차 약령시 프로그램을 잠실 롯데월드타워(관광·쇼핑·점심)로 · 갤러리 62장 중 내가 고름(금빛 야경, 세로 구도)",
-   "replaces": "img/day3_yangnyeongsi_gate.jpg (약령시 정문 — 대체 장소로 보관)"
+   "replaces": "img/day3_yangnyeongsi_gate.jpg (약령시 정문 — 대체 장소로 보관)",
+   "status": "11-21 사이트에서 내림 (Adobe Stock 사진으로 바꿈) — 파일만 남김"
   },
   {
    "file": "img/day4_seoulmarina.jpg",
@@ -178,9 +184,69 @@
    "cpyrhtDivCd": "Type1",
    "license": "공공누리 제1유형(출처표시)",
    "url": "https://tong.visitkorea.or.kr/cms/resource/31/3493331_image2_1.jpg"
+  },
+  {
+   "file": "img/hero_changdeok_spring.jpg",
+   "use": "① 서울 첫 화면",
+   "place_ko": "창덕궁 봄 매화",
+   "source": "Adobe Stock",
+   "asset_id": "292537027",
+   "author": "kampon",
+   "license": "Adobe Stock 표준 라이선스 (2026-11-21, 월간 구독 크레딧) — 출처 표시 의무 없음",
+   "original": "C:\\kiwoom_work\\마케팅\\SNS\\viphola_ads\\구매사진\\AdobeStock_292537027.jpeg"
+  },
+  {
+   "file": "img/day1_hanok_room.jpg",
+   "use": "② 1일차 카드",
+   "place_ko": "한옥 방 (AI 생성 그림 — Adobe GenAI 표시)",
+   "source": "Adobe Stock",
+   "asset_id": "2114535162",
+   "author": "junghun yoo",
+   "license": "Adobe Stock 표준 라이선스 (2026-11-21, 월간 구독 크레딧) — 출처 표시 의무 없음",
+   "original": "C:\\kiwoom_work\\마케팅\\SNS\\viphola_ads\\구매사진\\AdobeStock_2114535162.jpeg"
+  },
+  {
+   "file": "img/day2_buyongjeong.jpg",
+   "use": "③ 2일차 카드",
+   "place_ko": "창덕궁 후원 부용정",
+   "source": "Adobe Stock",
+   "asset_id": "122759222",
+   "author": "Maxim Tupikov",
+   "license": "Adobe Stock 표준 라이선스 (2026-11-21, 월간 구독 크레딧) — 출처 표시 의무 없음",
+   "original": "C:\\kiwoom_work\\마케팅\\SNS\\viphola_ads\\구매사진\\AdobeStock_122759222.jpeg"
+  },
+  {
+   "file": "img/day3_lotte_tower_dusk.jpg",
+   "use": "④ 3일차 카드",
+   "place_ko": "롯데월드타워 해 질 녘",
+   "source": "Adobe Stock",
+   "asset_id": "239821382",
+   "author": "siraphol",
+   "license": "Adobe Stock 표준 라이선스 (2026-11-21, 월간 구독 크레딧) — 출처 표시 의무 없음",
+   "original": "C:\\kiwoom_work\\마케팅\\SNS\\viphola_ads\\구매사진\\AdobeStock_239821382.jpeg"
+  },
+  {
+   "file": "img/day5_palace_autumn.jpg",
+   "use": "⑤ 5일차 카드",
+   "place_ko": "고궁 단풍 (어도비 설명 「고궁 단풍」)",
+   "source": "Adobe Stock",
+   "asset_id": "1773180327",
+   "author": "JJ",
+   "license": "Adobe Stock 표준 라이선스 (2026-11-21, 월간 구독 크레딧) — 출처 표시 의무 없음",
+   "original": "C:\\kiwoom_work\\마케팅\\SNS\\viphola_ads\\구매사진\\AdobeStock_1773180327.jpeg"
+  },
+  {
+   "file": "img/gate_hyangwonjeong_spring.jpg",
+   "use": "⑥ 대문 인바운드 문",
+   "place_ko": "경복궁 향원정 봄",
+   "source": "Adobe Stock",
+   "asset_id": "1441722830",
+   "author": "Beautiful Korea",
+   "license": "Adobe Stock 표준 라이선스 (2026-11-21, 월간 구독 크레딧) — 출처 표시 의무 없음",
+   "original": "C:\\kiwoom_work\\마케팅\\SNS\\viphola_ads\\구매사진\\AdobeStock_1441722830.jpeg"
   }
  ],
- "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기.",
+ "note": "사이트 구조: 대문 / · 서울 /seoul/ · 준비 중 /spanish/ — 사진은 모두 /img/ 에서 함께 씀. 큰 판(_image1_1)은 API 가 준 originimgurl(_image2_1)과 같은 사진의 큰 크기. · 11-21 첫 화면·1·2·3·5일차 카드·대문 인바운드 문은 Adobe Stock 표준 라이선스 사진으로 바꿈(사진 위 관광공사 출처 글 지움, 꼬리말은 「Adobe Stock · 한국관광공사」)",
  "outbound_photos": [
   {
    "file": "img/outbound_machupicchu.jpg",
