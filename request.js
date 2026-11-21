@@ -39,7 +39,7 @@
     if (!$('review').hidden && last) preview(true);   // 확인 단계에서 화면 언어를 바꾸면 일정도 그 언어로
   }
   function gjOn() { var i = form.querySelector('input[name="opt"][value="gj"]'); return !!(i && i.checked); }
-  function dep() { var v = $('f-date').value, g = gjOn(); $('f-dep').textContent = /^\d{4}-\d{2}-\d{2}$/.test(v) ? t(g ? 'f.dep5' : 'f.dep').replace('{d}', fmt(addDays(v, g ? 5 : 4))) : ''; }
+  function dep() { var v = $('f-date').value, g = gjOn(); $('f-dep').textContent = /^\d{4}-\d{2}-\d{2}$/.test(v) ? t(g ? 'f.dep5' : 'f.dep').replace('{d}', fmt(addDays(v, g ? 6 : 4))) : ''; }
   $('f-date').addEventListener('change', dep); $('f-date').addEventListener('input', dep);
   $('f-lang').addEventListener('change', function () { langTouched = true; });
   form.querySelector('input[name="opt"][value="gj"]').addEventListener('change', dep);
@@ -94,7 +94,7 @@
   function render(d, j) {
     var opt = d.opts.filter(function (k) { return k !== 'yacht' && k !== 'leeum' && k !== 'show'; }).map(function (k) { return t('c.' + k); }), pm = d.opts.indexOf('show') >= 0 ? 'show' : d.opts.indexOf('leeum') >= 0 ? 'leeum' : 'yacht', car = (window.CARS || []).filter(function (x) { return x.v === d.car; })[0];
     var langName = { en: 'English', ja: '日本語', es: 'Español', zhs: '简体中文', zht: '繁體中文' }[d.lang] || d.lang;
-    var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 5 : 4))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
+    var rows = [[t('r.dates'), fmt(d.date) + ' – ' + fmt(j.end || addDays(d.date, d.opts.indexOf('gj') >= 0 ? 6 : 4))], [t('r.guests'), d.guests === 1 ? t('guests.1') : t('guests.n').replace('{n}', d.guests)],
       [t('r.car'), car ? car.name : d.car], [t('r.craft'), t('crs.hw')], [t('r.pm'), t('pm.' + pm)], [t('r.opts'), opt.length ? opt.join(L() === 'ja' || L() === 'zhs' || L() === 'zht' ? '、' : ', ') : t('r.none')], [t('r.contact'), d.name + ' · ' + d.email + ' · ' + d.phone], [t('r.lang'), langName]];
     var bl = (d.brands || []).map(brandName).concat(d.brandOther ? [d.brandOther] : []);   // 로고 칸 + 자유 입력
     if (bl.length) rows.push([t('r.brands'), bl.join(', ')]);
