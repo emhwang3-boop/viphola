@@ -105,7 +105,8 @@ html[lang="en"] h2, html[lang="es"] h2 { letter-spacing: -.01em; }
 .lang { display: flex; align-items: center; gap: 2px; }
 .lang button {
   background: none; border: 0; padding: 6px 10px; cursor: pointer;
-  font: 400 13px/1 var(--sans); color: var(--ink-2); letter-spacing: .02em;
+  font: 500 13px/1 var(--sans); color: var(--navy); letter-spacing: .02em;   /* 11-21 사장님 「검정 글씨에 하양 그림자」(진홍은 「촌스러워」) — 옛 400·var(--ink-2) */
+  text-shadow: 0 0 10px rgba(255, 255, 255, .95), 0 0 4px rgba(255, 255, 255, .95), 0 0 1px rgba(255, 255, 255, .9);   /* 소나무 위에서도 보이게 밝은 그림자 */
   border-bottom: 1px solid transparent;
 }
 .lang button[lang="ko"] { font-family: 'Noto Sans KR', sans-serif; }
@@ -113,8 +114,8 @@ html[lang="en"] h2, html[lang="es"] h2 { letter-spacing: -.01em; }
 .lang button[lang="zh-Hans"] { font-family: 'Noto Sans SC', sans-serif; }
 .lang button[lang="zh-Hant"] { font-family: 'Noto Sans TC', sans-serif; }
 .lang button[hidden] { display: none; }   /* 숨긴 언어(스페인어, main.js OFF) */
-.lang button:hover { color: var(--navy); }
-.lang button[aria-pressed="true"] { color: var(--navy); font-weight: 500; border-bottom-color: var(--pink); }
+.lang button:hover { color: #000; }
+.lang button[aria-pressed="true"] { color: var(--navy); font-weight: 700; border-bottom-color: var(--pink); }   /* 11-21 사장님 「언어 밑줄은 원래대로 얇은 진홍색」 */
 .lang-mobile { display: none; }
 .lang-select {
   appearance: none; -webkit-appearance: none; border: 1px solid rgba(31, 42, 68, .35); border-radius: 0;
@@ -129,7 +130,7 @@ html[lang="en"] h2, html[lang="es"] h2 { letter-spacing: -.01em; }
   position: absolute; inset: 0;
   background:
     linear-gradient(180deg, rgba(247, 243, 234, .55) 0%, rgba(247, 243, 234, 0) 16%),
-    linear-gradient(90deg, rgba(247, 243, 234, .95) 0%, rgba(247, 243, 234, .86) 30%, rgba(247, 243, 234, .35) 52%, rgba(247, 243, 234, 0) 68%);
+    linear-gradient(90deg, rgba(247, 243, 234, .42) 0%, rgba(247, 243, 234, .30) 30%, rgba(247, 243, 234, .10) 50%, rgba(247, 243, 234, 0) 64%);   /* 11-21 사장님 「매화나무가 선명하게」 — 옛 .95/.86/.35/0(68%) */
 }
 .hero-copy { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: 40px; }
 .hero h1 {
@@ -139,6 +140,8 @@ html[lang="en"] h2, html[lang="es"] h2 { letter-spacing: -.01em; }
 }
 html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .hero h1 { line-height: 1.28; letter-spacing: 0; }
 .hero-lead { margin: 30px 0 40px; max-width: 30em; font-size: 18px; font-weight: 300; color: var(--ink-2); }
+.hero h1 { text-shadow: 0 0 24px rgba(247, 243, 234, .95), 0 0 8px rgba(247, 243, 234, .9), 0 1px 2px rgba(247, 243, 234, .85); }   /* 11-21 사장님 「글자에 그림자를 주면」 — 남색 글씨 둘레 밝은 그림자 */
+.hero-lead { color: #1E5B3A; font-weight: 400; text-shadow: 0 0 14px rgba(247, 243, 234, 1), 0 0 5px rgba(247, 243, 234, .95), 0 0 2px rgba(247, 243, 234, .9); }   /* 11-21 사장님 「매화나무에 작은 글씨를 초록색으로」 — 분홍의 보색, 진한 소나무 초록 */
 .hero .btn { align-self: flex-start; }
 html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .hero-lead { max-width: 38em; }
 .credit-hero { left: var(--gutter); right: auto; bottom: 18px; color: rgba(31, 42, 68, .62); text-shadow: none; }
@@ -335,7 +338,7 @@ html:is([lang="ko"], [lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .door-titl
   .art-mark.missing::after { font-size: 7px; }
   .lang-select { padding: 6px 26px 6px 10px; font-size: 12.5px; background-position: right 8px center; }
   .hero { min-height: 600px; }
-  .hero-img { object-position: 74% 28%; }
+  .hero-img { object-position: 60% 50%; }   /* 11-21 첫 화면 사진을 창덕궁 봄 매화로 — 폰에선 건물 쪽 */
   .hero-veil {
     background: linear-gradient(180deg, rgba(247, 243, 234, .62) 0%, rgba(247, 243, 234, 0) 15%, rgba(247, 243, 234, 0) 34%, rgba(247, 243, 234, .82) 56%, #F7F3EA 74%);
   }
