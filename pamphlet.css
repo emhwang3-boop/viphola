@@ -1,0 +1,64 @@
+/* viphola.com/seoul/ 팜플렛 — 11-22 사장님 「누르면 팜플렛이 눈앞에서 펼쳐지듯한 효과를 PC와 폰에서」「플랜 유어 저니 옆에 둬 … 촌스럽지 않게」 (pamphlet.js 와 짝) */
+
+/* ── 첫 화면 단추 옆 ── */
+.hero-cta { display: flex; align-items: center; gap: 34px; }
+.pam-open {
+  display: inline-flex; align-items: center; gap: 18px; padding: 4px 2px; border: 0; background: none; cursor: pointer;
+  color: var(--navy); font: 500 25px/1 var(--serif); font-style: italic; letter-spacing: .005em; text-align: left;
+  text-shadow: 0 0 18px rgba(247, 243, 234, 1), 0 0 7px rgba(247, 243, 234, .95), 0 0 2px rgba(247, 243, 234, .9);
+}
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .pam-open { font-style: normal; font-size: 18px; font-weight: 600; letter-spacing: .08em; }
+.pam-tx { position: relative; padding-bottom: 7px; }
+.pam-tx::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: var(--navy); transform: scaleX(.36); transform-origin: left; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.pam-open:hover .pam-tx::after, .pam-open:focus-visible .pam-tx::after { transform: scaleX(1); }
+.pam-open:focus-visible { outline: 2px solid var(--pink); outline-offset: 6px; }
+/* 접힌 작은 팜플렛 — 마우스를 올리면 조금 벌어진다 */
+.pam-ico { position: relative; width: 46px; height: 55px; perspective: 260px; perspective-origin: 30% 46%; flex: none; filter: drop-shadow(0 6px 9px rgba(20, 26, 44, .34)); }
+.pam-ico i { position: absolute; top: 0; left: 0; width: 26px; height: 55px; background: #141b2b center / cover; transform-origin: left center; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2, .7, .2, 1); backface-visibility: visible; }
+.pam-ico > i { transform: rotateY(-6deg); }
+.pam-ico > i > i { left: 26px; transform: rotateY(64deg); }
+.pam-ico > i > i > i { left: 26px; transform: rotateY(-122deg); }
+.pam-open:hover .pam-ico > i, .pam-open:focus-visible .pam-ico > i { transform: rotateY(-12deg); }
+.pam-open:hover .pam-ico > i > i, .pam-open:focus-visible .pam-ico > i > i { transform: rotateY(38deg); }
+.pam-open:hover .pam-ico > i > i > i, .pam-open:focus-visible .pam-ico > i > i > i { transform: rotateY(-66deg); }
+
+/* ── 펼쳐진 화면 ── */
+html.pm-lock, html.pm-lock body { overflow: hidden; overscroll-behavior: none; }
+.pm { position: fixed; inset: 0; z-index: 900; overflow: hidden; color: #efe7d6; background: radial-gradient(120% 90% at 50% 44%, #26304a 0%, #161d30 46%, #0b0f1b 100%); opacity: 0; transition: opacity .55s ease; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.pm.on { opacity: 1; }
+.pm-stage { position: absolute; inset: 0; perspective: 2300px; perspective-origin: 50% 46%; cursor: grab; }
+.pm.drag .pm-stage { cursor: grabbing; }
+.pm-book { position: absolute; left: 50%; top: 0; width: 0; height: 100%; transform-style: preserve-3d; will-change: transform; }
+.pm-p { position: absolute; left: 0; top: 0; transform-origin: 0 50%; transform-style: preserve-3d; will-change: transform; background: #efe7d8; box-shadow: 0 0 1px rgba(0, 0, 0, .35); }
+.pm-p img { display: block; width: 100%; height: 100%; pointer-events: none; -webkit-user-drag: none; }
+.pm-p s { position: absolute; inset: 0; pointer-events: none; }
+.pm-p:nth-child(odd) s { background: linear-gradient(90deg, rgba(9, 10, 16, 0) 30%, rgba(9, 10, 16, .95)); }
+.pm-p:nth-child(even) s { background: linear-gradient(90deg, rgba(9, 10, 16, .9), rgba(9, 10, 16, 0) 62%); }
+.pm-floor { position: absolute; left: 50%; height: 54px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, .62), rgba(0, 0, 0, 0)); filter: blur(6px); pointer-events: none; }
+.pm-x { position: absolute; right: max(18px, env(safe-area-inset-right)); top: max(14px, env(safe-area-inset-top)); width: 46px; height: 46px; padding: 0; border: 0; background: none; cursor: pointer; opacity: .78; z-index: 3; transition: opacity .25s; }
+.pm-x::before, .pm-x::after { content: ""; position: absolute; left: 12px; right: 12px; top: 22.5px; height: 1px; background: #f2ead9; }
+.pm-x::before { transform: rotate(45deg); } .pm-x::after { transform: rotate(-45deg); }
+.pm-x:hover { opacity: 1; }
+.pm-nav { position: absolute; top: 50%; width: 62px; height: 120px; margin-top: -60px; border: 0; background: none; cursor: pointer; z-index: 3; opacity: .55; transition: opacity .3s; padding: 0; }
+.pm-nav::before { content: ""; position: absolute; left: 50%; top: 50%; width: 19px; height: 19px; border-left: 1px solid #f2ead9; border-bottom: 1px solid #f2ead9; }
+.pm-prev { left: 4px; } .pm-prev::before { transform: translate(-30%, -50%) rotate(45deg); }
+.pm-next { right: 4px; } .pm-next::before { transform: translate(-70%, -50%) rotate(225deg); }
+.pm-nav:hover { opacity: 1; } .pm-nav[disabled] { opacity: .12; cursor: default; }
+.pm-bar { position: absolute; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); width: min(680px, calc(100vw - 48px)); transform: translateX(-50%); display: flex; align-items: center; gap: 22px; z-index: 3; opacity: 0; transition: opacity .8s ease; }
+.pm.ready .pm-bar { opacity: 1; }
+.pm-no { font: italic 400 16px/1 'Cormorant Garamond', Georgia, serif; letter-spacing: .04em; color: #cdc2a9; white-space: nowrap; min-width: 70px; font-variant-numeric: lining-nums; }
+.pm-line { position: relative; flex: 1; height: 1px; background: rgba(217, 192, 138, .24); }
+.pm-line b { position: absolute; left: 0; top: 0; height: 1px; background: #d9c08a; }
+.pm-go { font: 400 14px/1 var(--sans); letter-spacing: .06em; color: #f2ead9; text-decoration: none; padding: 9px 0 8px; border-bottom: 1px solid rgba(217, 192, 138, .55); white-space: nowrap; transition: border-color .3s, color .3s; }
+.pm-go:hover { color: #fff; border-color: #d9c08a; }
+.pm :focus-visible { outline: 1px solid #d9c08a; outline-offset: 4px; }
+
+@media (max-width: 640px) {
+  .hero-cta { flex-direction: column; align-items: stretch; gap: 14px; }
+  .pam-open { align-self: center; font-size: 23px; gap: 14px; padding: 2px; }
+  .pam-ico { width: 38px; height: 45px; } .pam-ico i { width: 21.4px; height: 45px; } .pam-ico > i > i, .pam-ico > i > i > i { left: 21.4px; }
+  .pm-nav { display: none; }
+  .pm-stage { perspective: 5200px; }
+  .pm-bar { gap: 16px; } .pm-no { min-width: 48px; font-size: 15px; } .pm-go { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { .pam-ico i, .pam-tx::after, .pm, .pm-bar { transition: none; } }
