@@ -9,8 +9,7 @@
 }
 html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) .pam-open { font-style: normal; font-size: 18px; font-weight: 600; letter-spacing: .08em; }
 .pam-tx { position: relative; padding-bottom: 7px; }
-.pam-tx::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: var(--navy); transform: scaleX(.36); transform-origin: left; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-.pam-open:hover .pam-tx::after, .pam-open:focus-visible .pam-tx::after { transform: scaleX(1); }
+.pam-tx::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: var(--navy); }
 .pam-open:focus-visible { outline: 2px solid var(--pink); outline-offset: 6px; }
 /* 접힌 작은 팜플렛 — 마우스를 올리면 조금 벌어진다 */
 .pam-ico { position: relative; width: 46px; height: 55px; perspective: 260px; perspective-origin: 30% 46%; flex: none; filter: drop-shadow(0 6px 9px rgba(20, 26, 44, .34)); }
@@ -61,4 +60,4 @@ html.pm-lock, html.pm-lock body { overflow: hidden; overscroll-behavior: none; }
   .pm-stage { perspective: 5200px; }
   .pm-bar { gap: 16px; } .pm-no { min-width: 48px; font-size: 15px; } .pm-go { font-size: 13px; }
 }
-@media (prefers-reduced-motion: reduce) { .pam-ico i, .pam-tx::after, .pm, .pm-bar { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .pam-ico i, .pm, .pm-bar { transition: none; } }
