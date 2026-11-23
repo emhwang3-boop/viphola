@@ -8,10 +8,10 @@
   var N = 14, RATIO = 2.1, MAXA = 88.2, RAD = Math.PI / 180;
   var BASE = (function () { var s = document.currentScript && document.currentScript.src; return s ? s.replace(/pamphlet\.js.*$/, '') : '../'; })();
   var VER = '?v=1122pm';
-  var PL = ['en', 'ja', 'zhs', 'zht'], cur = '';   // 팜플렛이 있는 언어 — 그 밖은 영어
+  var PL = ['en', 'ja', 'zhs', 'zht', 'ko'], cur = '';   // 팜플렛이 있는 언어 — 그 밖은 영어 · ko 는 11-23 단독 화면(viphola.com/pamphlet/)용, 서울 화면엔 한국어가 없어 그대로
   function plang() { return PL.indexOf(window.VIP_LANG) >= 0 ? window.VIP_LANG : 'en'; }
   var ALT = ['Seoul, reserved for two', 'An Invitation', 'The Courtesies', 'Day One, The Welcome', 'Day Two, The Secret Garden', 'Day Two, Mother-of-Pearl', 'Repose', 'Day Three, The Tea Room', 'Above the City', 'Day Four, The River', 'Day Five, The Farewell', 'Eight Tables', 'Gyeongju', 'Our Word'];
-  var LAB = { en: 'The Pamphlet', ja: '小冊子をひらく', zhs: '展开画册', zht: '展開畫冊' }, CLOSE = { en: 'Close', ja: '閉じる', zhs: '关闭', zht: '關閉' };
+  var LAB = { en: 'The Pamphlet', ja: '小冊子をひらく', zhs: '展开画册', zht: '展開畫冊', ko: '펼쳐 보기' }, CLOSE = { en: 'Close', ja: '閉じる', zhs: '关闭', zht: '關閉', ko: '닫기' };
   function L(o) { return o[window.VIP_LANG] || o.en; }
   function label() { btn.querySelector('.pam-tx').textContent = L(LAB); }
   label(); document.addEventListener('vip:lang', label);
@@ -36,7 +36,7 @@
     }
     el.querySelector('.pm-x').addEventListener('click', function () { shut(); });
     prevB.addEventListener('click', function () { step(-1); }); nextB.addEventListener('click', function () { step(1); });
-    goA.addEventListener('click', function (e) { e.preventDefault(); shut(function () { var r = document.getElementById('request'); if (r) r.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); }); });
+    goA.addEventListener('click', function (e) { e.preventDefault(); var c = document.querySelector('[data-pam-cta]'); if (c && !document.getElementById('request')) { location.href = c.href; return; } shut(function () { var r = document.getElementById('request'); if (r) r.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); }); });
     drag();
   }
 
@@ -84,7 +84,8 @@
   function show() {
     if (open || busy) return; busy = true; open = true; lastF = document.activeElement; if (el && cur !== plang()) { el.remove(); el = null; ps = []; sh = []; } if (!el) build();
     el.setAttribute('aria-label', L(LAB)); el.querySelector('.pm-x').setAttribute('aria-label', L(CLOSE));
-    var cta = document.querySelector('.hero .btn'); goA.textContent = cta ? cta.textContent : 'Plan your journey';
+    var cta = document.querySelector('.hero .btn') || document.querySelector('[data-pam-cta]'); goA.textContent = cta ? cta.textContent : 'Plan your journey';   // [data-pam-cta] = 단독 화면의 단추 (11-23)
+    if (cta && cta.hasAttribute('data-pam-cta')) goA.setAttribute('href', cta.getAttribute('href'));
     document.documentElement.classList.add('pm-lock'); el.style.display = ''; size(); p = tp = 0; vis = 1; sc = calm ? 1 : .8; draw(); el.classList.remove('ready');
     el.offsetWidth; el.classList.add('on');
     try { history.pushState({ pm: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
