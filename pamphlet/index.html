@@ -1,0 +1,112 @@
+<!doctype html>
+<!-- 11-23 사장님 「팜플렛만 따로 카톡으로 · PDF 툴 말고 홈피에서처럼 단독으로」 — viphola.com/pamphlet/
+     · 열면 바로 남색 무대에 팜플렛이 펼쳐진다(서울 화면과 같은 pamphlet.js) · 닫으면 아래 첫 화면
+     · 언어: 주소 ?lang=ko|en|ja|zhs|zht → 저장값(mtp_lang) → 폰 언어 · 한국어는 이 화면에만 (그림 img/pam/ko01~14)
+     · 카톡 미리보기: og 태그 · 그림 img/pam/og_ko.jpg -->
+<html lang="ko" data-lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VIPHola.com — 서울, 오직 두 분의 時間</title>
+<meta name="description" content="五日間의 私的 旅程 · Seoul, reserved for two.">
+<meta name="theme-color" content="#161D30">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIPHola.com">
+<meta property="og:url" content="https://viphola.com/pamphlet/">
+<meta property="og:title" content="VIPHola.com — 서울, 오직 두 분의 時間">
+<meta property="og:description" content="五日間의 私的 旅程 · Seoul, reserved for two.">
+<meta property="og:image" content="https://viphola.com/img/pam/og_ko.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/mugunghwa-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css?v=1121gj">
+<link rel="stylesheet" href="../pamphlet.css?v=1123ul">
+<style>
+  body[data-page="pamphlet"] { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center; }
+  .pv { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 84px 16px 56px; }
+  .pv .brand { flex-direction: column; gap: 12px; }
+  .pv .brand img { width: 58px; height: auto; display: block; }
+  .pv-title { margin: 26px 0 40px; font: 500 30px/1.4 var(--serif); letter-spacing: .01em; color: var(--navy); }
+  html:not([lang="en"]) .pv-title { font-size: 23px; letter-spacing: .1em; }
+  .pv .hero-cta { justify-content: center; }
+  html[lang="ko"] .pam-open { font-style: normal; font-size: 18px; font-weight: 600; letter-spacing: .08em; }
+  .pv-foot { margin: 44px 0 0; font: 400 13px/1.7 var(--sans); letter-spacing: .03em; color: #6B6F7A; }
+  .pv-foot a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(31, 42, 68, .25); }
+  /* 언어 — 펼친 화면(남색) 위에서도 보이게 왼쪽 위에 */
+  .pv-lang { position: fixed; z-index: 950; top: max(10px, env(safe-area-inset-top)); left: max(10px, env(safe-area-inset-left)); display: flex; gap: 2px; }
+  .pv-lang button { background: none; border: 0; border-bottom: 1px solid transparent; padding: 7px 8px 6px; cursor: pointer; font: 500 13px/1 var(--sans); letter-spacing: .02em; color: var(--navy); opacity: .72; transition: color .4s, opacity .3s; }
+  .pv-lang button[lang="ko"] { font-family: 'Noto Sans KR', sans-serif; }
+  .pv-lang button[lang="ja"] { font-family: 'Noto Sans JP', sans-serif; }
+  .pv-lang button[lang="zh-Hans"] { font-family: 'Noto Sans SC', sans-serif; }
+  .pv-lang button[lang="zh-Hant"] { font-family: 'Noto Sans TC', sans-serif; }
+  .pv-lang button:hover { opacity: 1; }
+  .pv-lang button[aria-pressed="true"] { opacity: 1; font-weight: 700; border-bottom-color: var(--pink); }
+  .pv-lang button[hidden] { display: none; }
+  .pv-lang button:focus-visible { outline: 1px solid #D9C08A; outline-offset: 2px; }
+  html.pm-lock .pv-lang button { color: #EFE7D6; }
+  html.pm-lock .pv-lang button[aria-pressed="true"] { border-bottom-color: #D9C08A; }
+  @media (max-width: 640px) {
+    .pv-title { font-size: 25px; } html:not([lang="en"]) .pv-title { font-size: 20px; }
+    .pv-lang button { padding: 7px 6px 6px; font-size: 12.5px; }
+  }
+</style>
+<script src="../px.js?v=1121px"></script>
+</head>
+<body data-page="pamphlet">
+
+<div class="pv-lang" role="group" aria-label="Language">
+  <button type="button" data-set-lang="ko" lang="ko">한국어</button>
+  <button type="button" data-set-lang="en" lang="en">EN</button>
+  <button type="button" data-set-lang="ja" lang="ja">日本語</button>
+  <button type="button" data-set-lang="zhs" lang="zh-Hans">简体</button>
+  <button type="button" data-set-lang="zht" lang="zh-Hant">繁體</button>
+</div>
+
+<main class="pv">
+  <a class="brand" href="../">
+    <img src="../img/mugunghwa-mark.png" alt="">
+    <span class="brand-name latin">VIP<em>Hola</em>.com</span>
+  </a>
+  <p class="pv-title" data-i18n="pv.title">서울, 오직 두 분의 時間</p>
+  <div class="hero-cta">
+    <a class="btn" href="../" data-pam-cta data-i18n="pv.cta">VIPHola 둘러보기</a>
+    <button type="button" class="pam-open" id="pam-open" aria-haspopup="dialog"><span class="pam-ico" aria-hidden="true"><i style="background-image:url(../img/pam/m1.jpg)"><i style="background-image:url(../img/pam/m2.jpg)"><i style="background-image:url(../img/pam/m3.jpg)"></i></i></i></span><span class="pam-tx">펼쳐 보기</span></button>
+  </div>
+  <p class="pv-foot"><a href="mailto:concierge@viphola.com">concierge@viphola.com</a></p>
+</main>
+
+<script>
+  window.PAGE_LANGS = ['ko', 'en', 'ja', 'zhs', 'zht'];
+  window.DEFAULT_LANG = 'browser';
+  window.I18N = {
+    ko:  { 'meta.title': 'VIPHola.com — 서울, 오직 두 분의 時間', 'pv.title': '서울, 오직 두 분의 時間', 'pv.cta': 'VIPHola 둘러보기', 'lang.label': '언어' },
+    en:  { 'meta.title': 'VIPHola.com — Seoul, reserved for two', 'pv.title': 'Seoul, reserved for two.', 'pv.cta': 'Plan your journey', 'lang.label': 'Language' },
+    ja:  { 'meta.title': 'VIPHola.com — ソウル、おふたりだけの時間', 'pv.title': 'ソウル、おふたりだけの時間', 'pv.cta': '旅のご相談', 'lang.label': '言語' },
+    zhs: { 'meta.title': 'VIPHola.com — 首尔，只属两位的时光', 'pv.title': '首尔，只属两位的时光', 'pv.cta': '规划您的旅程', 'lang.label': '语言' },
+    zht: { 'meta.title': 'VIPHola.com — 首爾，只屬兩位的時光', 'pv.title': '首爾，只屬兩位的時光', 'pv.cta': '規劃您的旅程', 'lang.label': '語言' }
+  };
+</script>
+<script src="../main.js?v=1116vc"></script>
+<script src="../pamphlet.js?v=1123ko"></script>
+<script>
+  (function () {
+    'use strict';
+    var L0 = window.VIP_LANG, c = document.querySelector('[data-pam-cta]'), b = document.getElementById('pam-open');
+    // 아래 단추: 한국어는 대문(한국어 있음), 다른 언어는 서울 화면 신청 칸으로
+    if (c) c.setAttribute('href', L0 === 'ko' ? '../?lang=ko' : '../seoul/?lang=' + L0 + '#request');
+    // 언어를 바꾸면 그 언어로 처음부터 다시 펼친다
+    document.addEventListener('vip:lang', function (e) {
+      var l = e.detail; if (!l || l === L0) return;
+      try { location.replace(location.pathname + '?lang=' + l); } catch (x) { location.href = '?lang=' + l; }
+    });
+    // 열자마자 펼침
+    if (b) setTimeout(function () { b.click(); }, 80);
+  })();
+</script>
+</body>
+</html>
