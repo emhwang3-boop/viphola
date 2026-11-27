@@ -7,7 +7,7 @@
   var btn = document.getElementById('pam-open'); if (!btn) return;
   var N = 14, RATIO = 2.1, MAXA = 88.2, RAD = Math.PI / 180;
   var BASE = (function () { var s = document.currentScript && document.currentScript.src; return s ? s.replace(/pamphlet\.js.*$/, '') : '../'; })();
-  var VER = '?v=1122pm';
+  var VER = '?v=1128gy';
   var PL = ['en', 'ja', 'zhs', 'zht', 'ko'], cur = '';   // 팜플렛이 있는 언어 — 그 밖은 영어 · ko 는 11-23 단독 화면(viphola.com/pamphlet/)용, 서울 화면엔 한국어가 없어 그대로
   function plang() { return PL.indexOf(window.VIP_LANG) >= 0 ? window.VIP_LANG : 'en'; }
   var ALT = ['Seoul, reserved for two', 'An Invitation', 'The Courtesies', 'Day One, The Welcome', 'Day Two, The Secret Garden', 'Day Two, Mother-of-Pearl', 'Repose', 'Day Three, The Tea Room', 'Above the City', 'Day Four, The River', 'Day Five, The Farewell', 'Eight Tables', 'Gyeongju', 'Our Word'];
