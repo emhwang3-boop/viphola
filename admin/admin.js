@@ -327,6 +327,14 @@
     else if (l.k === 'x' || (!l.ko && !l.g)) { if (!l.ko) l.ko = l.vn.ko; if (!l.g) l.g = l.vn.en; }
     l.ko = String(l.ko || '').replace('{d}', l.d || ''); l.g = String(l.g || '').replace('{d}', l.d || '');   // 11-17 줄의 날 번호(허브가 l.d 로 줌 — 휴무로 2·3일차를 바꾸면 바뀜)
   }
+  function hotelSpa(h) {   // 11-27 사장님 「호텔을 변경하면 스파도 해당 호텔의 스파를 사용하도록」 — 「스파」 분류에서 이름·주소에 그 호텔 이름이 든 업체(기본 먼저)를 스파 줄에 자동으로 · 없으면 스파 줄에 빨간 메모
+    var s = lines.filter(function (x) { return x.k === 'spa1'; })[0], hv = h.v ? venOf(h.c, h.v) : null; if (!s || !hv) return;
+    var keys = [hv.name_ko, hv.name_en].filter(Boolean).map(function (x) { return String(x).toLowerCase(); });
+    var hit = ((VEN && VEN.cats && VEN.cats.spa) || []).filter(function (x) { var t = [x.name_ko, x.name_en, x.address].join(' ').toLowerCase(); return keys.some(function (k) { return t.indexOf(k) >= 0; }); }).sort(venSort)[0];
+    s.nt = String(s.nt || '').replace(/🔴 호텔 스파 없음[^·]*?(?: · |$)/, '');
+    if (hit) { s.c = 'spa'; pickVen(s, hit.id); return; }
+    s.nt = '🔴 호텔 스파 없음 — ' + (hv.name_ko || hv.name_en) + ' 스파가 업체 목록에 없습니다. 「스파」 분류에 넣고 이 줄에서 고르세요' + (s.nt ? ' · ' + s.nt : '');
+  }
   function redrawLines() { var ro = cur.rec.st === 'paid' || cur.rec.st === 'confirmed'; $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, ro); }).join(''); recalc(); }
   function draw() {
     var r = cur.rec, q = cur.quote, ro = r.st === 'paid' || r.st === 'confirmed', it = cur.itinKo;
@@ -424,7 +432,7 @@
         if (k === 'c' || k === 'v') return;
         if (k === 'cost') { var v = t.value.replace(/[^\d]/g, ''); l.cost = v === '' ? null : +v; } else if (k === 'pc') { var v2 = t.value.replace(/[^\d]/g, ''); l.pc = v2 === '' ? null : +v2; } else if (k === 'm') { l.m = t.value.trim() === '' ? '' : Number(t.value); } else if (k === 'vat') l.vat = t.checked; else l[k] = t.value; recalc(); });
       ql.addEventListener('change', function (e) { var t = e.target, kk = t.getAttribute('data-k');
-        if (kk === 'c' || kk === 'v') { var ln = lines[+t.closest('.ql').getAttribute('data-i')]; if (kk === 'c') { ln.c = t.value; ln.v = ''; ln.vn = null; } else pickVen(ln, t.value); redrawLines(); return; } if (t.getAttribute('data-k') === 'cost' && t.value) { var v = t.value.replace(/[^\d]/g, ''); t.value = v ? num(v) : ''; } if (t.getAttribute('data-k') === 'vat') { lines[+t.closest('.ql').getAttribute('data-i')].vat = t.checked; recalc(); } });
+        if (kk === 'c' || kk === 'v') { var ln = lines[+t.closest('.ql').getAttribute('data-i')]; if (kk === 'c') { ln.c = t.value; ln.v = ''; ln.vn = null; } else { pickVen(ln, t.value); if (ln.k === 'hotel') hotelSpa(ln); } redrawLines(); return; } if (t.getAttribute('data-k') === 'cost' && t.value) { var v = t.value.replace(/[^\d]/g, ''); t.value = v ? num(v) : ''; } if (t.getAttribute('data-k') === 'vat') { lines[+t.closest('.ql').getAttribute('data-i')].vat = t.checked; recalc(); } });
       ql.addEventListener('click', function (e) { var b = e.target.closest('[data-del]'); if (!b) return; lines.splice(+b.getAttribute('data-del'), 1); $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, false); }).join(''); recalc(); });
     }
     if ($('q-add')) $('q-add').onclick = function () { lines.push({ k: 'x', c: '', v: '', ko: '', g: '', cost: null, m: 20, vat: true }); $('qlines').innerHTML = lines.map(function (l, i) { return lineRow(l, i, false); }).join(''); recalc(); var ins = $('qlines').querySelectorAll('.ql'); ins[ins.length - 1].querySelector('input').focus(); };
